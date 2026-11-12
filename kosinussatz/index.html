@@ -13,7 +13,7 @@
 <div class="formula"><strong>Kosinussatz:</strong> <span class="c">c²</span> = <span class="a">a²</span> + <span class="b">b²</span> − 2 · <span class="a">a</span> · <span class="b">b</span> · cos(<span class="g">γ</span>)</div>
 <details id="work"><summary>Rechenweg Schritt für Schritt</summary><div id="calc"></div></details>
 <details><summary>Spezialfall: Satz des Pythagoras</summary><p>Für γ = 90° gilt cos(90°) = 0. Damit wird aus dem Kosinussatz <strong>c² = a² + b²</strong>.</p><button id="right">γ = 90° einstellen</button></details>
-</main><script>
+<p style="margin:22px 0;font-size:.9rem"><a href="../mathematik-10/">Mathematik 10 I: Alle interaktiven Übungen</a> · <a href="../welches-verfahren/">Welches Verfahren brauche ich?</a></p></main><script>
 let resultVisible=false;const $=id=>document.getElementById(id),svg=$('tri'),NS='http://www.w3.org/2000/svg';let mode='side';const rad=x=>x*Math.PI/180,deg=x=>x*180/Math.PI,fmt=(x,n=2)=>Number(x).toLocaleString('de-DE',{minimumFractionDigits:n,maximumFractionDigits:n});const root=x=>'<span class="root"><span class="radical">√</span><span class="radicand">'+x+'</span></span>';
 function el(tag,attrs,text){const n=document.createElementNS(NS,tag);Object.entries(attrs||{}).forEach(([k,v])=>n.setAttribute(k,v));if(text!==undefined)n.textContent=text;svg.appendChild(n);return n}
 function syncC(){const a=+$('a').value,b=+$('b').value,min=Math.abs(a-b)+.05,max=a+b-.05;const sl=$('c');sl.min=min;sl.max=max;let c=+sl.value;if(c<min)c=min;if(c>max)c=max;c=Math.round(c*100)/100;sl.value=c;return c}
