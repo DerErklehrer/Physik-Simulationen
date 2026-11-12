@@ -1,0 +1,443 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Welches Verfahren brauche ich? · Mathematik 10 I · Der ErkLehrer</title><style>:root{font-family:Arial,sans-serif;color:#243142;background:#f3f5f8}*{box-sizing:border-box}body{margin:0}main{max-width:940px;margin:auto;padding:18px}h1{font-size:clamp(1.5rem,4vw,2.3rem);margin-bottom:4px}p{line-height:1.5}.muted{color:#59677a}.card{background:white;border-radius:15px;padding:18px;margin:15px 0;box-shadow:0 3px 14px #16253c12}.row{display:flex;flex-wrap:wrap;gap:9px;align-items:center}button{border:1px solid #cbd4e1;border-radius:9px;padding:11px 14px;background:#fff;color:#23334a;font-size:1rem;cursor:pointer}button:hover{background:#edf3fa}button.active{border-color:#a42e49;background:#fff0f3;color:#8c2440}button.primary{background:#a42e49;color:#fff;border-color:#a42e49}button:disabled{opacity:.4;cursor:default}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;margin-top:12px}.choices button{text-align:left}.feedback{padding:14px;border-radius:10px;margin-top:14px;background:#eef3f9}.correct{background:#e9f5ed}.incorrect{background:#fff1ed}svg{width:100%;height:auto;max-height:360px;display:block;background:#fbfcff;border:1px solid #e5e9f0;border-radius:12px}svg text{font-family:Arial,sans-serif;font-size:18px;fill:#263449}.over{text-decoration:overline;text-decoration-thickness:1px}.seglen{white-space:nowrap}.frac{display:inline-flex;vertical-align:middle;flex-direction:column;align-items:center;line-height:1.2}.frac span:first-child{border-bottom:1px solid currentColor;padding:0 .15em}.frac span:last-child{padding:0 .15em}svg .given{fill:#a42e49;font-weight:bold}svg .asked{fill:#126e9a;font-weight:bold}.pill{display:inline-block;border:1px solid #d5deea;padding:5px 9px;border-radius:100px;font-size:.86rem;margin-right:5px}a{color:#a42e49}details{margin-top:12px}summary{cursor:pointer;font-weight:bold}@media(max-width:550px){main{padding:10px}.card{padding:13px}.choices{grid-template-columns:1fr 1fr}.choices button{font-size:.91rem;padding:10px 8px}}</style></head><body><main><h1>Welches Verfahren brauche ich?</h1><p class="muted">Der ErkLehrer · Geometrie · Erst entscheiden, dann rechnen.</p><section class="card"><div class="row" style="margin-bottom:15px"><button id="entryMode" class="active">Einstiegsmodus</button><button id="examMode">Prüfungsmodus</button></div><div class="row"><span class="pill" id="counter"></span><span class="pill" id="score"></span><button id="restart">Von vorn</button><button id="previousTask" type="button">← Zurück</button><button id="skipTask" type="button">Überspringen →</button><button id="next" class="primary" disabled>Nächste Aufgabe →</button></div><div id="taskNav" class="row" aria-label="Aufgabe direkt auswählen" style="margin:12px 0"></div><h2 id="heading"></h2><p id="prompt"></p><svg id="drawing" viewBox="0 0 600 320" role="img" aria-label="Geometrische Skizze zur Aufgabe"></svg><p class="muted">Die Skizzen sind schematisch und nicht maßstabsgetreu.</p><div class="row"><button id="help" style="display:none" aria-pressed="false">Hilfslinien anzeigen</button></div><h3 id="questionTitle">Welches Verfahren ist hier besonders geeignet?</h3><p id="stepIndicator" class="muted"></p><div class="choices" id="choices"></div><div id="feedback" aria-live="polite"></div></section><section class="card"><details><summary>Hinweis zur Bearbeitung</summary><p>Untersuche, welche Größen bereits bekannt sind und welche du als Nächstes benötigst. Du kannst jede Aufgabe direkt über die Nummer auswählen und bei den komplexeren Aufgaben Hilfslinien einblenden.</p></details><p class="muted">Der ErkLehrer · Mathematik 10 I · Interaktive Übung zur Verfahrenswahl</p><p id="testStatus" role="alert" style="display:none"></p><pre id="testLog" style="display:none"></pre><details id="testDetails" style="display:none"></details></section></main><script>
+const options=['Satz des Pythagoras','Sinus','Kosinus','Tangens','Sinussatz','Kosinussatz','Strahlensätze','Flächeninhalt mit Sinus','Flächenformel mit Grundseite und Höhe','Winkelsumme im Dreieck','Volumen eines Prismas','Volumen einer Pyramide'];
+const links={'Satz des Pythagoras':'pythagoras/','Sinus':'rechtwinkliges-dreieck/','Kosinus':'rechtwinkliges-dreieck/','Tangens':'rechtwinkliges-dreieck/','Sinussatz':'sinussatz/','Kosinussatz':'kosinussatz/','Flächeninhalt mit Sinus':'sinusflaeche/','Flächenformel mit Grundseite und Höhe':null,'Winkelsumme im Dreieck':null,'Volumen eines Prismas':null,'Volumen einer Pyramide':null};
+const base='https://dererklehrer.github.io/Physik-Simulationen/';
+const tasks=[
+{title:'Rechtwinkliges Dreieck: fehlende Seite',type:'right',labels:['a = 6 cm','b = 8 cm','c = ?'],prompt:'Die beiden Katheten sind bekannt. Berechne die Hypotenuse.',answer:'Satz des Pythagoras',alternatives:['Kosinussatz'],why:'In einem rechtwinkligen Dreieck sind zwei Seiten bekannt und die dritte wird gesucht. Dafür genügt der Satz des Pythagoras.'},
+{title:'Rechtwinkliges Dreieck: Gegenkathete',type:'right',labels:['a = ?','b = 7 cm','α = 35°'],prompt:'Gegeben sind ein spitzer Winkel und seine Ankathete. Gesucht ist die Gegenkathete.',answer:'Tangens',why:'Der Tangens verbindet Gegenkathete und Ankathete des gegebenen Winkels.'},
+{title:'Rechtwinkliges Dreieck: Gegenkathete',type:'right',labels:['a = ?','c = 10 cm','α = 32°'],prompt:'Gegeben sind die Hypotenuse und ein spitzer Winkel. Gesucht ist die Gegenkathete.',answer:'Sinus',why:'Der Sinus verbindet Gegenkathete und Hypotenuse.'},
+{title:'Rechtwinkliges Dreieck: Ankathete',type:'right',labels:['a = 9 cm','c = ?','β = 41°'],prompt:'Gegeben sind eine Kathete, die am Winkel β anliegt, und der Winkel β. Gesucht ist die Hypotenuse.',answer:'Kosinus',why:'Der Kosinus verbindet Ankathete und Hypotenuse.'},
+{title:'Allgemeines Dreieck: Winkel und Gegenseite',type:'general',labels:['a = 7 cm','α = 42°','β = 61°','b = ?'],prompt:'Ein Winkel mit seiner Gegenseite ist bekannt. Gesucht ist eine weitere Seite, deren Gegenwinkel ebenfalls bekannt ist.',answer:'Sinussatz',why:'Bekannt ist ein gegenüberliegendes Paar aus Winkel und Seite. Der Sinussatz verknüpft solche Paare.'},
+{title:'Allgemeines Dreieck: eingeschlossener Winkel',type:'general',labels:['a = 6 cm','b = 9 cm','γ = 54°','c = ?'],prompt:'Zwei Seiten und der eingeschlossene Winkel sind bekannt. Berechne die dritte Seite.',answer:'Kosinussatz',why:'Zwei Seiten und der eingeschlossene Winkel bestimmen die dritte Seite über den Kosinussatz.'},
+{title:'Parallelen und Strahlen',type:'rays',labels:['SA = 3 cm','SB = 5 cm','SA′ = 6 cm','SB′ = ?'],prompt:'Zwei Strahlen gehen von S aus und werden von zwei parallelen Geraden geschnitten. Eine entsprechende Streckenlänge wird gesucht.',answer:'Strahlensätze',why:'Parallele Geraden erzeugen ähnliche Dreiecke; entsprechende Strecken stehen im gleichen Verhältnis.'},
+{title:'Dreiecksfläche ohne Höhe',type:'general',labels:['a = 8 cm','b = 5 cm','γ = 48°','A = ?'],prompt:'Zwei Seiten und ihr eingeschlossener Winkel sind bekannt. Gesucht ist der Flächeninhalt des Dreiecks.',answer:'Flächeninhalt mit Sinus',why:'Mit zwei Seiten und dem eingeschlossenen Winkel lässt sich der Flächeninhalt unmittelbar über die Sinusformel berechnen.'}
+];
+const examTasks=[
+{title:'Prüfungsaufgabe 1: Winkel gesucht',type:'exam1',prompt:'Im Dreieck ABC liegt der Höhenfußpunkt D auf AB. Gegeben sind AC = 5 cm, AD = 3 cm und DB = 6 cm. Gesucht ist β bei B.',steps:[{answer:'Satz des Pythagoras',alternatives:[],why:'Im rechtwinkligen Dreieck ACD sind AC und AD bekannt. Damit erhältst du CD = 4 cm.'},{answer:'Tangens',alternatives:[],why:'Im rechtwinkligen Dreieck BCD gilt tan(β) = CD / DB = 4 / 6. Also β ≈ 33,7°.'}]},
+ {title:'Prüfungsaufgabe 2: Winkel α gesucht',type:'advanced2',prompt:'Im Dreieck ABC gilt a = 8 cm, b = 11 cm und γ = 57°. Gesucht ist der Winkel α. Wähle für jeden Rechenschritt ein geeignetes Verfahren.',steps:[{answer:'Kosinussatz',alternatives:[],why:'Zwei Seiten und der eingeschlossene Winkel γ sind gegeben. Zunächst folgt c² = a² + b² − 2 · a · b · cos(γ), also c ≈ 9,44 cm.'},{answer:'Sinussatz',alternatives:['Kosinussatz'],alternativeWhy:'Nach der Berechnung von c sind alle drei Seiten bekannt. Mit cos(α) = (b² + c² − a²) / (2 · b · c) lässt sich α ebenfalls direkt berechnen.',why:'Jetzt sind die gegenüberliegenden Paare (c, γ) und (a, α) nutzbar: sin(α) / a = sin(γ) / c. Damit ergibt sich α ≈ 45,3°.'}]},
+ {title:'Prüfungsaufgabe 3: Flächeninhalt gesucht',type:'advanced3',prompt:'Im Dreieck ABC gilt a = 9 cm, α = 48° und β = 67°. Gesucht ist der Flächeninhalt des Dreiecks.',steps:[]},
+ {title:'Prüfungsaufgabe 4: Seite gesucht',type:'advanced4',prompt:'Im Dreieck ABC sind a = 7 cm, α = 43° und β = 68° gegeben. Gesucht ist die Seite c.',steps:[{answer:'Winkelsumme im Dreieck',alternatives:[],why:'Zunächst γ = 180° − 43° − 68° = 69° bestimmen.'},{answer:'Sinussatz',alternatives:[],why:'Nun gilt c / sin(γ) = a / sin(α), somit c ≈ 9,58 cm.'}]},
+ {title:'Prüfungsaufgabe 5: Flächeninhalt gesucht',type:'advanced5',prompt:'Im Dreieck ABC sind a = 8 cm, b = 11 cm und γ = 57° gegeben. Gesucht ist der Flächeninhalt des Dreiecks.',steps:[{answer:'Flächeninhalt mit Sinus',alternatives:[],why:'Direkt gilt A = ½ · a · b · sin(γ) ≈ 36,90 cm².',alternativeWhy:'Auch über den Kosinussatz lässt sich zunächst c berechnen. Danach kann die Höhe mit rechtwinkliger Trigonometrie bestimmt werden. Das ist mathematisch möglich, aber erheblich umständlicher.'}]}
+,
+ {title:'Prüfungsaufgabe 6: Diagonale gesucht',type:'new6',prompt:'Im Trapez ABCD gilt AB ∥ DC. Gegeben sind |AD| = 6 cm, |DC| = 6 cm und ∠DAB = 55°. Gesucht ist die Länge der Diagonale AC.',steps:[]},
+ {title:'Prüfungsaufgabe 7: Winkel gesucht',type:'new7',prompt:'Die Dreiecke ABC und BCD besitzen die gemeinsame Seite BC. Gegeben sind |AB| = 10 cm, |AC| = 8 cm, ∠BAC = 65°, |BD| = 7 cm und |CD| = 9 cm. Gesucht ist ∠BDC.',steps:[]},
+ {title:'Prüfungsaufgabe 8: Neigungswinkel gesucht',type:'new8',prompt:'Ein Quader hat die Kantenlängen 8 cm, 6 cm und 5 cm. Gesucht ist der Neigungswinkel einer Raumdiagonale gegenüber der Grundfläche.',steps:[]},
+ {title:'Prüfungsaufgabe 9: Volumen gesucht',type:'new9',prompt:'Eine gerade Pyramide mit quadratischer Grundfläche hat die Grundkante 8 cm und die Seitenkantenlänge 10 cm. Gesucht ist das Volumen.',steps:[]},
+ {title:'Prüfungsaufgabe 10: Volumen gesucht',type:'new10',prompt:'Ein gerades Dreiecksprisma hat die Grundfläche ABC mit a = 8 cm, b = 11 cm und γ = 57°. Die Raumdiagonale von A nach B′ hat die Länge 16 cm; B′ liegt senkrecht über B. Gesucht ist das Volumen.',steps:[]}
+
+];
+const $=id=>document.getElementById(id);let helpVisible=false;let dynamicState=null;let index=0,score=0,taskResults={},answered=false,mode='entry',step=0,firstChoice=null,skipRemaining=false,exam1State=null,decisions=0;
+function elt(tag,attrs={},content){let e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(let[k,v]of Object.entries(attrs))e.setAttribute(k,v);if(content!==undefined)e.textContent=content;$('drawing').appendChild(e);return e}
+function line(x1,y1,x2,y2){elt('line',{x1,y1,x2,y2,stroke:'#34465e','stroke-width':3,'stroke-linecap':'round'})}function text(x,y,s,cls=''){elt('text',{x,y,class:cls,'text-anchor':'middle'},s)}
+// Winkelbogen aus den tatsächlichen Schenkeln; Beschriftung innerhalb des Bogens.
+function angleMark(vertex,p,q,label,r=52){
+ const u=[p[0]-vertex[0],p[1]-vertex[1]],v=[q[0]-vertex[0],q[1]-vertex[1]];
+ const norm=w=>{const l=Math.hypot(...w);return [w[0]/l,w[1]/l]};
+ const x=norm(u),y=norm(v),start=[vertex[0]+r*x[0],vertex[1]+r*x[1]],end=[vertex[0]+r*y[0],vertex[1]+r*y[1]];
+ const cross=x[0]*y[1]-x[1]*y[0],dot=x[0]*y[0]+x[1]*y[1];
+ const sweep=cross>=0?1:0;
+ elt('path',{d:`M ${start[0]} ${start[1]} A ${r} ${r} 0 0 ${sweep} ${end[0]} ${end[1]}`,stroke:'#a42e49','stroke-width':2,fill:'none'});
+ const bis=norm([x[0]+y[0],x[1]+y[1]]),angle=Math.acos(Math.max(-1,Math.min(1,dot)));
+ const inner=Math.min(r*.53,r*Math.cos(angle/2)*.9);
+ text(vertex[0]+bis[0]*inner,vertex[1]+bis[1]*inner,label,'given');
+}
+function draw(t){
+$('drawing').innerHTML='';
+const side=(x,y,v)=>text(x,y,v,'given');
+if(t.type==='right'){
+// C is the right angle; a=BC, b=AC, c=AB. Alpha at A, beta at B.
+const C=[145,245],A=[475,245],B=[145,65];
+line(...C,...A);line(...C,...B);line(...A,...B);
+elt('path',{d:'M 171 245 A 26 26 0 0 0 145 219',stroke:'#34465e','stroke-width':2,fill:'none'});
+elt('circle',{cx:158,cy:232,r:3,fill:'#34465e'});
+text(126,264,'C');text(494,265,'A');text(128,52,'B');
+const labels=t.labels;
+// Put every side length immediately beside the corresponding side.
+labels.forEach(v=>{if(/^a\s*=/.test(v))side(104,150,v);else if(/^b\s*=/.test(v))side(311,274,v);else if(/^c\s*=/.test(v))side(342,137,v);});
+if(labels.some(v=>v.includes('α')))angleMark(A,C,B,labels.find(v=>v.includes('α')),72);
+if(labels.some(v=>v.includes('β')))angleMark(B,C,A,labels.find(v=>v.includes('β')),76);
+}else if(t.type==='general'){
+// Standard: a opposite A, b opposite B, c opposite C.
+const A=[105,260],B=[495,260],C=[335,60];
+line(...A,...B);line(...B,...C);line(...C,...A);
+text(86,279,'A');text(514,279,'B');text(336,45,'C');
+const loc={a:[430,146],b:[198,144],c:[300,291],area:[350,203]};
+for(const v of t.labels){let k=v.trim().charAt(0);if('αβγ'.includes(k))continue;let pos=k==='A'?loc.area:loc[k];if(pos)side(...pos,v);}
+for(const [k,vertex,p,q] of [['α',A,B,C],['β',B,A,C],['γ',C,A,B]]){
+ const v=t.labels.find(item=>item.trim().startsWith(k));if(v)angleMark(vertex,p,q,v,78);
+}
+}else{
+const S=[80,270],A=[245,207],B=[410,145],Ap=[245,272],Bp=[410,274];
+line(...S,...B);line(...S,...Bp);line(...A,...Ap);line(...B,...Bp);
+elt('line',{x1:A[0],y1:A[1],x2:Ap[0],y2:Ap[1],stroke:'#b04c65','stroke-width':5});
+elt('line',{x1:B[0],y1:B[1],x2:Bp[0],y2:Bp[1],stroke:'#b04c65','stroke-width':5});
+text(64,290,'S');text(246,191,'A');text(414,131,'B');text(245,301,'A′');text(410,302,'B′');
+// Segment labels at their actual segments, not arbitrary spots.
+const positions={'SA':[158,215],'SB':[330,165],'SA′':[164,300],'SB′':[350,314]};
+for(const v of t.labels){let name=v.split('=')[0].trim();if(positions[name])side(...positions[name],v);}
+}
+}
+function seg(name){return '<span class="seglen">|<span class="over">'+name+'</span>|</span>'}
+function prettyMath(v){
+v=v.replace('|CD| / |DB|','<span class="frac"><span>|CD|</span><span>|DB|</span></span>').replace('|CD| / |BC|','<span class="frac"><span>|CD|</span><span>|BC|</span></span>').replace('|DB| / |BC|','<span class="frac"><span>|DB|</span><span>|BC|</span></span>').replace('4 / √52','<span class="frac"><span>4</span><span>√52</span></span>').replace('6 / √52','<span class="frac"><span>6</span><span>√52</span></span>').replace('4 / 6','<span class="frac"><span>4</span><span>6</span></span>').replace('a² · sin(β) · sin(α + β) / (2 · sin(α))','<span class="frac"><span>a² · sin(β) · sin(α + β)</span><span>2 · sin(α)</span></span>').replace('sin(α) / a','<span class="frac"><span>sin(α)</span><span>a</span></span>').replace('sin(γ) / c','<span class="frac"><span>sin(γ)</span><span>c</span></span>').replace('(b² + c² − a²) / (2 · b · c)','<span class="frac"><span>b² + c² − a²</span><span>2 · b · c</span></span>').replace('sin(β) / sin(α)','<span class="frac"><span>sin(β)</span><span>sin(α)</span></span>').replace('½ · a · b','<span class="frac"><span>1</span><span>2</span></span> · a · b');
+return v.replace(/\|(AC|AD|DB|CD|AB|BC|SA|SB)\|/g,(_,n)=>seg(n)).replace(/(?<![|\w>])(AC|AD|DB|CD|AB|BC|SA|SB)(?![|\w<])/g,(_,n)=>seg(n))}
+
+function drawNew(t){
+ $('drawing').innerHTML='';const typ=t.type;
+ const poly=(pts,fill='none',stroke='#34465e',width=2.5)=>elt('polygon',{points:pts.map(p=>p.join(',')).join(' '),fill,stroke,'stroke-width':width,'stroke-linejoin':'round'});
+ const helper=(pts)=>poly(pts,'#e3a16b44','#c36b32',2.5);
+ const seg=(a,b,dashed=false)=>elt('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:dashed?'#c36b32':'#34465e','stroke-width':dashed?2.5:2.2,...(dashed?{'stroke-dasharray':'7 5'}:{})});
+ if(typ==='new6'){
+  const A=[90,260],B=[510,260],D=[193,113],C=[373,113];poly([A,B,C,D]);
+  text(75,279,'A');text(524,279,'B');text(382,103,'C');text(185,100,'D');
+  text(119,165,'6 cm','given');text(287,103,'6 cm','given');angleMark(A,B,D,'55°',75);
+  if(helpVisible){seg(A,C,true);seg(D,[193,260],true);helper([A,D,[193,260]]);text(245,184,'?','asked')}
+ }else if(typ==='new7'){
+  const A=[300,40],B=[135,171],C=[467,171],D=[298,290];poly([A,B,D,C]);seg(B,C,helpVisible);
+  text(300,28,'A');text(119,176,'B');text(483,176,'C');text(298,311,'D');
+  text(201,94,'10 cm','given');text(392,94,'8 cm','given');text(203,249,'7 cm','given');text(394,249,'9 cm','given');angleMark(A,B,C,'65°',78);
+  if(helpVisible){helper([A,B,C]);helper([B,C,D]);text(302,160,'BC','asked')}
+ }else if(typ==='new8'){
+  const A=[90,260],B=[365,260],C=[475,198],D=[200,198],E=[90,105],F=[365,105],G=[475,43],H=[200,43];
+  for(const [u,v] of [[A,B],[B,C],[C,D],[D,A],[E,F],[F,G],[G,H],[H,E],[A,E],[B,F],[C,G],[D,H]])seg(u,v);
+  text(228,283,'8 cm','given');text(435,246,'6 cm','given');text(496,128,'5 cm','given');
+  if(helpVisible){helper([A,C,G]);seg(A,C,true);seg(A,G,true);text(260,188,'Hilfsdreieck','asked')}
+ }else if(typ==='new9'){
+  const A=[105,242],B=[335,284],C=[480,216],D=[250,176],S=[291,34],M=[292,230];poly([A,B,C,D]);
+  for(const v of [A,B,C,D])seg(S,v);
+  text(209,275,'8 cm','given');text(386,121,'10 cm','given');text(295,23,'S');
+  if(helpVisible){helper([S,M,B]);seg(S,M,true);seg(A,C,true);seg(B,D,true);text(306,241,'M')}
+ }else if(typ==='new10'){
+  const A=[95,242],B=[340,242],C=[217,92],Ap=[238,198],Bp=[483,198],Cp=[360,48];
+  for(const [u,v] of [[A,B],[B,C],[C,A],[Ap,Bp],[Bp,Cp],[Cp,Ap],[A,Ap],[B,Bp],[C,Cp]])seg(u,v);
+  text(79,261,'A');text(337,264,'B');text(211,82,'C');text(493,192,'B′');
+  text(281,166,'a = 8 cm','given');text(142,159,'b = 11 cm','given');angleMark(C,A,B,'γ = 57°',75);
+  text(290,286,'|AB′| = 16 cm','given');
+  if(helpVisible){helper([A,B,Bp]);seg(A,Bp,true);helper([A,B,C]);text(333,214,'h = ?','asked')}
+ }
+}
+
+function drawExam(t){
+if(t.type.startsWith("new")){drawNew(t);return;}
+$('drawing').innerHTML='';
+// C above D; A,D,B on the baseline. All given lengths lie directly on their segments.
+if(['advanced2','advanced3','advanced4','advanced5'].includes(t.type)){
+const A=[90,255],B=[500,255],C=[320,65];
+line(...A,...B);line(...B,...C);line(...C,...A);
+text(74,276,'A');text(516,276,'B');text(319,48,'C');
+if(t.type==='advanced2'){
+ text(423,149,'a = 8 cm','given');text(189,150,'b = 11 cm','given');
+ angleMark(C,A,B,'γ = 57°',91);angleMark(A,B,C,'α = ?',80);
+ text(300,286,'c = ?','asked');
+}else if(t.type==='advanced4'){
+ text(423,149,'a = 7 cm','given');
+ angleMark(A,B,C,'α = 43°',83);angleMark(B,A,C,'β = 68°',83);
+ text(300,286,'c = ?','asked');
+}else if(t.type==='advanced5'){
+ text(423,149,'a = 8 cm','given');text(189,150,'b = 11 cm','given');
+ angleMark(C,A,B,'γ = 57°',91);text(302,213,'Fläche = ?','asked');
+}else{
+ text(424,149,'a = 9 cm','given');text(207,147,'b = ?','asked');
+ angleMark(A,B,C,'α = 48°',83);angleMark(B,A,C,'β = 67°',83);
+ text(310,301,'Fläche = ?','asked');
+}
+return;
+}
+const A=[90,262],D=[260,262],B=[490,262],C=[260,72];
+line(...A,...B);line(...A,...C);line(...B,...C);line(...C,...D);
+elt('path',{d:'M 260 238 A 24 24 0 0 1 284 262',stroke:'#34465e','stroke-width':2,fill:'none'});
+elt('circle',{cx:272,cy:250,r:2.8,fill:'#34465e'});
+for(const [x,y,t] of [[72,279,'A'],[260,287,'D'],[507,279,'B'],[260,55,'C']])text(x,y,t);
+const left=t.type==='exam1'?'5 cm':t.type==='exam2'?'13 cm':'10 cm';
+const ad=t.type==='exam1'?'3 cm':t.type==='exam2'?'5 cm':'6 cm';
+const db=t.type==='exam1'?'6 cm':t.type==='exam2'?'': '8 cm';
+text(151,147,left,'given');text(169,251,ad,'given');
+if(db)text(382,251,db,'given');
+if(t.type==='exam2')text(365,304,'18 cm','given');
+if(t.type==='exam1'){angleMark(B,D,C,'β = ?',64);if(exam1State&&exam1State.CD)text(273,165,'4 cm','asked');if(exam1State&&exam1State.BC)text(390,124,'√52 cm','asked');}
+if(t.type==='exam2')text(360,158,'A = ?','asked');
+if(t.type==='exam3')text(409,150,'BC = ?','asked');
+}
+// Prototyp: zustandsbasierter Lösungsprüfer statt fest verdrahteter Schrittfolge.
+// Bekannte Strecken: |AC|=5, |AD|=3, |DB|=6. Gesucht: Winkel beta bei B.
+function resetExam1(){exam1State={CD:false,BC:false,done:false,history:[]}}
+function exam1Candidates(){
+ if(!exam1State.CD)return ['Satz des Pythagoras'];
+ if(exam1State.done)return [];
+ if(!exam1State.BC)return ['Tangens','Satz des Pythagoras'];
+ return ['Tangens','Sinus','Kosinus'];
+}
+function renderExam1(){
+ const t=examTasks[0];answered=false;const state=exam1State;
+ $('counter').textContent=`Prüfungsaufgabe 1 von ${examTasks.length}`;
+ $('score').textContent=`Richtige Entscheidungen: ${score} von ${decisions}`;
+ $('heading').textContent=t.title;
+ $('prompt').innerHTML=prettyMath(t.prompt);
+ $('questionTitle').textContent='Welches Verfahren ist als Nächstes sinnvoll?';
+ $('stepIndicator').textContent='Dynamischer Lösungsweg · '+(state.history.length?state.history.join(' → '):'Ausgangslage');
+ drawExam(t);
+ $('feedback').innerHTML='';$('next').disabled=true;$('next').textContent='Nächste Prüfungsaufgabe →';
+ $('choices').innerHTML='';options.forEach(o=>{let b=document.createElement('button');b.textContent=o;b.onclick=()=>answerExam1(o);$('choices').appendChild(b)});
+}
+function answerExam1(chosen){
+ if(answered)return;
+ const state=exam1State,valid=exam1Candidates(),ok=valid.includes(chosen);
+ answered=true;recordDecision(ok);
+ const explanations={
+ 'height':'Im rechtwinkligen Dreieck ACD gilt |AC|² = |AD|² + |CD|². Damit folgt |CD| = 4 cm.',
+ 'hyp':'Im rechtwinkligen Dreieck BCD gilt |BC|² = |DB|² + |CD|². Damit folgt |BC| = √52 cm ≈ 7,21 cm.',
+ 'tan':'Im rechtwinkligen Dreieck BCD gilt tan(β) = |CD| / |DB| = 4 / 6. Damit ergibt sich β ≈ 33,7°.',
+ 'sin':'Mit der zuvor berechneten Hypotenuse gilt sin(β) = |CD| / |BC| = 4 / √52. Damit ergibt sich β ≈ 33,7°.',
+ 'cos':'Mit der zuvor berechneten Hypotenuse gilt cos(β) = |DB| / |BC| = 6 / √52. Damit ergibt sich β ≈ 33,7°.'
+ };
+ let message='';
+ if(ok){
+  state.history.push(chosen);
+  if(!state.CD){state.CD=true;message=explanations.height}
+  else if(chosen==='Satz des Pythagoras'){state.BC=true;message=explanations.hyp}
+  else {state.done=true;message=explanations[chosen==='Tangens'?'tan':chosen==='Sinus'?'sin':'cos']}
+ }else{
+  message='Mit den bisher bekannten Größen führt dieses Verfahren nicht unmittelbar zu einer neuen benötigten Größe. Möglich sind jetzt: '+valid.join(' oder ')+'.';
+ }
+ $('score').textContent=`Richtige Entscheidungen: ${score} von ${decisions}`;
+ [...$('choices').children].forEach(b=>{b.disabled=true;if(valid.includes(b.textContent))b.classList.add('active')});
+ const f=$('feedback');f.className='feedback '+(ok?'correct':'incorrect');
+ f.innerHTML=`<strong>${ok?'Richtig!':'Noch nicht geeignet.'}</strong><p>${prettyMath(message)}</p>`+(ok&&state.done?'<p><strong>Gesucht und berechnet:</strong> β ≈ 33,7°. Du kannst mit der nächsten Aufgabe fortfahren.</p>':'<p>Setze den Lösungsweg fort und wähle den nächsten Schritt.</p>');
+ $('next').disabled=false;$('next').textContent=state.done?'Nächste Prüfungsaufgabe →':'Nächster Schritt →';
+}
+// Regelbasierte Fortschrittsprüfung: Jeder Zustand bezeichnet tatsächlich verfügbare Größen.
+// Nur zielführende Rechenschritte werden akzeptiert; ein unnötiger Umweg ist keine richtige Antwort.
+function newDynamicState(){return {known:new Set(),history:[],done:false}}
+function dynamicCandidates(t,state){
+ const k=state.known;
+ if(state.done)return [];
+ switch(t.type){
+ case 'advanced2':return !k.has('c')?['Kosinussatz']:['Sinussatz','Kosinussatz'];
+ case 'advanced3':return k.has('area')?[]:k.has('b')&&k.has('gamma')?['Flächeninhalt mit Sinus']:!k.has('b')&&!k.has('gamma')?['Sinussatz','Winkelsumme im Dreieck']:!k.has('b')?['Sinussatz']:['Winkelsumme im Dreieck'];
+ case 'advanced4':return k.has('gamma')?['Sinussatz']:['Winkelsumme im Dreieck'];
+ case 'advanced5':return ['Flächeninhalt mit Sinus'];
+ case 'new6':return k.has('height')&&k.has('projection')?['Satz des Pythagoras']:['Kosinussatz',...(!k.has('height')?['Sinus']:[]),...(!k.has('projection')?['Kosinus']:[])];
+ case 'new7':return k.has('BC')?['Kosinussatz']:['Kosinussatz'];
+ case 'new8':return !k.has('ground')?['Satz des Pythagoras']:!k.has('space')?['Tangens','Satz des Pythagoras']:['Tangens','Sinus','Kosinus'];
+ case 'new9':return !k.has('halfDiagonal')?['Satz des Pythagoras']:!k.has('height')?['Satz des Pythagoras']:['Volumen einer Pyramide'];
+ case 'new10':return !k.has('c')?['Kosinussatz']:!k.has('height')?['Satz des Pythagoras']:!k.has('area')?['Flächeninhalt mit Sinus']:['Volumen eines Prismas'];
+ default:return [];
+ }
+}
+function dynamicTransition(t,state,chosen){
+ const k=state.known;
+ if(t.type==='advanced2'){
+  if(!k.has('c')){k.add('c');return 'Mit a, b und dem eingeschlossenen Winkel γ erhältst du durch den Kosinussatz c ≈ 9,44 cm.'}
+  state.done=true;
+  return chosen==='Sinussatz'?'Mit dem Sinussatz folgt sin(α) / a = sin(γ) / c, somit α ≈ 45,3°.':'Auch der Kosinussatz ist möglich: cos(α) = (b² + c² − a²) / (2 · b · c). Damit folgt α ≈ 45,3°.';
+ }
+ if(t.type==='advanced3'){
+  if(chosen==='Sinussatz'){
+   k.add('b');return 'Mit dem Sinussatz folgt b = a · sin(β) / sin(α) ≈ 11,15 cm.';
+  }
+  if(chosen==='Winkelsumme im Dreieck'){
+   k.add('gamma');return 'Aus der Winkelsumme folgt γ = 180° − 48° − 67° = 65°.';
+  }
+  k.add('area');state.done=true;
+  return 'Jetzt sind a, b und der eingeschlossene Winkel γ bekannt. Mit der Sinusflächenformel ergibt sich A = ½ · a · b · sin(γ) ≈ 45,47 cm².';
+ }
+ if(t.type==='advanced4'){
+  if(chosen==='Winkelsumme im Dreieck'){k.add('gamma');return 'γ = 180° − 43° − 68° = 69°.'}
+  state.done=true;return 'Mit dem Sinussatz erhältst du c / sin(γ) = a / sin(α), also c ≈ 9,58 cm.';
+ }
+ 
+ if(t.type==='new6'){
+  if(chosen==='Kosinussatz'){state.done=true;return 'Im Dreieck ADC ist ∠ADC = 125°. Mit dem Kosinussatz folgt |AC| ≈ 10,64 cm.'}
+  if(chosen==='Sinus'){k.add('height');return 'Die Höhe des Trapezes ist h = 6 · sin(55°) ≈ 4,91 cm.'}
+  if(chosen==='Kosinus'){k.add('projection');return 'Die waagerechte Projektion von AD ist 6 · cos(55°) ≈ 3,44 cm.'}
+  state.done=true;return 'Die waagerechte Strecke bis C ist 6 + 6 · cos(55°) ≈ 9,44 cm. Mit der Höhe und Pythagoras folgt |AC| ≈ 10,64 cm.';
+ }
+ if(t.type==='new7'){
+  if(!k.has('BC')){k.add('BC');return 'Im Dreieck ABC ergibt der Kosinussatz |BC| ≈ 9,82 cm.'}
+  state.done=true;return 'Im Dreieck BCD gilt cos(∠BDC) = (7² + 9² − |BC|²) / (2 · 7 · 9). Damit ∠BDC ≈ 74,5°.';
+ }
+ if(t.type==='new8'){
+  if(!k.has('ground')){k.add('ground');return 'Die Diagonale der Grundfläche ist d = √(8² + 6²) = 10 cm.'}
+  if(chosen==='Satz des Pythagoras'){k.add('space');return 'Die Raumdiagonale hat die Länge √(10² + 5²) = √125 cm.'}
+  state.done=true;return chosen==='Tangens'?'Mit tan(α) = 5 / 10 folgt α ≈ 26,6°.':chosen==='Sinus'?'Mit sin(α) = 5 / √125 folgt α ≈ 26,6°.':'Mit cos(α) = 10 / √125 folgt α ≈ 26,6°.';
+ }
+ if(t.type==='new9'){
+  if(!k.has('halfDiagonal')){k.add('halfDiagonal');return 'Vom Mittelpunkt der quadratischen Grundfläche zur Ecke beträgt der Abstand √(4² + 4²) = √32 cm.'}
+  if(!k.has('height')){k.add('height');return 'Mit der Seitenkante als Hypotenuse folgt h = √(10² − 32) = √68 cm.'}
+  state.done=true;return 'Mit G = 8² = 64 cm² und V = (1/3) · G · h ergibt sich V ≈ 175,9 cm³.';
+ }
+ if(t.type==='new10'){
+  if(!k.has('c')){k.add('c');return 'Der Kosinussatz liefert für die Grundkante c ≈ 9.44 cm.'.replace('.',',')}
+  if(!k.has('height')){k.add('height');return 'Im rechtwinkligen Dreieck ABB′ gilt h = √(16² − c²) ≈ 12.92 cm.'.replace('.',',')}
+  if(!k.has('area')){k.add('area');return 'Mit der Sinusflächenformel ergibt sich G = ½ · a · b · sin(γ) ≈ 36.90 cm².'.replace('.',',')}
+  state.done=true;return 'Mit V = G · h folgt V ≈ 476.67 cm³.'.replace('.',',');
+ }
+ if(t.type==='advanced5'){state.done=true;return 'Die beiden Seiten a und b schließen γ ein. Daher A = ½ · a · b · sin(γ) ≈ 36,90 cm².'}
+ return '';
+}
+function renderExam(){
+ if(index===0){$('help').style.display='none';if(!exam1State)resetExam1();return renderExam1()}
+ if(!dynamicState)dynamicState=newDynamicState();
+ const t=examTasks[index],state=dynamicState;answered=false;
+ $('counter').textContent=`Prüfungsaufgabe ${index+1} von ${examTasks.length}`;
+ $('score').textContent=`Richtige Entscheidungen: ${score} von ${decisions}`;
+ $('heading').textContent=t.title;$('prompt').innerHTML=prettyMath(t.prompt);
+ $('questionTitle').textContent='Welches Verfahren ist als Nächstes sinnvoll?';
+ $('stepIndicator').textContent='Dynamischer Lösungsweg · '+(state.history.length?state.history.join(' → '):'Ausgangslage');
+ drawExam(t);$('help').style.display=t.type.startsWith('new')?'inline-block':'none';$('help').textContent=helpVisible?'Hilfslinien ausblenden':'Hilfslinien anzeigen';$('help').setAttribute('aria-pressed',String(helpVisible));$('feedback').innerHTML='';$('next').disabled=true;
+ $('next').textContent=index===examTasks.length-1?'Auswertung':'Nächste Prüfungsaufgabe →';
+ $('choices').innerHTML='';options.forEach(o=>{let b=document.createElement('button');b.textContent=o;b.onclick=()=>answerExam(o);$('choices').appendChild(b)});
+}
+function answerExam(chosen){
+ if(answered)return;answered=true;
+ const t=examTasks[index],state=dynamicState,valid=dynamicCandidates(t,state),ok=valid.includes(chosen);
+ recordDecision(ok);
+ let message;
+ if(ok){state.history.push(chosen);message=dynamicTransition(t,state,chosen)}
+ else message='Dieses Verfahren führt mit den derzeit bekannten Größen nicht unmittelbar zu einem benötigten Ergebnis. Geeignet '+(valid.length===1?'ist':'sind')+': '+valid.join(' oder ')+'.';
+ $('score').textContent=`Richtige Entscheidungen: ${score} von ${decisions}`;
+ [...$('choices').children].forEach(b=>{b.disabled=true;if(valid.includes(b.textContent))b.classList.add('active')});
+ const f=$('feedback');f.className='feedback '+(ok?'correct':'incorrect');
+ f.innerHTML=`<strong>${ok?'Richtig!':'Noch nicht geeignet.'}</strong><p>${prettyMath(message)}</p>`;
+ $('next').disabled=false;$('next').textContent=state.done?(index===examTasks.length-1?'Auswertung':'Nächste Prüfungsaufgabe →'):'Nächster Schritt →';
+}
+function recordDecision(ok){
+ const key=mode+':'+index;
+ if(!taskResults[key])taskResults[key]={correct:0,total:0};
+ // Wiederholungen werden nicht erneut gewertet.
+ if(!taskResults[key].locked){taskResults[key].total++;if(ok)taskResults[key].correct++}
+ recalcScore();
+}
+function recalcScore(){score=0;decisions=0;Object.values(taskResults).forEach(v=>{score+=v.correct;decisions+=v.total})}
+function lockCurrentTask(){const key=mode+':'+index;if(taskResults[key])taskResults[key].locked=true}
+function updateNavigation(){
+ const count=mode==='exam'?examTasks.length:tasks.length;
+ $('previousTask').disabled=index===0;
+ $('skipTask').disabled=index===count-1;
+ const nav=$('taskNav');nav.innerHTML='';
+ for(let n=0;n<count;n++){
+  const b=document.createElement('button');b.type='button';b.textContent=String(n+1);
+  b.setAttribute('aria-label',`Aufgabe ${n+1} öffnen`);
+  b.classList.toggle('active',n===index);
+  b.title=taskResults[mode+':'+n]?'Bereits bearbeitet – erneut üben':'Aufgabe öffnen';
+  b.onclick=()=>goToTask(n);nav.appendChild(b)
+ }
+}
+function goToTask(n){
+ const count=mode==='exam'?examTasks.length:tasks.length;
+ if(n<0||n>=count)return;
+ lockCurrentTask();index=n;answered=false;helpVisible=false;dynamicState=null;resetExam1();
+ if(mode==='exam')renderExam();else render();updateNavigation()
+}
+$('previousTask').onclick=()=>goToTask(index-1);
+$('skipTask').onclick=()=>goToTask(index+1);
+$('help').onclick=()=>{helpVisible=!helpVisible;drawExam(examTasks[index]);$('help').textContent=helpVisible?'Hilfslinien ausblenden':'Hilfslinien anzeigen';$('help').setAttribute('aria-pressed',String(helpVisible))};
+function setMode(m){mode=m;helpVisible=false;index=0;score=0;decisions=0;taskResults={};step=0;firstChoice=null;skipRemaining=false;dynamicState=null;resetExam1();$('entryMode').classList.toggle('active',m==='entry');$('examMode').classList.toggle('active',m==='exam');if(m==='exam')renderExam();else render();updateNavigation()}
+function render(){$('help').style.display='none';const t=tasks[index];$('questionTitle').textContent='Welches Verfahren ist hier besonders geeignet?';$('stepIndicator').textContent='';answered=false;$('counter').textContent=`Aufgabe ${index+1} von ${tasks.length}`;$('score').textContent=`Richtig: ${score}`;$('heading').textContent=t.title;$('prompt').innerHTML=prettyMath(t.prompt);draw(t);$('feedback').innerHTML='';$('next').disabled=true;$('next').textContent=index===tasks.length-1?'Auswertung':'Nächste Aufgabe →';$('choices').innerHTML='';options.forEach(o=>{let b=document.createElement('button');b.textContent=o;b.onclick=()=>answer(o);$('choices').appendChild(b)})}
+function answer(chosen){if(answered)return;answered=true;let t=tasks[index],primary=chosen===t.answer,alternative=(t.alternatives||[]).includes(chosen),ok=primary||alternative;recordDecision(ok);$('score').textContent=`Richtig: ${score}`;[...$('choices').children].forEach(b=>{b.disabled=true;if(b.textContent===t.answer||(t.alternatives||[]).includes(b.textContent))b.classList.add('active')});let f=$('feedback');f.className='feedback '+(ok?'correct':'incorrect');let link=links[t.answer]?`<p><a target="_blank" rel="noopener" href="${base+links[t.answer]}">Zur passenden Rechensimulation ↗</a></p>`:'<p>Eine eigene Rechensimulation zu den Strahlensätzen ist noch vorgesehen.</p>';f.innerHTML=`<strong>${primary?'Richtig!':alternative?'Auch richtig!':'Leider nicht.'}</strong> ${alternative?'Der Kosinussatz ist hier ebenfalls gültig; der Satz des Pythagoras ist jedoch einfacher.':`Besonders geeignet: <strong>${t.answer}</strong>.`}<p>${prettyMath(t.why)}</p>${link}`;$('next').disabled=false}
+$('next').onclick=()=>{
+ if(mode==='exam'){
+  if(index===0){if(exam1State.done){goToTask(1)}else renderExam1();return}
+  if(dynamicState.done){if(index<examTasks.length-1){goToTask(index+1)}else {lockCurrentTask();showEnd(decisions)}}
+  else renderExam();
+ }else if(index<tasks.length-1) {goToTask(index+1)} else {lockCurrentTask();showEnd(decisions)};
+};
+function showEnd(total){$('help').style.display='none';$('heading').textContent='Auswertung';$('prompt').textContent=`Du hast ${score} von ${total} Entscheidungen richtig getroffen.`;$('drawing').innerHTML='';$('choices').innerHTML='';$('feedback').innerHTML='';$('stepIndicator').textContent='';$('next').disabled=true;$('counter').textContent='Abgeschlossen'}
+
+// Fachlicher Regressionstest mit unabhängig formulierten Erwartungslisten.
+// Zwei Durchläufe: vorwärts und rückwärts; alle angebotenen Verfahren werden
+// in jedem erreichbaren Lösungszustand gegen die Soll-Liste verglichen.
+// Zwei identische Durchläufe alleine wären keine unabhängige fachliche Prüfung.
+const EXPECTED={
+ advanced2:[[['Kosinussatz'],['Sinussatz','Kosinussatz']]],
+ advanced3:[[['Sinussatz','Winkelsumme im Dreieck'],['Winkelsumme im Dreieck'],['Flächeninhalt mit Sinus']],
+            [['Sinussatz','Winkelsumme im Dreieck'],['Sinussatz'],['Flächeninhalt mit Sinus']]],
+ advanced4:[[['Winkelsumme im Dreieck'],['Sinussatz']]],
+ advanced5:[[['Flächeninhalt mit Sinus']]],
+ new6:[[['Kosinussatz','Sinus','Kosinus'],['Kosinussatz','Kosinus'],['Satz des Pythagoras']],
+       [['Kosinussatz','Sinus','Kosinus'],['Kosinussatz','Sinus'],['Satz des Pythagoras']]],
+ new7:[[['Kosinussatz'],['Kosinussatz']]],
+ new8:[[['Satz des Pythagoras'],['Tangens','Satz des Pythagoras'],['Tangens','Sinus','Kosinus']],
+       [['Satz des Pythagoras'],['Tangens','Satz des Pythagoras'],['Tangens','Sinus','Kosinus']]],
+ new9:[[['Satz des Pythagoras'],['Satz des Pythagoras'],['Volumen einer Pyramide']]],
+ new10:[[['Kosinussatz'],['Satz des Pythagoras'],['Flächeninhalt mit Sinus'],['Volumen eines Prismas']]]
+};
+function runMathSelfTests(){
+ const failures=[],results=[];
+ const same=(a,b)=>JSON.stringify([...a].sort())===JSON.stringify([...b].sort());
+ function check(condition,desc){results.push(desc);if(!condition)failures.push(desc)}
+ const volume=['Volumen eines Prismas','Volumen einer Pyramide'];
+ for(let pass=0;pass<2;pass++){
+  const reverse=pass===1;
+  const ordered=reverse?[...examTasks].reverse():examTasks;
+  for(const t of ordered){
+   if(t.type==='exam1'){
+    const save=exam1State;
+    const paths=[
+      [['Satz des Pythagoras'],['Tangens','Satz des Pythagoras']],
+      [['Satz des Pythagoras'],['Tangens','Satz des Pythagoras'],['Tangens','Sinus','Kosinus']]
+    ];
+    for(const path of paths){
+      resetExam1();
+      for(let i=0;i<path.length;i++){
+        const valid=exam1Candidates();
+        check(same(valid,path[i]),`Lauf ${pass+1}: Aufgabe 1, Zustand ${i}`);
+        check(!valid.some(x=>volume.includes(x)),`Lauf ${pass+1}: Aufgabe 1, keine Volumenformel`);
+        if(i<path.length-1){
+          exam1State.CD=true;
+          if(i===1)exam1State.BC=true;
+        }
+      }
+    }
+    exam1State=save;
+    continue;
+   }
+   const paths=EXPECTED[t.type]||[];
+   for(let pi=0;pi<paths.length;pi++){
+    const st=newDynamicState(),path=paths[pi];
+    for(let i=0;i<path.length;i++){
+      const valid=dynamicCandidates(t,st),want=path[i];
+      check(same(valid,want),`Lauf ${pass+1}: ${t.title}, Pfad ${pi+1}, Schritt ${i+1}: erwartet ${want.join(' / ')}, erhalten ${valid.join(' / ')}`);
+      check(valid.every(x=>options.includes(x)),`Lauf ${pass+1}: ${t.title}, nur bekannte Auswahlverfahren`);
+      if(['advanced2','advanced3','advanced4','advanced5','new6','new7','new8'].includes(t.type))
+        check(!valid.some(x=>volume.includes(x)),`Lauf ${pass+1}: ${t.title}, keine Volumenformel`);
+      if(i<path.length-1){
+        // Für jeden Soll-Pfad bewusst unterschiedliche gültige Wahl.
+        let choice=want[0];
+        if(t.type==='advanced3'&&pi===1&&i===0)choice='Winkelsumme im Dreieck';
+        if(t.type==='new6'&&i===0)choice=pi===0?'Sinus':'Kosinus';
+        if(t.type==='new6'&&i===1)choice=pi===0?'Kosinus':'Sinus';
+        if(t.type==='new8'&&i===1)choice='Satz des Pythagoras';
+        dynamicTransition(t,st,choice);
+        check(!st.done,`Lauf ${pass+1}: ${t.title}, kein vorzeitiger Abschluss`);
+      }else{
+        const finalChoice=want[0];
+        dynamicTransition(t,st,finalChoice);
+        check(st.done,`Lauf ${pass+1}: ${t.title}, korrekter Abschluss`);
+        check(dynamicCandidates(t,st).length===0,`Lauf ${pass+1}: ${t.title}, nach Abschluss keine weiteren Verfahren`);
+      }
+    }
+   }
+  }
+  // Einstieg: keine Volumenformeln als richtige Antwort
+  for(const [i,t] of (reverse?[...tasks].reverse().entries():tasks.entries())){
+    check(![t.answer,...(t.alternatives||[])].some(x=>volume.includes(x)),`Lauf ${pass+1}: Einstieg ${t.title}, keine Volumenformel`);
+  }
+ }
+ check(typeof goToTask==='function'&&typeof updateNavigation==='function', 'Aufgabennavigation verfügbar');
+ return {passed:results.length-failures.length,total:results.length,failures};
+}
+function showMathSelfTest(){
+ const result=runMathSelfTests();
+ $('testStatus').textContent=result.failures.length?'Technische Prüfung fehlgeschlagen. Bitte Lehrkraft informieren.':'';
+ $('testStatus').style.display=result.failures.length?'block':'none';
+ $('testStatus').style.color=result.failures.length?'#a42e49':'#21633a';
+ $('testDetails').style.display='none';
+ $('testLog').textContent=result.failures.length?result.failures.join('\n'):'Alle erwarteten Verfahrenslisten und Abschlüsse in beiden Durchläufen bestätigt. Hinweis: Der Test ersetzt keine unabhängige mathematische Prüfung der Aufgaben und Zeichnungen.';
+ return result;
+}
+// Der Doppeltest läuft beim Öffnen automatisch und bleibt bei Erfolg unsichtbar.
+
+$('restart').onclick=()=>setMode(mode);
+$('entryMode').onclick=()=>setMode('entry');$('examMode').onclick=()=>setMode('exam');setMode('entry');showMathSelfTest();
+</script></body></html>
