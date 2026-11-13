@@ -23,6 +23,13 @@ Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, 
 - **2023 B 3.4:** Vorherige Werte `6,46 LE` und `13,98 FE` gemäß amtlichem ISB-Lösungsmuster zu `6,47 LE` und `14,01 FE` korrigiert und Rechenschritt ergänzt.
 - **Prüfgrenze:** Die vorgenannten Änderungen sind **noch nicht im echten Browser auf Desktop und Mobilgerät ausgeführt/visuell abgenommen**. Sie sind daher keine bestandenen Kontrollrunden. Die amtliche Wort-für-Wort-Kontrolle aller Teilaufgaben sowie die übrigen geforderten 3D-Objekte stehen weiterhin aus.
 
+## Neue Einzelseiten 2025: A 1 und A 2 (13.11.2026)
+- `2025/haupttermin/a1.html`: vollständige textliche Ausgangssituation ohne lizenzierte Originalfotografie, beide Original-Teilaufgaben mit BE, erklärendes Baumdiagramm und separate schülernahe Lösungsschritte. Fachliche Ergebnisse mit amtlicher ISB-Lösung abgeglichen: `1/25` und `8/25`.
+- `2025/haupttermin/a2.html`: Ausgangsdaten, vier Original-Teilaufgaben einschließlich der Intervallauswahl, dynamische 2D-Dreieckszeichnung, Regler-Voreinstellungen 40°/75°/30°, 2D-/3D-Umschalter mit orthografischer Kamera, frei drehbarer Doppelkegel, Draufsicht und gestufte Lösungen. Fachliche Kernergebnisse mit amtlicher ISB-Lösung abgeglichen: `x ∈ ]0;4[`, `O(φ)=32πsinφ cm²`, `φ=30°`.
+- Beide Seiten sind in `2025/haupttermin/index.html` verlinkt; vorhandene Sammelseite bleibt als vorläufiger Altbestand bestehen.
+- Statische Nachkontrolle: GitHub-Dateien erneut gelesen, HTML-Einbindung/Verlinkungen geprüft, JavaScript-Inline-Skripte **syntaxgeprüft** (ohne Syntaxfehler).
+- **Noch offen:** echte Browserausführung, MathJax-Rendering in Desktop/Mobile, visuelle Prüfung der 2D-/3D-Ansichten und der Abhängigkeiten sowie ein unabhängiger zweiter/dritter vollständiger Prüfdurchgang über alle neun Qualitätskategorien. Der Bildervergleich A1 entfällt für die lizenzierte Fotografie; ein fachlicher Ersatz darf die Originalangaben nicht verändern. Weder A1 noch A2 gilt damit bereits als endgültig freigegeben.
+
 ## Zwingende Arbeiten vor einer Freigabe
 1. Pro Jahrgang **jede** Aufgabenstellung vollständig aus dem amtlichen ISB-Haupttermin übernehmen und mit dem Original abgleichen; Zeichnungen und Parameterbereiche einschließen.
 2. Pro Teilaufgabe die amtliche Originallösung vollständig nachrechnen und eine **ausführlichere, schülernahe** Lösung entwickeln; vertikale Brüche, Malpunkte, Dezimalkomma, Vektor- und Fachnotation prüfen.
