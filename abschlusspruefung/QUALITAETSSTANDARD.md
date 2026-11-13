@@ -18,12 +18,32 @@ Referenz: vollständig ausgearbeiteter Haupttermin Mathematik I 2026. Insbesonde
 - Auf Mobilgeräten müssen Bedienelemente, Zeichnungen und 3D-Steuerung funktionieren.
 - Der Prüfungsstand darf erst nach abgeschlossener Detailprüfung als Referenzversion gelten.
 
-## Drei Durchgänge vor Freigabe (jeweils vollständig)
-1. **Fachliche Kontrolle:** Jede Aufgabe und Teilaufgabe Wort für Wort mit der Originalprüfung abgleichen; jede Rechnung, Formel, Einheit, Rundung, Randbedingung und jedes Ergebnis gegen das amtliche Lösungsmuster prüfen.
-2. **Grafische und dynamische Kontrolle:** Alle Diagramme, Maßstäbe, Winkel, Lagebeziehungen, Körper, Umschaltung 2D/3D, Drehung, Projektionen, Beschriftungen und Parameterabhängigkeiten bei Randwerten und repräsentativen Zwischenwerten prüfen.
-3. **Technische und didaktische Endkontrolle:** Alle Lösungsstufen, Verknüpfungen, Aufgabenwechsel, Slider, MathJax, JavaScript-Laufzeit, Mobile/Touch, Navigation und Verständlichkeit prüfen; anschließend die fachliche und grafische Prüfung erneut auf Regressionen anwenden.
+## Verbindliche fachliche Referenz und Normenhierarchie
+1. **LehrplanPLUS Bayern, Realschule, Mathematik, Wahlpflichtfächergruppe I** ist die verbindliche curriculare Grundlage.
+2. **ISB Bayern**: amtliche Prüfungsaufgaben, Lösungsmuster und veröffentlichte Hinweise dienen dem Abgleich von Inhalt, Rechenwegen, Fachsprache und Notation.
+3. **Ausgearbeitete Abschlussprüfung 2026** ist die gestalterische, technische und didaktische Referenz, besonders B 3/B 4, Rotationskörper und abhängige Teilaufgaben. Bei einem fachlichen Widerspruch haben LehrplanPLUS und die amtlichen ISB-Unterlagen Vorrang.
 
-**Für künftige Abschlussprüfungen und ähnliche Lernhilfen verbindlich.** Das Prüfprotokoll kann durch weitere Prüfpunkte ergänzt werden; zusätzliche Anforderungen sind anschließend auch für bereits erstellte Prüfungsjahrgänge zu berücksichtigen.
+## Vollständige Prüfliste — in JEDEM der drei Durchgänge
+Jeder einzelne Durchgang ist eine **eigenständige, vollständige Prüfung aller Aufgaben und Teilaufgaben** gegen dieselbe gesamte Prüfliste. Die folgenden Kategorien dürfen nicht auf unterschiedliche Durchgänge verteilt, nur stichprobenartig geprüft oder durch einen anderen Durchgang ersetzt werden.
+
+1. **Originaltreue und Vollständigkeit:** Aufgaben und Teilaufgaben Wort für Wort gegen die amtliche Originalprüfung; Zahlenwerte, Angaben, Bedingungen, Reihenfolge, Diagramme, Bilddetails, Aufgabenoperatoren sowie Zuordnung zu den Lösungen.
+2. **Fachliche Richtigkeit aller Lösungen:** Jede Rechnung unabhängig nachvollziehen, Formeln, Umformungen, Zwischenwerte, Rundungen, Genauigkeiten, Einheiten, Definitions- und Randbedingungen, alternative Lösungswege, Endergebnisse und Übereinstimmung mit amtlichen Lösungsmustern prüfen. Keine ungeprüfte Übernahme aus 2026, wenn Aufgabenwerte abweichen.
+3. **Lehrplan- und ISB-konforme mathematische Schreibweisen:** Fachbegriffe, Symbolik, Vektoren (einschließlich Spaltenvektoren und Vektorpfeilen), Indizes, Potenzen, Gleichheits- und Äquivalenzzeichen, Lösungsmenge, Winkelbezeichnungen, geometrische Beschriftungen, Einheiten und Ergebnisnotation prüfen. MathJax/LaTeX muss echte vertikale Brüche (auch bei zusammengesetzten Einheiten), Malpunkte statt Mal-Kreuze, das Dezimalkomma und lesbare, mathematisch korrekte Umformungen darstellen.
+4. **Grafische Korrektheit:** Originalfiguren, Maßstäbe bzw. erkennbare Nichtmaßstäblichkeit, Achsen, Punkte, Strecken, Lagebeziehungen, Winkel, rechte Winkel, Schnittpunkte, Projektionen, Flächen, Körper und Beschriftungen prüfen. Jede Grafik muss mathematisch zur Aufgabenstellung und zum jeweiligen Lösungsstand passen.
+5. **3D-Funktionen und Rotationskörper:** Zu **jedem räumlichen 3D-Objekt** muss zusätzlich zur 2D-Darstellung eine umschaltbare, frei drehbare 3D-Version vorhanden sein. Drehung, Touch-Bedienung, sinnvolle Draufsicht, orthografische verzerrungsfreie Draufsicht, Geometrie, Sichtbarkeit und Beschriftungen prüfen. Rotationskörper mit der Implementierung von 2026 abgleichen.
+6. **Dynamische Abhängigkeiten und Grenzwerte:** Alle verknüpften Eingaben, Schieberegler, Koordinaten, Winkel, Strecken, Flächen, Volumina, Beschriftungen, Rechenwege, Lösungsschritte und Grafiken synchron prüfen; insbesondere Randwerte, repräsentative Zwischenwerte sowie Aufgabenwechsel und Zurücksetzen.
+7. **Schrittweise Musterlösung und Didaktik:** Jede Teilaufgabe besitzt vollständige, verständliche, korrekt aufbaubare Lösungsschritte mit passenden Grafiken; keine vorzeitig sichtbaren Folgeergebnisse oder ungültigen Abhängigkeiten. B 3/B 4 von 2026 sind Referenz für längere Aufgaben, Navigation, Darstellung und Interaktion.
+8. **Technik und Bedienbarkeit:** HTML, JavaScript-Laufzeit, MathJax/LaTeX-Rendering, Ladeverhalten, Navigations- und Bedienelemente, Regler, Umschalter, Zeichenflächen, Aufgaben- und Lösungswechsel prüfen. Desktop und Mobilgeräte einschließlich Touch-Interaktion berücksichtigen.
+9. **Veröffentlichung und Konsistenz:** Keine direkten Links zu hochgeladenen Prüfungs- oder Lösungs-PDFs auf öffentlichen Seiten; einheitliche Gestaltung, korrekte Jahres- und Aufgabenbezeichnungen, funktionierende Verweise, keine Fehler durch Änderungen an anderen Teilen oder Jahrgängen.
+
+## Drei vollständige Kontroll- und Freigabedurchgänge
+- **Durchgang 1 — Vollprüfung:** Jede Aufgabe und Teilaufgabe anhand **aller neun Prüfkategorien** kontrollieren, festgestellte Mängel beheben und dokumentieren.
+- **Durchgang 2 — unabhängige Wiederholungsprüfung:** Die **gesamte Prüfliste erneut von Anfang bis Ende** an jeder Aufgabe und Teilaufgabe ausführen, einschließlich aller Lösungen, Schreibweisen, Grafiken, 3D-Darstellungen, Abhängigkeiten und technischen Funktionen. Korrekturen erneut testen.
+- **Durchgang 3 — abschließende Voll- und Regressionsprüfung:** **Wieder alle neun Prüfkategorien vollständig** pro Aufgabe und Teilaufgabe durchführen und ausdrücklich kontrollieren, dass Korrekturen keine neuen fachlichen, grafischen, dynamischen oder technischen Fehler verursacht haben.
+
+**Freigaberegel:** Eine Veröffentlichung gilt erst als kontrolliert, wenn drei **vollständige** Durchgänge erfolgreich abgeschlossen sind. Offene Fehler verhindern die Freigabe. Nach fachlich, grafisch oder technisch relevanten Änderungen sind alle betroffenen Teile erneut in drei vollständigen Durchgängen zu prüfen. Im Prüfprotokoll je Durchgang festhalten: geprüfte Aufgaben/Teilaufgaben, Ergebnisse aller neun Kategorien, festgestellte Fehler, Korrekturen und erneute Prüfungen. Nicht ausgeführte Prüfungen dürfen niemals als bestanden bezeichnet werden.
+
+**Für alle künftigen Abschlussprüfungen und vergleichbaren interaktiven Lernhilfen verbindlich.** Weitere Prüfkategorien können ergänzt werden; diese gelten dann ebenfalls in **jedem** der drei Durchgänge und sind bei bereits bearbeiteten Jahrgängen nachzuprüfen.
 
 ## Bearbeitungsreihenfolge
 2025 vollständig auf Standard bringen und dreimal prüfen, danach 2024, danach 2023. Der Stand von 2026 bleibt Referenz, bis Änderungen ausdrücklich bestätigt werden.
