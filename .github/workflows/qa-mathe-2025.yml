@@ -1,0 +1,38 @@
+name: Mathematik I 2025 – statische Tests und Chromium
+on:
+  push:
+    paths:
+      - 'abschlusspruefung/2025/**'
+      - 'abschlusspruefung/tests/**'
+      - '.github/workflows/qa-mathe-2025.yml'
+  workflow_dispatch:
+jobs:
+  qualitaet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Mathematische und strukturelle Regressionstests
+        run: node abschlusspruefung/tests/quality_2025.mjs
+      - name: Chromium und Playwright bereitstellen
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Lokalen HTTP-Server starten
+        run: |
+          nohup python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/math2025-server.log 2>&1 &
+          sleep 2
+      - name: Jede Aufgabe auf Desktop und Mobile prüfen
+        env:
+          QA_OUT: /tmp/2025-browser-qa
+        run: node abschlusspruefung/tests/browser_2025.mjs
+      - name: Browser-Screenshots als Prüfbelege
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mathematik-2025-browserkontrolle
+          path: /tmp/2025-browser-qa/
+          if-no-files-found: ignore
