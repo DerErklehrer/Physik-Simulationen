@@ -59,15 +59,15 @@ Object.keys(sections).forEach(p=>{const b=document.createElement('button');b.tex
 function selectPart(p){part=p;step=0;angle=sections[p].presets[0];$('angle').value=angle;location.hash=p.toLowerCase().replace(' ','-');render()}
 function node(tag,attrs={},text=''){const el=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,v);if(text)el.textContent=text;return el}
 function graph(){
-const svg=$('graph');svg.replaceChildren();const x0=255,y0=480,s=39;const map=p=>({x:x0+s*p.x,y:y0-s*p.y});
+const svg=$('graph');svg.replaceChildren();const x0=300,y0=425,s=56;const map=p=>({x:x0+s*p.x,y:y0-s*p.y});
 const line=(p,q,color='#9aa8b7',width=1.4,dash='')=>svg.append(node('line',{x1:map(p).x,y1:map(p).y,x2:map(q).x,y2:map(q).y,stroke:color,'stroke-width':width,'stroke-dasharray':dash}));
 const txt=(p,t,color='#253341',dx=7,dy=-7,size=17)=>svg.append(node('text',{x:map(p).x+dx,y:map(p).y+dy,fill:color,'font-size':size},t));
-for(let i=-6;i<=8;i++){line({x:i,y:-4.3},{x:i,y:11},'#e7ecf2',1);line({x:-6.3,y:i},{x:8.3,y:i},'#e7ecf2',1)}
-line({x:-6.3,y:0},{x:8.3,y:0},'#66788b',1.8);line({x:0,y:-4.3},{x:0,y:11},'#66788b',1.8);txt({x:8.1,y:0},'x');txt({x:0,y:10.5},'y');
-for(let i=-5;i<=7;i++){if(i!==0)txt({x:i,y:0},String(i),'#748195',-5,19,11)}
-for(let i=-4;i<=10;i++){if(i!==0)txt({x:0,y:i},String(i),'#748195',-21,4,11)}
+for(let i=-4;i<=7;i++){if(i<=4)line({x:i,y:-3.5},{x:i,y:7.5},'#e7ecf2',1);if(i>=-3)line({x:-4.5,y:i},{x:4.5,y:i},'#e7ecf2',1)}
+line({x:-4.5,y:0},{x:4.5,y:0},'#66788b',1.8);line({x:0,y:-3.5},{x:0,y:7.5},'#66788b',1.8);txt({x:4.2,y:0},'x');txt({x:0,y:7.1},'y');
+for(let i=-4;i<=4;i++){if(i!==0)txt({x:i,y:0},String(i),'#748195',-5,19,11)}
+for(let i=-3;i<=7;i++){if(i!==0)txt({x:0,y:i},String(i),'#748195',-21,4,11)}
 const cur=C(angle),mA=map(A),mB=map(B),mC=map(cur);
-if($('trail').checked||part==='B 4.3'&&step>=3){line({x:-6.3,y:7.575},{x:8.3,y:3.925},'#21916c',1.7,'8 5');line({x:-4,y:7},{x:4,y:5},'#21916c',4);txt({x:2.6,y:5.35},'y = 6 − ¼x','#178269',-22,-8,14)}
+if($('trail').checked||part==='B 4.3'&&step>=3){line({x:-4.5,y:7.125},{x:4.5,y:4.875},'#21916c',1.7,'8 5');line({x:-4,y:7},{x:4,y:5},'#21916c',4);txt({x:2.6,y:5.35},'y = 6 − ¼x','#178269',-22,-8,14)}
 const poly=svg.append(node('polygon',{points:[mA,mB,mC].map(p=>p.x+','+p.y).join(' '),fill:'#dbedf3','fill-opacity':'.55',stroke:'#4c6070','stroke-width':2.5}));
 if(part==='B 4.1'&&step>=5){const c1=C(50),c2=C(160);for(const [p,color,t] of [[c1,'#147b9d','C₁'],[c2,'#b66d18','C₂']]){const m=map(p);svg.append(node('polygon',{points:[mA,mB,m].map(q=>q.x+','+q.y).join(' '),fill:'none',stroke:color,'stroke-width':2.5,'stroke-dasharray':'7 4'}));txt(p,t,color,8,-9,16)}}
 if($('vectors').checked){line(A,B,'#b52b51',4);line(A,cur,'#147b9d',4)}
