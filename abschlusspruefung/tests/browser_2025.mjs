@@ -45,7 +45,13 @@ for(const mode of [{label:'desktop',width:1366,height:900,isMobile:false,hasTouc
      for(const value of limits)await slider.evaluate((e,v)=>{e.value=v;e.dispatchEvent(new Event('input',{bubbles:true}))},value);
     }
    }
-   await page.waitForTimeout(750);
+   await page.waitForTimeout(500);
+   if(['a2','b1','b2','b3','b4'].includes(name))await page.screenshot({path:OUT+'/'+mode.label+'-'+name+'-grenzlage.png',fullPage:true,animations:'disabled'});
+   for(const [id,value] of Object.entries({phi:40,length:4,slider:-4.5,x:-3,p:20})){
+    const control=page.locator('#'+id);
+    if(await control.count())await control.evaluate((el,v)=>{el.value=v;el.dispatchEvent(new Event('input',{bubbles:true}))},value);
+   }
+   await page.waitForTimeout(500);
    if(name==='a2'||name==='b2'){
     await page.locator('#threeD2025').click();
     await page.locator('#view3d2025 canvas').waitFor({state:'visible',timeout:15000});
