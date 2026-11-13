@@ -13,13 +13,13 @@
 <input id="angle" type="range" min="0" max="180" step="0.01" value="50"><div class="buttons" id="presets"></div><div class="flex"><label><input type="checkbox" id="trail"> Trägergerade einblenden</label><label><input type="checkbox" id="lengths"> Längen einblenden</label><label><input type="checkbox" id="vectors" checked> Vektorpfeile</label></div>
 <div id="measure" class="step" style="margin-top:12px;min-height:0"></div></section>
 <section class="panel"><h2 style="margin:0 0 10px">Aufgabenstellung und Lösung</h2><div class="buttons" id="parts"></div>
-<div class="original" style="background:#f6f8fb;border-radius:8px;padding:10px;margin-bottom:12px;font-size:.91rem"><strong>Originalangaben B 4.0</strong><br>Der Punkt A(−2 | −1) legt mit den Pfeilen AB = (5 | −1) und ACₙ(φ) = (2 + 4·cos φ | 7 − cos φ) für φ ∈ [0°; 180°] Dreiecke ABCₙ fest.<br>Runden Sie im Folgenden auf zwei Stellen nach dem Komma.</div><div class="original" id="statement"></div><hr style="border:0;border-top:1px solid #e5e9ee"><div class="top"><strong id="steptitle">Schritt 1</strong><span class="tag" id="counter"></span></div><div id="explain" class="step math" aria-live="polite"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next" class="active">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><div class="footer">Die Schritte ergänzen die knappe offizielle ISB-Musterlösung. Winkel und berechnete Werte werden mit der veröffentlichten Lösung abgeglichen; Rundungsdifferenzen bei Zwischenwerten sind möglich.</div></section></div>
-<div class="footer">Grundlage: Abschlussprüfung 2026, Mathematik I, Haupttermin, Aufgabe B 4 und offizielles Lösungsmuster. Interaktive Umsetzung als Lernhilfe; keine amtliche Veröffentlichung. Die geometrische Zeichnung wird aus den angegebenen Koordinaten berechnet, nicht aus statischen Bildern.</div></main>
+<div class="original" style="background:#f6f8fb;border-radius:8px;padding:10px;margin-bottom:12px;font-size:.91rem"><strong>Originalangaben B 4.0</strong><br>Der Punkt A(−2 | −1) legt mit den Pfeilen <span style="white-space:nowrap">AB⃗ = (5 | −1)</span> und <span style="white-space:nowrap">AC⃗ₙ(φ) = (2 + 4·cos φ | 7 − cos φ)</span> für φ ∈ [0°; 180°] Dreiecke ABCₙ fest.<br>Runden Sie im Folgenden auf zwei Stellen nach dem Komma.</div><div class="original" id="statement"></div><hr style="border:0;border-top:1px solid #e5e9ee"><div class="top"><strong id="steptitle">Schritt 1</strong><span class="tag" id="counter"></span></div><div id="explain" class="step math" aria-live="polite"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next" class="active">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><div class="footer">Die Schritte ergänzen die knappe offizielle ISB-Musterlösung. Auch andere mathematisch korrekte Lösungswege sind zulässig. Winkel und berechnete Werte werden mit der veröffentlichten Lösung abgeglichen; Rundungsdifferenzen bei Zwischenwerten sind möglich.</div></section></div>
+<div class="footer">Grundlage: Abschlussprüfung 2026, Mathematik I, Haupttermin, Aufgabe B 4 und offizielles Lösungsmuster. Interaktive Umsetzung als Lernhilfe; keine amtliche Veröffentlichung. Die geometrische Zeichnung wird aus den angegebenen Koordinaten berechnet, nicht aus statischen Bildern. Die frei skalierbare Bildschirmzeichnung ist keine 1:1-Druckvorlage; der Prüfungsmaßstab 1 LE = 1 cm ist in B 4.1 angegeben.</div></main>
 <script>
 'use strict';
 const A={x:-2,y:-1},B={x:3,y:-2};const rad=d=>d*Math.PI/180;const fmt=(x,n=2)=>Number(x).toFixed(n).replace('.',',').replace('-', '−');const C=d=>({x:4*Math.cos(rad(d)),y:6-Math.cos(rad(d))});const length=(p,q)=>Math.hypot(q.x-p.x,q.y-p.y);
 const sections={
-'B 4.1':{text:'Berechnen Sie die Koordinaten der Pfeile AC₁ für φ = 50° und AC₂ für φ = 160°. Zeichnen Sie sodann die Dreiecke ABC₁ und ABC₂ in ein Koordinatensystem ein.',presets:[50,160],steps:[
+'B 4.1':{text:'Berechnen Sie die Koordinaten der Pfeile AC₁ für φ = 50° und AC₂ für φ = 160°. Zeichnen Sie sodann die Dreiecke ABC₁ und ABC₂ in ein Koordinatensystem ein. Für die Zeichnung: Längeneinheit 1 cm; −4 ≤ x ≤ 4; −3 ≤ y ≤ 7.',presets:[50,160],steps:[
 ['Ausgangsdaten','A(−2 | −1), AB = (5 | −1) und ACₙ(φ) = (2 + 4·cos φ | 7 − cos φ). Der Punkt B ist fest; Cₙ hängt vom Winkel φ ab.'],
 ['Punkt B bestimmen','B = A + AB = (−2 + 5 | −1 − 1) = (3 | −2).'],
 ['Vektor AC₁ für 50°','AC₁ = (2 + 4·cos 50° | 7 − cos 50°) ≈ (4,57 | 6,36). Die blauen Pfeile zeigen die Strecke von A zu C.'],
@@ -31,7 +31,7 @@ const sections={
 ['Bedingung formulieren','Für senkrechte Vektoren gilt: AB · AC₃ = 0 (Skalarprodukt).'],
 ['Vektoren einsetzen','5·(2 + 4·cos φ) + (−1)·(7 − cos φ) = 0.'],
 ['Ausmultiplizieren','10 + 20·cos φ − 7 + cos φ = 0, also 3 + 21·cos φ = 0.'],
-['Nach φ auflösen','cos φ = −1/7; damit φ = arccos(−1/7) ≈ 98,21°. Dies stimmt mit dem offiziellen Lösungsmuster überein.']]},
+['Nach φ auflösen','cos φ = −1/7; damit φ = arccos(−1/7) ≈ 98,21°. Dies stimmt mit dem offiziellen Lösungsmuster überein. Alternativ ist die Rechtwinkligkeit über den Satz des Pythagoras prüfbar: |AB|² + |AC₃|² = |BC₃|².']]},
 'B 4.3':{text:'Zeigen Sie rechnerisch, dass Cₙ(4·cos φ | 6 − cos φ) gilt. Berechnen Sie sodann die Gleichung des Trägergraphen der Punkte Cₙ.',presets:[0,90,180],steps:[
 ['Ortsvektor bilden','OCₙ = OA + ACₙ. Der Ortsvektor von A ist (−2 | −1).'],
 ['Komponenten addieren','OCₙ = (−2 | −1) + (2 + 4·cos φ | 7 − cos φ) = (4·cos φ | 6 − cos φ).'],
@@ -49,7 +49,7 @@ const sections={
 ['Vereinfachen','A(φ) = ½·|35 − 5·cos φ + 2 + 4·cos φ| FE = ½·|37 − cos φ| FE.'],
 ['Betrag begründen','Da cos φ zwischen −1 und 1 liegt, ist 37 − cos φ immer positiv. Daher A(φ) = (18,5 − 0,5·cos φ) FE.'],
 ['Obere Schranke','Wegen cos φ ≥ −1 gilt −0,5·cos φ ≤ 0,5. Daher A(φ) ≤ 18,5 + 0,5 = 19 FE. Größere Flächeninhalte sind ausgeschlossen.'],
-['Maximum anschaulich prüfen','Bei φ = 180° ist cos φ = −1 und A = 19 FE. Die Grenze wird also erreicht, aber nicht überschritten.']]}
+['Maximum anschaulich prüfen','Bei φ = 180° ist cos φ = −1 und A = 19 FE. Die Grenze wird also erreicht, aber nicht überschritten. Alternativ lässt sich die Schranke direkt aus der Determinante und −1 ≤ cos φ ≤ 1 begründen.']]}
 };
 let part='B 4.1',step=0,angle=50;
 const $=id=>document.getElementById(id);
@@ -67,11 +67,11 @@ line({x:-6.3,y:0},{x:8.3,y:0},'#66788b',1.8);line({x:0,y:-4.3},{x:0,y:11},'#6678
 for(let i=-5;i<=7;i++){if(i!==0)txt({x:i,y:0},String(i),'#748195',-5,19,11)}
 for(let i=-4;i<=10;i++){if(i!==0)txt({x:0,y:i},String(i),'#748195',-21,4,11)}
 const cur=C(angle),mA=map(A),mB=map(B),mC=map(cur);
-if($('trail').checked||part==='B 4.3'&&step>=3){line({x:-4,y:7},{x:4,y:5},'#21916c',3);txt({x:2.6,y:5.35},'y = 6 − ¼x','#178269',-22,-8,14)}
+if($('trail').checked||part==='B 4.3'&&step>=3){line({x:-6.3,y:7.575},{x:8.3,y:3.925},'#21916c',1.7,'8 5');line({x:-4,y:7},{x:4,y:5},'#21916c',4);txt({x:2.6,y:5.35},'y = 6 − ¼x','#178269',-22,-8,14)}
 const poly=svg.append(node('polygon',{points:[mA,mB,mC].map(p=>p.x+','+p.y).join(' '),fill:'#dbedf3','fill-opacity':'.55',stroke:'#4c6070','stroke-width':2.5}));
-if(part==='B 4.1'&&step>=4){const c1=C(50),c2=C(160);for(const [p,color,t] of [[c1,'#147b9d','C₁'],[c2,'#b66d18','C₂']]){const m=map(p);svg.append(node('polygon',{points:[mA,mB,m].map(q=>q.x+','+q.y).join(' '),fill:'none',stroke:color,'stroke-width':2.5,'stroke-dasharray':'7 4'}));txt(p,t,color,8,-9,16)}}
+if(part==='B 4.1'&&step>=5){const c1=C(50),c2=C(160);for(const [p,color,t] of [[c1,'#147b9d','C₁'],[c2,'#b66d18','C₂']]){const m=map(p);svg.append(node('polygon',{points:[mA,mB,m].map(q=>q.x+','+q.y).join(' '),fill:'none',stroke:color,'stroke-width':2.5,'stroke-dasharray':'7 4'}));txt(p,t,color,8,-9,16)}}
 if($('vectors').checked){line(A,B,'#b52b51',4);line(A,cur,'#147b9d',4)}
-if(part==='B 4.2'&&step>=1){const u={x:(B.x-A.x)/length(A,B),y:(B.y-A.y)/length(A,B)},v={x:(cur.x-A.x)/length(A,cur),y:(cur.y-A.y)/length(A,cur)};const z=0.45;const p={x:A.x+u.x*z,y:A.y+u.y*z},q={x:p.x+v.x*z,y:p.y+v.y*z},r={x:A.x+v.x*z,y:A.y+v.y*z};line(p,q,'#d28a28',3);line(q,r,'#d28a28',3)}
+if(part==='B 4.2'&&step>=1&&Math.abs(5*(cur.x-A.x)-(cur.y-A.y))<0.025){const u={x:(B.x-A.x)/length(A,B),y:(B.y-A.y)/length(A,B)},v={x:(cur.x-A.x)/length(A,cur),y:(cur.y-A.y)/length(A,cur)};const z=0.45;const p={x:A.x+u.x*z,y:A.y+u.y*z},q={x:p.x+v.x*z,y:p.y+v.y*z},r={x:A.x+v.x*z,y:A.y+v.y*z};line(p,q,'#d28a28',3);line(q,r,'#d28a28',3)}
 if(part==='B 4.4'&&step>=1){line(A,cur,'#d28a28',5)}
 for(const [p,t] of [[A,'A'],[B,'B'],[cur,'Cₙ']]){const m=map(p);svg.append(node('circle',{cx:m.x,cy:m.y,r:5,fill:'#253341'}));txt(p,t,'#253341',8,-10)}
 if($('lengths').checked||part==='B 4.5'&&step>=1){txt({x:(A.x+cur.x)/2,y:(A.y+cur.y)/2},'|ACₙ| = '+fmt(length(A,cur))+' LE','#147b9d',8,-10,13);txt({x:(B.x+cur.x)/2,y:(B.y+cur.y)/2},'|BCₙ| = '+fmt(length(B,cur))+' LE','#b66d18',7,16,13)}
