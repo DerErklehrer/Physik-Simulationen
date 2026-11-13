@@ -36,6 +36,13 @@ Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, 
 - Die Einzelseiten sind in der 2025er Sammelübersicht verlinkt. Inline-JavaScript beider Seiten und Navigationsskript wurden syntaktisch ohne Fehler geprüft, gespeichert und erneut aus GitHub gelesen.
 - **Keine Endfreigabe:** visuelle Browserprüfung, mobile Funktion, unabhängiger Originalwortlaut- und Diagrammvergleich sowie alle drei vollständigen Kontrollrunden über sämtliche neun Kategorien stehen weiterhin aus. Insbesondere gilt die statische Syntaxprüfung nicht als Funktionsprüfung im Browser.
 
+## Fortsetzung 2025: B 2 und grafische Nachkontrolle A 3
+- **B 2.1–B 2.4:** eigenständige `2025/haupttermin/b2.html` erstellt. Originaltext und fachliche Ergebnisse anhand der amtlichen ISB-Haupttermin-Unterlagen geprüft; schrittweise Lösungen zu Konstruktion, `V(φ)=18·tanφ cm³`, `φ≈70,20°` und maximal halbem Quadervolumen.
+- Dynamisches Schrägbild des Quaders mit den Punkten Pₙ und Qₙ, Regler für `APₙ`, gekoppelter 3D-Ansicht des Prismas und sinnvoller Grenzlage `APₙ=10 cm`. Die bereits vorhandene Moduldatei `raumgeometrie3d.js` wird wiederverwendet. B 2 in der 2025er Haupttermin-Sammelnavigation verlinkt.
+- **A 3 nachkontrolliert:** Der zuvor falsch positionierte Schwerpunkt S wurde auf die Lage `S=(418,33|140)` im SVG korrigiert (2:1-Teilung der Seitenhalbierenden von B aus).
+- B 2 und Navigation erneut aus GitHub gelesen; eingebettete JavaScript-Skripte statisch auf Syntaxfehler geprüft (keine gefunden).
+- **Offen:** Sichtprüfung und tatsächliche Browserausführung auf Desktop/Mobilgerät, Abgleich jeder Einzelzeichnung mit dem Original, vollständige Aufgaben- und Lösungsprüfung für B 3 und B 4, anschließend drei vollständige Prüfdurchgänge über alle neun Kategorien. Diese Bearbeitung ist kein abgeschlossener Kontroll-Durchgang.
+
 ## Zwingende Arbeiten vor einer Freigabe
 1. Pro Jahrgang **jede** Aufgabenstellung vollständig aus dem amtlichen ISB-Haupttermin übernehmen und mit dem Original abgleichen; Zeichnungen und Parameterbereiche einschließen.
 2. Pro Teilaufgabe die amtliche Originallösung vollständig nachrechnen und eine **ausführlichere, schülernahe** Lösung entwickeln; vertikale Brüche, Malpunkte, Dezimalkomma, Vektor- und Fachnotation prüfen.
