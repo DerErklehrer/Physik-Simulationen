@@ -2,8 +2,14 @@
 
 Referenz: vollständig ausgearbeiteter Haupttermin Mathematik I 2026. Insbesondere B 3 und B 4 für umfangreiche Aufgaben, der Rotationskörper als Vorlage für Körperdarstellungen und die 2026er Umsetzung von Parameterabhängigkeiten.
 
+## Veröffentlichung und Urheberrecht
+- Auf den öffentlich erreichbaren Seiten keine Links zu amtlichen Prüfungs-PDFs oder amtlichen Lösungsmustern platzieren.
+- Keine Originalaufgabenstellungen oder Originalzeichnungen übernehmen; stattdessen eigenständig formulierte Aufgabenhilfen und selbst entwickelte Grafiken veröffentlichen.
+- Originalprüfung und amtliches Lösungsmuster ausschließlich intern zur fachlichen Kontrolle verwenden.
+- Jede neue oder überarbeitete Seite vor Veröffentlichung auf direkte PDF-Links und übernommene Aufgabentexte prüfen.
+
 ## Umsetzung
-- Originalprüfung und offizielles Lösungsmuster sind maßgeblich; keine erfundenen oder verkürzten Aufgabenstellungen.
+- Originalprüfung und offizielles Lösungsmuster sind intern für die fachliche Richtigkeit maßgeblich; auf der Website werden nur eigenständig formulierte Lernhilfen veröffentlicht.
 - Jede Teilaufgabe wird mit mathematisch vollständiger, schrittweise aufbaubarer Musterlösung und den jeweils zugehörigen Grafiken umgesetzt.
 - Dynamische Abhängigkeiten müssen korrekt gekoppelt sein: Schieberegler, Koordinaten, Winkel, Strecken, Flächen, Volumina, Beschriftungen und Lösungsschritte.
 - Alle räumlichen Körper erhalten zusätzlich zur zweidimensionalen Zeichnung eine **umschaltbare, frei drehbare 3D-Version**. Draufsicht und Touch-Bedienung, wo sinnvoll; orthografische Draufsicht ohne Verzerrung.
