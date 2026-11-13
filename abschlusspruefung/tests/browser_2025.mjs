@@ -51,6 +51,8 @@ for(const mode of [{label:'desktop',width:1366,height:900,isMobile:false,hasTouc
     await page.locator('#view3d2025 canvas').waitFor({state:'visible',timeout:15000});
     await page.locator('#top2025').click();
     await page.locator('#resetcamera2025').click();
+    await page.waitForTimeout(450);
+    await page.screenshot({path:OUT+'/'+mode.label+'-'+name+'-3d.png',fullPage:true,animations:'disabled'});
     await page.locator('#twoD2025').click();
     if(await page.locator('#figure').isHidden())throw Error('2D-Ansicht nicht wiederhergestellt');
    }
