@@ -7,13 +7,21 @@ Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, 
 ## Bestand und Abgleich
 | Jahrgang | Vorhandener Webstand | Vergleich mit Referenz 2026 | Freigabe |
 |---|---|---|---|
-| 2025 | Eine HTML-Sammelseite mit Teilaufgaben, MathJax, dynamischen SVG-Skizzen und gestuften Lösungen | Eigene Aufgabenansichten wie 2026 B 3/B 4 fehlen; keine umschaltbare 3D-Ansicht bei A 2 (Rotationskörper) und B 2 (Quader/Prisma); noch kein vollständiger Wort-für-Wort-Abgleich aller Teilaufgaben | offen |
+| 2025 | Eine HTML-Sammelseite mit Teilaufgaben, MathJax, dynamischen SVG-Skizzen und gestuften Lösungen | Eigene Aufgabenansichten wie 2026 B 3/B 4 fehlen; erste umschaltbare 3D-Ansichten bei A 2 (Rotationskörper) und B 2 (Quader/Prisma) implementiert, jedoch noch nicht auf Desktop/Mobilgerät visuell getestet; noch kein vollständiger Wort-für-Wort-Abgleich aller Teilaufgaben | offen |
 | 2024 | Eine kurze HTML-Sammelseite mit stark zusammengefassten Aufgaben/Lösungen und SVG | Kein originalgetreuer Aufgabentext, keine vollständigen schülernahen Musterlösungen, kein MathJax-Vollformat, keine 2D/3D-Umschaltung bei räumlichen Aufgaben A 1/B 4 | offen |
 | 2023 | Eine kurze HTML-Sammelseite mit stark zusammengefassten Aufgaben/Lösungen und SVG | Kein originalgetreuer Aufgabentext, keine vollständigen schülernahen Musterlösungen, kein MathJax-Vollformat, keine 2D/3D-Umschaltung bei räumlicher Aufgabe B 4 | offen |
 
 ## Gesicherte Korrektur
 - **2024 B 3.3:** In der Website stand `u(x) = 2 · √(9,54x² − 27x + 324) LE`. Das ist falsch. Das amtliche Lösungsmuster ergibt `u(x) = √(9,54x² − 27x + 324) LE`. Der zusätzliche Faktor 2 wurde in der vorhandenen HTML-Datei entfernt.
 - Alle drei Jahrgänge zeigen jetzt einen sichtbaren Hinweis, dass die fachliche und grafische Gesamtkontrolle noch nicht abgeschlossen ist.
+
+## Nachfolgende Bearbeitung (Arbeitsstand 13.11.2026)
+- **2025 A 2:** Umschaltbare 2D-/3D-Darstellung des aus der Rotation entstehenden Doppelkegels implementiert; orthografische Kamera, OrbitControls, Draufsicht und Winkelkopplung vorhanden (Datei `2025/haupttermin/raumgeometrie3d.js`).
+- **2025 B 2:** Umschaltbare 2D-/3D-Darstellung des dreiseitigen Prismas `APₙEBQₙF` im Referenzquader implementiert; Länge `APₙ` mit bestehendem Regler gekoppelt.
+- **2025 B 4:** Amtliches ISB-Ergebnis zur Vektorkoordinate `(0,55x+3,40 | −0,13x+1,74)` und zu `D₃(0,10 | 5,05)` überprüft; **die offiziellen gerundeten Koeffizienten wurden bewusst beibehalten**.
+- **2024 B 3.3–B 3.5:** Schülernähere Herleitung der Umfangsfunktion, Berechnung von `u(2,65)=17,87 LE` und des Minimums `u_min=17,46 LE` bei `x=1,42` ergänzt; Werte mit dem ISB-Lösungsmuster abgeglichen.
+- **2023 B 3.4:** Vorherige Werte `6,46 LE` und `13,98 FE` gemäß amtlichem ISB-Lösungsmuster zu `6,47 LE` und `14,01 FE` korrigiert und Rechenschritt ergänzt.
+- **Prüfgrenze:** Die vorgenannten Änderungen sind **noch nicht im echten Browser auf Desktop und Mobilgerät ausgeführt/visuell abgenommen**. Sie sind daher keine bestandenen Kontrollrunden. Die amtliche Wort-für-Wort-Kontrolle aller Teilaufgaben sowie die übrigen geforderten 3D-Objekte stehen weiterhin aus.
 
 ## Zwingende Arbeiten vor einer Freigabe
 1. Pro Jahrgang **jede** Aufgabenstellung vollständig aus dem amtlichen ISB-Haupttermin übernehmen und mit dem Original abgleichen; Zeichnungen und Parameterbereiche einschließen.
