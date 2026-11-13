@@ -9,7 +9,7 @@
 const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg',fmt=x=>x.toFixed(2).replace('.',',');
 const T=[
 ['B 2.1','1 P','Punkte Pₙ liegen auf der Strecke AD. Punkte Qₙ liegen auf der Strecke BC, wobei PₙQₙ parallel zu AB gilt. Die Dreiecke APₙE sind die Grundflächen von Prismen APₙEBQₙF. Zeichnen Sie das Prisma AP₁EBQ₁F für |AP₁| = 4 cm in das Schrägbild zu B 2.0 ein.',[
-['Punkt P₁','Trage auf AD von A aus 4 cm ab. Weil AD nicht auf der Schrägbildachse liegt, ist diese Länge im Schrägbild unverzerrt.'],
+['Punkt P₁','Trage P₁ auf der Strecke AD ab. Die wahre Länge beträgt 4 cm; im Schrägbild ist die nach hinten verlaufende Strecke mit dem Verkürzungsfaktor q = ½ auf 2 cm darzustellen. Die Kante AD steigt im Schrägbild unter ω = 45° nach rechts oben an.'],
 ['Punkt Q₁','Zeichne durch P₁ eine Parallele zu AB. Ihr Schnittpunkt mit BC ist Q₁. Dann gilt \\(\\overline{P_1Q_1}\\parallel\\overline{AB}\\).'],
 ['Prisma','Verbinde A–P₁–E und B–Q₁–F. Ergänze die drei parallelen Verbindungskanten AB, P₁Q₁ und EF. Verdeckte Kanten werden gestrichelt.']]],
 ['B 2.2','2 P','Die Winkel ∢AEPₙ haben das Maß φ mit 0° < φ ≤ ∢AED. Zeigen Sie, dass für das Volumen V der Prismen APₙEBQₙF in Abhängigkeit von φ gilt: V(φ) = 18 · tan φ cm³.',[
@@ -30,7 +30,7 @@ let part=0,step=0,show3d=false;
 function shape(tag,attrs={},text){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('geometry').append(e);return e}
 function line(a,b,color='#8297a7',width=2,dash=false){shape('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':width,'stroke-dasharray':dash?'7 5':''})}
 function label(p,t){shape('text',{x:p[0]+7,y:p[1]-9,'font-size':19,fill:'#273e50'},t)}
-function draw(){const n=+$('length').value,k=n/10;const A=[130,360],B=[190,420],D=[500,360],C=[560,420],E=[130,240],F=[190,300],H=[500,240],G=[560,300],P=[130+370*k,360],Q=[190+370*k,420];
+function draw(){const n=+$('length').value,k=n/10;const A=[120,390],B=[280,390],D=[260,250],C=[420,250],E=[120,265],F=[280,265],H=[260,125],G=[420,125],P=[A[0]+(D[0]-A[0])*k,A[1]+(D[1]-A[1])*k],Q=[B[0]+(C[0]-B[0])*k,B[1]+(C[1]-B[1])*k];
 $('geometry').replaceChildren();shape('polygon',{points:[A,P,E].map(v=>v.join(',')).join(' '),fill:'#9ed1e7','fill-opacity':'.72',stroke:'#25769d','stroke-width':3});shape('polygon',{points:[B,Q,F].map(v=>v.join(',')).join(' '),fill:'#9ed1e7','fill-opacity':'.72',stroke:'#25769d','stroke-width':3});
 for(const [a,b] of [[A,D],[D,C],[C,B],[B,A],[E,H],[H,G],[G,F],[F,E],[A,E],[B,F],[C,G],[D,H]])line(a,b,'#9cabba',2);
 for(const [a,b] of [[A,P],[P,E],[E,A],[B,Q],[Q,F],[F,B],[A,B],[P,Q],[E,F]])line(a,b,'#a32b4d',3);
