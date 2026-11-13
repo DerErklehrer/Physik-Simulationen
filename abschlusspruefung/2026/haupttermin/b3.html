@@ -13,7 +13,10 @@
 <hr style="border:0;border-top:1px solid #e5e9ee;margin:15px 0">
 <div class="top"><label for="xslider"><strong>Unabhängige Abszisse x</strong></label><strong id="xvalue">−7,00</strong></div>
 <input id="xslider" type="range" min="-9" max="1" step="0.01" value="-7" aria-label="Abszisse x einstellen"><div class="buttons" id="presets"></div>
+<div class="small muted" style="margin:10px 0 5px"><strong>Veränderbare Objekte</strong> · durchgezogene Linien</div>
 <div class="flex"><label><input type="checkbox" id="square" checked> Quadrat und Diagonalen</label><label><input type="checkbox" id="circle" checked> Kreis</label></div>
+<div class="small muted" style="margin:13px 0 5px"><strong>Feste Prüfungszeichnungen</strong> · gestrichelte Linien</div>
+<div class="flex"><label><input type="checkbox" id="fixed1"> Quadrat A₁B₁C₁D₁ (x = −7)</label><label><input type="checkbox" id="fixed2"> Quadrat A₂B₂C₂D₂ (x = −1)</label><label><input type="checkbox" id="fixedk2"> Kreis k₂ (x = −1)</label></div>
 </section>
 <section class="panel"><h2 style="margin:0 0 10px">Aufgabenstellung und Lösung</h2><div class="buttons" id="tasks"></div>
 <div class="original"><strong id="tasktitle"></strong><div id="statement"></div></div>
@@ -35,11 +38,24 @@ let task=0,step=0,x=-7,mathQueue=Promise.resolve();const typeset=()=>{if(window.
 const svg=(tag,attrs,text)=>{const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v]of Object.entries(attrs||{}))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('plot').appendChild(e);return e};
 function draw(){const sx=640/13,sy=690/14,X=t=>(t+9)*sx,Y=t=>(10-t)*sy;const P=points(x);$('plot').replaceChildren();svg('rect',{x:0,y:0,width:640,height:690,fill:'#fff'});for(let i=-9;i<=4;i++)svg('line',{x1:X(i),x2:X(i),y1:0,y2:690,stroke:i===0?'#63717c':'#e8edf1','stroke-width':i===0?1.8:1});for(let i=-4;i<=10;i++)svg('line',{x1:0,x2:640,y1:Y(i),y2:Y(i),stroke:i===0?'#63717c':'#e8edf1','stroke-width':i===0?1.8:1});for(let i=-9;i<=4;i++)if(i%2===0||i===-9)svg('text',{x:X(i)+3,y:Y(0)+16,'font-size':13,fill:'#65717b'},String(i));for(let i=-4;i<=10;i+=2)if(i!==0)svg('text',{x:X(0)+5,y:Y(i)-4,'font-size':13,fill:'#65717b'},String(i));svg('text',{x:625,y:Y(0)-7,'font-size':17},'x');svg('text',{x:X(0)+9,y:17,'font-size':17},'y');for(const [fn,col] of [[f1,'#2567a7'],[f2,'#d17b19']]){let d='';for(let t=-9;t<=1.001;t+=.025){const y=fn(t);d+=(d?' L':'M')+X(t).toFixed(2)+' '+Y(y).toFixed(2)}svg('path',{d,stroke:col,'stroke-width':3,fill:'none'});}
 const showSquare=$('square').checked,showCircle=$('circle').checked;const path=([a,b,c,d])=>'M'+X(a[0])+','+Y(a[1])+' L'+X(b[0])+','+Y(b[1])+' L'+X(c[0])+','+Y(c[1])+' L'+X(d[0])+','+Y(d[1])+' Z';
+// Die Prüfungsobjekte sind feste geometrische Konstruktionen und unabhängig vom Regler.
+const fixedSquare=(at,index,color)=>{
+ const Q=points(at),v=[Q.A,Q.B,Q.C,Q.D],suffix=index===1?'₁':'₂';
+ svg('path',{d:path(v),fill:'none',stroke:color,'stroke-width':2.6,'stroke-dasharray':'9 5'});
+ for(const [a,b] of [[Q.A,Q.C],[Q.B,Q.D]])svg('line',{x1:X(a[0]),y1:Y(a[1]),x2:X(b[0]),y2:Y(b[1]),stroke:color,'stroke-width':1.5,'stroke-dasharray':'4 5'});
+ for(const [name,q,dx,dy] of [['A',Q.A,-18,12],['B',Q.B,7,5],['C',Q.C,-18,-8],['D',Q.D,-20,5]]){
+ svg('circle',{cx:X(q[0]),cy:Y(q[1]),r:3.1,fill:color});
+ svg('text',{x:X(q[0])+dx,y:Y(q[1])+dy,'font-size':14,'font-weight':700,fill:color},name+suffix);
+ }
+};
+if($('fixed1').checked)fixedSquare(-7,1,'#8557a5');
+if($('fixed2').checked)fixedSquare(-1,2,'#ba692b');
+if($('fixedk2').checked){const Q=points(-1);svg('circle',{cx:X(Q.M[0]),cy:Y(Q.M[1]),r:Q.d/2*sx,fill:'none',stroke:'#17867d','stroke-width':2.8,'stroke-dasharray':'9 5'});svg('text',{x:X(Q.M[0])+8,y:Y(Q.M[1])-10,'font-size':15,'font-weight':700,fill:'#17867d'},'k₂');}
 if(showCircle)svg('circle',{cx:X(P.M[0]),cy:Y(P.M[1]),r:P.d/2*sx,fill:'none',stroke:'#24928a','stroke-width':2.7});
 if(showSquare){svg('path',{d:path([P.A,P.B,P.C,P.D]),fill:'#9a2c5015',stroke:'#9a2c50','stroke-width':2.5});svg('line',{x1:X(P.A[0]),y1:Y(P.A[1]),x2:X(P.C[0]),y2:Y(P.C[1]),stroke:'#9a2c50','stroke-width':1.6,'stroke-dasharray':'6 5'});svg('line',{x1:X(P.B[0]),y1:Y(P.B[1]),x2:X(P.D[0]),y2:Y(P.D[1]),stroke:'#9a2c50','stroke-width':1.6,'stroke-dasharray':'6 5'});for(const [name,q,dx,dy]of [['A',P.A,-17,12],['B',P.B,7,5],['C',P.C,-18,-8],['D',P.D,-19,5],['M',P.M,7,-8]]){svg('circle',{cx:X(q[0]),cy:Y(q[1]),r:3.7,fill:'#9a2c50'});svg('text',{x:X(q[0])+dx,y:Y(q[1])+dy,'font-size':16,'font-weight':700,fill:'#70203d'},name+(task===1?(x===-7?'₁':x===-1?'₂':'ₙ'):task===4?'₃':task===5?'₄':'ₙ'));}}
 }
 function render(){const t=tasks[task];$('parttag').textContent='B 3.'+(task+1);$('tasktitle').textContent=t.title;$('statement').innerHTML=t.statement;$('stephead').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('xvalue').textContent=fmt(x);$('xslider').value=x;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;for(const b of $('tasks').children)b.classList.toggle('active',Number(b.dataset.index)===task);$('presets').replaceChildren();for(const [v,label]of [[-7,'x = −7'],[-1,'x = −1'],[0,'x = 0'],[-1.83,'x ≈ −1,83']]){const b=document.createElement('button');b.textContent=label;b.className=Math.abs(x-v)<.005?'active':'';b.onclick=()=>{x=v;render()};$('presets').appendChild(b)}draw();typeset()}
 for(const t of ['A 1','A 2','A 3','A 4','B 1','B 2','B 3','B 4']){const b=document.createElement('button');b.textContent=t;b.disabled=!(['B 3','B 4'].includes(t));b.className=t==='B 3'?'active':'';if(t==='B 4')b.onclick=()=>location.href='index.html';$('exam-tasks').appendChild(b)}
 for(let i=0;i<6;i++){const b=document.createElement('button');b.textContent='B 3.'+(i+1);b.dataset.index=i;b.onclick=()=>{task=i;step=0;x=tasks[i].preset;location.hash='b-3.'+(i+1);render()};$('tasks').appendChild(b)}
-$('xslider').oninput=e=>{x=Number(e.target.value);$('xvalue').textContent=fmt(x);draw()};$('square').onchange=draw;$('circle').onchange=draw;$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[task].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;render()};const match=location.hash.match(/b-3[.]([1-6])/i);if(match){task=Number(match[1])-1;x=tasks[task].preset}render();
+$('xslider').oninput=e=>{x=Number(e.target.value);$('xvalue').textContent=fmt(x);draw()};for(const id of ['square','circle','fixed1','fixed2','fixedk2'])$(id).onchange=draw;$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[task].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;render()};const match=location.hash.match(/b-3[.]([1-6])/i);if(match){task=Number(match[1])-1;x=tasks[task].preset}render();
 </script></body></html>
