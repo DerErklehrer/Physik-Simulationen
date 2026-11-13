@@ -50,6 +50,14 @@ Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, 
 - GitHub-Datei nach Speicherung erneut ausgelesen; Inline-JavaScript erfolgreich syntaktisch geprüft; MathJax-Escaping nachgebessert und initialer Renderaufruf ergänzt.
 - **Offen:** unabhängiger Wort-für-Wort-Abgleich aller Formulierungen mit der Originalprüfung (aktuell teils verdichtete Aufgabentexte), Originalgrafikvergleich mit mehreren Zwischen- und Grenzlagen, echte Browserausführung und Mobil-/Touch-Tests. Die drei vollständigen Qualitätsdurchgänge sind weiterhin **nicht** abgeschlossen. B 3 ist noch nicht endgültig freigegeben.
 
+## 2025 B 4 – eigenständige Vektorgeometrie (13.11.2026)
+- `2025/haupttermin/b4.html` als eigene Seite erstellt und in der 2025er Sammelseite verlinkt; sämtliche fünf Teilaufgaben B 4.1–B 4.5 einschließlich amtlicher BE, Lösungsnavigation und schülernahen Schritten enthalten.
+- Dynamisches Koordinatensystem mit `g:y=0,5x+5`, genauem geometrischem Rotationsmodell für ∢BₙADₙ=40° und `|ABₙ|=0,5·|ADₙ|`, veränderbarem Parallelogramm, Vektorpfeilen, zuschaltbaren festen Zeichnungen (`x=-4,5`, `x=2`, amtlicher Sonderfall `x=0,10`, minimaler Abstand `x=-5,20`).
+- Ursprüngliche ISB-Prüfungsseite B4 und offizielles ISB-Lösungsmuster herangezogen (Seite B4 der Angaben, letzte Lösungsseite). Ergebnisse bestätigt: `ABₙ=(0,55x+3,40; -0,13x+1,74)` als Spaltenvektor, `D₃(0,10|5,05)`, `x(D₀)=-5,20`, minimales Flächenargument.
+- **Rundungsabweichung explizit dokumentiert:** Die amtliche Lösung von B4.3 rechnet mit den bei B4.2 gerundeten Koeffizienten und erhält `x=0,10`. Setzt man dagegen die ungerundeten trigonometrischen Werte ein, ist die geometrisch exakt parallele Lage bei `x≈0,04` (genauer `0,04372`). Die interaktive Zeichnung verwendet die präzise Winkelkonstruktion; ein Hinweis erläutert die Differenz bei der offiziellen Speziallage.
+- Rechenergebnisse für mehrere Parameterwerte unabhängig geprüft; die verwendeten Pfeile werden geometrisch unter einem Winkel von exakt 40° im Uhrzeigersinn aus ADₙ erzeugt. Inline-JavaScript nach Speichern syntaktisch überprüft; Mathe-Formel-Escaping korrigiert.
+- **Keine Freigabe:** Originalwortlaut jeder Aufgabe, alle MathJax-Formeln, die visuelle Zeichnung, Interaktion im Browser und die geforderten drei vollständigen Prüfdurchgänge müssen abschließend auf dem veröffentlichten Stand geprüft werden. Die gesamte Prüfung 2025 ist nach der B4-Erstellung in Einzelseiten strukturell vorhanden, aber **noch nicht präsentationsreif**.
+
 ## Zwingende Arbeiten vor einer Freigabe
 1. Pro Jahrgang **jede** Aufgabenstellung vollständig aus dem amtlichen ISB-Haupttermin übernehmen und mit dem Original abgleichen; Zeichnungen und Parameterbereiche einschließen.
 2. Pro Teilaufgabe die amtliche Originallösung vollständig nachrechnen und eine **ausführlichere, schülernahe** Lösung entwickeln; vertikale Brüche, Malpunkte, Dezimalkomma, Vektor- und Fachnotation prüfen.
