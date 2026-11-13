@@ -14,7 +14,7 @@
 <g fill="#50647a" font-size="19"><text x="185" y="73">4√3 cm</text><text x="591" y="167">4 cm</text></g>
 </svg>
 <p class="small">Schematische Skizze mit den korrekten Seitenverhältnissen; die Lage des Schwerpunkts entspricht dem Teilungsverhältnis \(BS:SM=2:1\).</p>
-<div class="buttons"><label><input id="median" type="checkbox" checked> Seitenhalbierende BM</label><label><input id="half" type="checkbox"> Teilstrecken AM und MC</label><label><input id="angle" type="checkbox"> Winkel CBM</label></div>
+<div class="buttons"><label><input id="median" type="checkbox" checked> Seitenhalbierende BM</label><label><input id="half" type="checkbox"> Teilstrecken AM und MC</label><label><input id="angle" type="checkbox"> Winkel ∢CBM</label></div>
 <p id="measure" class="small" aria-live="polite">In der Lösung wird gezeigt: M ist Mittelpunkt von AC.</p>
 </section><section class="panel"><h2>Originalaufgabe und Lösung</h2><div class="original"><strong>A 3.0</strong><p>Die Skizze zeigt das rechtwinklige Dreieck ABC mit der Hypotenuse \(\overline{AB}\) und dem Schwerpunkt S. Die Gerade BS schneidet die Seite \(\overline{AC}\) im Punkt M.</p><p>Es gilt: \(|\overline{AC}|=8\sqrt3\,\mathrm{cm};\quad|\overline{BC}|=4\,\mathrm{cm}\).</p></div><div id="parts" class="buttons"><button class="active">A 3.1</button><button>A 3.2</button></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong> <span id="count" class="tag"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Schülernahe Musterlösung auf Grundlage des ISB-Lösungsmusters; keine amtliche Lösung.</p></section></div></main>
 <script>
@@ -24,11 +24,11 @@ const T=[
 ['Eigenschaft des Schwerpunkts','Der Schwerpunkt S eines Dreiecks ist der Schnittpunkt der drei Seitenhalbierenden.'],
 ['Seitenhalbierende erkennen','Die Gerade BS verläuft durch den Eckpunkt B und den Schwerpunkt S. Daher muss die Strecke BM eine Seitenhalbierende sein.'],
 ['Begründung abschließen','Eine Seitenhalbierende verbindet einen Eckpunkt mit dem Mittelpunkt der gegenüberliegenden Seite. Also ist \\(\\boxed{|\\overline{AM}|=|\\overline{MC}|}\\); M ist der Mittelpunkt von AC.']]},
-{title:'A 3.2',points:'2 P',text:'Bestimmen Sie mithilfe einer Rechnung das Maß des Winkels CBM.',steps:[
+{title:'A 3.2',points:'2 P',text:'Bestimmen Sie mithilfe einer Rechnung das Maß des Winkels ∢CBM.',steps:[
 ['Länge der halben Seite AC','Aus A 3.1 folgt: \\[|\\overline{MC}|=\\frac12\\cdot|\\overline{AC}|=\\frac12\\cdot8\\sqrt3\\,\\mathrm{cm}=4\\sqrt3\\,\\mathrm{cm}.\\]'],
-['Rechtwinkliges Dreieck BCM','Da das Dreieck ABC bei C rechtwinklig ist und M auf AC liegt, ist auch BCM bei C rechtwinklig. Für den gesuchten Winkel CBM ist MC die Gegenkathete und BC die Ankathete.'],
-['Tangens aufstellen','\\[\\tan(\\angle CBM)=\\frac{|\\overline{MC}|}{|\\overline{BC}|}=\\frac{4\\sqrt3\\,\\mathrm{cm}}{4\\,\\mathrm{cm}}=\\sqrt3.\\]'],
-['Winkel bestimmen','Aus \\(\\tan60^\\circ=\\sqrt3\\) folgt im rechtwinkligen Dreieck: \\[\\boxed{\\angle CBM=60^\\circ}.\\]']] }
+['Rechtwinkliges Dreieck BCM','Da das Dreieck ABC bei C rechtwinklig ist und M auf AC liegt, ist auch BCM bei C rechtwinklig. Für den gesuchten Winkel ∢CBM ist MC die Gegenkathete und BC die Ankathete.'],
+['Tangens aufstellen','\\[\\tan(∢CBM)=\\frac{|\\overline{MC}|}{|\\overline{BC}|}=\\frac{4\\sqrt3\\,\\mathrm{cm}}{4\\,\\mathrm{cm}}=\\sqrt3.\\]'],
+['Winkel bestimmen','Aus \\(\\tan60^\\circ=\\sqrt3\\) folgt im rechtwinkligen Dreieck: \\[\\boxed{∢CBM=60^\\circ}.\\]']] }
 ];let part=0,step=0;
 const svg=document.querySelector('svg'),med=svg.querySelector('line[x1="335"]'),right=svg.querySelector('path'),S=svg.querySelector('circle[cx="501.67"]');
 function toggle(){med.style.display=$('median').checked?'':'none';S.style.display=$('median').checked?'':'none';let old=svg.querySelector('#extra');if(old)old.remove();let g=document.createElementNS('http://www.w3.org/2000/svg','g');g.id='extra';svg.append(g);const ns='http://www.w3.org/2000/svg';function add(tag,attrs,text){let e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(text)e.textContent=text;g.append(e)}if($('half').checked){add('text',{x:177,y:126,'font-size':18,fill:'#b27218'},'AM = 4√3 cm');add('text',{x:395,y:126,'font-size':18,fill:'#b27218'},'MC = 4√3 cm')}if($('angle').checked){add('path',{d:'M585 191 A45 45 0 0 0 546 213',stroke:'#a32b4d','stroke-width':2.8,fill:'none'});add('text',{x:522,y:192,fill:'#a32b4d','font-size':19},'60°')} }
