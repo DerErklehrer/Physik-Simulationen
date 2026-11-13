@@ -2,14 +2,13 @@
 
 Referenz: vollständig ausgearbeiteter Haupttermin Mathematik I 2026. Insbesondere B 3 und B 4 für umfangreiche Aufgaben, der Rotationskörper als Vorlage für Körperdarstellungen und die 2026er Umsetzung von Parameterabhängigkeiten.
 
-## Veröffentlichung und Urheberrecht
-- Auf den öffentlich erreichbaren Seiten keine Links zu amtlichen Prüfungs-PDFs oder amtlichen Lösungsmustern platzieren.
-- Keine Originalaufgabenstellungen oder Originalzeichnungen übernehmen; stattdessen eigenständig formulierte Aufgabenhilfen und selbst entwickelte Grafiken veröffentlichen.
-- Originalprüfung und amtliches Lösungsmuster ausschließlich intern zur fachlichen Kontrolle verwenden.
-- Jede neue oder überarbeitete Seite vor Veröffentlichung auf direkte PDF-Links und übernommene Aufgabentexte prüfen.
+## Veröffentlichung
+- Auf den öffentlichen Seiten keine direkten Links zu den hochgeladenen Prüfungs-PDFs und Lösungs-PDFs anzeigen.
+- Originalaufgabentexte, Originallösungen, Zeichnungen und interaktive Inhalte dürfen im Projekt weiterhin enthalten sein; die Vorgabe betrifft ausschließlich die Dokumentverlinkungen.
+- Die Originaldokumente dienen weiterhin als Grundlage für fachlichen und grafischen Abgleich.
 
 ## Umsetzung
-- Originalprüfung und offizielles Lösungsmuster sind intern für die fachliche Richtigkeit maßgeblich; auf der Website werden nur eigenständig formulierte Lernhilfen veröffentlicht.
+- Originalprüfung und offizielles Lösungsmuster sind für die fachliche Richtigkeit maßgeblich; Originalaufgaben und Lösungen können auf den Seiten stehen. Nur die direkten Dokumentlinks werden nicht angezeigt.
 - Jede Teilaufgabe wird mit mathematisch vollständiger, schrittweise aufbaubarer Musterlösung und den jeweils zugehörigen Grafiken umgesetzt.
 - Dynamische Abhängigkeiten müssen korrekt gekoppelt sein: Schieberegler, Koordinaten, Winkel, Strecken, Flächen, Volumina, Beschriftungen und Lösungsschritte.
 - Alle räumlichen Körper erhalten zusätzlich zur zweidimensionalen Zeichnung eine **umschaltbare, frei drehbare 3D-Version**. Draufsicht und Touch-Bedienung, wo sinnvoll; orthografische Draufsicht ohne Verzerrung.
