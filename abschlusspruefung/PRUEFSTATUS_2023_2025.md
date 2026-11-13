@@ -43,6 +43,13 @@ Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, 
 - B 2 und Navigation erneut aus GitHub gelesen; eingebettete JavaScript-Skripte statisch auf Syntaxfehler geprüft (keine gefunden).
 - **Offen:** Sichtprüfung und tatsächliche Browserausführung auf Desktop/Mobilgerät, Abgleich jeder Einzelzeichnung mit dem Original, vollständige Aufgaben- und Lösungsprüfung für B 3 und B 4, anschließend drei vollständige Prüfdurchgänge über alle neun Kategorien. Diese Bearbeitung ist kein abgeschlossener Kontroll-Durchgang.
 
+## Fortsetzung: 2025 B 3 – Exponentialfunktionen und Trapeze
+- `2025/haupttermin/b3.html` neu erstellt und im 2025er Index verlinkt: alle sechs Teilaufgaben B 3.1–B 3.6 mit einzelnen Lösungsstufen, MathJax-Notation, dynamischem Koordinatensystem, den Graphen von f₁/f₂, veränderbarem Trapez, Lot AₙFₙ und festen Trapezen bei x = −3 und x = 1.
+- Amtliche Originalaufgabe und ISB-Lösung 2025 Haupttermin Mathematik I B 3 zur fachlichen Kontrolle herangezogen. Insbesondere Asymptote `y=3`, `AₙFₙ≈1,88 LE`, `AₙBₙ(x)=(-3,5·0,5^(x+3)+7) LE`, für gleichschenkliges Trapez `A₃B₃≈6,64 LE` und `x≈0,28`, sowie Flächeninhaltsgrenze `A<14,1 FE` abgeglichen.
+- Unabhängige Werteprobe: x=−3: f₁=1,50, f₂=−2,00; x=1: f₁=2,90625, f₂=−3,875; x=0,28: AₙBₙ≈6,63968 LE. Zeichnung nutzt geometrisch korrekten Horizontalabstand `2·cos20°` und vertikalen Versatz `2·sin20°`. Rechtwinkelsymbol an Fₙ ergänzt.
+- GitHub-Datei nach Speicherung erneut ausgelesen; Inline-JavaScript erfolgreich syntaktisch geprüft; MathJax-Escaping nachgebessert und initialer Renderaufruf ergänzt.
+- **Offen:** unabhängiger Wort-für-Wort-Abgleich aller Formulierungen mit der Originalprüfung (aktuell teils verdichtete Aufgabentexte), Originalgrafikvergleich mit mehreren Zwischen- und Grenzlagen, echte Browserausführung und Mobil-/Touch-Tests. Die drei vollständigen Qualitätsdurchgänge sind weiterhin **nicht** abgeschlossen. B 3 ist noch nicht endgültig freigegeben.
+
 ## Zwingende Arbeiten vor einer Freigabe
 1. Pro Jahrgang **jede** Aufgabenstellung vollständig aus dem amtlichen ISB-Haupttermin übernehmen und mit dem Original abgleichen; Zeichnungen und Parameterbereiche einschließen.
 2. Pro Teilaufgabe die amtliche Originallösung vollständig nachrechnen und eine **ausführlichere, schülernahe** Lösung entwickeln; vertikale Brüche, Malpunkte, Dezimalkomma, Vektor- und Fachnotation prüfen.
