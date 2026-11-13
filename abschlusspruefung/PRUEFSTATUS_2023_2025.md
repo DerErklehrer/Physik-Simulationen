@@ -2,12 +2,14 @@
 
 **Status: NICHT ZUR ENDGÜLTIGEN FREIGABE GEEIGNET.**
 
+**Neuester vollständiger technischer Prüfnachweis 2025:** [Dreifach-Prüfprotokoll](2025/PRUEFPROTOKOLL_DREIFACH.md), [GitHub-Actions-Lauf](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43522790118). Drei technische Wiederholungen erfolgreich; die drei vollständigen fachlichen/visuellen neun Kategorien umfassenden Freigabedurchgänge sind **nicht** als bestanden dokumentiert.
+
 Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, amtliche ISB-Haupttermine der betreffenden Jahre und vorläufige interaktive Referenz 2026.
 
 ## Bestand und Abgleich
 | Jahrgang | Vorhandener Webstand | Vergleich mit Referenz 2026 | Freigabe |
 |---|---|---|---|
-| 2025 | Eine HTML-Sammelseite mit Teilaufgaben, MathJax, dynamischen SVG-Skizzen und gestuften Lösungen | Eigene Aufgabenansichten wie 2026 B 3/B 4 fehlen; erste umschaltbare 3D-Ansichten bei A 2 (Rotationskörper) und B 2 (Quader/Prisma) implementiert, jedoch noch nicht auf Desktop/Mobilgerät visuell getestet; noch kein vollständiger Wort-für-Wort-Abgleich aller Teilaufgaben | offen |
+| 2025 | Alle sieben eigenständigen HTML-Aufgabenseiten A 1–A 3 und B 1–B 4 sowie eine ältere Sammelseite, MathJax, SVG und 3D | Drei Wiederholungen von 125 statischen Tests und 14 Chromium-Browserfällen erfolgreich (insgesamt 375 + 42); Screenshots vorhanden. Fachlicher Wort-für-Wort-Originalabgleich und vollständige didaktisch-grafische Sichtprüfung nach allen neun Kategorien je Runde bleiben **offen**; Details siehe [Dreifach-Prüfprotokoll](2025/PRUEFPROTOKOLL_DREIFACH.md). | **Nicht freigegeben** |
 | 2024 | Eine kurze HTML-Sammelseite mit stark zusammengefassten Aufgaben/Lösungen und SVG | Kein originalgetreuer Aufgabentext, keine vollständigen schülernahen Musterlösungen, kein MathJax-Vollformat, keine 2D/3D-Umschaltung bei räumlichen Aufgaben A 1/B 4 | offen |
 | 2023 | Eine kurze HTML-Sammelseite mit stark zusammengefassten Aufgaben/Lösungen und SVG | Kein originalgetreuer Aufgabentext, keine vollständigen schülernahen Musterlösungen, kein MathJax-Vollformat, keine 2D/3D-Umschaltung bei räumlicher Aufgabe B 4 | offen |
 
