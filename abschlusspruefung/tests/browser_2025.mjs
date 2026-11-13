@@ -15,7 +15,7 @@ const expected={a1:2,a2:4,a3:2,b1:3,b2:4,b3:6,b4:5};
 const issues=[];
 await mkdir(OUT,{recursive:true});
 const browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-for(const mode of [{label:'desktop',width:1366,height:900,isMobile:false,hasTouch:false},{label:'mobile',width:390,height:844,isMobile:true,hasTouch:true}]){
+for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,height:900,isMobile:false,hasTouch:false},{label:'mobile',width:390,height:844,isMobile:true,hasTouch:true}]){
  const context=await browser.newContext({viewport:{width:mode.width,height:mode.height},isMobile:mode.isMobile,hasTouch:mode.hasTouch,deviceScaleFactor:1});
  for(const name of names){
   const page=await context.newPage(),errs=[];
@@ -46,7 +46,7 @@ for(const mode of [{label:'desktop',width:1366,height:900,isMobile:false,hasTouc
     }
    }
    await page.waitForTimeout(500);
-   if(['a2','b1','b2','b3','b4'].includes(name))await page.screenshot({path:OUT+'/'+mode.label+'-'+name+'-grenzlage.png',fullPage:true,animations:'disabled'});
+   if(['a2','b1','b2','b3','b4'].includes(name))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-grenzlage.png',fullPage:true,animations:'disabled'});
    for(const [id,value] of Object.entries({phi:40,length:4,slider:-4.5,x:-3,p:20})){
     const control=page.locator('#'+id);
     if(await control.count())await control.evaluate((el,v)=>{el.value=v;el.dispatchEvent(new Event('input',{bubbles:true}))},value);
@@ -58,7 +58,7 @@ for(const mode of [{label:'desktop',width:1366,height:900,isMobile:false,hasTouc
     await page.locator('#top2025').click();
     await page.locator('#resetcamera2025').click();
     await page.waitForTimeout(450);
-    await page.screenshot({path:OUT+'/'+mode.label+'-'+name+'-3d.png',fullPage:true,animations:'disabled'});
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-3d.png',fullPage:true,animations:'disabled'});
     await page.locator('#twoD2025').click();
     if(await page.locator('#figure').isHidden())throw Error('2D-Ansicht nicht wiederhergestellt');
    }
@@ -66,8 +66,8 @@ for(const mode of [{label:'desktop',width:1366,height:900,isMobile:false,hasTouc
    const pageWidth=await page.evaluate(()=>document.documentElement.scrollWidth);
    if(pageWidth>mode.width+50)issues.push(mode.label+' '+name+': horizontales Seitenüberlaufen '+pageWidth+' px');
    if(errs.length)issues.push(mode.label+' '+name+': '+errs.join('; '));
-   await page.screenshot({path:OUT+'/'+mode.label+'-'+name+'.png',fullPage:true,animations:'disabled'});
-   console.log('OK '+mode.label+' '+name+' ('+count+' Teilaufgaben)');
+   await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'.png',fullPage:true,animations:'disabled'});
+   console.log('OK Runde '+round+' '+mode.label+' '+name+' ('+count+' Teilaufgaben)');
   }catch(e){issues.push(mode.label+' '+name+': '+e.message);console.error('FEHLER '+mode.label+' '+name+': '+e.message)}
   finally{await page.close()}
  }
@@ -75,4 +75,4 @@ for(const mode of [{label:'desktop',width:1366,height:900,isMobile:false,hasTouc
 }
 await browser.close();
 if(issues.length){console.error('\nOFFENE BROWSERFEHLER ('+issues.length+'):\n'+issues.join('\n'));process.exitCode=1;}
-else console.log('\nBrowserkontrolle bestanden: 7 Aufgaben in zwei Viewports, inklusive Aufgabennavigation und 3D-Umschaltung.');
+else console.log('\nBrowserkontrolle bestanden: 3 unabhängige Wiederholungen × 7 Aufgaben × 2 Viewports, inklusive Aufgabennavigation und 3D-Umschaltung.');
