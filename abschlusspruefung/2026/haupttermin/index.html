@@ -97,7 +97,7 @@ arrow(A,B,'#b52b51');arrow(A,cur,'#147b9d');
 if(part==='B 4.2'&&step>=1&&Math.abs(5*(cur.x-A.x)-(cur.y-A.y))<0.025){const u={x:(B.x-A.x)/length(A,B),y:(B.y-A.y)/length(A,B)},v={x:(cur.x-A.x)/length(A,cur),y:(cur.y-A.y)/length(A,cur)};const z=0.45;const p={x:A.x+u.x*z,y:A.y+u.y*z},q={x:p.x+v.x*z,y:p.y+v.y*z},r={x:A.x+v.x*z,y:A.y+v.y*z};line(p,q,'#d28a28',3);line(q,r,'#d28a28',3)}
 if(part==='B 4.4'&&step>=1){line(A,cur,'#d28a28',5)}
 for(const [p,t] of [[A,'A'],[B,'B'],[cur,'Cₙ']]){const m=map(p);svg.append(node('circle',{cx:m.x,cy:m.y,r:5,fill:'#253341'}));txt(p,t,'#253341',8,-10)}
-if($('lengths').checked||part==='B 4.5'&&step>=1){txt({x:(A.x+cur.x)/2,y:(A.y+cur.y)/2},'|ACₙ| = '+fmt(length(A,cur))+' LE','#147b9d',8,-10,13);txt({x:(B.x+cur.x)/2,y:(B.y+cur.y)/2},'|BCₙ| = '+fmt(length(B,cur))+' LE','#b66d18',7,16,13)}
+if($('lengths').checked||part==='B 4.5'&&step>=1){txt({x:(A.x+cur.x)/2,y:(A.y+cur.y)/2},'|A̅C̅ₙ| = '+fmt(length(A,cur))+' LE','#147b9d',8,-10,13);txt({x:(B.x+cur.x)/2,y:(B.y+cur.y)/2},'|B̅C̅ₙ| = '+fmt(length(B,cur))+' LE','#b66d18',7,16,13)}
 const area=Math.abs(5*(cur.y-A.y)+cur.x-A.x)/2;
 $('measure').innerHTML='<strong>Aktuelle Werte für φ = '+fmt(angle)+'°</strong><div class="math">'+($('vectors').checked?'<div style="color:#b52b51">'+vm('B','5','−1')+'</div><div style="color:#147b9d">'+vm('n',fmt(cur.x-A.x),fmt(cur.y-A.y))+'</div>':'')+'<div>'+pointM('Cₙ',fmt(cur.x),fmt(cur.y))+'</div><div>'+lenM('ACₙ',fmt(length(A,cur)))+'</div><div>'+lenM('BCₙ',fmt(length(B,cur)))+'</div><div>'+M(mi('A')+mo('(')+mi('φ')+mo(')')+mo('=')+mn(fmt(area))+mi('FE'))+'</div></div>';
 }
