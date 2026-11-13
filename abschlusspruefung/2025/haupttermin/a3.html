@@ -9,8 +9,8 @@
 <line x1="275" y1="57" x2="640" y2="268" stroke="#a32b4d" stroke-dasharray="7 5" opacity=".55" stroke-width="1.7"/>
 <path d="M567 92v18h18" stroke="#56788f" fill="none" stroke-width="2"/>
 <path d="M210 83v18M460 83v18" stroke="#c88725" stroke-width="2.5"/>
-<circle cx="501.67" cy="188" r="5.5" fill="#a32b4d"/><circle cx="335" cy="92" r="4" fill="#c88725"/>
-<g fill="#20374b" font-size="22" font-family="Arial,sans-serif"><text x="62" y="91">A</text><text x="592" y="82">C</text><text x="595" y="253">B</text><text x="321" y="77">M</text><text x="488" y="213">S</text></g>
+<circle cx="418.33" cy="188" r="5.5" fill="#a32b4d"/><circle cx="335" cy="92" r="4" fill="#c88725"/>
+<g fill="#20374b" font-size="22" font-family="Arial,sans-serif"><text x="62" y="91">A</text><text x="592" y="82">C</text><text x="595" y="253">B</text><text x="321" y="77">M</text><text x="403" y="161">S</text></g>
 <g fill="#50647a" font-size="19"><text x="185" y="73">4√3 cm</text><text x="591" y="167">4 cm</text></g>
 </svg>
 <p class="small">Schematische Skizze mit den korrekten Seitenverhältnissen; die Lage des Schwerpunkts entspricht dem Teilungsverhältnis \(BS:SM=2:1\).</p>
@@ -30,7 +30,7 @@ const T=[
 ['Tangens aufstellen','\\[\\tan(∢CBM)=\\frac{|\\overline{MC}|}{|\\overline{BC}|}=\\frac{4\\sqrt3\\,\\mathrm{cm}}{4\\,\\mathrm{cm}}=\\sqrt3.\\]'],
 ['Winkel bestimmen','Aus \\(\\tan60^\\circ=\\sqrt3\\) folgt im rechtwinkligen Dreieck: \\[\\boxed{∢CBM=60^\\circ}.\\]']] }
 ];let part=0,step=0;
-const svg=document.querySelector('svg'),med=svg.querySelector('line[x1="335"]'),right=svg.querySelector('path'),S=svg.querySelector('circle[cx="501.67"]');
+const svg=document.querySelector('svg'),med=svg.querySelector('line[x1="335"]'),right=svg.querySelector('path'),S=svg.querySelector('circle[cx="418.33"]');
 function toggle(){med.style.display=$('median').checked?'':'none';S.style.display=$('median').checked?'':'none';let old=svg.querySelector('#extra');if(old)old.remove();let g=document.createElementNS('http://www.w3.org/2000/svg','g');g.id='extra';svg.append(g);const ns='http://www.w3.org/2000/svg';function add(tag,attrs,text){let e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(text)e.textContent=text;g.append(e)}if($('half').checked){add('text',{x:177,y:126,'font-size':18,fill:'#b27218'},'AM = 4√3 cm');add('text',{x:395,y:126,'font-size':18,fill:'#b27218'},'MC = 4√3 cm')}if($('angle').checked){add('path',{d:'M585 191 A45 45 0 0 0 546 213',stroke:'#a32b4d','stroke-width':2.8,fill:'none'});add('text',{x:522,y:192,fill:'#a32b4d','font-size':19},'60°')} }
 function render(){let t=T[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.title+' · '+t.points+'</strong><p>'+t.text+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('solution'),$('statement')]);MathJax.typesetPromise([$('solution'),$('statement')]).catch(console.error)}}
 document.querySelectorAll('#parts button').forEach((b,i)=>b.onclick=()=>{part=i;step=0;render()});['median','half','angle'].forEach(id=>$(id).onchange=toggle);$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(T[part].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;render()};render();toggle();
