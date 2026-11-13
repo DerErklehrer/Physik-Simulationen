@@ -14,12 +14,13 @@ const names=['a1','a2','a3','b1','b2','b3','b4'];
 const expected={a1:2,a2:4,a3:2,b1:3,b2:4,b3:6,b4:5};
 const issues=[];
 await mkdir(OUT,{recursive:true});
-const browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-web-security']});
+const browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 for(const mode of [{label:'desktop',width:1366,height:900,isMobile:false,hasTouch:false},{label:'mobile',width:390,height:844,isMobile:true,hasTouch:true}]){
  const context=await browser.newContext({viewport:{width:mode.width,height:mode.height},isMobile:mode.isMobile,hasTouch:mode.hasTouch,deviceScaleFactor:1});
  for(const name of names){
   const page=await context.newPage(),errs=[];
   page.on('pageerror',e=>errs.push('JS: '+e.message));
+  page.on('console',msg=>{if(msg.type()==='error')errs.push('Konsole: '+msg.text())});
   const path='/abschlusspruefung/2025/haupttermin/'+name+'.html';
   try{
    const res=await page.goto(BASE+path,{waitUntil:'domcontentloaded',timeout:30000});
