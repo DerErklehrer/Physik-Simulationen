@@ -16,7 +16,11 @@ jobs:
         with:
           node-version: '22'
       - name: Mathematische und strukturelle Regressionstests
-        run: node abschlusspruefung/tests/quality_2025.mjs
+        run: |
+          for pass in 1 2 3; do
+            echo "Statischer Prüfdurchgang ${pass}"
+            node abschlusspruefung/tests/quality_2025.mjs
+          done
       - name: Chromium und Playwright bereitstellen
         run: |
           npm install --no-save playwright@1.56.1
