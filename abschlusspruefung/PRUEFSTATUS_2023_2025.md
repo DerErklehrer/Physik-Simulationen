@@ -30,6 +30,12 @@ Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, 
 - Statische Nachkontrolle: GitHub-Dateien erneut gelesen, HTML-Einbindung/Verlinkungen geprüft, JavaScript-Inline-Skripte **syntaxgeprüft** (ohne Syntaxfehler).
 - **Noch offen:** echte Browserausführung, MathJax-Rendering in Desktop/Mobile, visuelle Prüfung der 2D-/3D-Ansichten und der Abhängigkeiten sowie ein unabhängiger zweiter/dritter vollständiger Prüfdurchgang über alle neun Qualitätskategorien. Der Bildervergleich A1 entfällt für die lizenzierte Fotografie; ein fachlicher Ersatz darf die Originalangaben nicht verändern. Weder A1 noch A2 gilt damit bereits als endgültig freigegeben.
 
+## Fortsetzung: 2025 A 3 und B 1
+- `2025/haupttermin/a3.html`: eigenständige Aufgaben A 3.0–A 3.2, maßstäblich nach Seitenverhältnis gezeichnete rechtwinklige Dreiecksskizze, zuschaltbare Erläuterungen zum Mittelpunkt und Winkel, schrittweise Schwerpunkt- und Tangenslösung. Amtliche Ergebnisse: M ist Mittelpunkt von AC; ∠CBM = 60°.
+- `2025/haupttermin/b1.html`: eigenständige Aufgaben B 1.0–B 1.3, dynamisches Baumdiagramm für vier Farben und drei Geschmacksrichtungen, Parameter p im positiven zulässigen Bereich 0 < p ≤ 30, und vollständige Lösungen mit den amtlichen Ergebnissen `1-(70+p)/100`, `p=20 %`, `P(Wunsch)=56 %`. 
+- Die Einzelseiten sind in der 2025er Sammelübersicht verlinkt. Inline-JavaScript beider Seiten und Navigationsskript wurden syntaktisch ohne Fehler geprüft, gespeichert und erneut aus GitHub gelesen.
+- **Keine Endfreigabe:** visuelle Browserprüfung, mobile Funktion, unabhängiger Originalwortlaut- und Diagrammvergleich sowie alle drei vollständigen Kontrollrunden über sämtliche neun Kategorien stehen weiterhin aus. Insbesondere gilt die statische Syntaxprüfung nicht als Funktionsprüfung im Browser.
+
 ## Zwingende Arbeiten vor einer Freigabe
 1. Pro Jahrgang **jede** Aufgabenstellung vollständig aus dem amtlichen ISB-Haupttermin übernehmen und mit dem Original abgleichen; Zeichnungen und Parameterbereiche einschließen.
 2. Pro Teilaufgabe die amtliche Originallösung vollständig nachrechnen und eine **ausführlichere, schülernahe** Lösung entwickeln; vertikale Brüche, Malpunkte, Dezimalkomma, Vektor- und Fachnotation prüfen.
