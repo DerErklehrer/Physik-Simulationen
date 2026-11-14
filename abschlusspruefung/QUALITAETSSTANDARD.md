@@ -36,6 +36,8 @@ Jeder einzelne Durchgang ist eine **eigenständige, vollständige Prüfung aller
 8. **Technik und Bedienbarkeit:** HTML, JavaScript-Laufzeit, MathJax/LaTeX-Rendering, Ladeverhalten, Navigations- und Bedienelemente, Regler, Umschalter, Zeichenflächen, Aufgaben- und Lösungswechsel prüfen. Desktop und Mobilgeräte einschließlich Touch-Interaktion berücksichtigen.
 9. **Veröffentlichung und Konsistenz:** Keine direkten Links zu hochgeladenen Prüfungs- oder Lösungs-PDFs auf öffentlichen Seiten; einheitliche Gestaltung, korrekte Jahres- und Aufgabenbezeichnungen, funktionierende Verweise, keine Fehler durch Änderungen an anderen Teilen oder Jahrgängen.
 
+**Rechtwinkelsymbol in Prüfungszeichnungen:** Falls ein rechter Winkel gekennzeichnet wird, verwende die vom Nutzer bestätigte Darstellung: **Viertelkreisbogen (90°) mit ausgefülltem Punkt auf der Winkelhalbierenden in halbem Bogenradius**. Kein kleines Winkelquadrat. Winkelbogen muss tatsächlich im von den beiden Schenkeln eingeschlossenen 90°-Sektor liegen; Kreismittelpunkt ist der Winkelscheitel.
+
 ## Drei vollständige Kontroll- und Freigabedurchgänge
 - **Durchgang 1 — Vollprüfung:** Jede Aufgabe und Teilaufgabe anhand **aller neun Prüfkategorien** kontrollieren, festgestellte Mängel beheben und dokumentieren.
 - **Durchgang 2 — unabhängige Wiederholungsprüfung:** Die **gesamte Prüfliste erneut von Anfang bis Ende** an jeder Aufgabe und Teilaufgabe ausführen, einschließlich aller Lösungen, Schreibweisen, Grafiken, 3D-Darstellungen, Abhängigkeiten und technischen Funktionen. Korrekturen erneut testen.
