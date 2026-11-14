@@ -34,8 +34,114 @@ let part=0,step=0;const X=x=>78+(x+5)*56,Y=y=>275-y*56;
 function el(t,a={},txt){let e=document.createElementNS(ns,t);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));if(txt!==undefined)e.textContent=txt;$('plot').append(e);return e}
 function seg(a,b,color='#9ba9b8',w=1.5,d=''){el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':d})}
 function point(p,n,color){el('circle',{cx:X(p.x),cy:Y(p.y),r:3.5,fill:color});el('text',{x:X(p.x)+6,y:Y(p.y)-7,'font-size':15,fill:color},n)}
-function trapez(x,fixed=false,i='ₙ'){const a={x,y:f(x)},b={x,y:g(x)},d={x:x+2*Math.cos(Math.PI/9),y:a.y+2*Math.sin(Math.PI/9)},c={x:d.x,y:d.y-8},fp={x:d.x,y:a.y},col=fixed?'#8b8fa5':'#a32b4d';el('path',{d:[a,b,c,d].map((p,i)=>(i?'L':'M')+X(p.x)+' '+Y(p.y)).join(' ')+' Z',stroke:col,'stroke-width':fixed?2:2.6,'stroke-dasharray':fixed?'7 5':'',fill:fixed?'none':'#a32b4d','fill-opacity':fixed?0:.07});if(!fixed&&$('lot').checked){seg([X(a.x),Y(a.y)],[X(fp.x),Y(fp.y)],'#288a77',2,'5 3');point(fp,'Fₙ','#288a77');el('path',{d:'M'+(X(fp.x)-11)+' '+Y(fp.y)+'v11h11',stroke:'#288a77','stroke-width':1.5,fill:'none'})}[[a,'A'],[b,'B'],[c,'C'],[d,'D']].forEach(([p,t])=>point(p,t+i,col))}
-function draw(){let x=+$('x').value;$('plot').replaceChildren();el('rect',{x:0,y:0,width:660,height:680,fill:'#fff'});let defs=el('defs');defs.innerHTML='<clipPath id="clip25"><rect x="'+X(-5)+'" y="'+Y(4)+'" width="504" height="560"/></clipPath>';for(let i=-5;i<=4;i++){seg([X(i),Y(4)],[X(i),Y(-6)],'#e2e9ef',1);el('text',{x:X(i)-7,y:Y(0)+18,fill:'#506777','font-size':14},String(i))}for(let j=-6;j<=4;j++){seg([X(-5),Y(j)],[X(4),Y(j)],'#e2e9ef',1);if(j!==0)el('text',{x:X(0)+7,y:Y(j)-4,fill:'#506777','font-size':14},String(j))}seg([X(-5),Y(0)],[X(4)+20,Y(0)],'#536b7e',2);seg([X(0),Y(-6)],[X(0),Y(4)-14],'#536b7e',2);el('text',{x:X(4)+24,y:Y(0)+5},'x');el('text',{x:X(0)-5,y:Y(4)-20},'y');if($('asym').checked){seg([X(-5),Y(3)],[X(4),Y(3)],'#288a77',2,'7 5');el('text',{x:X(2),y:Y(3)-9,'font-size':15,fill:'#288a77'},'y = 3')}for(const [fun,col] of [[f,'#276da7'],[g,'#d17b19']]){let d='';for(let k=-5;k<=4.001;k+=.02)d+=(d?' L':'M')+X(k).toFixed(1)+' '+Y(fun(k)).toFixed(1);el('path',{d,fill:'none',stroke:col,'stroke-width':3,'clip-path':'url(#clip25)'})}if($('fixed1').checked)trapez(-3,true,'₁');if($('fixed2').checked)trapez(1,true,'₂');if($('live').checked)trapez(x);let len=f(x)-g(x),h=2*Math.cos(Math.PI/9);$('xval').textContent=fmt(x);$('measure').textContent='AₙBₙ = '+fmt(len)+' LE · AₙFₙ = '+fmt(h)+' LE · Flächeninhalt = '+fmt((len+8)*h/2)+' FE'}
-function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.s[step][0];$('solution').innerHTML=t.s[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.s.length;$('prev').disabled=step===0;$('next').disabled=step===t.s.length-1;if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution')]);MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)}}
-tasks.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.n;b.onclick=()=>{part=i;step=0;render()};$('parts').append(b)});$('x').oninput=draw;['live','lot','fixed1','fixed2','asym'].forEach(id=>$(id).onchange=draw);for(const [id,x] of [['p1',-3],['p2',1],['p3',.28],['pexact',.2492614083]])$(id).onclick=()=>{$('x').value=x;draw()};$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[part].s.length-1,step+1);render()};$('reset').onclick=()=>{step=0;render()};render();draw();window.addEventListener('load',()=>{if(window.MathJax?.typesetPromise)window.MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)});
+function trapez(x,{index='ₙ',fixed=false,stage=4,showLot=false,angle=false}={}){
+ const a={x,y:f(x)},b={x,y:g(x)},d={x:x+2*Math.cos(Math.PI/9),y:a.y+2*Math.sin(Math.PI/9)},c={x:d.x,y:d.y-8},F={x:d.x,y:a.y};
+ const color=fixed?'#596b8a':'#a32b4d',dash=fixed?'6 4':'';
+ const line=(v,w)=>seg([X(v.x),Y(v.y)],[X(w.x),Y(w.y)],color,fixed?2.2:2.8,dash);
+ if(stage>=4){
+  el('path',{d:[a,b,c,d].map((z,i)=>(i?'L':'M')+X(z.x)+' '+Y(z.y)).join(' ')+' Z',stroke:color,'stroke-width':fixed?2.2:3,'stroke-dasharray':dash,fill:fixed?'#7284ae':'#a32b4d','fill-opacity':fixed?.055:.08});
+ }else{
+  if(stage>=2)line(a,d);
+  if(stage>=3)line(d,c);
+ }
+ const label=(pt,t,dx=6,dy=-8)=>{el('circle',{cx:X(pt.x),cy:Y(pt.y),r:3.5,fill:color});el('text',{x:X(pt.x)+dx,y:Y(pt.y)+dy,'font-size':15,fill:color},t+index)};
+ label(a,'A',-21,-8);label(b,'B',-20,15);
+ if(stage>=2)label(d,'D',6,-10);
+ if(stage>=3)label(c,'C',8,17);
+ if(stage>=2&&angle&&index==='₁'){
+  const px=X(a.x),py=Y(a.y),rr=28;
+  el('path',{d:'M'+(px+rr*Math.cos(-Math.PI/9))+' '+(py+rr*Math.sin(-Math.PI/9))+' A28 28 0 0 1 '+px+' '+(py+rr),stroke:'#b27928','stroke-width':2,fill:'none'});
+  el('text',{x:px+32,y:py+31,'font-size':15,fill:'#9b6120'},'110°');
+ }
+ if(stage>=4&&showLot){
+  seg([X(a.x),Y(a.y)],[X(F.x),Y(F.y)],'#198576',2.5,'5 3');
+  el('circle',{cx:X(F.x),cy:Y(F.y),r:3,fill:'#198576'});
+  el('text',{x:X(F.x)+7,y:Y(F.y)+15,'font-size':15,fill:'#198576'},'F'+index);
+  el('path',{d:'M'+(X(F.x)-12)+' '+Y(F.y)+'v12h12',stroke:'#198576','stroke-width':1.7,fill:'none'});
+ }
+}
+let preciseX=null,previousX=-3;
+function configureForPart(){
+ $('live').checked=part>=3;
+ $('fixed1').checked=part===1||part===2;
+ $('fixed2').checked=part===1;
+ $('lot').checked=part>=2;
+ $('asym').checked=true;
+ preciseX=null;$('x').value=-3;
+}
+function draw(){
+ const x=preciseX===null?Number($('x').value):preciseX;
+ const showF1=part!==0||step>=1,showF2=part!==0||step>=2;
+ const graph=$('plot');graph.replaceChildren();
+ el('rect',{x:0,y:0,width:660,height:680,fill:'#fff'});
+ const defs=el('defs');
+ defs.innerHTML='<clipPath id="clip25"><rect x="'+X(-5)+'" y="'+Y(4)+'" width="504" height="560"/></clipPath>';
+ for(let i=-5;i<=4;i++){
+  seg([X(i),Y(4)],[X(i),Y(-6)],'#e2e9ef',1);
+  el('text',{x:X(i)-7,y:Y(0)+18,fill:'#506777','font-size':14},String(i));
+ }
+ for(let j=-6;j<=4;j++){
+  seg([X(-5),Y(j)],[X(4),Y(j)],'#e2e9ef',1);
+  if(j!==0)el('text',{x:X(0)+7,y:Y(j)-4,fill:'#506777','font-size':14},String(j));
+ }
+ seg([X(-5),Y(0)],[X(4)+20,Y(0)],'#536b7e',2);
+ seg([X(0),Y(-6)],[X(0),Y(4)-14],'#536b7e',2);
+ el('text',{x:X(4)+24,y:Y(0)+5,'font-size':17},'x');
+ el('text',{x:X(0)-5,y:Y(4)-20,'font-size':17},'y');
+ if($('asym').checked){
+  seg([X(-5),Y(3)],[X(4),Y(3)],'#288a77',2,'7 5');
+  el('text',{x:X(2.2),y:Y(3)-9,'font-size':15,fill:'#288a77'},part!==0||step>=0?'y = 3':'Asymptote');
+ }
+ for(const [fn,color,visible] of [[f,'#276da7',showF1],[g,'#d17b19',showF2]]){
+  if(!visible)continue;
+  let path='';
+  for(let z=-5;z<=4.001;z+=.02)path+=(path?' L':'M')+X(z).toFixed(2)+' '+Y(fn(z)).toFixed(2);
+  el('path',{d:path,fill:'none',stroke:color,'stroke-width':3,'clip-path':'url(#clip25)'});
+ }
+ if(part===1){
+  const stage=Math.min(4,step+1);
+  if($('fixed1').checked)trapez(-3,{index:'₁',fixed:true,stage,angle:stage>=2});
+  if($('fixed2').checked)trapez(1,{index:'₂',fixed:true,stage});
+ }else if(part===2){
+  if($('fixed1').checked)trapez(-3,{index:'₁',fixed:true,showLot:$('lot').checked&&step>=1});
+  if($('fixed2').checked)trapez(1,{index:'₂',fixed:true});
+ }else if(part>=3&&$('live').checked){
+  trapez(x,{showLot:$('lot').checked,index:part===4&&step>=4?'₃':'ₙ'});
+ }
+ const measure=part===0?'Wähle einen Lösungsschritt zum schrittweisen Zeichnen der Funktionsgraphen.':
+ part===1?'Die Konstruktionsschritte ergänzen die Punkte und Kanten der beiden Originaltrapeze.':
+ part===2?(step>=2?'Lotlänge AₙFₙ ≈ '+fmt(2*Math.cos(Math.PI/9))+' LE':'Zeichne zuerst das Lot von A₁ auf C₁D₁.'):
+ part===3?(step>=2?'AₙBₙ = '+fmt(f(x)-g(x))+' LE':'Die Länge AₙBₙ ergibt sich aus der Differenz der Funktionswerte.'):
+ part===4?(step>=4?'Gerundete Lösung: x ≈ 0,28 · A₃B₃ nach gerundeter Rechnung = 6,64 LE':'Leite die Gleichschenkligkeitsbedingung aus den beiden Schenkeln her.'):
+ step>=2?'Für x > −4 bleibt der Flächeninhalt unter 14,1 FE.':'Vergleiche die beiden parallelen Seiten und die konstante Trapezhöhe.';
+ $('xval').textContent=fmt(x);
+ $('measure').textContent=measure;
+ const reveal=part===4&&step>=4;
+ $('p3').style.display=reveal?'inline-block':'none';
+ $('pexact').style.display=reveal?'inline-block':'none';
+ $('roundingNote').style.display=reveal?'block':'none';
+ $('p1').style.display=part===1?'inline-block':'none';
+ $('p2').style.display=part===1?'inline-block':'none';
+ $('x').disabled=part===0||part===1||part===2;
+ $('live').disabled=part<3;
+ $('lot').disabled=part<2;
+ $('fixed1').disabled=part!==1&&part!==2;
+ $('fixed2').disabled=part!==1&&part!==2;
+}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.s[step][0];$('solution').innerHTML=t.s[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.s.length;$('prev').disabled=step===0;$('next').disabled=step===t.s.length-1;draw();if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution')]);MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)}}
+tasks.forEach((t,i)=>{
+ const b=document.createElement('button');b.textContent=t.n;
+ b.onclick=()=>{part=i;step=0;configureForPart();render()};
+ $('parts').append(b);
+});
+$('x').oninput=()=>{preciseX=null;draw()};
+['live','lot','fixed1','fixed2','asym'].forEach(id=>$(id).onchange=draw);
+for(const [id,value] of [['p1',-3],['p2',1],['p3',.28],['pexact',.24926140832455124]]){
+ $(id).onclick=()=>{preciseX=value;$('x').value=value;draw()};
+}
+$('prev').onclick=()=>{const old=step;step=Math.max(0,step-1);if(part===4&&old===4&&step===3){preciseX=null;$('x').value=previousX}render()};
+$('next').onclick=()=>{const old=step;step=Math.min(tasks[part].s.length-1,step+1);if(part===4&&old===3&&step===4){previousX=Number($('x').value);preciseX=.28;$('x').value=.28}render()};
+$('reset').onclick=()=>{step=0;preciseX=null;$('x').value=-3;render()};
+configureForPart();render();
+window.addEventListener('load',()=>{if(window.MathJax?.typesetPromise)window.MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)});
 </script></body></html>
