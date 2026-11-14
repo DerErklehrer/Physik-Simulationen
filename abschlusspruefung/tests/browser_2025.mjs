@@ -375,7 +375,20 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
    if(errs.length)issues.push(mode.label+' '+name+': '+errs.join('; '));
    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'.png',fullPage:true,animations:'disabled'});
    console.log('OK Runde '+round+' '+mode.label+' '+name+' ('+count+' Teilaufgaben)');
-  }catch(e){issues.push(mode.label+' '+name+': '+e.message);console.error('FEHLER '+mode.label+' '+name+': '+e.message)}
+  }catch(e){
+    try{
+      const diagnostic=await page.evaluate(()=>{
+        const b=document.querySelector('#next');if(!b)return {reason:'no next'};
+        const q=b.getBoundingClientRect(),x=q.left+q.width/2,y=q.top+q.height/2;
+        const onTop=document.elementFromPoint(x,y);
+        return {rect:{x:q.x,y:q.y,w:q.width,h:q.height},hit:onTop?.outerHTML.slice(0,250),scrollY:window.scrollY,scrollWidth:document.documentElement.scrollWidth,viewportWidth:window.innerWidth};
+      });
+      console.error('DIAGNOSE '+mode.label+' '+name+' '+JSON.stringify(diagnostic));
+      await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-fehler.png',fullPage:true,animations:'disabled',timeout:8000});
+    }catch(secondary){console.error('DIAGNOSE nicht möglich: '+secondary.message)}
+    issues.push(mode.label+' '+name+': '+e.message);
+    console.error('FEHLER '+mode.label+' '+name+': '+e.message);
+   }
   finally{await page.close()}
  }
  await context.close();
