@@ -52,6 +52,26 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(await visibility('outcome-only-b')!=='visible')throw Error('A1.2: zweiter Pfad falsch');
     await page.locator('#reset').click();
    }
+   if(name==='a2'){
+    await partButtons.nth(0).click();
+    if(!(await page.locator('#figure').innerText()).includes('C₁'))throw Error('A2.1: Originaldreieck C1 fehlt');
+    if((await page.locator('#figure').innerText()).includes('B₂'))throw Error('A2.1: B2 vor Konstruktion sichtbar');
+    await page.locator('#next').click();
+    if(!(await page.locator('#figure').innerText()).includes('C₂'))throw Error('A2.1: C2 im zweiten Schritt fehlt');
+    await page.locator('#next').click();
+    if(!(await page.locator('#figure').innerText()).includes('B₂'))throw Error('A2.1: B2 im letzten Schritt fehlt');
+    await partButtons.nth(1).click();
+    if(await page.locator('#intervalchoices button').count()!==6)throw Error('A2.2: nicht alle sechs Intervalle');
+    await page.locator('#intervalchoices button').nth(2).click();
+    await page.locator('#next').click();
+    if(!(await page.locator('#choicefeedback').innerText()).includes('Richtig'))throw Error('A2.2: Intervallauswertung fehlt');
+    await partButtons.nth(2).click();
+    if((await page.locator('#measure').innerText()).includes('Oberfläche'))throw Error('A2.3: Oberfläche zu früh eingeblendet');
+    for(let k=0;k<3;k++)await page.locator('#next').click();
+    if(!(await page.locator('#measure').innerText()).includes('Oberfläche'))throw Error('A2.3: Oberfläche nach Herleitung fehlt');
+    await page.locator('#preset75').click();
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-a2-dreiecke.png',fullPage:true,animations:'disabled'});
+   }
    for(const id of ['phi','length','slider','x','p']){
     const slider=page.locator('#'+id);
     if(await slider.count()){
