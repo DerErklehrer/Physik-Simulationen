@@ -8,20 +8,20 @@
 <script>
 const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg',fmt=x=>x.toFixed(2).replace('.',',');
 const T=[
-['B 2.1','1 P','Punkte Pₙ liegen auf der Strecke AD. Punkte Qₙ liegen auf der Strecke BC, wobei PₙQₙ parallel zu AB gilt. Die Dreiecke APₙE sind die Grundflächen von Prismen APₙEBQₙF. Zeichnen Sie das Prisma AP₁EBQ₁F für |AP₁| = 4 cm in das Schrägbild zu B 2.0 ein.',[
+['B 2.1','1 P','Punkte \\(P_n\\) liegen auf der Strecke \\(\\overline{AD}\\). Punkte \\(Q_n\\) liegen auf der Strecke \\(\\overline{BC}\\), wobei \\(\\overline{P_nQ_n}\\parallel\\overline{AB}\\) gilt. Die Dreiecke \\(AP_nE\\) sind die Grundflächen von Prismen \\(AP_nEBQ_nF\\). Zeichnen Sie das Prisma \\(AP_1EBQ_1F\\) für \\(\\lvert\\overline{AP_1}\\rvert=4\\,\\mathrm{cm}\\) in das Schrägbild zu B 2.0 ein.',[
 ['Punkt P₁','Trage \\( |\\overline{AP_1}|=4\\,\\mathrm{cm} \\) auf der Kante \\(AD\\) ab. Auf der rückwärts verlaufenden Schrägbildkante ist die Strecke mit \\(q=\\frac12\\) verkürzt: \\[\\frac12\\cdot4\\,\\mathrm{cm}=2\\,\\mathrm{cm}.\\] Die Kante steigt im Schrägbild unter \\(\\omega=45^\\circ\\) nach rechts oben.'],
 ['Punkt Q₁','Zeichne durch P₁ eine Parallele zu AB. Ihr Schnittpunkt mit BC ist Q₁. Dann gilt \\(\\overline{P_1Q_1}\\parallel\\overline{AB}\\).'],
 ['Prisma','Verbinde A–P₁–E und B–Q₁–F. Ergänze die drei parallelen Verbindungskanten AB, P₁Q₁ und EF. Damit ist das Dreieck A–P₁–E mit dem dazu parallelen Dreieck B–Q₁–F zum Prisma ergänzt.']]],
-['B 2.2','2 P','Die Winkel ∢AEPₙ haben das Maß φ mit 0° < φ ≤ ∢AED. Zeigen Sie, dass für das Volumen V der Prismen APₙEBQₙF in Abhängigkeit von φ gilt: V(φ) = 18 · tan φ cm³.',[
+['B 2.2','2 P','Die Winkel \\(∢AEP_n\\) haben das Maß \\(\\varphi\\) mit \\(0^\\circ<\\varphi\\leq∢AED\\). Zeigen Sie, dass für das Volumen \\(V\\) der Prismen \\(AP_nEBQ_nF\\) in Abhängigkeit von \\(\\varphi\\) gilt: \\[V(\\varphi)=18\\cdot\\tan\\varphi\\,\\mathrm{cm}^3.\\]',[
 ['Dreiecksgrundfläche','Das Dreieck APₙE ist rechtwinklig bei A. Daher gilt: \\[G=\\frac12\\cdot|\\overline{AP_n}|\\cdot|\\overline{AE}|.\\]'],
 ['Winkel ∢AEPₙ','Im Dreieck APₙE ist APₙ die Gegenkathete und AE die Ankathete zu φ. \\[\\tan\\varphi=\\frac{|\\overline{AP_n}|}{3\\,\\mathrm{cm}}.\\]'],
 ['Umstellen','Multiplikation mit \\(3\\,\\mathrm{cm}\\) ergibt \\[|\\overline{AP_n}|(\\varphi)=3\\cdot\\tan\\varphi\\,\\mathrm{cm}.\\]'],
 ['Volumen','Die Prismenhöhe ist \\(|\\overline{AB}|=4\\,\\mathrm{cm}\\). Daher \\[\\begin{aligned}V(\\varphi)&=\\frac12\\cdot3\\cdot\\tan\\varphi\\cdot3\\cdot4\\,\\mathrm{cm}^3\\\\&=\\boxed{18\\cdot\\tan\\varphi\\,\\mathrm{cm}^3}.\\end{aligned}\\]']]],
-['B 2.3','1,5 P','Das Volumen des Prismas AP₂EBQ₂F beträgt 50 cm³. Berechnen Sie das zugehörige Winkelmaß φ.',[
+['B 2.3','1,5 P','Das Volumen des Prismas \\(AP_2EBQ_2F\\) beträgt \\(50\\,\\mathrm{cm}^3\\). Berechnen Sie das zugehörige Winkelmaß \\(\\varphi\\).',[
 ['Einsetzen','\\[50\\,\\mathrm{cm}^3=18\\cdot\\tan\\varphi\\,\\mathrm{cm}^3\\]'],
 ['Umformen','Teile durch \\(18\\,\\mathrm{cm}^3\\): \\[\\tan\\varphi=\\frac{50}{18}=\\frac{25}{9}.\\]'],
 ['Winkel berechnen','\\[\\varphi=\\arctan\\left(\\frac{25}{9}\\right)\\approx\\boxed{70{,}20^\\circ}.\\] Der Wert liegt im zulässigen Winkelintervall.']]],
-['B 2.4','2 P','Gibt es unter den Prismen APₙEBQₙF ein Prisma AP₃EBQ₃F, dessen Volumen mehr als halb so groß ist wie das Volumen des Quaders ABCDEFGH? Begründen Sie Ihre Entscheidung.',[
+['B 2.4','2 P','Gibt es unter den Prismen \\(AP_nEBQ_nF\\) ein Prisma \\(AP_3EBQ_3F\\), dessen Volumen mehr als halb so groß ist wie das Volumen des Quaders \\(ABCDEFGH\\)? Begründen Sie Ihre Entscheidung.',[
 ['Quadervolumen','\\[V_Q=4\\cdot10\\cdot3\\,\\mathrm{cm}^3=120\\,\\mathrm{cm}^3.\\] Die Hälfte beträgt \\(60\\,\\mathrm{cm}^3\\).'],
 ['Größtes Prisma','Pₙ liegt auf AD, also ist \\(|\\overline{AP_n}|\\leq10\\,\\mathrm{cm}\\). Das größte Prisma erhält man für \\(P_0=D\\).'],
 ['Maximales Volumen','\\[V_{\\max}=\\frac12\\cdot10\\cdot3\\cdot4\\,\\mathrm{cm}^3=60\\,\\mathrm{cm}^3.\\]'],
