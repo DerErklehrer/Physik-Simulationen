@@ -49,6 +49,8 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
      await page.locator('.tree-scroll').evaluate(el=>{el.scrollLeft=el.scrollWidth});
      const right=await page.locator('.tree-scroll').evaluate(el=>el.scrollLeft);
      if(right<100)throw Error('B1 mobil: horizontale Bedienung blockiert');
+     await page.screenshot({path:OUT+'/r'+round+'-mobile-b1-rechts.png',fullPage:true,animations:'disabled'});
+     await page.locator('.tree-scroll').evaluate(el=>{el.scrollLeft=0});
     }
     if((await current()).includes('30 − p'))throw Error('B1.1: Anteil weiß zu früh sichtbar');
     await page.locator('#choices input[value="2"]').check();
