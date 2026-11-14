@@ -58,7 +58,7 @@ test('B2: korrekte Schrägbildachsen',contents.b2.includes('depth=200/Math.sqrt(
 test('B2: 3D-Modul eingebunden',contents.b2.includes('raumgeometrie3d.js'));
 test('A2: 3D-Modul eingebunden',contents.a2.includes('raumgeometrie3d.js'));
 test('B3: Rundungshinweis',contents.b3.includes('Rundungshinweis B 3.5'));
-test('B4: Rundungshinweis',contents.b4.includes('Rundungshinweis zu B 4.3'));
+test('B4: Rundungshinweis',contents.b4.includes('Zwischenrundung in B 4.3')&&contents.b4.includes("$('rounding').style.display=canP3"));
 const rad=x=>x*Math.PI/180;
 for(const x of [-3,0.28,1,2.1]){
  const f=-3*Math.pow(.5,x+4)+3,g=2*Math.pow(.5,x+3)-4;
@@ -133,5 +133,41 @@ const exactSlope=x=>{const dx=x+3,dy=.5*x+7;return .5*(-s*dx+c*dy)-.25*(c*dx+s*d
 const exactRoot=-exactSlope(0)/(exactSlope(1)-exactSlope(0));
 close('B4: geometrisch exakter Sonderfall',exactRoot,.04371580741452434);
 close('B4: offizieller Sonderfall mit gerundeten Koeffizienten',.04/.405,.10,.005);
+// B4: unabhängige vollständige Koordinaten-/Winkel-/Flächenprüfung.
+const r40=40*Math.PI/180,c40=Math.cos(r40),s40=Math.sin(r40);
+function b4Shape(x){
+ const A={x:-3,y:-2},D={x,y:.5*x+5},dx=D.x-A.x,dy=D.y-A.y;
+ const B={x:A.x+.5*(c40*dx+s40*dy),y:A.y+.5*(-s40*dx+c40*dy)};
+ const C={x:B.x+dx,y:B.y+dy};return {A,B,C,D,dx,dy};
+}
+for(const x of [-5.5,-5.2,-4.5,-3,.04371580741452434,.1,1,2,2.2]){
+ const {A,B,C,D,dx,dy}=b4Shape(x);
+ const len=Math.hypot(dx,dy),bx=B.x-A.x,by=B.y-A.y;
+ close('B4: D auf g @x='+x,D.y,.5*D.x+5);
+ close('B4: Parallelogramm AB=DC @x='+x,Math.hypot(C.x-D.x-bx,C.y-D.y-by),0);
+ close('B4: Parallelogramm BC=AD @x='+x,Math.hypot(C.x-B.x-dx,C.y-B.y-dy),0);
+ close('B4: AB=0,5AD @x='+x,Math.hypot(bx,by),.5*len);
+ const cross=bx*dy-by*dx,dot=bx*dx+by*dy;
+ close('B4: ∢BAD=40° @x='+x,Math.atan2(cross,dot)*180/Math.PI,40,1e-9);
+ const F=Math.abs(cross);
+ close('B4: Formel F=0,5AD²sin40 @x='+x,F,.5*len*len*s40,1e-8);
+}
+close('B4: Ortsvektor A',b4Shape(-5.2).A.x,-3);
+close('B4: Sonderpunkt D1',b4Shape(-4.5).D.y,2.75);
+close('B4: Sonderpunkt D2',b4Shape(2).D.y,6);
+close('B4: D0',b4Shape(-5.2).D.y,2.4);
+close('B4: AB-Rundung x-Koeffizient',.5*(c40+.5*s40),.55,.005);
+close('B4: AB-Rundung y-Koeffizient',.5*(-s40+.5*c40),-.13,.005);
+close('B4: AB-Rundung x-Achsenabschnitt',.5*(3*c40+7*s40),3.4,.005);
+close('B4: AB-Rundung y-Achsenabschnitt',.5*(-3*s40+7*c40),1.74,.005);
+close('B4: gerundete Steigungsbedingung',(-.13*.04/.405+1.74)/(.55*.04/.405+3.40),.5,.00001);
+close('B4: Senkrechtbedingung D0',(-5.2+3)+.5*(.5*-5.2+7),0);
+test('B4: originalgetreue Vektoraufgabe',contents.b4.includes('\\\\overrightarrow{AB_n}'));
+test('B4: vier Konstruktionsstufen B4.1',contents.b4.includes('const stage=step;'));
+test('B4: B4.3 ohne Vorwegnehmen',contents.b4.includes('canP3=part===2&&step>=3'));
+test('B4: B4.4 ohne Vorwegnehmen',contents.b4.includes('part===3&&step>=3'));
+test('B4: Rechtwinkelsymbol Viertelkreis und Punkt',contents.b4.includes("data-right-angle':'quarter-arc'")&&contents.b4.includes("data-right-angle':'center-dot'"));
+test('B4: mobile Gesamtübersicht',contents.b4.includes("classList.toggle('overview')"));
+
 console.log('2025: '+checked+' statische und mathematische Prüfungen erfolgreich.');
 console.log('NICHT geprüft: ISB-Wortlaut, sämtliche visuelle Darstellungen, echte Browserlaufzeit, MathJax/Three.js im Browser, Mobile/Touch. Keine Freigabe.');
