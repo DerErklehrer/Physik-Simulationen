@@ -57,7 +57,11 @@ function trapez(x,{index='ₙ',fixed=false,stage=4,showLot=false,angle=false}={}
   seg([X(a.x),Y(a.y)],[X(F.x),Y(F.y)],'#198576',2.5,'5 3');
   el('circle',{cx:X(F.x),cy:Y(F.y),r:3,fill:'#198576'});
   el('text',{x:X(F.x)+7,y:Y(F.y)+15,'font-size':15,fill:'#198576'},'F'+index);
-  el('path',{d:'M'+(X(F.x)-12)+' '+Y(F.y)+'v12h12',stroke:'#198576','stroke-width':1.7,fill:'none'});
+  // Rechtwinkelsymbol: Viertelkreisbogen im Winkel zwischen F_nA_n (links) und F_nD_n (oben).
+  // Punkt mittig auf der Winkelhalbierenden in halbem Bogenradius.
+  const fx=X(F.x),fy=Y(F.y),radius=16;
+  el('path',{d:'M'+(fx-radius)+' '+fy+' A'+radius+' '+radius+' 0 0 1 '+fx+' '+(fy-radius),stroke:'#198576','stroke-width':2,fill:'none','data-right-angle':'quarter-arc'});
+  el('circle',{cx:fx-radius/(2*Math.sqrt(2)),cy:fy-radius/(2*Math.sqrt(2)),r:2.5,fill:'#198576','data-right-angle':'center-dot'});
  }
 }
 let preciseX=null,previousX=-3;
