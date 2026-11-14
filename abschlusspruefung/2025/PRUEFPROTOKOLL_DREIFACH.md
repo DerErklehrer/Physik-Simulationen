@@ -108,6 +108,10 @@
 - **Sichtprüfung:** Die finalen Screenshots `r3-desktop-a3-loesung.png` und `r3-mobile-a3-loesung.png` wurden tatsächlich geöffnet und auf überlappende Texte, sichtbare Winkel, korrekte Punktbeschriftungen und Lesbarkeit kontrolliert. Keine weitere Überlagerung festgestellt. Alle Screenshots liegen im Actions-Artefakt `mathematik-2025-browserkontrolle` (ID `14113189159`).
 - **Geltungsbereich der Aussage:** Dies belegt die nachbearbeiteten A3-Rechnungen, Geometrie und Technik. Die eigenständige dreifache vollständige Abnahme aller neun Kategorien für den *gesamten* Jahrgang 2025 ist weiterhin offen. A 3 ist **zur Nutzersichtung bereit**, aber nicht ausdrücklich freigegeben.
 
+### B 1 – ausdrückliche Nutzerfreigabe, 14.11.2026
+
+**Der Nutzer hat B 1 ausdrücklich mit „Passt so, nächste“ freigegeben.** Die Abnahme umfasst die überarbeitete interaktive Lernseite mit zwölfendigem Baumdiagramm, schrittweisem Lösungsaufbau und Mobil-/Gesamtansicht. Der vorherige technische Dreifachlauf war erfolgreich (GitHub Actions 43595699443); die bewusste dynamische Neuzeichnung statt eines identischen Druckfaksimiles bleibt dokumentiert.
+
 ## Einzelprüfung 2025 B 1 – Daten und Zufall (14.11.2026)
 
 **Amtlicher Originalabgleich:** Mathematik I Haupttermin 2025, Prüfungs-PDF, erste Seite der Aufgabengruppe B, B 1.0 bis B 1.3, mit Bildvergleich gegen das vierstufige Farbstamm- und zwölfendige Geschmacks-Baumdiagramm; amtliches Lösungsmuster, Seite 2. Überprüfung von Wortlaut, Operatoren, Bezeichnungen, vier Antwortmöglichkeiten, Prozentanteilen, Aufgabenreihenfolge und Punktwerten: **B 1.1 = 1 P, B 1.2 = 1,5 P, B 1.3 = 2,5 P, zusammen 5 P**.
