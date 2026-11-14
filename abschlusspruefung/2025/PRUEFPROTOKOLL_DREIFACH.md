@@ -137,6 +137,10 @@
 - **Originaltreue:** Aufgabenstellungen, Operatoren und Anteile stimmen mit dem amtlichen B1-Blatt überein. Das Baumdiagramm ist als farbige dynamische SVG-Neuzeichnung ausgeführt (kein identisches Druckfaksimile); die mathematische Struktur und alle 12 Pfade stimmen. Es werden keine amtlichen Dokument-PDFs verlinkt.
 - **Restgrenzen:** Die drei automatisierten Durchläufe sind kein unabhängiger dreifacher menschlicher Wort-für-Wort-Abgleich aller neun Prüfkategorien. Deshalb wird die technische Prüfung als bestanden dokumentiert und die **ausdrückliche Nutzerfreigabe von B 1 noch offengelassen**.
 
+### Nutzerfreigaben A 2 und B 2 – 14.11.2026
+
+Der Nutzer hat **A 2** und **B 2** ausdrücklich genehmigt. Diese Freigaben gelten für die jeweils dokumentierten interaktiven Lernseiten nach der fachlichen Überarbeitung und erfolgreichen dreifachen technischen Regression. Der frühere Hinweis „noch keine ausdrückliche Nutzerfreigabe“ ist für diese beiden Einzelseiten damit überholt; offene Vollabgleiche des gesamten Jahrgangs bleiben gesondert bestehen.
+
 ## Einzelprüfung 2025 B 2 – Raumgeometrie (14.11.2026)
 
 **Amtlicher Abgleich:** Originalprüfung Mathematik I Haupttermin 2025, Aufgabengruppe B, B 2.0–B 2.4, PDF-Seite 7 (Seitenindex 6); Lösungsmuster PDF-Seite 2 und 3 (Seitenindizes 1–2). Originalabbildung und Lösungsskizze wurden tatsächlich als PDF-Screenshots angesehen und mit den neu gerenderten 2D-/3D-Screenshots verglichen. Die vier Aufgabenwerte und Bewertungen **1 P + 2 P + 1,5 P + 2 P = 6,5 P** stimmen mit dem Muster überein.
