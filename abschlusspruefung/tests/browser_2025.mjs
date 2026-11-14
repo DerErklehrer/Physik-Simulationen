@@ -62,6 +62,10 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(await page.locator('#p20').isVisible())throw Error('B1.2: p=20 vorzeitig verraten');
     if((await current()).includes('p = 20'))throw Error('B1.2: Lösung in Messwert vorweggenommen');
     await page.locator('#next').click();await page.locator('#next').click();
+    if(await page.locator('#p').inputValue()!=='20')throw Error('B1.2: Baumdiagramm nach dem letzten Rechenschritt nicht auf p=20 synchronisiert');
+    await page.locator('#prev').click();
+    if(await page.locator('#p').inputValue()!=='15')throw Error('B1.2: Beispielwert nach Zurückblättern nicht wiederhergestellt');
+    await page.locator('#next').click();
     if(!(await page.locator('#p20').isVisible()))throw Error('B1.2: Lösungswert nicht freigeschaltet');
     await page.locator('#p20').click();
     if(await page.locator('#p').inputValue()!=='20')throw Error('B1.2: Voreinstellung liefert nicht p=20');
