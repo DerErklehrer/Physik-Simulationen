@@ -20,7 +20,7 @@ function geom(x){const A={x:-3,y:-2},D={x,y:.5*x+5},dx=D.x-A.x,dy=D.y-A.y;
  const B={x:A.x+.5*(cs*dx+sn*dy),y:A.y+.5*(-sn*dx+cs*dy)};
  const C={x:B.x+dx,y:B.y+dy};return {A,B,C,D,dx,dy,length:Math.hypot(dx,dy),area:.5*(dx*dx+dy*dy)*sn};}
 const tasks=[
-{n:'B 4.1',p:'3 P',q:'Zeichnen Sie die Gerade g sowie die Parallelogramme AB₁C₁D₁ für x = −4,5 und AB₂C₂D₂ für x = 2 in ein Koordinatensystem. Für die Zeichnung: Längeneinheit 1 cm; −6 ≤ x ≤ 7; −2 ≤ y ≤ 9.',steps:[
+{n:'B 4.1',p:'3 P',q:'Zeichnen Sie die Gerade \\(g\\) sowie die Parallelogramme \\(AB_1C_1D_1\\) für \\(x=-4{,}5\\) und \\(AB_2C_2D_2\\) für \\(x=2\\) in ein Koordinatensystem. Für die Zeichnung: Längeneinheit \\(1\\,\\mathrm{cm}\\); \\(-6\\leq x\\leq7\\); \\(-2\\leq y\\leq9\\).',steps:[
 ['Gerade g einzeichnen','Die Gerade \\(g:y=0{,}5x+5\\) verläuft beispielsweise durch \\( (0\\mid5) \\) und \\( (2\\mid6) \\). Trage diese Punkte ein und verbinde sie.'],
 ['Punkte D₁ und D₂','Setze die Abszissen ein: \\(D_1(-4{,}5\\mid2{,}75)\\) und \\(D_2(2\\mid6)\\). Der feste Punkt ist \\(A(-3\\mid-2)\\).'],
 ['Punkte B₁ und B₂','Trage von A aus jeweils einen Schenkel im Winkel \\(40^\\circ\\) im Uhrzeigersinn zur Strecke \\(AD_n\\) ab. Auf diesem Schenkel gilt \\(|\\overline{AB_n}|=0{,}5\\cdot|\\overline{AD_n}|\\).'],
@@ -30,17 +30,17 @@ const tasks=[
 ['Drehung und Halbierung','Aus \\(\\sphericalangle B_nAD_n=40^\\circ\\) und dem Längenverhältnis folgt: \\[\\overrightarrow{AB_n}=\\frac12\\begin{pmatrix}\\cos40^\\circ&\\sin40^\\circ\\\\-\\sin40^\\circ&\\cos40^\\circ\\end{pmatrix}\\cdot\\begin{pmatrix}x+3\\\\0{,}5x+7\\end{pmatrix}.\\]'],
 ['Komponenten einzeln bestimmen','\\[\\begin{aligned}AB_{n,x}&=\\frac12\\bigl[(x+3)\\cos40^\\circ+(0{,}5x+7)\\sin40^\\circ\\bigr],\\\\AB_{n,y}&=\\frac12\\bigl[-(x+3)\\sin40^\\circ+(0{,}5x+7)\\cos40^\\circ\\bigr].\\end{aligned}\\]'],
 ['Vorgegebenes Rundungsergebnis','Mit den auf zwei Dezimalstellen gerundeten Werten \\(\\cos40^\\circ\\approx0{,}77\\) und \\(\\sin40^\\circ\\approx0{,}64\\) erhält man entsprechend dem offiziellen Ergebnis: \\[\\boxed{\\overrightarrow{AB_n}(x)=\\begin{pmatrix}0{,}55x+3{,}40\\\\-0{,}13x+1{,}74\\end{pmatrix}}.\\] <em>Hinweis:</em> Die Koeffizienten hängen von der gewählten Zwischenrundung ab; die dynamische Zeichnung verwendet ungerundete Winkelfunktionen.']]},
-{n:'B 4.3',p:'3 P',q:'Die Seite D₃C₃ des Parallelogramms AB₃C₃D₃ liegt auf der Geraden g. Berechnen Sie die Koordinaten des Punktes D₃.',steps:[
+{n:'B 4.3',p:'3 P',q:'Die Seite \\(\\overline{D_3C_3}\\) des Parallelogramms \\(AB_3C_3D_3\\) liegt auf der Geraden \\(g\\). Berechnen Sie die Koordinaten des Punktes \\(D_3\\).',steps:[
 ['Parallelität untersuchen','Weil die Seite \\(D_3C_3\\) auf g liegt und im Parallelogramm parallel zu \\(AB_3\\) ist, muss \\(\\overrightarrow{AB_3}\\) parallel zur Geraden \\(g\\) verlaufen. Die Steigung ist \\(m_g=0{,}5\\).'],
 ['Steigung als Quotient','Mit den im Aufgabentext angegebenen gerundeten Pfeilkoordinaten aus B 4.2 folgt: \\[\\frac{-0{,}13x+1{,}74}{0{,}55x+3{,}40}=0{,}5.\\]'],
 ['Gleichung lösen','\\[-0{,}13x+1{,}74=0{,}275x+1{,}70\\] \\[0{,}04=0{,}405x\\quad\\Rightarrow\\quad x\\approx0{,}10.\\]'],
 ['Koordinaten bestimmen','Setze die gerundete Abszisse in \\(g\\) ein: \\[y=0{,}5\\cdot0{,}10+5=5{,}05.\\] \\[\\boxed{D_3(0{,}10\\mid5{,}05)}.\\] Der Wert stimmt mit dem angegebenen Lösungsergebnis überein.']]},
-{n:'B 4.4',p:'2,5 P',q:'Unter den Strecken ADₙ hat die Strecke AD₀ die minimale Länge. Bestimmen Sie rechnerisch die x-Koordinate des Punktes D₀.',steps:[
+{n:'B 4.4',p:'2,5 P',q:'Unter den Strecken \\(\\overline{AD_n}\\) hat die Strecke \\(\\overline{AD_0}\\) die minimale Länge. Bestimmen Sie rechnerisch die \\(x\\)-Koordinate des Punktes \\(D_0\\).',steps:[
 ['Kürzester Abstand','Von einem Punkt zu einer Geraden ist der senkrechte Abstand am kürzesten. Deshalb gilt \\(\\overrightarrow{AD_0}\\perp g\\).'],
 ['Richtungsvektor und Skalarprodukt','Ein Richtungsvektor von g ist \\(\\begin{pmatrix}1\\\\0{,}5\\end{pmatrix}\\). Für die Senkrechte gilt: \\[\\begin{pmatrix}x+3\\\\0{,}5x+7\\end{pmatrix}\\cdot\\begin{pmatrix}1\\\\0{,}5\\end{pmatrix}=0.\\]'],
 ['Ausmultiplizieren','\\[(x+3)\\cdot1+(0{,}5x+7)\\cdot0{,}5=0\\] \\[1{,}25x+6{,}5=0.\\]'],
 ['Ergebnis','\\[\\boxed{x=-5{,}20}\\] Also \\(D_0(-5{,}20\\mid2{,}40)\\). Die Voreinstellung „D₀“ markiert die kürzeste Lage.']]},
-{n:'B 4.5',p:'2 P',q:'Begründen Sie, weshalb das Parallelogramm AB₀C₀D₀ unter den Parallelogrammen ABₙCₙDₙ den minimalen Flächeninhalt hat.',steps:[
+{n:'B 4.5',p:'2 P',q:'Begründen Sie, weshalb das Parallelogramm \\(AB_0C_0D_0\\) unter den Parallelogrammen \\(AB_nC_nD_n\\) den minimalen Flächeninhalt hat.',steps:[
 ['Flächenformel','Der Flächeninhalt eines Parallelogramms mit den benachbarten Seiten \\(AB_n\\) und \\(AD_n\\) ist \\[F_n=|\\overline{AB_n}|\\cdot|\\overline{AD_n}|\\cdot\\sin40^\\circ.\\]'],
 ['Längenverhältnis einsetzen','Da \\(|\\overline{AB_n}|=0{,}5\\cdot|\\overline{AD_n}|\\), gilt \\[F_n=0{,}5\\cdot|\\overline{AD_n}|^2\\cdot\\sin40^\\circ.\\]'],
 ['Minimum begründen','Der Faktor \\(0{,}5\\cdot\\sin40^\\circ\\) ist positiv und konstant. Daher wird der Flächeninhalt genau dann minimal, wenn \\(|\\overline{AD_n}|\\) minimal ist. Das ist bei \\(D_0\\) der Fall. \\(\\boxed{F_0=F_{\\min}}\\).']]}];
