@@ -214,6 +214,12 @@ Der Nutzer hat **A 2** und **B 2** ausdrücklich genehmigt. Diese Freigaben gelt
 
 **Abnahmegrenze:** B 4 bleibt bis zur expliziten Nutzerfreigabe eine bearbeitete Lernseite. Die dreifache *automatisierte* Testmatrix ersetzt nicht drei unabhängig dokumentierte menschliche Durchgänge in allen neun Qualitätskategorien.
 
+### Wiederaufnahme nach 2026-Notationsexkurs (14.11.2026)
+
+- Die sieben eigenständigen 2025-Aufgabenseiten sind weiterhin auf GitHub vorhanden; sechs davon (A1, A2, A3, B1, B2, B3) wurden vom Nutzer ausdrücklich einzeln genehmigt. **B4 wartet unverändert auf die ausdrückliche Nutzerfreigabe.**
+- Der neue verbindliche ISB-Standard unterscheidet geometrische Strecken `\\overline{AB}`, Streckenlängen `|\\overline{AB}|` und Vektoren `\\overrightarrow{AB}`. Die bestehende 2025-Geometrie wurde auf diese Pflichtkategorie quergelesen; der reproduzierbare statische Test wurde für A2, A3, B2, B3 und B4 erweitert.
+- Der nach dieser Testerweiterung gestartete GitHub-Actions-Lauf ist **kein** Nachweis der noch offenen drei vollständigen Durchgänge über alle neun Kategorien. Die fachliche und grafische ISB-Endabnahme bleibt weiterhin notwendig.
+
 ## Offene Freigabesperren, in dieser Reihenfolge lösen
 
 1. **ISB-Originaltreue**: Für **alle 26 Teilaufgaben** Wortlaut, Zeichnung, Achsen, Operatoren, Punkteangaben, Graphen, Parameter- und Rundungsbedingungen Zeile für Zeile dokumentiert mit Original abgleichen. Besonders verkürzte Texte der eigenständigen Seiten dürfen nicht als „Originaltext“ deklariert werden, sofern sie nur sinngemäß sind.
