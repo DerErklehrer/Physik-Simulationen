@@ -50,10 +50,10 @@ function draw(){
   if(phase>=2)line(P,Q,'#a32b4d',2.8);
  }
  const idx=construction?'₁':part===2&&step>=2?'₂':part===3&&step>=3?'₀':'ₙ';
- const names=[[A,'A'],[B,'B'],[C,n>9.9?'C = Q'+idx:'C'],[D,n>9.9?'D = P'+idx:'D'],[E,'E'],[F,'F'],[G,'G'],[H,'H']];
+ const names=[[A,'A'],[B,'B'],[C,Math.abs(n-10)<1e-7?'C = Q'+idx:'C'],[D,Math.abs(n-10)<1e-7?'D = P'+idx:'D'],[E,'E'],[F,'F'],[G,'G'],[H,'H']];
  for(const [pt,t] of names)label(pt,t);
- if(phase>=1&&n<9.9)shape('text',{x:P[0]-14,y:P[1]+26,'font-size':19,fill:'#a32b4d'},'P'+idx);
- if(phase>=2&&n<9.9)shape('text',{x:Q[0]+11,y:Q[1]+26,'font-size':19,fill:'#a32b4d'},'Q'+idx);
+ if(phase>=1&&Math.abs(n-10)>=1e-7)shape('text',{x:P[0]-14,y:P[1]+26,'font-size':19,fill:'#a32b4d'},'P'+idx);
+ if(phase>=2&&Math.abs(n-10)>=1e-7)shape('text',{x:Q[0]+11,y:Q[1]+26,'font-size':19,fill:'#a32b4d'},'Q'+idx);
  $('lengthvalue').textContent=fmt(n)+' cm';
  const phi=Math.atan(n/3)*180/Math.PI;
  const revealAngle=part===1&&step>=2||part===2&&step>=2;
