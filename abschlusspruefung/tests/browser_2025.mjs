@@ -38,6 +38,39 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(after.length<10)throw Error('Leerer Schritt nach Weiter, Teil '+(i+1));
     await page.locator('#reset').click();
    }
+   if(name==='b1'){
+    const current=()=>page.locator('#stats').innerText();
+    await partButtons.nth(0).click();
+    if(await page.locator('#choices input').count()!==4)throw Error('B1.1: vier Antwortmöglichkeiten fehlen');
+    if((await current()).includes('30 − p'))throw Error('B1.1: Anteil weiß zu früh sichtbar');
+    await page.locator('#choices input[value="2"]').check();
+    if((await page.locator('#choicefeedback').innerText()).includes('Richtig'))throw Error('B1.1: Ergebnis vorzeitig bestätigt');
+    await page.locator('#next').click();await page.locator('#next').click();
+    if(!(await page.locator('#choicefeedback').innerText()).includes('Richtig'))throw Error('B1.1: korrekte Auswahl wird nicht bestätigt');
+    if(!(await current()).includes('30 − p'))throw Error('B1.1: Restanteil nach Rechnung fehlt');
+    await partButtons.nth(1).click();
+    if(await page.locator('#p20').isVisible())throw Error('B1.2: p=20 vorzeitig verraten');
+    if((await current()).includes('p = 20'))throw Error('B1.2: Lösung in Messwert vorweggenommen');
+    await page.locator('#next').click();await page.locator('#next').click();
+    if(!(await page.locator('#p20').isVisible()))throw Error('B1.2: Lösungswert nicht freigeschaltet');
+    await page.locator('#p20').click();
+    if(await page.locator('#p').inputValue()!=='20')throw Error('B1.2: Voreinstellung liefert nicht p=20');
+    await partButtons.nth(2).click();
+    if((await current()).includes('56 %'))throw Error('B1.3: 56 % vorzeitiges Ergebnis');
+    await page.locator('#next').click();
+    if((await current()).includes('56 %'))throw Error('B1.3: 56 % vor Summierung gezeigt');
+    await page.locator('#next').click();
+    if(!(await current()).includes('56 %'))throw Error('B1.3: 56 % nach Summierung fehlt');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b1-loesung.png',fullPage:true,animations:'disabled'});
+    await page.locator('#reset').click();
+    if((await current()).includes('56 %'))throw Error('B1.3: Ergebnis trotz Reset sichtbar');
+    const slider=page.locator('#p');
+    for(const v of ['0.5','10','29.5']){
+      await slider.evaluate((e,val)=>{e.value=val;e.dispatchEvent(new Event('input',{bubbles:true}))},v);
+      if((await current()).includes('NaN'))throw Error('B1: unzulässige numerische Ausgabe bei p='+v);
+    }
+    await page.locator('#resetp').click();
+   }
    if(name==='a1'){
     const visibility=async id=>page.locator('#'+id).getAttribute('visibility');
     await partButtons.nth(0).click();
