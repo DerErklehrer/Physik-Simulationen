@@ -26,6 +26,8 @@ Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, 
 
 **Einzelfreigabe 2025 A 1 (14.11.2026):** Vom Nutzer ausdrücklich als interaktive Lernseite freigegeben. Die Original-Gebäudefotografie fehlt bewusst; die vollständige dreifache Prüfung der Bildidentität wird daher nicht als bestanden ausgewiesen. Letzter technischer Regressionstest zum freigegebenen A1-Stand: [erfolgreich](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43569427160). Die Gesamtfreigabe 2025 bleibt offen.
 
+**Querschnittskorrektur 2026 – Streckenlängenschreibweise (14.11.2026):** Die bayerische ISB-Schreibweise wurde anhand der amtlichen Haupttermin-Angaben und des Lösungsmusters 2026 für alle acht Prüfungsseiten nachgeprüft. In den Aufgaben A1, A4, B1, B2 und B3 fehlende Betragsstriche in Längenangaben/-formeln korrigiert; bloß benannte Strecken/Diagonalen behalten ihren Überstrich ohne Betrag, Vektoren ihren Pfeil. A4: Die amtlich eingeschlossene Winkelobergrenze 90° zusätzlich in Angabe, Lösung und Regler umgesetzt. Verbindliche Regel in [QUALITAETSSTANDARD.md](QUALITAETSSTANDARD.md) aufgenommen. Eigene [2026-Regressionsprüfung](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43615919164): drei Durchläufe, jeweils **67 statische, syntaktische und ISB-Schreibweisenkontrollen bestanden**. Dies ist **keine** dreifache Vollabnahme aller neun Qualitätskategorien.
+
 ## Bestand und Abgleich
 | Jahrgang | Vorhandener Webstand | Vergleich mit Referenz 2026 | Freigabe |
 |---|---|---|---|
