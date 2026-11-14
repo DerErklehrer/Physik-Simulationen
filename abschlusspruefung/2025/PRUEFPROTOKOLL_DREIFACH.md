@@ -222,13 +222,17 @@ Der Nutzer hat **A 2** und **B 2** ausdrücklich genehmigt. Diese Freigaben gelt
 
 ### Teilabschluss: erneuter ISB-Abgleich und vollständige technische Regression (14.11.2026)
 
-- **Originaltreue:** Die amtlichen Aufgabenblätter 2025 A1.0–A3.2 sowie B1.0–B1.3 einschließlich der relevanten Seitenzeichnungen erneut als PDF-Screenshots gelesen. A1.0 wurde wörtlich von der verkürzten Formulierung „Wohnungs- und einen kleinen Briefkastenschlüssel“ auf den amtlichen vollständigen Ausdruck „Wohnungsschlüssel und einen kleinen Briefkastenschlüssel“ korrigiert. In A2.3 und A2.4 wurde die ursprüngliche Aufgabenformel und Aufgabenformulierung in MathJax-konformer Schreibweise ergänzt. A3 und B1 ergaben beim erneuten Textvergleich keine weiteren entsprechenden Abweichungen.
+- **Originaltreue:** Die amtlichen Aufgabenblätter 2025 A1.0–A3.2 sowie B1.0–B1.3 einschließlich der relevanten Seitenzeichnungen erneut als PDF-Screenshots gelesen. A1.0 wurde nach genauer Sichtung des gedruckten Originalbogens **endgültig auf „einen großen Wohnungs- und einen kleinen Briefkastenschlüssel“ korrigiert**. Die extrahierte PDF-Textfassung mit „Wohnungsschlüssel“ ist an dieser Stelle nicht maßgeblich. In A2.3 und A2.4 wurde die ursprüngliche Aufgabenformel und Aufgabenformulierung in MathJax-konformer Schreibweise ergänzt. A3 und B1 ergaben beim erneuten Textvergleich keine weiteren entsprechenden Abweichungen.
 - **Regressionssicherung:** Der statische Test verlangte zunächst den **alten, verkürzten** A1-Wortlaut und scheiterte deshalb nachvollziehbar. Der Test ist nun auf den tatsächlich amtlichen Wortlaut umgestellt. [Erfolgreicher abschließender Lauf 43616823042](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43616823042): **3/3 statische/mathematische Durchläufe und 42/42 Chromium-Testfälle bestanden (3 Wiederholungen × 7 Aufgaben × 2 Geräteansichten)**. Zusätzliche statische Streckenlängen- und Vektortests für 2025 bestanden ebenfalls.
 - **Abgrenzung:** Die erfolgreiche technische Regression bestätigt die Funktionsfähigkeit der neuen A1/A2-Korrekturen, aber ist kein vollständiger dreimaliger unabhängiger Original-, Grafik-, didaktischer und Touch-Abgleich aller neun Qualitätskategorien des Jahrgangs. Für die noch ausstehenden Teile bleiben die Freigabesperren unten maßgeblich. B4 ist vom Nutzer ausdrücklich als Einzelseite freigegeben.
 
 ### Nutzerfreigabe B4 – 14.11.2026
 
 Der Nutzer hat mit **„B4 passt“** die interaktive Lernseite **2025 B4** ausdrücklich freigegeben. Damit sind **alle sieben Einzelseiten des Jahrgangs 2025** vom Nutzer abgenommen. Die übergreifende dreifache Vollkontrolle sämtlicher neun Qualitätskategorien ist davon getrennt und weiterhin offen.
+
+### Korrektur zum Verlauf des A1-Quellenabgleichs
+
+**Maßgeblich ist der visuell geprüfte Druckbogen.** Er enthält „Wohnungs- und einen kleinen Briefkastenschlüssel“. Eine Zwischenkorrektur aufgrund der fehlerhaften PDF-Texttranskription wurde am 14.11.2026 zurückgenommen. Der aktuelle Quellcode und der A1-Regressionstest verwenden den gedruckten Wortlaut. Frühere widersprechende Zwischenstände in der Git-Historie sind damit überholt.
 
 ## Offene Freigabesperren, in dieser Reihenfolge lösen
 
