@@ -26,7 +26,7 @@ verify('A1: Pythagoras-Längenbetrag',files.a1.includes('\\lvert\\overline{AB}\\
 verify('A4: Sinussatz mit Länge APn',files.a4.includes('\\frac{\\lvert\\overline{AP_n}\\rvert}{\\sin\\varphi}'));
 verify('A4: obere Winkelgrenze eingeschlossen',files.a4.includes(']0^\\circ;90^\\circ]')&&files.a4.includes('\\leq90^\\circ'));
 verify('B1: Grundseitenlänge |AD|',files.b1.includes('\\\\lvert\\\\overline{AD}\\\\rvert=3{,}5'));
-verify('B2: Sinus/Tangens-Streckenlängen',files.b2.includes('\\frac{\\lvert\\overline{B_nM}\\rvert}{\\lvert\\overline{MC}\\rvert}'));
+verify('B2: Sinus/Tangens-Streckenlängen',files.b2.includes('\\\\frac{\\\\lvert\\\\overline{B_nM}\\\\rvert}{\\\\lvert\\\\overline{MC}\\\\rvert}'));
 verify('B3: Diagonalenlänge als Längenfunktion',files.b3.includes('\\\\lvert\\\\overline{A_nC_n}\\\\rvert(x)'));
 verify('B3: Kreisdurchmesser mit Betrag',files.b3.includes('d_n=\\\\lvert\\\\overline{A_nC_n}\\\\rvert'));
 verify('B3: benannte Diagonale ohne Betrag',files.b3.includes('Die Diagonale \\\\(\\\\overline{A_3C_3}\\\\) liegt'));
