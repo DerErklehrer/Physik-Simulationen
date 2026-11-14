@@ -3,7 +3,7 @@
 <style>:root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:#fff;padding:16px max(18px,calc((100vw - 1200px)/2));font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted{color:#64748b}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:17px;min-width:0}.grid{display:grid;grid-template-columns:minmax(300px,1.17fr) minmax(300px,1fr);gap:16px;margin-top:16px}button{font:inherit;cursor:pointer;background:white;border:1px solid #b9c4d1;border-radius:8px;padding:9px 12px;color:#253341}button.active{background:#8e2948;color:white;border-color:#8e2948}button:disabled{opacity:.4}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.step{background:#f6f8fb;border-left:4px solid #a32b4d;padding:13px;border-radius:7px;line-height:1.7;min-height:135px;overflow-x:auto}.original{background:#f6f8fb;padding:13px;border-radius:8px;line-height:1.6}.plot{display:block;width:100%;height:auto}.small{font-size:.87rem;color:#64748b}.tag{background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:6px}.mjx-container{max-width:100%;overflow-x:auto}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}}</style></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header>
 <main><div class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2025</a><a href="a2.html">← A 2</a><a href="b1.html">B 1 →</a></div><div class="muted">Mathematik I · Realschule Bayern · Haupttermin · taschenrechnerfreier Teil</div><h1>Abschlussprüfung 2025 · A 3</h1>
 <div class="grid"><section class="panel"><h2>Rechtwinkliges Dreieck ABC</h2>
-<svg class="plot" viewBox="0 0 660 390" role="img" aria-label="Rechtwinkliges Dreieck ABC mit A links, C rechts oben, B rechts unten, dem Mittelpunkt M auf AC und dem Schwerpunkt S auf BM">
+<svg class="plot" viewBox="35 25 625 280" role="img" aria-label="Rechtwinkliges Dreieck ABC mit A links, C rechts oben, B rechts unten, dem Mittelpunkt M auf AC und dem Schwerpunkt S auf BM">
 <polygon points="86.169,92 585,92 585,236" fill="#e4edf5" stroke="#3d5c74" stroke-width="3"/>
 <line id="medianSegment" x1="335.585" y1="92" x2="585" y2="236" stroke="#a32b4d" stroke-width="3"/>
 <line id="medianExtension" x1="275.75" y1="57.45" x2="640" y2="267.75" stroke="#a32b4d" opacity=".65" stroke-width="1.7"/>
@@ -11,7 +11,7 @@
 <path id="midpointTicks" d="M210.877 83v18M460.292 83v18" stroke="#c88725" stroke-width="2.5" style="display:none"/>
 <circle id="centroidPoint" cx="418.723" cy="140" r="5.5" fill="#a32b4d"/><circle cx="335" cy="92" r="4" fill="#c88725"/>
 <g fill="#20374b" font-size="22" font-family="Arial,sans-serif"><text x="62" y="91">A</text><text x="592" y="82">C</text><text x="595" y="253">B</text><text x="321" y="77">M</text><text id="centroidLabel" x="403" y="161">S</text></g>
-<g id="sideLengths" fill="#50647a" font-size="19" style="display:none"><text x="178" y="73">8√3 cm</text><text x="591" y="167">4 cm</text></g>
+<g id="sideLengths" fill="#50647a" font-size="19" style="display:none"><text x="591" y="167">4 cm</text></g>
 </svg>
 <p class="small">Schematische Skizze mit den korrekten Seitenverhältnissen; die Lage des Schwerpunkts entspricht dem Teilungsverhältnis \(BS:SM=2:1\).</p>
 <div class="buttons"><label><input id="median" type="checkbox" checked> Seitenhalbierende BM</label><label><input id="half" type="checkbox" disabled> Teilstrecken AM und MC ein-/ausblenden</label><label><input id="angle" type="checkbox" disabled> Winkel ∢CBM ein-/ausblenden</label></div>
@@ -50,8 +50,8 @@ function toggle(){
  const ns='http://www.w3.org/2000/svg';
  function add(tag,attrs,t){let e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(t!==undefined)e.textContent=t;g.append(e)}
  if($('half').checked){
-  add('text',{x:130,y:130,'font-size':18,fill:'#9a6421'},'4√3 cm');
-  add('text',{x:370,y:130,'font-size':18,fill:'#9a6421'},'4√3 cm');
+  add('text',{x:142,y:63,'font-size':18,fill:'#9a6421'},'4√3 cm');
+  add('text',{x:397,y:63,'font-size':18,fill:'#9a6421'},'4√3 cm');
  }
  if($('angle').checked){
   // B=(585,236); BC points straight up, BM points up-left.
