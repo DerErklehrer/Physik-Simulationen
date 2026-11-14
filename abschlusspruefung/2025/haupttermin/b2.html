@@ -3,7 +3,7 @@
 <style>:root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:#fff;padding:16px 4%;font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted{color:#64748b}.panel{background:#fff;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}.grid{display:grid;grid-template-columns:minmax(290px,1.2fr) minmax(290px,1fr);gap:16px;margin-top:15px}button{font:inherit;border:1px solid #b9c4d1;border-radius:8px;padding:9px 12px;background:#fff;color:#253341;cursor:pointer}button.active{background:#8e2948;color:#fff;border-color:#8e2948}button:disabled{opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e68b3c}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.tag{background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:7px}.step{background:#f6f8fb;border-left:4px solid #a32b4d;padding:13px;border-radius:7px;line-height:1.75;min-height:145px;overflow-x:auto}.original{background:#f6f8fb;padding:12px;border-radius:8px;line-height:1.65}.plot{width:100%;height:auto;display:block;background:#fff}#view3d2025{display:none;height:440px;position:relative;overflow:hidden;border-radius:8px;touch-action:none;background:#f8fafc}#view3d2025 canvas{display:block;width:100%;height:100%}#view3d2025 .threehelp{position:absolute;bottom:8px;left:10px;pointer-events:none;font-size:12px;color:#64748b}input[type=range]{width:100%;accent-color:#9a2848}.small{font-size:.87rem;color:#64748b}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}.panel{padding:12px}}</style></head>
 <body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><div class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2025</a><a href="b1.html">← B 1</a></div><div class="muted">Mathematik I · Realschule Bayern · Haupttermin · Aufgabengruppe B</div><h1>Abschlussprüfung 2025 · B 2</h1>
 <div class="grid"><section class="panel"><h2>Quader und veränderbares Prisma</h2><div class="buttons" aria-label="Ansicht wählen"><button id="twoD2025" class="active" aria-pressed="true">Schrägbild (2D)</button><button id="threeD2025" aria-pressed="false">Drehbare 3D-Ansicht</button><button id="top2025" style="display:none">Draufsicht</button><button id="resetcamera2025" style="display:none">Ansicht zurücksetzen</button></div><svg id="figure" class="plot" viewBox="65 85 455 350" role="img" aria-label="Schrägbild Quader ABCDEFGH mit Prisma APnEBQnF"><g id="geometry"></g></svg><div id="view3d2025" aria-label="Drehbarer Quader mit Prisma"><span class="threehelp">Mit einem Finger drehen · mit zwei Fingern zoomen</span></div>
-<label for="length"><strong>Länge APₙ: <span id="lengthvalue">4,00 cm</span></strong></label><input id="length" type="range" min="0.1" max="10" step="any" value="4"><div class="buttons"><button id="original">Prisma für 4 cm</button><button id="volume50" style="display:none">Ergebnis B 2.3: 50 cm³</button><button id="maximum" style="display:none">Grenzfall B 2.4: 10 cm</button></div><p class="small" id="measure" aria-live="polite"></p><p class="small">Schrägbild mit \(q=\frac12\) und \(\omega=45^\circ\); die 4-cm-Strecke auf der rückwärts gerichteten Kante wird im Schrägbild auf 2 cm verkürzt. Die Prismenzeichnung wird mit den Lösungsschritten aufgebaut.</p></section>
+<label for="length"><strong>Länge APₙ: <span id="lengthvalue">4,00 cm</span></strong></label><input id="length" type="range" min="0.1" max="10" step="any" value="4"><div class="buttons"><button id="original">Prisma für 4 cm</button><button id="volume50" style="display:none">Ergebnis B 2.3: 50 cm³</button><button id="maximum" style="display:none">Grenzfall B 2.4: 10 cm</button></div><p class="small" id="measure" aria-live="polite"></p><p class="small">Bei B 2.3 wird der exakte Wert \(\lvert\overline{AP_2}\rvert=\frac{25}{3}\,\mathrm{cm}\) verwendet; die Reglerbeschriftung wird auf zwei Dezimalstellen gerundet.</p><p class="small">Schrägbild mit \(q=\frac12\) und \(\omega=45^\circ\); die 4-cm-Strecke auf der rückwärts gerichteten Kante wird im Schrägbild auf 2 cm verkürzt. Die Prismenzeichnung wird mit den Lösungsschritten aufgebaut.</p></section>
 <section class="panel"><h2>Aufgabenstellung und Lösung</h2><div class="original"><strong>B 2.0 – Ausgangsangaben</strong><p>Das Rechteck ABCD ist die Grundfläche des Quaders ABCDEFGH. Die Zeichnung zeigt ein Schrägbild des Quaders ABCDEFGH.</p><p>Es gilt: \(|\overline{AB}|=4\,\mathrm{cm}\); \(|\overline{AD}|=10\,\mathrm{cm}\); \(|\overline{AE}|=3\,\mathrm{cm}\); \(q=\frac12\); \(\omega=45^\circ\). \(\overline{AB}\) liegt auf der Schrägbildachse.</p><p>Runden Sie im Folgenden auf zwei Stellen nach dem Komma.</p></div><div class="buttons" id="parts"><button>B 2.1</button><button>B 2.2</button><button>B 2.3</button><button>B 2.4</button></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong> <span class="tag" id="count"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Zusätzliche Zwischenschritte dienen dem Verständnis; die fachlichen Ergebnisse sind mit dem amtlichen ISB-Lösungsmuster abgeglichen.</p></section></div></main>
 <script>
 const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg',fmt=x=>x.toFixed(2).replace('.',',');
@@ -26,12 +26,12 @@ const T=[
 ['Größtes Prisma','Pₙ liegt auf AD, also ist \\(|\\overline{AP_n}|\\leq10\\,\\mathrm{cm}\\). Das größte Prisma erhält man für \(P_0=D\).'],
 ['Maximales Volumen','\\[V_{\\max}=\\frac12\\cdot10\\cdot3\\cdot4\\,\\mathrm{cm}^3=60\\,\\mathrm{cm}^3.\\]'],
 ['Beurteilung','Nein. Selbst das größte Prisma hat genau das halbe Quadervolumen. Ein größeres Volumen ist unter diesen Bedingungen nicht möglich.']]]];
-let part=0,step=0,show3d=false,previousLength=4;
+let part=0,step=0,show3d=false,previousLength=4,exact50=false;
 function shape(tag,attrs={},text){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('geometry').append(e);return e}
 function line(a,b,color='#8297a7',width=2,dash=false){shape('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':width,'stroke-dasharray':dash?'7 5':''})}
 function label(p,t){shape('text',{x:p[0]+7,y:p[1]-9,'font-size':19,fill:'#273e50'},t)}
 function draw(){
- const n=Number($('length').value),k=n/10;
+ const n=exact50?50/6:Number($('length').value),k=n/10;
  // 40px je unverzerrtem cm; AD als verkürzte Schrägbildachse
  const A=[120,390],B=[280,390],D=[260,250],C=[420,250],E=[120,270],F=[280,270],H=[260,130],G=[420,130];
  const P=[A[0]+(D[0]-A[0])*k,A[1]+(D[1]-A[1])*k],Q=[B[0]+(C[0]-B[0])*k,B[1]+(C[1]-B[1])*k];
@@ -66,27 +66,27 @@ function draw(){
 function sync(){ $('figure').style.display=show3d?'none':'block';$('view3d2025').style.display=show3d?'block':'none';$('twoD2025').classList.toggle('active',!show3d);$('threeD2025').classList.toggle('active',show3d);$('twoD2025').setAttribute('aria-pressed',String(!show3d));$('threeD2025').setAttribute('aria-pressed',String(show3d));$('top2025').style.display=show3d?'inline-block':'none';$('resetcamera2025').style.display=show3d?'inline-block':'none';if(show3d)window.exam2025Three?.show('B 2',+$('length').value,part===0?step+1:3);else window.exam2025Three?.hide()}
 function render(){const t=T[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t[0]+' · '+t[1]+'</strong><p>'+t[2]+'</p>';$('steptitle').textContent=t[3][step][0];$('solution').innerHTML=t[3][step][1];$('count').textContent='Schritt '+(step+1)+' von '+t[3].length;$('prev').disabled=step===0;$('next').disabled=step===t[3].length-1;draw();if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('solution')]);MathJax.typesetPromise([$('solution')]).catch(console.error)}}
 document.querySelectorAll('#parts button').forEach((b,i)=>b.onclick=()=>{
- part=i;step=0;$('length').value=4;render();
+ part=i;step=0;exact50=false;$('length').value=4;render();
 });
-$('length').oninput=draw;
-$('original').onclick=()=>{$('length').value=4;draw()};
-$('volume50').onclick=()=>{$('length').value=50/6;draw()};
-$('maximum').onclick=()=>{$('length').value=10;draw()};
+$('length').oninput=()=>{exact50=false;draw()};
+$('original').onclick=()=>{exact50=false;$('length').value=4;draw()};
+$('volume50').onclick=()=>{exact50=true;$('length').value=50/6;draw()};
+$('maximum').onclick=()=>{exact50=false;$('length').value=10;draw()};
 $('twoD2025').onclick=()=>{show3d=false;sync()};
 $('threeD2025').onclick=()=>{show3d=true;sync()};
 $('top2025').onclick=()=>window.exam2025Three?.top();
 $('resetcamera2025').onclick=()=>window.exam2025Three?.reset();
 window.addEventListener('exam2025ThreeReady',()=>{if(show3d)sync()});
 $('prev').onclick=()=>{const was=step;step=Math.max(0,step-1);
- if(part===2&&was===2&&step===1)$('length').value=previousLength;
- if(part===3&&was===3&&step===2)$('length').value=previousLength;
+ if(part===2&&was===2&&step===1){exact50=false;$('length').value=previousLength;}
+ if(part===3&&was===3&&step===2){exact50=false;$('length').value=previousLength;}
  render();
 };
 $('next').onclick=()=>{const was=step;step=Math.min(T[part][3].length-1,step+1);
  if(part===2&&was===1&&step===2){previousLength=Number($('length').value);$('length').value=(50/6).toFixed(2)}
- if(part===3&&was===2&&step===3){previousLength=Number($('length').value);$('length').value=10}
+ if(part===3&&was===2&&step===3){previousLength=Number($('length').value);exact50=false;$('length').value=10}
  render();
 };
-$('reset').onclick=()=>{if((part===2&&step===2)||(part===3&&step===3))$('length').value=previousLength;step=0;render()};
+$('reset').onclick=()=>{if((part===2&&step===2)||(part===3&&step===3))$('length').value=previousLength;exact50=false;step=0;render()};
 render();
 </script><script type="module" src="./raumgeometrie3d.js"></script></body></html>
