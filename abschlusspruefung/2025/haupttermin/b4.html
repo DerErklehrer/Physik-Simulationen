@@ -95,7 +95,7 @@ function draw(){
  el('rect',{x:0,y:0,width:650,height:670,fill:'#fff'});
  for(let i=-6;i<=7;i++){
   line([X(i),Y(9)],[X(i),Y(-2)],'#e7ecf0',1);
-  el('text',{x:X(i)-7,y:Y(0)+17,fill:'#526778','font-size':13},String(i));
+  el('text',{x:X(i)-7,y:Y(0)+17,fill:'#526778','font-size':13},i===0?'O':String(i));
  }
  for(let j=-2;j<=9;j++){
   line([X(-6),Y(j)],[X(7),Y(j)],'#e7ecf0',1);
