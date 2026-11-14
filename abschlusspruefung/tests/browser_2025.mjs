@@ -336,6 +336,32 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
      if(before.equals(after))throw Error('B2: 3D-Modell wird bei der Konstruktion nicht vervollständigt');
      await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b2-3d-schritt3.png',fullPage:true,animations:'disabled'});
     }
+    // Echter OrbitControls-Bewegungstest – Mausschleppung bzw. Touchgeste.
+    const canvas=page.locator('#view3d2025 canvas');
+    const box=await canvas.boundingBox();
+    if(!box||box.width<150||box.height<150)throw Error(name+': 3D-Canvas nicht groß genug für Drehgeste');
+    const x0=box.x+box.width*.42,y0=box.y+box.height*.44,x1=x0+Math.min(110,box.width*.25),y1=y0+Math.min(65,box.height*.16);
+    await page.waitForTimeout(350);
+    const beforeOrbit=await canvas.screenshot({animations:'disabled'});
+    if(mode.isMobile){
+      const cdp=await context.newCDPSession(page);
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:x0,y:y0,id:1,radiusX:3,radiusY:3}]});
+      for(let k=1;k<=8;k++){
+        await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x0+(x1-x0)*k/8,y:y0+(y1-y0)*k/8,id:1,radiusX:3,radiusY:3}]});
+        await page.waitForTimeout(35);
+      }
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+      await cdp.detach();
+    }else{
+      await page.mouse.move(x0,y0);
+      await page.mouse.down();
+      for(let k=1;k<=8;k++)await page.mouse.move(x0+(x1-x0)*k/8,y0+(y1-y0)*k/8,{steps:1});
+      await page.mouse.up();
+    }
+    await page.waitForTimeout(450);
+    const afterOrbit=await canvas.screenshot({animations:'disabled'});
+    if(beforeOrbit.equals(afterOrbit))throw Error(name+': 3D-Körper reagiert nicht auf '+(mode.isMobile?'Touchgeste':'Mausdrehen'));
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-orbit.png',fullPage:true,animations:'disabled'});
     await page.locator('#top2025').click();
     await page.locator('#resetcamera2025').click();
     await page.waitForTimeout(450);
