@@ -104,6 +104,58 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(await visibility('outcome-only-b')!=='visible')throw Error('A1.2: zweiter Pfad falsch');
     await page.locator('#reset').click();
    }
+   if(name==='b4'){
+    const polygon=()=>page.locator('#plot path[fill-opacity]').count();
+    const graphText=()=>page.locator('#plot').textContent();
+    if(mode.isMobile){
+      const m=await page.locator('#plotScroll').evaluate(el=>({scroll:el.scrollWidth,width:el.clientWidth}));
+      if(m.scroll<=m.width+100)throw Error('B4 mobile: Graph wird statt lesbarer Wischdarstellung zu klein');
+      await page.locator('#plotScroll').evaluate(el=>el.scrollLeft=el.scrollWidth);
+      if(await page.locator('#plotScroll').evaluate(el=>el.scrollLeft)<100)throw Error('B4 mobile: rechte Diagrammhälfte nicht erreichbar');
+      await page.screenshot({path:OUT+'/r'+round+'-mobile-b4-rechts.png',fullPage:true,animations:'disabled'});
+      await page.locator('#plotOverview').click();
+      if(!(await page.locator('#plotScroll').evaluate(el=>el.classList.contains('overview'))))throw Error('B4 mobile: Gesamtübersicht nicht aktivierbar');
+      await page.screenshot({path:OUT+'/r'+round+'-mobile-b4-gesamt.png',fullPage:true,animations:'disabled'});
+      await page.locator('#plotOverview').click();
+      if(await page.locator('#plotScroll').evaluate(el=>el.classList.contains('overview')))throw Error('B4 mobile: Rückkehr zum Lesemodus defekt');
+      await page.locator('#plotScroll').evaluate(el=>el.scrollLeft=0);
+    }
+    await partButtons.nth(0).click();
+    if(await polygon()!==0)throw Error('B4.1: fertige Parallelogramme vor Aufgabe sichtbar');
+    if((await graphText()).includes('D₁'))throw Error('B4.1: D1 vor Konstruktionsschritt gezeigt');
+    await page.locator('#next').click();
+    if(!(await graphText()).includes('D₁')||!(await graphText()).includes('D₂'))throw Error('B4.1: D1/D2 im zweiten Schritt fehlen');
+    if(await polygon()!==0)throw Error('B4.1: Parallelogramm vor Winkelschritt gefüllt');
+    await page.locator('#next').click();
+    if(!(await graphText()).includes('B₁')||!(await graphText()).includes('B₂'))throw Error('B4.1: B1/B2 im dritten Schritt fehlen');
+    await page.locator('#next').click();
+    if(await polygon()!==2)throw Error('B4.1: beide Originalparallelogramme nach Konstruktion fehlen');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b4-originalkonstruktion.png',fullPage:true,animations:'disabled'});
+    await partButtons.nth(1).click();
+    if(!(await page.locator('#statement').textContent()).includes('AB'))throw Error('B4.2: Aufgabenvektor fehlt');
+    await partButtons.nth(2).click();
+    if(await page.locator('#p3').isVisible()||await page.locator('#rounding').isVisible())throw Error('B4.3: gerundete Sonderlage vorzeitig angezeigt');
+    for(let j=0;j<3;j++)await page.locator('#next').click();
+    if(!(await page.locator('#p3').isVisible())||!(await page.locator('#rounding').isVisible()))throw Error('B4.3: Sonderlage/Rundung nach Rechnung fehlt');
+    if(await page.locator('#slider').inputValue()!=='0.1')throw Error('B4.3: Sonderlage nicht mit Zeichnung synchronisiert');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b4-rundung.png',fullPage:true,animations:'disabled'});
+    await page.locator('#prev').click();
+    if(await page.locator('#p3').isVisible()||await page.locator('#rounding').isVisible())throw Error('B4.3: Rundungswert beim Zurückblättern nicht verborgen');
+    await partButtons.nth(3).click();
+    if(await page.locator('#p0').isVisible()||await page.locator('#plot path[data-right-angle]').count())throw Error('B4.4: Minimum vorzeitig angezeigt');
+    for(let j=0;j<3;j++)await page.locator('#next').click();
+    if(!(await page.locator('#p0').isVisible()))throw Error('B4.4: Minimum nicht freigeschaltet');
+    if(await page.locator('#plot path[data-right-angle="quarter-arc"]').count()!==1||await page.locator('#plot circle[data-right-angle="center-dot"]').count()!==1)throw Error('B4.4: Viertelkreisbogen mit Punkt fehlt');
+    if(await page.locator('#slider').inputValue()!=='-5.2')throw Error('B4.4: minimaler Abstand nicht zur richtigen Stelle x=-5.2');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b4-minimum.png',fullPage:true,animations:'disabled'});
+    await partButtons.nth(4).click();
+    if((await page.locator('#measure').innerText()).includes('Flächeninhalt'))throw Error('B4.5: Flächeninhalt vor Formel gezeigt');
+    await page.locator('#next').click();
+    await page.locator('#next').click();
+    if(!(await page.locator('#p0').isVisible()))throw Error('B4.5: minimaler Fall nach Begründung fehlt');
+    await page.locator('#reset').click();
+    if(await page.locator('#p0').isVisible())throw Error('B4.5: Ergebnis nach Reset noch sichtbar');
+   }
    if(name==='b3'){
     if(mode.isMobile){
      const metrics=await page.locator('#plotScroll').evaluate(el=>({scrollWidth:el.scrollWidth,clientWidth:el.clientWidth}));
