@@ -6,6 +6,8 @@
 
 Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, amtliche ISB-Haupttermine der betreffenden Jahre und vorläufige interaktive Referenz 2026.
 
+**Einzelfreigabe 2025 A 1 (14.11.2026):** Vom Nutzer ausdrücklich als interaktive Lernseite freigegeben. Die Original-Gebäudefotografie fehlt bewusst; die vollständige dreifache Prüfung der Bildidentität wird daher nicht als bestanden ausgewiesen. Letzter technischer Regressionstest zum freigegebenen A1-Stand: [erfolgreich](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43569427160). Die Gesamtfreigabe 2025 bleibt offen.
+
 ## Bestand und Abgleich
 | Jahrgang | Vorhandener Webstand | Vergleich mit Referenz 2026 | Freigabe |
 |---|---|---|---|
