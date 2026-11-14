@@ -70,6 +70,13 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if((await page.locator('#measure').innerText()).includes('Oberfläche'))throw Error('A2.3: Oberfläche zu früh eingeblendet');
     for(let k=0;k<3;k++)await page.locator('#next').click();
     if(!(await page.locator('#measure').innerText()).includes('Oberfläche'))throw Error('A2.3: Oberfläche nach Herleitung fehlt');
+    await partButtons.nth(3).click();
+    if(await page.locator('#preset30').isVisible())throw Error('A2.4: 30-Grad-Ergebnis vorzeitig sichtbar');
+    if(await page.locator('#phi').inputValue()==='30')throw Error('A2.4: Ergebnis vorzeitig am Regler eingestellt');
+    await page.locator('#next').click();
+    if(await page.locator('#preset30').isVisible())throw Error('A2.4: Ergebnis schon im zweiten Schritt sichtbar');
+    await page.locator('#next').click();
+    if(!(await page.locator('#preset30').isVisible()))throw Error('A2.4: Ergebnis nach Lösung nicht freigeschaltet');
     await page.locator('#preset75').click();
    }
    for(const id of ['phi','length','slider','x','p']){
