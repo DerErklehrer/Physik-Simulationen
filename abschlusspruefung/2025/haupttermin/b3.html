@@ -82,7 +82,7 @@ function draw(){
  defs.innerHTML='<clipPath id="clip25"><rect x="'+X(-5)+'" y="'+Y(4)+'" width="504" height="560"/></clipPath>';
  for(let i=-5;i<=4;i++){
   seg([X(i),Y(4)],[X(i),Y(-6)],'#e2e9ef',1);
-  el('text',{x:X(i)-7,y:Y(0)+18,fill:'#506777','font-size':14},String(i));
+  el('text',{x:X(i)-7,y:Y(0)+18,fill:'#506777','font-size':14},i===0?'O':String(i));
  }
  for(let j=-6;j<=4;j++){
   seg([X(-5),Y(j)],[X(4),Y(j)],'#e2e9ef',1);
