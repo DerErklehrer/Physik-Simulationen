@@ -212,11 +212,11 @@ Der Nutzer hat **A 2** und **B 2** ausdrücklich genehmigt. Diese Freigaben gelt
 
 **Endgültiger technischer Prüfnachweis:** [GitHub Actions 43607182722](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43607182722) auf dem finalen B4-Code mit optimiertem Koordinatenausschnitt und schrittbezogen aktivierten Bedienelementen: **3/3 statische und mathematische Prüfrunden bestanden; 42/42 echte Chromium-Fälle bestanden** (je 7 Aufgaben in Desktop- und Mobilansicht, dreimal wiederholt). Die dedizierten B4-Testfälle kontrollieren alle fünf Teilaufgaben, beide Originalparallelogramme, Teilschritt- und Ergebnisfreigaben, 40°-Konstruktion, Rundung D₃, Minimalfall D₀, Rechtwinkelsymbol, Rückwärtsnavigation, Reglerzustände, Mobilscrollen und Gesamtübersicht. **Prüfbilder:** Actions-Artefakt `mathematik-2025-browserkontrolle`, ID `14118766895`, ca. 32,5 MB. Die finalen Bildschirmaufnahmen `r3-desktop-b4-originalkonstruktion.png`, `r3-desktop-b4-rundung.png`, `r3-desktop-b4-minimum.png` und `r3-mobile-b4-gesamt.png` wurden zusätzlich visuell gesichtet; keine weiteren grafischen Überlagerungen oder abgeschnittenen Koordinaten festgestellt. Die vierte Regressionsänderung betrifft nur die unten dokumentierten Textdateien und lässt die geprüfte Prüfungsseite unverändert.
 
-**Abnahmegrenze:** B 4 bleibt bis zur expliziten Nutzerfreigabe eine bearbeitete Lernseite. Die dreifache *automatisierte* Testmatrix ersetzt nicht drei unabhängig dokumentierte menschliche Durchgänge in allen neun Qualitätskategorien.
+**Abnahmegrenze:** B 4 wurde vom Nutzer ausdrücklich als Einzelseite freigegeben (14.11.2026). Die dreifache *automatisierte* Testmatrix ersetzt nicht drei unabhängig dokumentierte menschliche Durchgänge in allen neun Qualitätskategorien.
 
 ### Wiederaufnahme nach 2026-Notationsexkurs (14.11.2026)
 
-- Die sieben eigenständigen 2025-Aufgabenseiten sind weiterhin auf GitHub vorhanden; sechs davon (A1, A2, A3, B1, B2, B3) wurden vom Nutzer ausdrücklich einzeln genehmigt. **B4 wartet unverändert auf die ausdrückliche Nutzerfreigabe.**
+- Die sieben eigenständigen 2025-Aufgabenseiten sind weiterhin auf GitHub vorhanden; alle sieben (A1, A2, A3, B1, B2, B3, B4) wurden vom Nutzer ausdrücklich einzeln genehmigt.
 - Der neue verbindliche ISB-Standard unterscheidet geometrische Strecken `\\overline{AB}`, Streckenlängen `|\\overline{AB}|` und Vektoren `\\overrightarrow{AB}`. Die bestehende 2025-Geometrie wurde auf diese Pflichtkategorie quergelesen; der reproduzierbare statische Test wurde für A2, A3, B2, B3 und B4 erweitert.
 - Der nach dieser Testerweiterung gestartete GitHub-Actions-Lauf ist **kein** Nachweis der noch offenen drei vollständigen Durchgänge über alle neun Kategorien. Die fachliche und grafische ISB-Endabnahme bleibt weiterhin notwendig.
 
@@ -224,7 +224,11 @@ Der Nutzer hat **A 2** und **B 2** ausdrücklich genehmigt. Diese Freigaben gelt
 
 - **Originaltreue:** Die amtlichen Aufgabenblätter 2025 A1.0–A3.2 sowie B1.0–B1.3 einschließlich der relevanten Seitenzeichnungen erneut als PDF-Screenshots gelesen. A1.0 wurde wörtlich von der verkürzten Formulierung „Wohnungs- und einen kleinen Briefkastenschlüssel“ auf den amtlichen vollständigen Ausdruck „Wohnungsschlüssel und einen kleinen Briefkastenschlüssel“ korrigiert. In A2.3 und A2.4 wurde die ursprüngliche Aufgabenformel und Aufgabenformulierung in MathJax-konformer Schreibweise ergänzt. A3 und B1 ergaben beim erneuten Textvergleich keine weiteren entsprechenden Abweichungen.
 - **Regressionssicherung:** Der statische Test verlangte zunächst den **alten, verkürzten** A1-Wortlaut und scheiterte deshalb nachvollziehbar. Der Test ist nun auf den tatsächlich amtlichen Wortlaut umgestellt. [Erfolgreicher abschließender Lauf 43616823042](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43616823042): **3/3 statische/mathematische Durchläufe und 42/42 Chromium-Testfälle bestanden (3 Wiederholungen × 7 Aufgaben × 2 Geräteansichten)**. Zusätzliche statische Streckenlängen- und Vektortests für 2025 bestanden ebenfalls.
-- **Abgrenzung:** Die erfolgreiche technische Regression bestätigt die Funktionsfähigkeit der neuen A1/A2-Korrekturen, aber ist kein vollständiger dreimaliger unabhängiger Original-, Grafik-, didaktischer und Touch-Abgleich aller neun Qualitätskategorien des Jahrgangs. Für die noch ausstehenden Teile bleiben die Freigabesperren unten maßgeblich. B4 ist weiterhin nicht vom Nutzer ausdrücklich freigegeben.
+- **Abgrenzung:** Die erfolgreiche technische Regression bestätigt die Funktionsfähigkeit der neuen A1/A2-Korrekturen, aber ist kein vollständiger dreimaliger unabhängiger Original-, Grafik-, didaktischer und Touch-Abgleich aller neun Qualitätskategorien des Jahrgangs. Für die noch ausstehenden Teile bleiben die Freigabesperren unten maßgeblich. B4 ist vom Nutzer ausdrücklich als Einzelseite freigegeben.
+
+### Nutzerfreigabe B4 – 14.11.2026
+
+Der Nutzer hat mit **„B4 passt“** die interaktive Lernseite **2025 B4** ausdrücklich freigegeben. Damit sind **alle sieben Einzelseiten des Jahrgangs 2025** vom Nutzer abgenommen. Die übergreifende dreifache Vollkontrolle sämtlicher neun Qualitätskategorien ist davon getrennt und weiterhin offen.
 
 ## Offene Freigabesperren, in dieser Reihenfolge lösen
 
