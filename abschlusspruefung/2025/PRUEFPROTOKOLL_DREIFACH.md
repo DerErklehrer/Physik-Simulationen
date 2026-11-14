@@ -162,6 +162,29 @@ Der Nutzer hat **A 2** und **B 2** ausdrücklich genehmigt. Diese Freigaben gelt
 
 **Freigabeentscheidung:** B 2 ist **fachlich bearbeitet, visuell auf Desktop/Mobil geprüft und technisch dreifach erfolgreich getestet**. Es ist **noch keine ausdrückliche Nutzerfreigabe** erfolgt. Die automatisierten Tests und die einmalige dokumentierte Sichtprüfung sind kein Ersatz für drei unabhängige menschliche Vollabgleiche aller neun Kategorien; deren Vollständigkeit wird nicht fälschlich behauptet.
 
+## Einzelprüfung 2025 B 3 – Funktionen und Trapeze (14.11.2026)
+
+**Quellenbasis:** Amtliche ISB-Prüfung Mathematik I, Haupttermin 2025, Aufgabenblatt B 3 und Lösungsmuster S. 3–4 von 6. Beide Lösungsseiten wurden als PDF-Screenshots gesichtet und mit dem interaktiven Koordinatensystem verglichen. **16 Punkte:** 4 + 2 + 2 + 2 + 4 + 2.
+
+### Fachlicher Abgleich jeder Teilaufgabe
+
+- **B 3.1 (4 P):** f₁(x)=−3·0,5^(x+4)+3, f₂(x)=2·0,5^(x+3)−4, horizontale Asymptote y=3. Zeichenfenster −5≤x≤4, −6≤y≤4. Beide Graphen haben Schnittpunkt (−4|0). Acht eigene Funktionswerte und die ursprünglichen Rechenwerte überprüft. Asymptote, f₁ und f₂ werden nacheinander eingezeichnet.
+- **B 3.2 (2 P):** ∢BₙAₙDₙ=110° bedeutet AD-Richtung 20° gegen die positive x-Achse. D=(x+2cos20° | f₁(x)+2sin20°), C=(Dₓ | Dᵧ−8). Die Trapeze für x=−3 und x=1 werden in vier Konstruktionsphasen aufgebaut; feste Kanten nach Sichtprüfung wieder durchgezogen.
+- **B 3.3 (2 P):** Wegen vertikaler CD und horizontaler AF gilt AF=2·cos20°≈1,88 LE. A₁F₁, F₁ und Rechtwinkelmarkierung werden erst beim passenden Lösungsschritt angezeigt.
+- **B 3.4 (2 P):** AB=f₁−f₂=(−3,5·0,5^(x+3)+7) LE für x>−4, unabhängig numerisch an mehreren x-Werten überprüft.
+- **B 3.5 (4 P):** Nach amtlicher Zwischenrundung beträgt der Überstand DF=0,68 LE, damit AB₃=6,64 LE und x≈0,28 (vor der Ergebnisrundung x≈0,281286). Mit geometrisch exakten Werten folgt dagegen AB₃≈6,631919 LE und x≈0,249261. Beide Werte werden ausdrücklich getrennt und erst nach der vollständigen Herleitung als auswählbare Ansichten angezeigt. Das amtliche Teilergebnis 6,64 LE wird beibehalten.
+- **B 3.6 (2 P):** Wegen x>−4 und positivem Exponentialterm ist AB<7 LE. Mit der laut Aufgabenanweisung gerundeten konstanten Höhe 1,88 LE folgt A<½·(7+8)·1,88=14,1 FE. Die Schranke ist strikt und wird nicht erreicht.
+
+### Zeichnung, Interaktion und dreifache technische Prüfung
+
+- **Originalvergleich:** Alle sechs Aufgabenstellungen, Werte, Operatoren, Winkel, Längen, Koordinaten und Punktzahlen am Original abgeglichen. Farbiges SVG statt schwarzweißer Druckabbildung ist eine bewusste interaktive Ergänzung.
+- **Didaktik:** Stufenweise Darstellung der Exponentialgraphen, festen Trapeze und Lotstrecken. Kein vorweggenommenes x=0,28 und kein vorweggenommener Rundungshinweis. Ausdrucke mathematisch in MathJax mit echten Bruchstrichen statt Rohtext.
+- **Mobil:** Umstellbar zwischen vergrößerter horizontal verschiebbarer Grafik und Gesamtübersicht. Die beiden festen Trapeze sind nach dem visuellen Vergleich durchgezogen, nicht gestrichelt.
+- **Dreifachnachweis:** [GitHub Actions 43603307919](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43603307919) auf Programmstand d1e0cbc0: 3 statische/mathematische Testdurchläufe und 42/42 echte Desktop-/Mobile-Chromium-Fälle bestanden. Der B3-Sondertest kontrolliert alle sechs Aufgaben, schrittweise Graphen/Trapeze/Lote, verspätete Ergebnisfreischaltung, Rückwärtsnavigation und mobile Darstellungsumschaltung.
+- **Screenshotbelege:** GitHub-Actions-Artefakt-ID 14116824216 (ca. 27,6 MB). Die endgültigen Desktop- und Mobilbilder zu B3, den beiden Trapezen, den Lösungsschritten und der Gesamtübersicht wurden tatsächlich geöffnet und kontrolliert. Nach der Sichtprüfung wurde nur noch die Bezeichnung der nun durchgezogenen festen Trapeze und der erläuternde Text von B3.2 angepasst; keine Zahlenwerte oder Rechenfunktionen.
+
+**Abgrenzung:** Drei Wiederholungen der technischen Testmatrix ersetzen nicht drei vollständig unabhängige menschliche Freigabedurchgänge aller neun Qualitätskategorien. **B 3 ist noch nicht ausdrücklich vom Nutzer freigegeben.**
+
 ## Offene Freigabesperren, in dieser Reihenfolge lösen
 
 1. **ISB-Originaltreue**: Für **alle 26 Teilaufgaben** Wortlaut, Zeichnung, Achsen, Operatoren, Punkteangaben, Graphen, Parameter- und Rundungsbedingungen Zeile für Zeile dokumentiert mit Original abgleichen. Besonders verkürzte Texte der eigenständigen Seiten dürfen nicht als „Originaltext“ deklariert werden, sofern sie nur sinngemäß sind.
