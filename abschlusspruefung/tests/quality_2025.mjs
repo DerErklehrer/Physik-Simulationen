@@ -54,7 +54,7 @@ close('A3: Schwerpunkt pixelgenau',a3Sx,418.723,0.001);
 close('A3: geometrischer Winkel',Math.atan((585-a3Mx)/144)*180/Math.PI,60,1e-9);
 test('A3: Seitenlängen erst im Rechenschritt',contents.a3.includes('id="sideLengths"')&&contents.a3.includes("part===1?'':'none'"));
 test('A3: Schwerpunkt korrekt markiert',contents.a3.includes('cx="418.723" cy="140"'));
-test('B2: korrekte Schrägbildachsen',contents.b2.includes('D=[260,250]')&&contents.b2.includes('B=[280,390]'));
+test('B2: korrekte Schrägbildachsen',contents.b2.includes('depth=200/Math.sqrt(2)')&&contents.b2.includes('B=[280,390]'));
 test('B2: 3D-Modul eingebunden',contents.b2.includes('raumgeometrie3d.js'));
 test('A2: 3D-Modul eingebunden',contents.a2.includes('raumgeometrie3d.js'));
 test('B3: Rundungshinweis',contents.b3.includes('Rundungshinweis B 3.5'));
@@ -85,6 +85,8 @@ close('A1: beide Schlüssel',1/5*1/5,1/25);
 close('A1: genau einer',2*(1/5)*(4/5),8/25);
 close('A2: Oberflächeninhalt @30°',32*Math.PI*Math.sin(rad(30)),16*Math.PI);
 close('A3: rechter Winkel-Median',Math.atan(Math.sqrt(3))*180/Math.PI,60);
+close('B2: exakte Schrägbildverkürzung 10cm zu 5cm',Math.hypot(200/Math.sqrt(2),200/Math.sqrt(2)),200,1e-9);
+close('B2: exakter Schrägbildwinkel',Math.atan2(200/Math.sqrt(2),200/Math.sqrt(2))*180/Math.PI,45,1e-9);
 for(const t of [0.1,1,4,50/6,9.9,10]){
  const vectorAD=[140,-140],base=[120,390],P=[base[0]+vectorAD[0]*t/10,base[1]+vectorAD[1]*t/10];
  close('B2: Schrägbildlage P(t) bei t='+t,Math.hypot(P[0]-base[0],P[1]-base[1]),Math.hypot(...vectorAD)*t/10,1e-9);
