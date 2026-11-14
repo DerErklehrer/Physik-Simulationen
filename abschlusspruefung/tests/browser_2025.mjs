@@ -77,6 +77,9 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(await page.locator('#preset30').isVisible())throw Error('A2.4: Ergebnis schon im zweiten Schritt sichtbar');
     await page.locator('#next').click();
     if(!(await page.locator('#preset30').isVisible()))throw Error('A2.4: Ergebnis nach Lösung nicht freigeschaltet');
+    if(await page.locator('#phi').inputValue()!=='30')throw Error('A2.4: Lösungsgeometrie nach letzter Rechnung nicht auf 30 Grad synchronisiert');
+    await page.locator('#prev').click();
+    if(await page.locator('#phi').inputValue()==='30')throw Error('A2.4: 30-Grad-Lösung beim Zurückgehen nicht zurückgesetzt');
     await page.locator('#preset75').click();
    }
    for(const id of ['phi','length','slider','x','p']){
