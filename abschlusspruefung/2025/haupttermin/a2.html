@@ -32,11 +32,11 @@ function draw(){
  const vertices=d=>{const r=d*Math.PI/180;return {C:[A[0]-4*scale*Math.sin(r),A[1]-4*scale*Math.cos(r)],B:[A[0],A[1]-8*scale*Math.cos(r)]}};
  const base=vertices(40),selected=vertices(phi),construction=part===0;
  g.replaceChildren();
- shape('line',{x1:A[0],y1:12,x2:A[0],y2:525,stroke:'#8091a0','stroke-width':2,'stroke-dasharray':'6 6'});
+ shape('line',{x1:A[0],y1:12,x2:A[0],y2:525,stroke:'#8091a0','stroke-width':2,'stroke-dasharray':'6 6'});shape('ellipse',{cx:A[0],cy:47,rx:33,ry:10,stroke:'#60758b','stroke-width':2,fill:'none'});shape('path',{d:'M'+(A[0]+28)+' 37 l12 8 -15 2',fill:'#60758b'});
  shape('polygon',{points:[A,base.C,base.B].map(p=>p.join(',')).join(' '),fill:'#d8eaf5','fill-opacity':'.58',stroke:'#2e708e','stroke-width':2.8});
  const rr=38,baseRad=40*Math.PI/180;
  shape('path',{d:'M'+A[0]+' '+(A[1]-rr)+' A'+rr+' '+rr+' 0 0 0 '+(A[0]-rr*Math.sin(baseRad))+' '+(A[1]-rr*Math.cos(baseRad)),stroke:'#2e708e','stroke-width':2,fill:'none'});
- shape('text',{x:A[0]-56*Math.sin(baseRad/2)-7,y:A[1]-56*Math.cos(baseRad/2)-3,'font-size':17,fill:'#2e708e'},'40°');
+ shape('text',{x:A[0]-56*Math.sin(baseRad/2)-7,y:A[1]-56*Math.cos(baseRad/2)-3,'font-size':17,fill:'#2e708e'},'φ');
  function dot(x,y,name,color,dx=9,dy=-9){shape('circle',{cx:x,cy:y,r:4,fill:color});shape('text',{x:x+dx,y:y+dy,'font-size':19,fill:'#24374b'},name)}
  dot(...base.C,'C₁','#2e708e',-38,-9);dot(...base.B,'B₁','#2e708e');dot(...A,'A','#2e708e');
  if(phi!==40){
