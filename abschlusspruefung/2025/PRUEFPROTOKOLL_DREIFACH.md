@@ -189,6 +189,29 @@ Der Nutzer hat **A 2** und **B 2** ausdrücklich genehmigt. Diese Freigaben gelt
 
 **Abgrenzung:** Drei Wiederholungen der technischen Testmatrix ersetzen nicht drei vollständig unabhängige menschliche Freigabedurchgänge aller neun Qualitätskategorien. **B 3 ist noch nicht ausdrücklich vom Nutzer freigegeben.**
 
+## Einzelprüfung 2025 B 4 – Ebene Geometrie (14.11.2026)
+
+**Primärquellen:** Originalprüfung Mathematik I Haupttermin 2025, Seite „Aufgabe B 4“, und amtliches Lösungsmuster Seiten 5 und 6 von 6. Die PDF-Seiten wurden einschließlich der Skizze tatsächlich bildlich geprüft. B 4.1–B 4.5: **3 + 4 + 3 + 2,5 + 2 = 14,5 Punkte**.
+
+### Original- und Mathematikabgleich
+
+- **B 4.0:** Gerade g: y=0,5x+5, Punkt A(−3|−2), Dₙ(x|0,5x+5), Parallelogramme ABₙCₙDₙ, Winkel ∢BₙADₙ=40° und Längenverhältnis ABₙ=0,5·ADₙ. Originale mathematische Vorgabe bleibt erhalten; die gesamte Ebene ist zulässig, der Slider beschränkt nur das dargestellte Fenster.
+- **B 4.1 (3 P):** D₁(−4,5|2,75), D₂(2|6). Der Graph zeichnet g und erzeugt die beiden Parallelogramme in vier Lösungsstadien: zunächst nur g, danach D₁/D₂, dann B₁/B₂ mit Richtungswinkel 40° und schließlich beide vollständigen Parallelogramme einschließlich C₁/C₂. Kanten und Winkel sind geometrisch aus den ungerundeten trigonometrischen Werten berechnet. Das amtliche Zeichnungsfenster −6≤x≤7 und −2≤y≤9 bleibt erhalten.
+- **B 4.2 (4 P):** Vektor ADₙ=(x+3 | 0,5x+7) als Spaltenvektor. Drehung um −40° und Streckung mit k=0,5 ergibt die Vektorkomponenten ABₙ. Amtlicher Koeffizientenweg rechnet mit gerundeten Zwischenwerten (cos40°≈0,77, sin40°≈0,64) und liefert ABₙ(x)=(0,55x+3,40 | −0,13x+1,74). Exakte Geometrie verwendet dagegen ungerundete trigonometrische Werte. Das Original enthält das gerundete Ergebnis ausdrücklich als gegebenes Teilergebnis.
+- **B 4.3 (3 P):** Parallelität von D₃C₃ zur Geraden g erzwingt gemäß der *gerundeten* Vektorkoeffizienten die Steigungsbedingung (−0,13x+1,74)/(0,55x+3,40)=0,5; daraus x≈0,10 und D₃(0,10|5,05). Mit ungerundeter Geometrie folgt die exakte Parallellage bei x≈0,0437158. Diese Differenz wird nach Abschluss der Rechnung ausdrücklich erklärt; der amtliche Ergebniswert wird niemals durch den exakten ungeforderten Wert ersetzt.
+- **B 4.4 (2,5 P):** Die kürzeste Verbindung von A zur Geraden g steht senkrecht auf g. Mit dem Richtungsvektor (1|0,5) gilt (x+3)·1+(0,5x+7)·0,5=0; daher x=−5,20 und D₀(−5,20|2,40). Die Zeichnung stellt den rechten Winkel als vom Nutzer geforderten Viertelkreisbogen mit Punkt auf der Winkelhalbierenden im halben Radius dar, nicht als Quadrat.
+- **B 4.5 (2 P):** Für jedes Parallelogramm gilt Fₙ=0,5·|ADₙ|²·sin40°. Da 0,5·sin40°>0, fällt das Flächenminimum mit dem Längenminimum von ADₙ zusammen. Die Sonderlage D₀ wird erst nach der Begründung eingeblendet. Unabhängige Koordinatentests prüfen die Flächenformel und das konstante Seitenverhältnis bei zahlreichen Werten von x.
+
+### Didaktik, Technik und Grenzfälle
+
+- **Keine Vorwegnahmen:** Die fertige B4.1-Konstruktion wird nicht sofort gezeigt; B4.3-D₃ und der Rundungshinweis bleiben bis zum letzten Schritt verborgen; das B4.4-Minimum und die Rechtwinkelmarkierung werden erst nach dessen Rechnung sichtbar. Vor-/Zurück/Reset und der Aufgabenwechsel stellen die Sichtbarkeit passend ein.
+- **Geometrie:** Für alle kontrollierten x-Werte sind die gegenüberliegenden Seiten der Parallelogramme paarweise parallel/gleich lang, |ABₙ|=0,5·|ADₙ|, ∢BₙADₙ=40° und Flächenformel exakt erfüllt. Überlagerte generische Parallelogramme in den ausgezeichneten Sonderlagen D₃ und D₀ wurden entfernt.
+- **Mathematische Darstellung:** Vektoren sind mit Pfeil über der Buchstabenkombination geschrieben; Komponenten als echte vertikale Spaltenvektoren, Brüche als MathJax-Brüche, Malzeichen als Mittelpunkt, Dezimalkomma, Winkel mit dem vereinbarten ∢.
+- **Mobil:** Die Zeichnung kann horizontal verschoben oder in eine Gesamtübersicht umgeschaltet werden. Automatisierte Tests kontrollieren beide mobilen Ansichten sowie die 5×3 schrittweisen Lösungen und B4.4-Rechtwinkelsymbolik.
+- **Technische Kontrollrunden:** Drei vollständige Läufe der statischen Regressionstests sowie 42 Chromium-Kombinationen (7 Aufgaben × Desktop/Mobile × drei Wiederholungen) sind Voraussetzung für die technische Abnahme. Die zusätzlich aufgenommenen B4-Prüfungen testen genau die drei Sonderfälle, die Lösungssperren, die Vektoraufgabe und alle wesentlichen Zeichenphasen.
+
+**Abnahmegrenze:** B 4 bleibt bis zur expliziten Nutzerfreigabe eine bearbeitete Lernseite. Die automatisierte dreifache Testmatrix ersetzt nicht den vollständigen menschlichen Dreifachabgleich sämtlicher neun Kriterien. Die endgültigen CI-Run-IDs und Screenshots werden nach erfolgreicher Prüfung ergänzt.
+
 ## Offene Freigabesperren, in dieser Reihenfolge lösen
 
 1. **ISB-Originaltreue**: Für **alle 26 Teilaufgaben** Wortlaut, Zeichnung, Achsen, Operatoren, Punkteangaben, Graphen, Parameter- und Rundungsbedingungen Zeile für Zeile dokumentiert mit Original abgleichen. Besonders verkürzte Texte der eigenständigen Seiten dürfen nicht als „Originaltext“ deklariert werden, sofern sie nur sinngemäß sind.
