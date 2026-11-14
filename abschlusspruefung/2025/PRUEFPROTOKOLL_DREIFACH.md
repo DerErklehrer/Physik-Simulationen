@@ -82,6 +82,21 @@
 - **Normen/Originaltreue:** Winkelnotation ∢, echte vertikale Brüche, Malpunkt, Dezimalkomma und die sechs Antwortintervalle beachtet. Die interaktive Lernseite ist keine originale Druckseite mit karierten Schreibfeldern; der fachlich erforderliche Text und die Skizzen bleiben maßgeblich.
 - **Freigabe:** Die automatisierten Tests können die mathematisch-geometrische Modelltreue, den vollständigen visuellen Originalvergleich und reale Mehrfinger-Touchgesten nicht allein beweisen. **A 2 ist noch nicht ausdrücklich durch den Nutzer freigegeben**, anders als A 1. Technische Prüfergebnisse sind separat im Actions-Lauf zu erfassen.
 
+## Einzelprüfung 2025 A 3 – Ebene Geometrie (14.11.2026)
+
+**Quellenabgleich:** Amtlicher Haupttermin 2025 Mathematik I, Angaben Seite 3 (A 3.0–A 3.2), Lösungsmuster Seite 2 (A 3.1–A 3.2), jeweils original als PDF-Seite visuell kontrolliert.
+
+**Originaltreue:** A 3.0 beschreibt das rechtwinklige Dreieck ABC mit Hypotenuse AB, Schwerpunkt S und Schnittpunkt M der Geraden BS mit AC; AC = 8√3 cm und BC = 4 cm. Die Fragen A 3.1 und A 3.2, Punkte (1 P, 2 P) und Operatoren sind mit dem Original abgeglichen; die aktuelle Seite nutzt die amtliche Winkelnotation ∢CBM. Die Grundfigur enthält AB, BC, AC, M, S und eine über beide Eckpunkte hinaus verlängerte Gerade BS. Das Original enthält keine Seitenlängenbeschriftungen direkt in der Skizze; daher erscheinen die Längen dort jetzt erst bei A 3.2.
+
+**Mathematische Eigenprüfung:**
+- A 3.1: Jede Verbindungsgerade eines Eckpunkts mit dem Schwerpunkt liegt auf einer Seitenhalbierenden; M ist somit der Mittelpunkt von AC. Ausführlicher als der amtliche Ein-Satz-Weg, mathematisch gleichwertig.
+- A 3.2: MC=AC/2=4√3 cm, tan(∢CBM)=MC/BC=√3, ∢CBM=60°. Der begründete Übergang erfolgt im bei C rechtwinkligen Dreieck BCM. Ergebnis und 2 P mit amtlichem Lösungsmuster abgeglichen.
+- Exakte SVG-Geometrie: Maßstab 36 px pro cm; BC=144 px, AC=288√3 px. A=(585−288√3,92), C=(585,92), B=(585,236). M=((A_x+C_x)/2,92), S=((A_x+C_x+B_x)/3,(92+92+236)/3). Dadurch gilt der 60°-Winkel aus den Koordinaten exakt bis auf die Pixelrundung; Schwerpunkt liegt auf BM im Verhältnis BS:SM=2:1.
+- Darstellung: Gleichheitsstriche der beiden Halbseiten, Halbseitenlängen und Winkelbogen werden nicht vorweggenommen. Sie erscheinen nach dem entsprechenden Lösungsschritt; optionales Ein-/Ausblenden ist dann freigeschaltet. Die ursprüngliche Seitenhalbierende bleibt standardmäßig sichtbar.
+- Schreibweise: MathJax-Brüche echt vertikal, Malpunkte, Winkel ∢CBM (nicht ∠CBM); keine 3D-Objekte, keine Parametergrenzwerte und keine Einheiten bei reinen Winkeln außer °. Mobile Darstellung als eigene Prüfung.
+- Regressionstest: Browser-Test `tests/browser_2025.mjs` kontrolliert je Runde beide A3-Teilaufgaben, alle Lösungsschritte, gesperrte/verfügbare Hilfsmarkierungen und Zurücksetzen. Statischer Test `tests/quality_2025.mjs` prüft numerisch die Schwerpunktkoordinate, den Mittelpunkt, 60° und die Stufung der Seitenlängen.
+- **Freigabe:** Fachliche Bearbeitung und technische Tests sind getrennt zu dokumentieren. A 3 wird bis zur ausdrücklichen Freigabeentscheidung **nicht** als vom Nutzer abgenommen geführt. Aktuell gibt es keine identifizierte inhaltliche Abweichung vom Original; die ergänzte farbige Hilfsgrafik ist ein zusätzliches Lernangebot, nicht Bestandteil der amtlichen Druckfassung.
+
 ## Offene Freigabesperren, in dieser Reihenfolge lösen
 
 1. **ISB-Originaltreue**: Für **alle 26 Teilaufgaben** Wortlaut, Zeichnung, Achsen, Operatoren, Punkteangaben, Graphen, Parameter- und Rundungsbedingungen Zeile für Zeile dokumentiert mit Original abgleichen. Besonders verkürzte Texte der eigenständigen Seiten dürfen nicht als „Originaltext“ deklariert werden, sofern sie nur sinngemäß sind.
