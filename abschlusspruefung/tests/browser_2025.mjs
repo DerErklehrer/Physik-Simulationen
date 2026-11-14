@@ -30,12 +30,21 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
    if(count!==expected[name])throw Error('Teile: erwartet '+expected[name]+', erhalten '+count);
    for(let i=0;i<count;i++){
     await partButtons.nth(i).click();
+    // Prüfe das tatsächlich gesetzte MathJax – ein Text mit \(…\) im Browser ist ein Fehler.
+    await page.waitForFunction(()=>{
+      const nodes=[document.getElementById('statement'),document.getElementById('solution')];
+      return nodes.every(el=>el&&!/\\\\(?:\\(|\\[)/.test(el.innerText));
+    },null,{timeout:9000});
     const statement=(await page.locator('#statement').innerText()).trim();
     const solution=(await page.locator('#solution').innerText()).trim();
     if(statement.length<15||solution.length<10)throw Error('Leerer Aufgabentext/Lösung, Teil '+(i+1));
     await page.locator('#next').click();
     const after=(await page.locator('#solution').innerText()).trim();
     if(after.length<10)throw Error('Leerer Schritt nach Weiter, Teil '+(i+1));
+    await page.waitForFunction(()=>{
+      const nodes=[document.getElementById('statement'),document.getElementById('solution')];
+      return nodes.every(el=>el&&!/\\\\(?:\\(|\\[)/.test(el.innerText));
+    },null,{timeout:9000});
     await page.locator('#reset').click();
    }
    if(name==='b1'){
