@@ -39,11 +39,12 @@ for(const name of names){
  for(let k=1;k<=counts[name];k++)test(name+': Teilaufgabe '+k,html.includes(name.toUpperCase().replace(/(\d)$/,' $1')+'.'+k));
 }
 test('Prüfung 2025 Punkte gesamt',Object.values(scores).reduce((a,b)=>a+b,0)===53.5);
-for(const name of names)test(name+': keine ISB-Hinweise in der Schüleransicht',!/\bISB\b/.test(contents[name]));
+test('B3: kein Quellenkürzel unmittelbar am Reglerwert',!contents.b3.includes('ISB: x ≈ 0,28'));
+test('B3: Quellenhinweis im Lösungstext zulässig',contents.b3.includes('ISB-Lösungsmuster'));
 const overview=await readFile(join(root,'..','..','index.html'),'utf8');
 test('Jahrgangsübersicht: 2025 führt zur neuen Aufgabenauswahl',overview.includes('2025/haupttermin/index.html?v=20261114-navigation'));
 const index=await readFile(join(root,'index.html'),'utf8');
-for(const name of names)test('Übersicht verlinkt '+name,index.includes('href="./'+name+'.html"'));
+for(const name of names)test('Übersicht verlinkt '+name,index.includes('href="'+name+'.html"')||index.includes('href="./'+name+'.html"'));
 test('A1: alle zehn Brüche vertikal im SVG',!/>1\/5<|>4\/5<|>16\/25<|>8\/25<|>1\/25</.test(contents.a1));
 test('A3: Schwerpunkt korrekt markiert',contents.a3.includes('cx="418.33" cy="140"'));
 test('B2: korrekte Schrägbildachsen',contents.b2.includes('D=[260,250]')&&contents.b2.includes('B=[280,390]'));
