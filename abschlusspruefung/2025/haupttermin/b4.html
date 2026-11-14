@@ -121,7 +121,7 @@ function draw(){
  const canP3=part===2&&step>=3,canP0=part===3&&step>=3||part===4&&step>=2;
  $('p1').style.display=part===0?'inline-block':'none';$('p2').style.display=part===0?'inline-block':'none';
  $('p3').style.display=canP3?'inline-block':'none';$('p0').style.display=canP0?'inline-block':'none';
- $('fixed1').disabled=part!==0;$('fixed2').disabled=part!==0;$('slider').disabled=part===0;
+ $('fixed1').disabled=part!==0;$('fixed2').disabled=part!==0;$('slider').disabled=part===0;$('live').disabled=part===0;$('arrows').disabled=part!==1;
  $('fixed3').disabled=!canP3;$('fixed0').disabled=!canP0;
  $('rounding').style.display=canP3?'block':'none';
  $('xval').textContent=fmt(x);
