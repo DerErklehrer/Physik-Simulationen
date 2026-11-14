@@ -108,6 +108,23 @@
 - **Sichtprüfung:** Die finalen Screenshots `r3-desktop-a3-loesung.png` und `r3-mobile-a3-loesung.png` wurden tatsächlich geöffnet und auf überlappende Texte, sichtbare Winkel, korrekte Punktbeschriftungen und Lesbarkeit kontrolliert. Keine weitere Überlagerung festgestellt. Alle Screenshots liegen im Actions-Artefakt `mathematik-2025-browserkontrolle` (ID `14113189159`).
 - **Geltungsbereich der Aussage:** Dies belegt die nachbearbeiteten A3-Rechnungen, Geometrie und Technik. Die eigenständige dreifache vollständige Abnahme aller neun Kategorien für den *gesamten* Jahrgang 2025 ist weiterhin offen. A 3 ist **zur Nutzersichtung bereit**, aber nicht ausdrücklich freigegeben.
 
+## Einzelprüfung 2025 B 1 – Daten und Zufall (14.11.2026)
+
+**Amtlicher Originalabgleich:** Mathematik I Haupttermin 2025, Prüfungs-PDF, erste Seite der Aufgabengruppe B, B 1.0 bis B 1.3, mit Bildvergleich gegen das vierstufige Farbstamm- und zwölfendige Geschmacks-Baumdiagramm; amtliches Lösungsmuster, Seite 2. Überprüfung von Wortlaut, Operatoren, Bezeichnungen, vier Antwortmöglichkeiten, Prozentanteilen, Aufgabenreihenfolge und Punktwerten: **B 1.1 = 1 P, B 1.2 = 1,5 P, B 1.3 = 2,5 P, zusammen 5 P**.
+
+**Fachliche Eigenprüfung:**
+
+- **B 1.1:** Vier Farbanteile bilden 100 %. r = 40 %, b = 30 %, g = p %, w = (30 − p) %. Als Wahrscheinlichkeit ist dies `1 − (70+p)/100`, die dritte der vier amtlichen Auswahlmöglichkeiten. Der ursprüngliche weiße Ast bleibt vor der Herleitung unbeschriftet.
+- **B 1.2:** `p/100 · 50/100 = 10/100`, daraus `p=20`, also `20 %`. Im Ausgangsbaum steht weiterhin nur `p %`, nicht das bereits gelöste Ergebnis. Für mathematisch sinnvolle Farbanteile gilt `0<p<30`; der Beispielregler benutzt ausschließlich Werte zwischen 0,5 und 29,5.
+- **B 1.3:** Vier disjunkte günstige Pfade: `rA=20 %`, `rM=12 %`, `bA=15 %`, `bM=9 %`; Summe `56 %`. Da `56 %>50 %`, ist Sebastians Vermutung richtig. Dieser Wert ist von `p` unabhängig.
+- **Unabhängige mathematische Grenzproben:** `p∈{0,5;5;10;15;20;29,5}`. Für jeden Wert addieren sich die vier Farbanteile zu 100 %, die drei bedingten Geschmacksanteile zu 100 %, und `P(g∩A)=p/200`; die 56-%-Wahrscheinlichkeit bleibt invariant.
+
+**Grafik, Schreibweise und Didaktik:** Baumdiagramm nach dem amtlichen Aufbau: gemeinsamer Start, vier Farbknoten r/b/g/w und jeweils drei Geschmacks-Endknoten A/B/M, insgesamt zwölf Pfade; die ursprünglich gegebenen 40 %, 30 %, p % und jeweils 50 %, 20 %, 30 % bleiben sichtbar. Ergänzungen werden erst im betreffenden Lösungsschritt gezeigt. Die vier B1.1-Alternativen sind als echte vertikale MathJax-Brüche auswählbar. Der Schieberegler benutzt bewusst einen nicht amtlich vorgegebenen Beispielwert und ist als solcher gekennzeichnet. Die nach der Rechnung einblendbare Voreinstellung `p=20 %` ist bis zum letzten Schritt von B1.2 verborgen; die vier günstigen Pfade werden erst im Verlauf von B1.3 hervorgehoben und beschriftet. Keine versteckten Ergebnisse in der Messwertzeile.
+
+**Testmatrix:** Die statischen Regressionstests kontrollieren sechs verschiedene p-Werte, Positivität des weißen Anteils, alle vier B1.1-Alternativen und die gestaffelte Sichtbarkeit. Chromium prüft je dreimal Desktop (1366×900) und Mobile (390×844), alle B1-Teile, Intervallantwort, Lösungswechsel/Reset, Ergebnisfreigabe von `p=20` und `56 %` sowie p-Randwerte und Screenshots.
+
+**Freigabestatus:** Die fachliche und technische Qualitätsabnahme wird in diesem Protokoll dokumentiert. B 1 ist nach den noch ausstehenden finalen Screenshots zur **Nutzerfreigabe bereit**, aber noch nicht ausdrücklich freigegeben. Die amtliche Originalzeichnung dient als geometrische Referenz; die neue Farbgebung und die interaktive Einblendung sind bewusst ergänzte Lernhilfen.
+
 ## Offene Freigabesperren, in dieser Reihenfolge lösen
 
 1. **ISB-Originaltreue**: Für **alle 26 Teilaufgaben** Wortlaut, Zeichnung, Achsen, Operatoren, Punkteangaben, Graphen, Parameter- und Rundungsbedingungen Zeile für Zeile dokumentiert mit Original abgleichen. Besonders verkürzte Texte der eigenständigen Seiten dürfen nicht als „Originaltext“ deklariert werden, sofern sie nur sinngemäß sind.
