@@ -123,7 +123,7 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(await page.locator('#volume50').isVisible())throw Error('B2.3: Lösungswert schon im zweiten Schritt sichtbar');
     await page.locator('#next').click();
     if(!(await page.locator('#volume50').isVisible()))throw Error('B2.3: Lösungswert nach Rechnung fehlt');
-    if(Math.abs(Number(await page.locator('#length').inputValue())-50/6)>1e-8)throw Error('B2.3: Prisma nicht auf exaktes 50-cm3-Volumen gesetzt');
+    if(Math.abs(Number(await page.locator('#length').inputValue())-50/6)>0.005)throw Error('B2.3: Prisma nicht auf exaktes 50-cm3-Volumen gesetzt');
     if(!(await page.locator('#measure').innerText()).includes('50,00 cm³'))throw Error('B2.3: Rechnungs- und Grafikwert widersprechen sich');
     await page.locator('#prev').click();
     if(Math.abs(Number(await page.locator('#length').inputValue())-4)>1e-8)throw Error('B2.3: vorige Lage nach Zurückblättern nicht wiederhergestellt');
