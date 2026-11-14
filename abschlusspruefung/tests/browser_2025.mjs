@@ -105,6 +105,19 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     await page.locator('#reset').click();
    }
    if(name==='b3'){
+    if(mode.isMobile){
+     const metrics=await page.locator('#plotScroll').evaluate(el=>({scrollWidth:el.scrollWidth,clientWidth:el.clientWidth}));
+     if(metrics.scrollWidth<=metrics.clientWidth+100)throw Error('B3: Mobiles Koordinatensystem nicht vergrößert/scrollbar');
+     await page.locator('#plotScroll').evaluate(el=>el.scrollLeft=el.scrollWidth);
+     if(await page.locator('#plotScroll').evaluate(el=>el.scrollLeft)<100)throw Error('B3: horizontaler Lesemodus defekt');
+     await page.screenshot({path:OUT+'/r'+round+'-mobile-b3-rechts.png',fullPage:true,animations:'disabled'});
+     await page.locator('#plotOverview').click();
+     if(!(await page.locator('#plotScroll').evaluate(el=>el.classList.contains('overview'))))throw Error('B3: Gesamtansicht lässt sich nicht aktivieren');
+     await page.screenshot({path:OUT+'/r'+round+'-mobile-b3-gesamt.png',fullPage:true,animations:'disabled'});
+     await page.locator('#plotOverview').click();
+     if(await page.locator('#plotScroll').evaluate(el=>el.classList.contains('overview')))throw Error('B3: Lesemodus lässt sich nicht wiederherstellen');
+     await page.locator('#plotScroll').evaluate(el=>el.scrollLeft=0);
+    }
     const visibleGraph=()=>page.locator('#plot path[clip-path="url(#clip25)"]').count();
     const polygonCount=()=>page.locator('#plot path[fill-opacity]').count();
     await partButtons.nth(0).click();
