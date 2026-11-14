@@ -33,7 +33,7 @@ function label(p,t){shape('text',{x:p[0]+7,y:p[1]-9,'font-size':19,fill:'#273e50
 function draw(){
  const n=exact50?50/6:Number($('length').value),k=n/10;
  // 40px je unverzerrtem cm; AD als verkürzte Schrägbildachse
- const A=[120,390],B=[280,390],D=[260,250],C=[420,250],E=[120,270],F=[280,270],H=[260,130],G=[420,130];
+ const A=[120,390],B=[280,390],E=[120,270],F=[280,270],depth=200/Math.sqrt(2),D=[A[0]+depth,A[1]-depth],C=[B[0]+depth,B[1]-depth],H=[E[0]+depth,E[1]-depth],G=[F[0]+depth,F[1]-depth];
  const P=[A[0]+(D[0]-A[0])*k,A[1]+(D[1]-A[1])*k],Q=[B[0]+(C[0]-B[0])*k,B[1]+(C[1]-B[1])*k];
  const construction=part===0,phase=construction?step+1:3;
  $('geometry').replaceChildren();
