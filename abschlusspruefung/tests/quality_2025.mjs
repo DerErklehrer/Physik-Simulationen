@@ -169,5 +169,19 @@ test('B4: B4.4 ohne Vorwegnehmen',contents.b4.includes('part===3&&step>=3'));
 test('B4: Rechtwinkelsymbol Viertelkreis und Punkt',contents.b4.includes("data-right-angle':'quarter-arc'")&&contents.b4.includes("data-right-angle':'center-dot'"));
 test('B4: mobile Gesamtübersicht',contents.b4.includes("classList.toggle('overview')"));
 
+// ISB-konforme Längenbeträge als eigener zusätzlicher Querschnittstest.
+for(const [name,segments] of Object.entries({
+ a2:['AC_n','AC_2','B_2C_2'],a3:['AC','BC','AM','MC'],
+ b2:['AB','AD','AE','AP_1','AP_n'],b3:['A_nD_n','C_nD_n','A_nF_n','A_nB_n','A_3B_3'],
+ b4:['AB_n','AD_n']
+})){
+ const source=contents[name];
+ for(const seg of segments){
+  const single=String.raw`\overline{${seg}}`;
+  const double=single.replaceAll('\\','\\\\');
+  test('2025 '+name+': Längenbetrag '+seg,source.includes('|'+single+'|')||source.includes('|'+double+'|')||source.includes(String.raw`\lvert`+single+String.raw`\rvert`)||source.includes(String.raw`\\lvert`+double+String.raw`\\rvert`));
+ }
+}
+test('2025 B4: Vektor ≠ Länge',contents.b4.includes('overrightarrow{AB_n}')&&contents.b4.includes('overline{AB_n}'));
 console.log('2025: '+checked+' statische und mathematische Prüfungen erfolgreich.');
 console.log('NICHT geprüft: ISB-Wortlaut, sämtliche visuelle Darstellungen, echte Browserlaufzeit, MathJax/Three.js im Browser, Mobile/Touch. Keine Freigabe.');
