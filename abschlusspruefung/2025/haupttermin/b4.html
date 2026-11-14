@@ -44,7 +44,7 @@ const tasks=[
 ['Flächenformel','Der Flächeninhalt eines Parallelogramms mit den benachbarten Seiten \\(AB_n\\) und \\(AD_n\\) ist \\[F_n=|\\overline{AB_n}|\\cdot|\\overline{AD_n}|\\cdot\\sin40^\\circ.\\]'],
 ['Längenverhältnis einsetzen','Da \\(|\\overline{AB_n}|=0{,}5\\cdot|\\overline{AD_n}|\\), gilt \\[F_n=0{,}5\\cdot|\\overline{AD_n}|^2\\cdot\\sin40^\\circ.\\]'],
 ['Minimum begründen','Der Faktor \\(0{,}5\\cdot\\sin40^\\circ\\) ist positiv und konstant. Daher wird der Flächeninhalt genau dann minimal, wenn \\(|\\overline{AD_n}|\\) minimal ist. Das ist bei \\(D_0\\) der Fall. \\(\\boxed{F_0=F_{\\min}}\\).']]}];
-let part=0,step=0;const X=x=>100+(x+6)*40,Y=y=>570-(y+2)*40;
+let part=0,step=0,previousX=-4.5;const X=x=>100+(x+6)*40,Y=y=>570-(y+2)*40;
 function el(t,attrs={},str){const e=document.createElementNS(ns,t);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(str!==undefined)e.textContent=str;$('plot').append(e);return e}
 function line(a,b,c='#95a4b1',w=1.5,d=''){el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:c,'stroke-width':w,'stroke-dasharray':d})}
 function point(p,label,color){el('circle',{cx:X(p.x),cy:Y(p.y),r:3.5,fill:color});el('text',{x:X(p.x)+5,y:Y(p.y)-7,fill:color,'font-size':15},label)}
@@ -121,7 +121,7 @@ function draw(){
  const canP3=part===2&&step>=3,canP0=part===3&&step>=3||part===4&&step>=2;
  $('p1').style.display=part===0?'inline-block':'none';$('p2').style.display=part===0?'inline-block':'none';
  $('p3').style.display=canP3?'inline-block':'none';$('p0').style.display=canP0?'inline-block':'none';
- $('fixed1').disabled=part!==0;$('fixed2').disabled=part!==0;
+ $('fixed1').disabled=part!==0;$('fixed2').disabled=part!==0;$('slider').disabled=part===0;
  $('fixed3').disabled=!canP3;$('fixed0').disabled=!canP0;
  $('rounding').style.display=canP3?'block':'none';
  $('xval').textContent=fmt(x);
@@ -137,13 +137,14 @@ tasks.forEach((t,i)=>{
  b.onclick=()=>{part=i;step=0;initPart();render()};
  $('parts').append(b);
 });
-$('slider').oninput=draw;
+$('slider').oninput=()=>{$('fixed3').checked=false;$('fixed0').checked=false;draw()};
 for(const id of ['live','arrows','fixed1','fixed2','fixed3','fixed0'])$(id).onchange=draw;
 for(const [id,x] of [['p1',-4.5],['p2',2],['p3',.1],['p0',-5.2]]){
  $(id).onclick=()=>{
+  if(part===0){$('fixed1').checked=id==='p1';$('fixed2').checked=id==='p2';draw();return}
   $('slider').value=x;
-  if(id==='p3')$('fixed3').checked=true;
-  if(id==='p0')$('fixed0').checked=true;
+  if(id==='p3'){$('fixed3').checked=true;$('fixed0').checked=false}
+  if(id==='p0'){$('fixed0').checked=true;$('fixed3').checked=false}
   draw();
  };
 }
@@ -154,8 +155,8 @@ $('plotOverview').onclick=()=>{
  $('plotHint').textContent=overview?'Gesamtübersicht: Für größere Beschriftungen den Lesemodus wählen.':'Lesemodus: Koordinatensystem nach links oder rechts verschieben.';
  if(overview)$('plotScroll').scrollLeft=0;
 };
-$('prev').onclick=()=>{step=Math.max(0,step-1);render()};
-$('next').onclick=()=>{step=Math.min(tasks[part].steps.length-1,step+1);if(part===2&&step===3){$('slider').value=.1;$('fixed3').checked=true}if(part===3&&step===3||part===4&&step===2){$('slider').value=-5.2;$('fixed0').checked=true}render()};
+$('prev').onclick=()=>{const old=step;step=Math.max(0,step-1);if(part===2&&old===3&&step===2){$('slider').value=previousX;$('fixed3').checked=false}if((part===3&&old===3&&step===2)||(part===4&&old===2&&step===1)){$('slider').value=previousX;$('fixed0').checked=false}render()};
+$('next').onclick=()=>{const old=step;step=Math.min(tasks[part].steps.length-1,step+1);if(part===2&&old===2&&step===3){previousX=Number($('slider').value);$('slider').value=.1;$('fixed3').checked=true}if((part===3&&old===2&&step===3)||(part===4&&old===1&&step===2)){previousX=Number($('slider').value);$('slider').value=-5.2;$('fixed0').checked=true}render()};
 $('reset').onclick=()=>{step=0;initPart();render()};
 initPart();render();
 window.addEventListener('load',()=>{if(window.MathJax?.typesetPromise)window.MathJax.typesetPromise([$('statement'),$('solution'),$('rounding')]).catch(console.error)});
