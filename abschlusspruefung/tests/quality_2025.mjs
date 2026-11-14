@@ -48,7 +48,12 @@ for(const name of names)test('Übersicht verlinkt '+name,index.includes('href="'
 test('A1: amtlicher A1.0-Wortlaut Wohnungs- und Briefkastenschlüssel',contents.a1.includes('einen großen Wohnungs- und einen kleinen Briefkastenschlüssel.'));
 test('A1: Diagrammergebnisse nicht vorzeitig sichtbar',contents.a1.includes("function syncDiagram()")&&contents.a1.includes("syncDiagram();"));
 test('A1: alle zehn Brüche vertikal im SVG',!/>1\/5<|>4\/5<|>16\/25<|>8\/25<|>1\/25</.test(contents.a1));
-test('A3: Schwerpunkt korrekt markiert',contents.a3.includes('cx="418.33" cy="140"'));
+const a3Ax=585-288*Math.sqrt(3),a3Mx=(a3Ax+585)/2,a3Sx=(a3Ax+585+585)/3;
+close('A3: Mittelpunkt pixelgenau',a3Mx,335.585,0.001);
+close('A3: Schwerpunkt pixelgenau',a3Sx,418.723,0.001);
+close('A3: geometrischer Winkel',Math.atan((585-a3Mx)/144)*180/Math.PI,60,1e-9);
+test('A3: Seitenlängen erst im Rechenschritt',contents.a3.includes('id="sideLengths"')&&contents.a3.includes("part===1?'':'none'"));
+test('A3: Schwerpunkt korrekt markiert',contents.a3.includes('cx="418.723" cy="140"'));
 test('B2: korrekte Schrägbildachsen',contents.b2.includes('D=[260,250]')&&contents.b2.includes('B=[280,390]'));
 test('B2: 3D-Modul eingebunden',contents.b2.includes('raumgeometrie3d.js'));
 test('A2: 3D-Modul eingebunden',contents.a2.includes('raumgeometrie3d.js'));
