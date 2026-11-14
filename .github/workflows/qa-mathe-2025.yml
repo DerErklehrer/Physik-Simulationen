@@ -4,6 +4,7 @@ on:
     paths:
       - 'abschlusspruefung/2025/haupttermin/**'
       - 'abschlusspruefung/tests/quality_2025.mjs'
+      - 'abschlusspruefung/tests/source_2025.mjs'
       - 'abschlusspruefung/tests/browser_2025.mjs'
       - '.github/workflows/qa-mathe-2025.yml'
   workflow_dispatch:
@@ -21,6 +22,7 @@ jobs:
           for pass in 1 2 3; do
             echo "Statischer Prüfdurchgang ${pass}"
             node abschlusspruefung/tests/quality_2025.mjs
+            node abschlusspruefung/tests/source_2025.mjs
           done
       - name: Chromium und Playwright bereitstellen
         run: |
