@@ -204,8 +204,19 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
    }
    await page.waitForTimeout(500);
    if(name==='a2'||name==='b2'){
+    if(name==='b2')await partButtons.nth(0).click();
     await page.locator('#threeD2025').click();
     await page.locator('#view3d2025 canvas').waitFor({state:'visible',timeout:15000});
+    if(name==='b2'){
+     await page.waitForTimeout(250);
+     const before=await page.locator('#view3d2025 canvas').screenshot();
+     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b2-3d-schritt1.png',fullPage:true,animations:'disabled'});
+     await page.locator('#next').click();await page.locator('#next').click();
+     await page.waitForTimeout(250);
+     const after=await page.locator('#view3d2025 canvas').screenshot();
+     if(before.equals(after))throw Error('B2: 3D-Modell wird bei der Konstruktion nicht vervollständigt');
+     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b2-3d-schritt3.png',fullPage:true,animations:'disabled'});
+    }
     await page.locator('#top2025').click();
     await page.locator('#resetcamera2025').click();
     await page.waitForTimeout(450);
