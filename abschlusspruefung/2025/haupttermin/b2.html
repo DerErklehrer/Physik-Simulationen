@@ -84,7 +84,7 @@ $('prev').onclick=()=>{const was=step;step=Math.max(0,step-1);
  render();
 };
 $('next').onclick=()=>{const was=step;step=Math.min(T[part][3].length-1,step+1);
- if(part===2&&was===1&&step===2){previousLength=Number($('length').value);$('length').value=(50/6).toFixed(2)}
+ if(part===2&&was===1&&step===2){previousLength=Number($('length').value);exact50=true;$('length').value=50/6}
  if(part===3&&was===2&&step===3){previousLength=Number($('length').value);exact50=false;$('length').value=10}
  render();
 };
