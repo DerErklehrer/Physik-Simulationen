@@ -33,7 +33,7 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     // Prüfe das tatsächlich gesetzte MathJax – ein Text mit \(…\) im Browser ist ein Fehler.
     await page.waitForFunction(()=>{
       const nodes=[document.getElementById('statement'),document.getElementById('solution')];
-      return nodes.every(el=>el&&!/\\\\(?:\\(|\\[)/.test(el.innerText));
+      return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
     },null,{timeout:9000});
     const statement=(await page.locator('#statement').innerText()).trim();
     const solution=(await page.locator('#solution').innerText()).trim();
@@ -43,7 +43,7 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(after.length<10)throw Error('Leerer Schritt nach Weiter, Teil '+(i+1));
     await page.waitForFunction(()=>{
       const nodes=[document.getElementById('statement'),document.getElementById('solution')];
-      return nodes.every(el=>el&&!/\\\\(?:\\(|\\[)/.test(el.innerText));
+      return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
     },null,{timeout:9000});
     await page.locator('#reset').click();
    }
