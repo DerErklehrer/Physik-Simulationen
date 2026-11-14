@@ -38,6 +38,20 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(after.length<10)throw Error('Leerer Schritt nach Weiter, Teil '+(i+1));
     await page.locator('#reset').click();
    }
+   if(name==='a1'){
+    const visibility=async id=>page.locator('#'+id).getAttribute('visibility');
+    await partButtons.nth(0).click();
+    if(await visibility('outcome-both')!=='hidden')throw Error('A1.1: Endergebnis zu früh sichtbar');
+    await page.locator('#next').click();
+    if(await visibility('outcome-both')!=='visible')throw Error('A1.1: Endergebnis nach Produktregel unsichtbar');
+    await partButtons.nth(1).click();
+    if(await visibility('outcome-only-w')!=='hidden'||await visibility('outcome-only-b')!=='hidden')throw Error('A1.2: Endergebnisse zu früh sichtbar');
+    await page.locator('#next').click();
+    if(await visibility('outcome-only-w')!=='visible'||await visibility('outcome-only-b')!=='hidden')throw Error('A1.2: erster Pfad falsch');
+    await page.locator('#next').click();
+    if(await visibility('outcome-only-b')!=='visible')throw Error('A1.2: zweiter Pfad falsch');
+    await page.locator('#reset').click();
+   }
    for(const id of ['phi','length','slider','x','p']){
     const slider=page.locator('#'+id);
     if(await slider.count()){
