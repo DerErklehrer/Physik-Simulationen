@@ -19,7 +19,7 @@ window.exam2025Three={
 show(task,value,phase=3){if(!['A 2','B 2'].includes(task))return;setup();active=true;build(task,value,phase);resize();},
 update(task,value,phase=3){if(active&&renderer)build(task,value,phase);},
 hide(){active=false;},
-top(){if(!renderer)return;camera.up.set(0,0,-1);camera.position.set(0,20,0.001);controls.update();},
+top(){if(!renderer)return;camera.up.set(0,0,-1);camera.position.copy(controls.target).add(V(0,20,0.001));controls.update();},
 reset(){if(!renderer)return;camera.up.set(0,1,0);camera.position.set(12,10,13);controls.update();}
 };
 window.dispatchEvent(new Event('exam2025ThreeReady'));
