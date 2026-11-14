@@ -26,17 +26,70 @@ const T=[
 ['Größtes Prisma','Pₙ liegt auf AD, also ist \\(|\\overline{AP_n}|\\leq10\\,\\mathrm{cm}\\). Das größte Prisma erhält man für \(P_0=D\).'],
 ['Maximales Volumen','\\[V_{\\max}=\\frac12\\cdot10\\cdot3\\cdot4\\,\\mathrm{cm}^3=60\\,\\mathrm{cm}^3.\\]'],
 ['Beurteilung','Nein. Selbst das größte Prisma hat genau das halbe Quadervolumen. Ein größeres Volumen ist unter diesen Bedingungen nicht möglich.']]]];
-let part=0,step=0,show3d=false;
+let part=0,step=0,show3d=false,previousLength=4;
 function shape(tag,attrs={},text){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('geometry').append(e);return e}
 function line(a,b,color='#8297a7',width=2,dash=false){shape('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':width,'stroke-dasharray':dash?'7 5':''})}
 function label(p,t){shape('text',{x:p[0]+7,y:p[1]-9,'font-size':19,fill:'#273e50'},t)}
-function draw(){const n=+$('length').value,k=n/10;const A=[120,390],B=[280,390],D=[260,250],C=[420,250],E=[120,265],F=[280,265],H=[260,125],G=[420,125],P=[A[0]+(D[0]-A[0])*k,A[1]+(D[1]-A[1])*k],Q=[B[0]+(C[0]-B[0])*k,B[1]+(C[1]-B[1])*k];
-$('geometry').replaceChildren();shape('polygon',{points:[A,P,E].map(v=>v.join(',')).join(' '),fill:'#9ed1e7','fill-opacity':'.72',stroke:'#25769d','stroke-width':3});shape('polygon',{points:[B,Q,F].map(v=>v.join(',')).join(' '),fill:'#9ed1e7','fill-opacity':'.72',stroke:'#25769d','stroke-width':3});
-for(const [a,b] of [[A,D],[D,C],[C,B],[B,A],[E,H],[H,G],[G,F],[F,E],[A,E],[B,F],[C,G],[D,H]])line(a,b,'#9cabba',2);
-for(const [a,b] of [[A,P],[P,E],[E,A],[B,Q],[Q,F],[F,B],[A,B],[P,Q],[E,F]])line(a,b,'#a32b4d',3);
-let labels=[[A,n<.3?'A ≈ Pₙ':'A'],[B,n<.3?'B ≈ Qₙ':'B'],[C,n>9.9?'C = Qₙ':'C'],[D,n>9.9?'D = Pₙ':'D'],[E,'E'],[F,'F'],[G,'G'],[H,'H']];if(n>=.3&&n<=9.9)labels.push([P,'Pₙ'],[Q,'Qₙ']);for(const [pt,t] of labels)label(pt,t);
-$('lengthvalue').textContent=fmt(n)+' cm';$('measure').textContent='φ = '+fmt(Math.atan(n/3)*180/Math.PI)+'° · Volumen V = '+fmt(6*n)+' cm³';if(show3d)window.exam2025Three?.update('B 2',n)}
-function sync(){ $('figure').style.display=show3d?'none':'block';$('view3d2025').style.display=show3d?'block':'none';$('twoD2025').classList.toggle('active',!show3d);$('threeD2025').classList.toggle('active',show3d);$('twoD2025').setAttribute('aria-pressed',String(!show3d));$('threeD2025').setAttribute('aria-pressed',String(show3d));$('top2025').style.display=show3d?'inline-block':'none';$('resetcamera2025').style.display=show3d?'inline-block':'none';if(show3d)window.exam2025Three?.show('B 2',+$('length').value);else window.exam2025Three?.hide()}
-function render(){const t=T[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t[0]+' · '+t[1]+'</strong><p>'+t[2]+'</p>';$('steptitle').textContent=t[3][step][0];$('solution').innerHTML=t[3][step][1];$('count').textContent='Schritt '+(step+1)+' von '+t[3].length;$('prev').disabled=step===0;$('next').disabled=step===t[3].length-1;if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('solution')]);MathJax.typesetPromise([$('solution')]).catch(console.error)}}
-document.querySelectorAll('#parts button').forEach((b,i)=>b.onclick=()=>{part=i;step=0;if(i===0)$('length').value=4;if(i===2)$('length').value=50/6;if(i===3)$('length').value=10;render();draw()});$('length').oninput=draw;$('original').onclick=()=>{$('length').value=4;draw()};$('volume50').onclick=()=>{$('length').value=50/6;draw()};$('maximum').onclick=()=>{$('length').value=10;draw()};$('twoD2025').onclick=()=>{show3d=false;sync()};$('threeD2025').onclick=()=>{show3d=true;sync()};$('top2025').onclick=()=>window.exam2025Three?.top();$('resetcamera2025').onclick=()=>window.exam2025Three?.reset();window.addEventListener('exam2025ThreeReady',()=>{if(show3d)sync()});$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(T[part][3].length-1,step+1);render()};$('reset').onclick=()=>{step=0;render()};render();draw();
+function draw(){
+ const n=Number($('length').value),k=n/10;
+ // 40px je unverzerrtem cm; AD als verkürzte Schrägbildachse
+ const A=[120,390],B=[280,390],D=[260,250],C=[420,250],E=[120,270],F=[280,270],H=[260,130],G=[420,130];
+ const P=[A[0]+(D[0]-A[0])*k,A[1]+(D[1]-A[1])*k],Q=[B[0]+(C[0]-B[0])*k,B[1]+(C[1]-B[1])*k];
+ const construction=part===0,phase=construction?step+1:3;
+ $('geometry').replaceChildren();
+ // Die Originalzeichnung des Quaders muss vor dem Prisma sichtbar bleiben.
+ for(const [a,b] of [[A,D],[D,C],[C,B],[B,A],[E,H],[H,G],[G,F],[F,E],[A,E],[B,F],[C,G],[D,H]])line(a,b,'#8598a9',2);
+ // Im amtlichen Ausgangsschraegbild fuehrt eine Raumdiagonale von A nach G.
+ line(A,G,'#778d9c',1.7);
+ if(phase>=3){
+  shape('polygon',{points:[A,P,E].map(v=>v.join(',')).join(' '),fill:'#9ed1e7','fill-opacity':'.43',stroke:'#25769d','stroke-width':2});
+  shape('polygon',{points:[B,Q,F].map(v=>v.join(',')).join(' '),fill:'#9ed1e7','fill-opacity':'.43',stroke:'#25769d','stroke-width':2});
+  for(const [a,b] of [[A,P],[P,E],[E,A],[B,Q],[Q,F],[F,B],[A,B],[P,Q],[E,F]])line(a,b,'#a32b4d',2.8);
+ }else{
+  if(phase>=1)line(A,P,'#a32b4d',3);
+  if(phase>=2)line(P,Q,'#a32b4d',2.8);
+ }
+ const idx=construction?'₁':part===2&&step>=2?'₂':part===3&&step>=3?'₀':'ₙ';
+ const names=[[A,'A'],[B,'B'],[C,n>9.9?'C = Q'+idx:'C'],[D,n>9.9?'D = P'+idx:'D'],[E,'E'],[F,'F'],[G,'G'],[H,'H']];
+ if(phase>=1&&n<9.9)names.push([P,'P'+idx]);
+ if(phase>=2&&n<9.9)names.push([Q,'Q'+idx]);
+ for(const [pt,t] of names)label(pt,t);
+ if(phase>=2&&construction){
+  shape('text',{x:P[0]+16,y:P[1]-16,'font-size':17,fill:'#a32b4d'},'P₁Q₁ ∥ AB');
+ }
+ $('lengthvalue').textContent=fmt(n)+' cm';
+ const phi=Math.atan(n/3)*180/Math.PI;
+ const revealAngle=part===1&&step>=2||part===2&&step>=2;
+ const revealVolume=part===1&&step>=3||part===2&&step>=2||part===3&&step>=2;
+ $('measure').textContent='Länge AP = '+fmt(n)+' cm'+(revealAngle?' · φ = '+fmt(phi)+'°':'')+(revealVolume?' · V = '+fmt(6*n)+' cm³':'');
+ $('volume50').style.display=part===2&&step>=2?'inline-block':'none';
+ $('maximum').style.display=part===3&&step>=3?'inline-block':'none';
+ if(show3d)window.exam2025Three?.update('B 2',n,phase);
+}
+function sync(){ $('figure').style.display=show3d?'none':'block';$('view3d2025').style.display=show3d?'block':'none';$('twoD2025').classList.toggle('active',!show3d);$('threeD2025').classList.toggle('active',show3d);$('twoD2025').setAttribute('aria-pressed',String(!show3d));$('threeD2025').setAttribute('aria-pressed',String(show3d));$('top2025').style.display=show3d?'inline-block':'none';$('resetcamera2025').style.display=show3d?'inline-block':'none';if(show3d)window.exam2025Three?.show('B 2',+$('length').value,part===0?step+1:3);else window.exam2025Three?.hide()}
+function render(){const t=T[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t[0]+' · '+t[1]+'</strong><p>'+t[2]+'</p>';$('steptitle').textContent=t[3][step][0];$('solution').innerHTML=t[3][step][1];$('count').textContent='Schritt '+(step+1)+' von '+t[3].length;$('prev').disabled=step===0;$('next').disabled=step===t[3].length-1;draw();if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('solution')]);MathJax.typesetPromise([$('solution')]).catch(console.error)}}
+document.querySelectorAll('#parts button').forEach((b,i)=>b.onclick=()=>{
+ part=i;step=0;$('length').value=4;render();
+});
+$('length').oninput=draw;
+$('original').onclick=()=>{$('length').value=4;draw()};
+$('volume50').onclick=()=>{$('length').value=(50/6).toFixed(2);draw()};
+$('maximum').onclick=()=>{$('length').value=10;draw()};
+$('twoD2025').onclick=()=>{show3d=false;sync()};
+$('threeD2025').onclick=()=>{show3d=true;sync()};
+$('top2025').onclick=()=>window.exam2025Three?.top();
+$('resetcamera2025').onclick=()=>window.exam2025Three?.reset();
+window.addEventListener('exam2025ThreeReady',()=>{if(show3d)sync()});
+$('prev').onclick=()=>{const was=step;step=Math.max(0,step-1);
+ if(part===2&&was===2&&step===1)$('length').value=previousLength;
+ if(part===3&&was===3&&step===2)$('length').value=previousLength;
+ render();
+};
+$('next').onclick=()=>{const was=step;step=Math.min(T[part][3].length-1,step+1);
+ if(part===2&&was===1&&step===2){previousLength=Number($('length').value);$('length').value=(50/6).toFixed(2)}
+ if(part===3&&was===2&&step===3){previousLength=Number($('length').value);$('length').value=10}
+ render();
+};
+$('reset').onclick=()=>{if((part===2&&step===2)||(part===3&&step===3))$('length').value=previousLength;step=0;render()};
+render();
 </script><script type="module" src="./raumgeometrie3d.js"></script></body></html>
