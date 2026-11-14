@@ -82,7 +82,9 @@ for(const name of groups){
   const solved=steps.map(step=>step.join(' ')).join('\n');
   verify(solved.includes(result),title+': amtliches Kontroll-Ergebnis oder Zahlenanker '+result);
   verify(!/[×]|\\times|∠|\\angle\b/.test(question+'\n'+solved),title+': Notation ohne Mal-Kreuz oder abweichendes Winkelzeichen');
-  // Nach Auswertung der JS-Strings ist genau EIN Backslash korrekt;\n  // rohe fehlerhafte Literale werden separat in quality_2025.mjs geprüft.\n  const mathMarkup=question+'\n'+solved;
+  // Nach Auswertung der JS-Strings ist genau EIN Backslash korrekt;
+  // rohe fehlerhafte Literale werden separat in quality_2025.mjs geprüft.
+  const mathMarkup=question+'\n'+solved;
   const occurrences=(token)=>mathMarkup.split(token).length-1;
   verify(occurrences('\\(')===occurrences('\\)')&&occurrences('\\[')===occurrences('\\]'),title+': alle MathJax-Delimiters geschlossen');
   verify(question.length>=35,title+': Aufgabenstellung nicht leer/verkürzt');
