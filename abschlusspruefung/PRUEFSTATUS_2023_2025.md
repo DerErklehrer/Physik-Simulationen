@@ -6,6 +6,8 @@
 
 Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, amtliche ISB-Haupttermine der betreffenden Jahre und vorläufige interaktive Referenz 2026.
 
+**Fachliche Endbearbeitung 2025 A 3 (14.11.2026):** Die beiden Teilaufgaben A 3.1 und A 3.2 sind gegen amtliche Angaben und Musterlösung abgeglichen. S, M, Winkel und Längenverhältnis im SVG geometrisch nachgerechnet, vorzeitige Hilfsmarkierungen und die Beschriftungsüberlagerung korrigiert. Die finalen Desktop-/Mobil-Screenshots wurden gesichtet. Drei technische Regressionstests bestanden ([GitHub Actions](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43593530437)). **A 3 ist zur Abnahme bereit, aber nicht ausdrücklich vom Nutzer freigegeben.**
+
 **Fachliche Endbearbeitung 2025 A 2 (14.11.2026):** Alle vier Teilaufgaben mit ISB-Original und Lösungsmuster abgeglichen, Dreieckszeichnung A₂ zusätzlich zum festen Ausgangsdreieck A₁, 3D-Doppelkegel ohne innere Grundkreisscheiben, interaktive Intervallauswahl und an Lösungsschritte gekoppelte Grafik/30°-Ergebnisanzeige korrigiert. Die 2D-/3D-Screenshots wurden visuell geprüft, dabei erkannte Überlagerungen und Synchronisationsfehler behoben. **A 2 bleibt bis zur ausdrücklichen Abnahme unfreigegeben.** [Detaillierter Nachweis](2025/PRUEFPROTOKOLL_DREIFACH.md).
 
 **Einzelfreigabe 2025 A 1 (14.11.2026):** Vom Nutzer ausdrücklich als interaktive Lernseite freigegeben. Die Original-Gebäudefotografie fehlt bewusst; die vollständige dreifache Prüfung der Bildidentität wird daher nicht als bestanden ausgewiesen. Letzter technischer Regressionstest zum freigegebenen A1-Stand: [erfolgreich](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43569427160). Die Gesamtfreigabe 2025 bleibt offen.
