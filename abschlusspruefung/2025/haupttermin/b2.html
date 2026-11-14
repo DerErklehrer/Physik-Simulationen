@@ -11,7 +11,7 @@ const T=[
 ['B 2.1','1 P','Punkte Pₙ liegen auf der Strecke AD. Punkte Qₙ liegen auf der Strecke BC, wobei PₙQₙ parallel zu AB gilt. Die Dreiecke APₙE sind die Grundflächen von Prismen APₙEBQₙF. Zeichnen Sie das Prisma AP₁EBQ₁F für |AP₁| = 4 cm in das Schrägbild zu B 2.0 ein.',[
 ['Punkt P₁','Trage \\( |\\overline{AP_1}|=4\\,\\mathrm{cm} \\) auf der Kante \\(AD\\) ab. Auf der rückwärts verlaufenden Schrägbildkante ist die Strecke mit \\(q=\\frac12\\) verkürzt: \\[\\frac12\\cdot4\\,\\mathrm{cm}=2\\,\\mathrm{cm}.\\] Die Kante steigt im Schrägbild unter \\(\\omega=45^\\circ\\) nach rechts oben.'],
 ['Punkt Q₁','Zeichne durch P₁ eine Parallele zu AB. Ihr Schnittpunkt mit BC ist Q₁. Dann gilt \\(\\overline{P_1Q_1}\\parallel\\overline{AB}\\).'],
-['Prisma','Verbinde A–P₁–E und B–Q₁–F. Ergänze die drei parallelen Verbindungskanten AB, P₁Q₁ und EF. Verdeckte Kanten werden gestrichelt.']]],
+['Prisma','Verbinde A–P₁–E und B–Q₁–F. Ergänze die drei parallelen Verbindungskanten AB, P₁Q₁ und EF. Damit ist das Dreieck A–P₁–E mit dem dazu parallelen Dreieck B–Q₁–F zum Prisma ergänzt.']]],
 ['B 2.2','2 P','Die Winkel ∢AEPₙ haben das Maß φ mit 0° < φ ≤ ∢AED. Zeigen Sie, dass für das Volumen V der Prismen APₙEBQₙF in Abhängigkeit von φ gilt: V(φ) = 18 · tan φ cm³.',[
 ['Dreiecksgrundfläche','Das Dreieck APₙE ist rechtwinklig bei A. Daher gilt: \\[G=\\frac12\\cdot|\\overline{AP_n}|\\cdot|\\overline{AE}|.\\]'],
 ['Winkel ∢AEPₙ','Im Dreieck APₙE ist APₙ die Gegenkathete und AE die Ankathete zu φ. \\[\\tan\\varphi=\\frac{|\\overline{AP_n}|}{3\\,\\mathrm{cm}}.\\]'],
@@ -62,9 +62,9 @@ function draw(){
  $('volume50').style.display=part===2&&step>=2?'inline-block':'none';
  $('roundingNote').style.display=part===2&&step>=2?'block':'none';
  $('maximum').style.display=part===3&&step>=3?'inline-block':'none';
- if(show3d)window.exam2025Three?.update('B 2',n,phase);
+ if(show3d)window.exam2025Three?.update('B 2',n,phase,idx);
 }
-function sync(){ $('figure').style.display=show3d?'none':'block';$('view3d2025').style.display=show3d?'block':'none';$('twoD2025').classList.toggle('active',!show3d);$('threeD2025').classList.toggle('active',show3d);$('twoD2025').setAttribute('aria-pressed',String(!show3d));$('threeD2025').setAttribute('aria-pressed',String(show3d));$('top2025').style.display=show3d?'inline-block':'none';$('resetcamera2025').style.display=show3d?'inline-block':'none';if(show3d)window.exam2025Three?.show('B 2',+$('length').value,part===0?step+1:3);else window.exam2025Three?.hide()}
+function sync(){ $('figure').style.display=show3d?'none':'block';$('view3d2025').style.display=show3d?'block':'none';$('twoD2025').classList.toggle('active',!show3d);$('threeD2025').classList.toggle('active',show3d);$('twoD2025').setAttribute('aria-pressed',String(!show3d));$('threeD2025').setAttribute('aria-pressed',String(show3d));$('top2025').style.display=show3d?'inline-block':'none';$('resetcamera2025').style.display=show3d?'inline-block':'none';if(show3d)window.exam2025Three?.show('B 2',exact50?50/6:+$('length').value,part===0?step+1:3,part===0?'₁':part===2&&step>=2?'₂':part===3&&step>=3?'₀':'ₙ');else window.exam2025Three?.hide()}
 function render(){const t=T[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t[0]+' · '+t[1]+'</strong><p>'+t[2]+'</p>';$('steptitle').textContent=t[3][step][0];$('solution').innerHTML=t[3][step][1];$('count').textContent='Schritt '+(step+1)+' von '+t[3].length;$('prev').disabled=step===0;$('next').disabled=step===t[3].length-1;draw();if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('solution'),$('roundingNote')]);MathJax.typesetPromise([$('solution'),$('roundingNote')]).catch(console.error)}}
 document.querySelectorAll('#parts button').forEach((b,i)=>b.onclick=()=>{
  part=i;step=0;exact50=false;$('length').value=4;render();
