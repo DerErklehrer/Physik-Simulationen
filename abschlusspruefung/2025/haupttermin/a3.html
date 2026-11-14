@@ -4,14 +4,14 @@
 <main><div class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2025</a><a href="a2.html">← A 2</a><a href="b1.html">B 1 →</a></div><div class="muted">Mathematik I · Realschule Bayern · Haupttermin · taschenrechnerfreier Teil</div><h1>Abschlussprüfung 2025 · A 3</h1>
 <div class="grid"><section class="panel"><h2>Rechtwinkliges Dreieck ABC</h2>
 <svg class="plot" viewBox="0 0 660 390" role="img" aria-label="Rechtwinkliges Dreieck ABC mit A links, C rechts oben, B rechts unten, dem Mittelpunkt M auf AC und dem Schwerpunkt S auf BM">
-<polygon points="85,92 585,92 585,236" fill="#e4edf5" stroke="#3d5c74" stroke-width="3"/>
-<line id="medianSegment" x1="335" y1="92" x2="585" y2="236" stroke="#a32b4d" stroke-width="3"/>
-<line id="medianExtension" x1="275" y1="57.44" x2="640" y2="267.68" stroke="#a32b4d" opacity=".65" stroke-width="1.7"/>
+<polygon points="86.169,92 585,92 585,236" fill="#e4edf5" stroke="#3d5c74" stroke-width="3"/>
+<line id="medianSegment" x1="335.585" y1="92" x2="585" y2="236" stroke="#a32b4d" stroke-width="3"/>
+<line id="medianExtension" x1="275.75" y1="57.45" x2="640" y2="267.75" stroke="#a32b4d" opacity=".65" stroke-width="1.7"/>
 <path d="M567 92v18h18" stroke="#56788f" fill="none" stroke-width="2"/>
-<path id="midpointTicks" d="M210 83v18M460 83v18" stroke="#c88725" stroke-width="2.5" style="display:none"/>
-<circle id="centroidPoint" cx="418.33" cy="140" r="5.5" fill="#a32b4d"/><circle cx="335" cy="92" r="4" fill="#c88725"/>
+<path id="midpointTicks" d="M210.877 83v18M460.292 83v18" stroke="#c88725" stroke-width="2.5" style="display:none"/>
+<circle id="centroidPoint" cx="418.723" cy="140" r="5.5" fill="#a32b4d"/><circle cx="335" cy="92" r="4" fill="#c88725"/>
 <g fill="#20374b" font-size="22" font-family="Arial,sans-serif"><text x="62" y="91">A</text><text x="592" y="82">C</text><text x="595" y="253">B</text><text x="321" y="77">M</text><text id="centroidLabel" x="403" y="161">S</text></g>
-<g fill="#50647a" font-size="19"><text x="178" y="73">8√3 cm</text><text x="591" y="167">4 cm</text></g>
+<g id="sideLengths" fill="#50647a" font-size="19" style="display:none"><text x="178" y="73">8√3 cm</text><text x="591" y="167">4 cm</text></g>
 </svg>
 <p class="small">Schematische Skizze mit den korrekten Seitenverhältnissen; die Lage des Schwerpunkts entspricht dem Teilungsverhältnis \(BS:SM=2:1\).</p>
 <div class="buttons"><label><input id="median" type="checkbox" checked> Seitenhalbierende BM</label><label><input id="half" type="checkbox" disabled> Teilstrecken AM und MC ein-/ausblenden</label><label><input id="angle" type="checkbox" disabled> Winkel ∢CBM ein-/ausblenden</label></div>
@@ -44,6 +44,7 @@ function toggle(){
  S.style.display=showMedian?'':'none';
  Slabel.style.display=showMedian?'':'none';
  $('midpointTicks').style.display=$('half').checked?'':'none';
+ $('sideLengths').style.display=part===1?'':'none';
  const old=svg.querySelector('#extra');if(old)old.remove();
  let g=document.createElementNS('http://www.w3.org/2000/svg','g');g.id='extra';svg.append(g);
  const ns='http://www.w3.org/2000/svg';
