@@ -131,6 +131,10 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     await page.locator('#next').click();
     if(await polygon()!==2)throw Error('B4.1: beide Originalparallelogramme nach Konstruktion fehlen');
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b4-originalkonstruktion.png',fullPage:true,animations:'disabled'});
+    await page.locator('#p1').click();
+    if(await polygon()!==1)throw Error('B4.1: Schaltfläche D1 blendet nicht nur Parallelogramm 1 ein');
+    await page.locator('#p2').click();
+    if(await polygon()!==1)throw Error('B4.1: Schaltfläche D2 blendet nicht nur Parallelogramm 2 ein');
     await partButtons.nth(1).click();
     if(!(await page.locator('#statement').textContent()).includes('AB'))throw Error('B4.2: Aufgabenvektor fehlt');
     await partButtons.nth(2).click();
@@ -141,12 +145,17 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b4-rundung.png',fullPage:true,animations:'disabled'});
     await page.locator('#prev').click();
     if(await page.locator('#p3').isVisible()||await page.locator('#rounding').isVisible())throw Error('B4.3: Rundungswert beim Zurückblättern nicht verborgen');
+    if(await page.locator('#slider').inputValue()!=='-4.5')throw Error('B4.3: Ausgangswert des Reglers nach Zurückblättern nicht wiederhergestellt');
     await partButtons.nth(3).click();
     if(await page.locator('#p0').isVisible()||await page.locator('#plot path[data-right-angle]').count())throw Error('B4.4: Minimum vorzeitig angezeigt');
     for(let j=0;j<3;j++)await page.locator('#next').click();
     if(!(await page.locator('#p0').isVisible()))throw Error('B4.4: Minimum nicht freigeschaltet');
     if(await page.locator('#plot path[data-right-angle="quarter-arc"]').count()!==1||await page.locator('#plot circle[data-right-angle="center-dot"]').count()!==1)throw Error('B4.4: Viertelkreisbogen mit Punkt fehlt');
     if(await page.locator('#slider').inputValue()!=='-5.2')throw Error('B4.4: minimaler Abstand nicht zur richtigen Stelle x=-5.2');
+    await page.locator('#prev').click();
+    if(await page.locator('#slider').inputValue()!=='-4.5')throw Error('B4.4: Sonderlage beim Zurückblättern nicht verlassen');
+    if(await page.locator('#plot path[data-right-angle]').count())throw Error('B4.4: Rechtwinkelsymbol vor Endergebnis nicht entfernt');
+    await page.locator('#next').click();
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b4-minimum.png',fullPage:true,animations:'disabled'});
     await partButtons.nth(4).click();
     if((await page.locator('#measure').innerText()).includes('Flächeninhalt'))throw Error('B4.5: Flächeninhalt vor Formel gezeigt');
