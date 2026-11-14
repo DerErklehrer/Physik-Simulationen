@@ -65,6 +65,30 @@ for(const x of [-3,0.28,1,2.1]){
  close('B3: Abstand '+x,f-g,-3.5*Math.pow(.5,x+3)+7);
  test('B3: positiver Abstand '+x,f-g>0);
 }
+for(const x of [-5,-4,-3,-2,0,1,2,4]){
+ const fn=-3*Math.pow(.5,x+4)+3,gn=2*Math.pow(.5,x+3)-4;
+ close('B3: f1 umgeschrieben bei x='+x,fn,3-1.5*Math.pow(.5,x+3));
+ close('B3: f2 gegen Kontrollwert bei x='+x,gn,Math.pow(.5,x+2)-4);
+ if(x>-4){
+  const length=fn-gn,AD=2,dx=AD*Math.cos(rad(20)),dy=AD*Math.sin(rad(20)),lot=dx;
+  close('B3: Länge AB als Funktionsdifferenz x='+x,length,7-3.5*Math.pow(.5,x+3));
+  close('B3: Seitenlänge AD x='+x,Math.hypot(dx,dy),2);
+  close('B3: Abstand zum parallelen CD x='+x,lot,1.8793852415718169);
+  const cY=fn+dy-8,bc=Math.hypot(dx,cY-gn);
+  test('B3: nichtdegeneriertes Trapez x='+x,Math.abs(bc)>0);
+  const area=(8+length)*lot/2;
+  test('B3: Flächeninhalt streng unter 14,1 FE bei x='+x,area<14.1);
+ }
+}
+close('B3: Amtliche Wertetabelle f1(-5)',-3*Math.pow(.5,-1)+3,-3);
+close('B3: Amtliche Wertetabelle f2(-5)',2*Math.pow(.5,-2)-4,4);
+close('B3: beide Graphen schneiden sich in (-4|0)',-3*Math.pow(.5,0)+3,0);
+close('B3: g(-4)=0',2*Math.pow(.5,-1)-4,0);
+close('B3: exakte Gleichschenkligkeitslösung',Math.log((7-(8-4*Math.sin(rad(20))))/3.5)/Math.log(.5)-3,.24926140832455124,1e-9);
+close('B3: amtliche Zwischenrundungslösung',Math.log((7-6.64)/3.5)/Math.log(.5)-3,.28,.005);
+test('B3: Kurven schrittweise eingeblendet',contents.b3.includes('showF1=part!==0||step>=1')&&contents.b3.includes('showF2=part!==0||step>=2'));
+test('B3: Trapeze in vier Phasen',contents.b3.includes('stage=Math.min(4,step+1)'));
+test('B3: Rundungsergebnis nicht vor B3.5 Schluss',contents.b3.includes('part===4&&step>=4'));
 close('B3: exakt gleichschenklig',8-4*Math.sin(rad(20)),6.631919426697325);
 close('B3: gerundeter Überstand',8-2*.68,6.64);
 close('B3: echte Trapezhöhe',2*Math.cos(rad(20)),1.8793852415718169);
