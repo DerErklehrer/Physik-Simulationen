@@ -95,6 +95,8 @@ for(const t of [0.1,1,4,50/6,9.9,10]){
 test('B2: Raumdiagonale AG in Originalgrafik',contents.b2.includes("line(A,G,'#778d9c'"));
 test('B2: Phasenweise Konstruktion',contents.b2.includes('phase=construction?step+1:3')&&contents.b2.includes('if(phase>=3)'));
 test('B2: 50 cm³ nicht vor Rechnung',contents.b2.includes("part===2&&step>=2"));
+test('B2: ungerundete 50-cm³-Geometrie nach Rechnung aktivieren',contents.b2.includes('previousLength=Number($(\'length\').value);exact50=true')&&contents.b2.includes('const n=exact50?50/6:'));
+
 test('B2: Maximalvolumen nicht vor Rechnung',contents.b2.includes("part===3&&step>=3"));
 close('B2: maximaler Winkel',Math.atan(10/3)*180/Math.PI,73.30075576600639,.00001);
 close('B2: 50 cm³ in φ',Math.atan(50/18)*180/Math.PI,70.20,.005);
