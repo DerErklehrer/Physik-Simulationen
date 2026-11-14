@@ -68,6 +68,18 @@ for(const x of [-3,0.28,1,2.1]){
 close('B3: exakt gleichschenklig',8-4*Math.sin(rad(20)),6.631919426697325);
 close('B3: gerundeter Überstand',8-2*.68,6.64);
 close('B3: echte Trapezhöhe',2*Math.cos(rad(20)),1.8793852415718169);
+for(const p of [0.5,5,10,15,20,29.5]){
+ const shares=[40,30,p,30-p],flavors=[50,20,30];
+ close('B1: vier Farbanteile addieren sich zu 100 bei p='+p,shares.reduce((a,b)=>a+b,0),100);
+ for(const [i,share] of shares.entries())close('B1: Geschmackssumme Farbe '+i+', p='+p,flavors.reduce((a,b)=>a+b,0)*share/100,share);
+ close('B1: grün UND Apfel bei p='+p,p/100*.5,p/200);
+ close('B1: Sebastian unabhängig von p='+p,shares.slice(0,2).reduce((a,b)=>a+b,0)*.8/100,.56);
+ test('B1: weiße Schachteln haben positiven Anteil p='+p,30-p>0);
+}
+test('B1: ursprüngliche vier Antwortmöglichkeiten', [...contents.b1.matchAll(/name="white" value="/g)].length===4);
+test('B1: verdeckter weißer Anteil',contents.b1.includes('revealWhite=part===0&&step>=2'));
+test('B1: Pfadergebnisse nicht vor der Addition',contents.b1.includes('showPaths=part===2&&step>=2'));
+test('B1: p=20 nicht vor Rechenende',contents.b1.includes("revealGreenResult=part===1&&step>=2"));
 close('B1: Sebastian',(.4+.3)*(.5+.3),.56);
 close('A1: beide Schlüssel',1/5*1/5,1/25);
 close('A1: genau einer',2*(1/5)*(4/5),8/25);
