@@ -1,0 +1,22 @@
+name: Mathematik I 2026 – Streckenlängen und Notation
+on:
+  push:
+    paths:
+      - 'abschlusspruefung/2026/haupttermin/**'
+      - 'abschlusspruefung/tests/notation_2026.mjs'
+      - '.github/workflows/qa-mathe-2026-notation.yml'
+  workflow_dispatch:
+jobs:
+  notation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Drei Wiederholungen der ISB-Schreibweisenkontrolle
+        run: |
+          for pass in 1 2 3; do
+            echo "Schreibweisenprüfung 2026 – Durchgang ${pass}"
+            node abschlusspruefung/tests/notation_2026.mjs
+          done
