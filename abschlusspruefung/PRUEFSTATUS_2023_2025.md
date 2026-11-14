@@ -6,7 +6,7 @@
 
 Maßstab: `QUALITAETSSTANDARD.md`, LehrplanPLUS Bayern Realschule Mathematik I, amtliche ISB-Haupttermine der betreffenden Jahre und vorläufige interaktive Referenz 2026.
 
-**Fachliche Endbearbeitung 2025 B 1 (14.11.2026):** Wortlaut, vier Ankreuzalternativen, Baumdiagramm, alle zwölf Pfade und das amtliche Lösungsmuster direkt abgeglichen. B 1.1 = drittes Kästchen, B 1.2 = 20 %, B 1.3 = 56 %. Die neue Grafik zeigt die weiße Wahrscheinlichkeit und die Endergebnisse erst in den entsprechenden Lösungsschritten; auf Mobilgeräten kann das Diagramm separat horizontal verschoben werden. [Ausführlicher Prüfnachweis](2025/PRUEFPROTOKOLL_DREIFACH.md). **Freigabe B 1 noch nicht durch Nutzer bestätigt.**
+**Fachliche Endbearbeitung 2025 B 1 (14.11.2026):** Wortlaut, vier Ankreuzalternativen, Baumdiagramm, alle zwölf Pfade und das amtliche Lösungsmuster direkt abgeglichen. B 1.1 = drittes Kästchen, B 1.2 = 20 %, B 1.3 = 56 %. Die neue Grafik zeigt die weiße Wahrscheinlichkeit und die Endergebnisse erst in den entsprechenden Lösungsschritten; auf Mobilgeräten kann das Diagramm separat horizontal verschoben werden. [Ausführlicher Prüfnachweis](2025/PRUEFPROTOKOLL_DREIFACH.md). **Drei statische und 42 Browser-Testfälle erfolgreich abgeschlossen**, einschließlich des mobilen Ansichtswechsels ([Nachweis](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43595699443)); Screenshot-Sichtprüfung erfolgt. **Freigabe B 1 noch nicht durch Nutzer bestätigt.**
 
 **Nutzerfreigabe 2025 A 3 (14.11.2026):** Nach abgeschlossenem fachlichen Original- und Lösungsabgleich sowie dreifacher erfolgreicher technischer Kontrolle **ausdrücklich als interaktive Lernseite freigegeben**. Details und Restgrenzen siehe [Prüfprotokoll](2025/PRUEFPROTOKOLL_DREIFACH.md).
 
