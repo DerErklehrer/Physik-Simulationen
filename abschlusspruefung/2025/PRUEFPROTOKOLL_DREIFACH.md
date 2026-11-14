@@ -68,6 +68,20 @@
 
 **Drei Prüfrunden – Abgrenzung:** Die Original- und Lösungsmusterseite wurde für A 1 direkt eingesehen und die zwei Rechnungen unabhängig kontrolliert. Die CI führt die technischen, grafischen DOM-Zustands- und Navigationskontrollen dreimal aus. Die **originale Gebäudefotografie fehlt**; daher ist für Kategorie 1 und 4 nach der strengen Bildtreueregel die vollständige Freigabe **noch gesperrt**, selbst wenn alle automatisierten Kontrollen erfolgreich sind.
 
+## Einzelabnahme 2025 A 2 – fachliche und grafische Korrekturen (14.11.2026)
+
+**Referenz:** Amtliche Mathematik-I-Haupttermin-Prüfung 2025, A 2.0–A 2.4 (Originalaufgabe Seiten 2–3) sowie ISB-Lösungsmuster Seite 1. PDF-Seiten einschließlich Zeichnungen visuell begutachtet und mathematische Ergebnisse unabhängig hergeleitet.
+
+- **A 2.0, 2.1 – Originalzeichnung:** Das Ausgangsdreieck `AB₁C₁` mit `φ=40°` bleibt in der 2D-Ansicht dauerhaft erhalten. Das zweite Dreieck `AB₂C₂` für `φ=75°` wird **zusätzlich** aufgebaut, statt die Originalzeichnung zu ersetzen. Winkelbogen `φ`, Rotationspfeil, senkrechte Achse und Punktbezeichnungen nach dem Original angepasst. Konstruktion in drei Schritten: 75°-Hilfsstrahl, Länge AC₂=4 cm, Verbindung C₂B₂ bei gleich langen Schenkeln AC₂ und B₂C₂. **1 P**.
+- **Geometrische Eigenprüfung:** Bei jedem zulässigen Winkel `φ` verwendet die 2D-Zeichnung die skalierte Koordinatenkonstruktion `A=(0,0)`, `C=(-4 sinφ,4 cosφ)`, `B=(0,8 cosφ)` (geometrische nach oben gerichtete Achse). Damit gilt `|AC|=|BC|=4 cm` und `∢BAC=φ`. Beispiel `φ=75°`: `AB≈2,07 cm`, `AC=BC=4 cm`.
+- **A 2.2 – Intervall:** `a=4 sinφ cm`, `0°<φ<90°` und daraus `0<x<4`. Auswahlintervall **`]0;4[`**, mit exakt sechs Prüfungsoptionen und interaktiver Antwortauswertung. **1 P**.
+- **A 2.3 – Oberfläche:** Rotation um die Basis erzeugt einen Doppelkegel mit gemeinsamer innen liegender Kreisfläche. Zwei äußere Kegelmantelflächen, Mantellinien jeweils `4 cm`, Radius `a=4 sinφ cm`. Daher `O=2 π a·4 cm = 32 π sinφ cm²`. Die 3D-Modelle verwenden offene Kegelmantelgeometrien, damit die gemeinsame Grundfläche nicht zusätzlich gerendert wird. **2,5 P**.
+- **A 2.4 – Winkel:** `16π cm²=32πsinφ cm²`, `sinφ=1/2`, wegen `φ∈]0°;90°[` die einzige Lösung **`φ=30°`**, `L={30°}`. **1,5 P**.
+- **Schülernahe Didaktik:** Vier Teilaufgaben mit getrennter Lösungsnavigation, passende Voreinstellungen 40°/75°/30°, grafischer Aufbauschritt A 2.1 gekoppelt an Lösungsschritte. Die Lösung in A 2.3 zeigt den ausgerechneten Oberflächenwert erst im letzten Herleitungsschritt. Der Reglerbereich 1°–89° ist eine didaktische Diskretisierung; **mathematisch** bleibt das offene Intervall `]0°;90°[` verbindlich.
+- **3D:** Für jedes φ ist `r=4sinφ`, `h=4cosφ`; die Spitzen liegen auf der Rotationsachse bei `±h`; der Grundkreis liegt dazwischen; die Spitzennamen sind A/Bₙ, der Mantelpunkt Cₙ. Freie Drehung, Draufsicht und Reset werden automatisiert getestet.
+- **Normen/Originaltreue:** Winkelnotation ∢, echte vertikale Brüche, Malpunkt, Dezimalkomma und die sechs Antwortintervalle beachtet. Die interaktive Lernseite ist keine originale Druckseite mit karierten Schreibfeldern; der fachlich erforderliche Text und die Skizzen bleiben maßgeblich.
+- **Freigabe:** Die automatisierten Tests können die mathematisch-geometrische Modelltreue, den vollständigen visuellen Originalvergleich und reale Mehrfinger-Touchgesten nicht allein beweisen. **A 2 ist noch nicht ausdrücklich durch den Nutzer freigegeben**, anders als A 1. Technische Prüfergebnisse sind separat im Actions-Lauf zu erfassen.
+
 ## Offene Freigabesperren, in dieser Reihenfolge lösen
 
 1. **ISB-Originaltreue**: Für **alle 26 Teilaufgaben** Wortlaut, Zeichnung, Achsen, Operatoren, Punkteangaben, Graphen, Parameter- und Rundungsbedingungen Zeile für Zeile dokumentiert mit Original abgleichen. Besonders verkürzte Texte der eigenständigen Seiten dürfen nicht als „Originaltext“ deklariert werden, sofern sie nur sinngemäß sind.
