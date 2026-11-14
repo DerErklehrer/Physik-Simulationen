@@ -38,6 +38,16 @@ for(const name of names){
  // Task count can be alternatively checked by explicit subproblem tags.
  for(let k=1;k<=counts[name];k++)test(name+': Teilaufgabe '+k,html.includes(name.toUpperCase().replace(/(\d)$/,' $1')+'.'+k));
 }
+// Separater Schutz gegen still verlorene Backslashes in JavaScript-MathJax-Strings.
+for(const name of names){
+ const source=contents[name];
+ const positions=[source.indexOf('const T='),source.indexOf('const parts='),source.indexOf('const tasks=')].filter(i=>i>=0);
+ test(name+': Aufgabenblock zum Escape-Test vorhanden',positions.length===1);
+ const begin=positions[0],end=source.indexOf('\nlet ',begin);
+ const taskBlock=source.slice(begin,end>begin?end:begin+20000);
+ const unescaped=[...taskBlock.matchAll(/(?<!\\)\\(?:\(|\)|\[|\]|frac\b|overline\b|varphi\b|cdot\b|tan\b|sin\b|cos\b|begin\b|end\b)/g)];
+ test(name+': alle MathJax-Backslashes in JS-Aufgabenstrings korrekt verdoppelt',unescaped.length===0);
+}
 test('Prüfung 2025 Punkte gesamt',Object.values(scores).reduce((a,b)=>a+b,0)===53.5);
 test('B3: kein Quellenkürzel unmittelbar am Reglerwert',!contents.b3.includes('ISB: x ≈ 0,28'));
 test('B3: Quellenhinweis im Lösungstext zulässig',contents.b3.includes('ISB-Lösungsmuster'));
