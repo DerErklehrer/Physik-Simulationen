@@ -2,7 +2,7 @@ name: Mathematik I 2025 – statische Tests und Chromium
 on:
   push:
     paths:
-      - 'abschlusspruefung/2025/**'
+      - 'abschlusspruefung/2025/haupttermin/**'
       - 'abschlusspruefung/tests/**'
       - '.github/workflows/qa-mathe-2025.yml'
   workflow_dispatch:
