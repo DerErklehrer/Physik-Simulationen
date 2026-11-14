@@ -104,6 +104,41 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(await visibility('outcome-only-b')!=='visible')throw Error('A1.2: zweiter Pfad falsch');
     await page.locator('#reset').click();
    }
+   if(name==='b3'){
+    const visibleGraph=()=>page.locator('#plot path[clip-path="url(#clip25)"]').count();
+    const polygonCount=()=>page.locator('#plot path[fill-opacity]').count();
+    await partButtons.nth(0).click();
+    if(await visibleGraph()!==0)throw Error('B3.1: Graphen vor Herleitung sichtbar');
+    await page.locator('#next').click();
+    if(await visibleGraph()!==1)throw Error('B3.1: f1 nach Wertetabelle nicht sichtbar');
+    await page.locator('#next').click();
+    if(await visibleGraph()!==2)throw Error('B3.1: f2 nach Wertetabelle nicht sichtbar');
+    await partButtons.nth(1).click();
+    if(await polygonCount()!==0)throw Error('B3.2: komplette Trapeze schon vor Konstruktion');
+    for(let k=0;k<3;k++)await page.locator('#next').click();
+    if(await polygonCount()!==2)throw Error('B3.2: beide Trapeze fehlen nach Konstruktion');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b3-trapeze.png',fullPage:true,animations:'disabled'});
+    await partButtons.nth(2).click();
+    if((await page.locator('#plot').textContent()).includes('F₁'))throw Error('B3.3: Lotfuß F1 schon vor Zeichnung sichtbar');
+    await page.locator('#next').click();
+    if(!(await page.locator('#plot').textContent()).includes('F₁'))throw Error('B3.3: Lotfuß F1 fehlt nach Zeichnung');
+    await partButtons.nth(4).click();
+    if(await page.locator('#p3').isVisible()||await page.locator('#pexact').isVisible())throw Error('B3.5: numerische x-Lösung vorzeitig sichtbar');
+    if(await page.locator('#roundingNote').isVisible())throw Error('B3.5: Rundungsdifferenz vorzeitig verraten');
+    for(let k=0;k<4;k++)await page.locator('#next').click();
+    if(!(await page.locator('#p3').isVisible())||!(await page.locator('#pexact').isVisible()))throw Error('B3.5: Voreinstellungen fehlen nach der Rechnung');
+    if(!(await page.locator('#roundingNote').isVisible()))throw Error('B3.5: mathematisch wichtiger Rundungshinweis fehlt');
+    if(Math.abs(Number(await page.locator('#xval').innerText().then(x=>x.replace(',','.')))-.28)>.005)throw Error('B3.5: amtlich gerundete Lösung nicht synchronisiert');
+    await page.locator('#pexact').click();
+    if(!(await page.locator('#xval').innerText()).includes('0,25'))throw Error('B3.5: geometrisch exakte Sonderlage fehlt');
+    await page.locator('#prev').click();
+    if(await page.locator('#p3').isVisible()||await page.locator('#roundingNote').isVisible())throw Error('B3.5: Lösung beim Zurückblättern noch sichtbar');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b3-schritte.png',fullPage:true,animations:'disabled'});
+    await partButtons.nth(5).click();
+    if((await page.locator('#measure').innerText()).includes('14,1 FE'))throw Error('B3.6: Flächenbegründung vorzeitig in der Grafik');
+    await page.locator('#next').click();await page.locator('#next').click();
+    if(!(await page.locator('#measure').innerText()).includes('14,1 FE'))throw Error('B3.6: Flächenbegründung nach Lösung nicht eingeblendet');
+   }
    if(name==='b2'){
     const figures=page.locator('#geometry polygon');
     const labels=()=>page.locator('#geometry').textContent();
