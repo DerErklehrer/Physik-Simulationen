@@ -104,6 +104,41 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(await visibility('outcome-only-b')!=='visible')throw Error('A1.2: zweiter Pfad falsch');
     await page.locator('#reset').click();
    }
+   if(name==='b2'){
+    const figures=page.locator('#geometry polygon');
+    const labels=()=>page.locator('#geometry').textContent();
+    await partButtons.nth(0).click();
+    if(await figures.count()!==0)throw Error('B2.1: Prisma vor Konstruktion vollständig sichtbar');
+    if(!(await labels()).includes('P₁')||(await labels()).includes('Q₁'))throw Error('B2.1: erster Konstruktionsschritt nicht isoliert');
+    await page.locator('#next').click();
+    if(!(await labels()).includes('Q₁'))throw Error('B2.1: Q1 und Parallele fehlen nach Schritt 2');
+    if(await figures.count()!==0)throw Error('B2.1: Prisma vor Schritt 3 ausgefüllt');
+    await page.locator('#next').click();
+    if(await figures.count()!==2)throw Error('B2.1: Prismengrundflächen nach Schritt 3 fehlen');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b2-konstruktion.png',fullPage:true,animations:'disabled'});
+    await partButtons.nth(2).click();
+    if(await page.locator('#volume50').isVisible())throw Error('B2.3: 50-cm3-Knopf verrät die Lösung');
+    if((await page.locator('#measure').innerText()).includes('50,00 cm³'))throw Error('B2.3: Lösungsvolumen vorzeitig sichtbar');
+    await page.locator('#next').click();
+    if(await page.locator('#volume50').isVisible())throw Error('B2.3: Lösungswert schon im zweiten Schritt sichtbar');
+    await page.locator('#next').click();
+    if(!(await page.locator('#volume50').isVisible()))throw Error('B2.3: Lösungswert nach Rechnung fehlt');
+    if(Math.abs(Number(await page.locator('#length').inputValue())-50/6)>1e-8)throw Error('B2.3: Prisma nicht auf exaktes 50-cm3-Volumen gesetzt');
+    if(!(await page.locator('#measure').innerText()).includes('50,00 cm³'))throw Error('B2.3: Rechnungs- und Grafikwert widersprechen sich');
+    await page.locator('#prev').click();
+    if(Math.abs(Number(await page.locator('#length').inputValue())-4)>1e-8)throw Error('B2.3: vorige Lage nach Zurückblättern nicht wiederhergestellt');
+    await partButtons.nth(3).click();
+    if(await page.locator('#maximum').isVisible())throw Error('B2.4: Maximalwert zu früh sichtbar');
+    for(let i=0;i<2;i++)await page.locator('#next').click();
+    if(await page.locator('#maximum').isVisible())throw Error('B2.4: Maximalwert vor Beurteilung verraten');
+    await page.locator('#next').click();
+    if(!(await page.locator('#maximum').isVisible()))throw Error('B2.4: 10-cm-Grenzwert nach Beurteilung fehlt');
+    if(await page.locator('#length').inputValue()!=='10')throw Error('B2.4: Endprisma nicht auf 10 cm gesetzt');
+    if(!(await page.locator('#measure').innerText()).includes('60,00 cm³'))throw Error('B2.4: Maximalvolumen nicht 60 cm3');
+    await page.locator('#prev').click();
+    if(Math.abs(Number(await page.locator('#length').inputValue())-4)>1e-8)throw Error('B2.4: Grenzlage beim Rückwärtsblättern nicht rückgängig');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b2-vorbereitung.png',fullPage:true,animations:'disabled'});
+   }
    if(name==='a3'){
     await partButtons.nth(0).click();
     if(!(await page.locator('#half').isDisabled())||!(await page.locator('#angle').isDisabled()))throw Error('A3.1: geometrische Ergebnisse zu früh freigeschaltet');
