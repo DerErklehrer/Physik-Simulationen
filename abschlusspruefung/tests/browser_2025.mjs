@@ -38,14 +38,23 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     const statement=(await page.locator('#statement').innerText()).trim();
     const solution=(await page.locator('#solution').innerText()).trim();
     if(statement.length<15||solution.length<10)throw Error('Leerer Aufgabentext/Lösung, Teil '+(i+1));
-    await page.locator('#next').click();
-    const after=(await page.locator('#solution').innerText()).trim();
-    if(after.length<10)throw Error('Leerer Schritt nach Weiter, Teil '+(i+1));
-    await page.waitForFunction(()=>{
-      const nodes=[document.getElementById('statement'),document.getElementById('solution')];
-      return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
-    },null,{timeout:9000});
+    const countLabel=await page.locator('#count').innerText();
+    const stepCount=Number(countLabel.match(/von\s+(\d+)/)?.[1]||0);
+    if(stepCount<2)throw Error('Lösung hat weniger als zwei Schritte, Teil '+(i+1));
+    for(let currentStep=2;currentStep<=stepCount;currentStep++){
+      await page.locator('#next').click();
+      await page.waitForFunction(()=>{
+        const nodes=[document.getElementById('statement'),document.getElementById('solution')];
+        return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
+      },null,{timeout:9000});
+      const after=(await page.locator('#solution').innerText()).trim();
+      if(after.length<10)throw Error('Leerer Lösungsschritt '+currentStep+', Teil '+(i+1));
+      const displayed=await page.locator('#count').innerText();
+      if(!displayed.includes('Schritt '+currentStep+' von '+stepCount))throw Error('Schrittanzeige falsch in Teil '+(i+1));
+    }
+    if(!(await page.locator('#next').isDisabled()))throw Error('Vorwärtsbutton nach letztem Schritt nicht gesperrt, Teil '+(i+1));
     await page.locator('#reset').click();
+    if(!(await page.locator('#prev').isDisabled()))throw Error('Reset hat nicht auf ersten Lösungsschritt zurückgesetzt, Teil '+(i+1));
    }
    if(name==='b1'){
     const current=()=>page.locator('#stats').innerText();
