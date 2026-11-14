@@ -82,6 +82,10 @@
 - **Normen/Originaltreue:** Winkelnotation ∢, echte vertikale Brüche, Malpunkt, Dezimalkomma und die sechs Antwortintervalle beachtet. Die interaktive Lernseite ist keine originale Druckseite mit karierten Schreibfeldern; der fachlich erforderliche Text und die Skizzen bleiben maßgeblich.
 - **Freigabe:** Die automatisierten Tests können die mathematisch-geometrische Modelltreue, den vollständigen visuellen Originalvergleich und reale Mehrfinger-Touchgesten nicht allein beweisen. **A 2 ist noch nicht ausdrücklich durch den Nutzer freigegeben**, anders als A 1. Technische Prüfergebnisse sind separat im Actions-Lauf zu erfassen.
 
+### Freigabeentscheidung A 3 – 14.11.2026
+
+**A 3 ist vom Nutzer ausdrücklich als interaktive Lernseite freigegeben.** Die vorausgehende fachliche Prüfung und der erfolgreiche dreifache technische Testlauf sind dokumentiert. Diese Einzelfreigabe ersetzt keinen noch offenen vollständigen neunfachen Prüfungsjahrgangs-Abgleich.
+
 ## Einzelprüfung 2025 A 3 – Ebene Geometrie (14.11.2026)
 
 **Quellenabgleich:** Amtlicher Haupttermin 2025 Mathematik I, Angaben Seite 3 (A 3.0–A 3.2), Lösungsmuster Seite 2 (A 3.1–A 3.2), jeweils original als PDF-Seite visuell kontrolliert.
