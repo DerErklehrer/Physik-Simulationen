@@ -25,7 +25,7 @@ const tasks=[
 ['Punkte D₁ und D₂','Setze die Abszissen ein: \\(D_1(-4{,}5\\mid2{,}75)\\) und \\(D_2(2\\mid6)\\). Der feste Punkt ist \\(A(-3\\mid-2)\\).'],
 ['Punkte B₁ und B₂','Trage von A aus jeweils einen Schenkel im Winkel \\(40^\\circ\\) im Uhrzeigersinn zur Strecke \\(AD_n\\) ab. Auf diesem Schenkel gilt \\(|\\overline{AB_n}|=0{,}5\\cdot|\\overline{AD_n}|\\).'],
 ['Parallelogramme ergänzen','Konstruiere die jeweils fehlenden Eckpunkte \\(C_n\\) durch die Parallelen \\(B_nC_n\\parallel AD_n\\) und \\(D_nC_n\\parallel AB_n\\). Links können die beiden Prüfungszeichnungen getrennt eingeblendet werden.']]},
-{n:'B 4.2',p:'4 P',q:'Ermitteln Sie rechnerisch die Koordinaten der Pfeile ABₙ in Abhängigkeit von der Abszisse x der Punkte Dₙ. Ergebnis: ABₙ(x) = (0,55x+3,40 | −0,13x+1,74) als Spaltenvektor.',steps:[
+{n:'B 4.2',p:'4 P',q:'Ermitteln Sie rechnerisch die Koordinaten der Pfeile \\(\\overrightarrow{AB_n}\\) in Abhängigkeit von der Abszisse \\(x\\) der Punkte \\(D_n\\). [Ergebnis: \\(\\overrightarrow{AB_n}(x)=\\begin{pmatrix}0{,}55x+3{,}40\\\\-0{,}13x+1{,}74\\end{pmatrix}\\)]',steps:[
 ['Ausgangspfeil aufstellen','Mit \\(A(-3\\mid-2)\\) und \\(D_n(x\\mid0{,}5x+5)\\) gilt: \\[\\overrightarrow{AD_n}=\\begin{pmatrix}x+3\\\\0{,}5x+7\\end{pmatrix}.\\]'],
 ['Drehung und Halbierung','Aus \\(\\sphericalangle B_nAD_n=40^\\circ\\) und dem Längenverhältnis folgt: \\[\\overrightarrow{AB_n}=\\frac12\\begin{pmatrix}\\cos40^\\circ&\\sin40^\\circ\\\\-\\sin40^\\circ&\\cos40^\\circ\\end{pmatrix}\\cdot\\begin{pmatrix}x+3\\\\0{,}5x+7\\end{pmatrix}.\\]'],
 ['Komponenten einzeln bestimmen','\\[\\begin{aligned}AB_{n,x}&=\\frac12\\bigl[(x+3)\\cos40^\\circ+(0{,}5x+7)\\sin40^\\circ\\bigr],\\\\AB_{n,y}&=\\frac12\\bigl[-(x+3)\\sin40^\\circ+(0{,}5x+7)\\cos40^\\circ\\bigr].\\end{aligned}\\]'],
@@ -108,7 +108,7 @@ function draw(){
  line([X(-6),Y(2)],[X(7),Y(8.5)],'#28886d',2.5);
  el('text',{x:X(3),y:Y(6.5)-10,fill:'#28886d','font-size':17},'g');
  if(part===0){
-  const stage=step+1;
+  const stage=step;
   if($('fixed1').checked)poly(-4.5,'#617aa4',{index:'₁',fixed:true,stage,showAngle:step>=2});
   if($('fixed2').checked)poly(2,'#9a6b91',{index:'₂',fixed:true,stage,showAngle:false});
  }else{
@@ -126,7 +126,7 @@ function draw(){
  const data=geom(x);
  const showDistance=part===1&&step>=0||part===3&&step>=2||part===4&&step>=1;
  const showArea=part===4&&step>=1;
- $('measure').textContent='Dₙ('+fmt(data.D.x)+' | '+fmt(data.D.y)+')'+(showDistance?' · |ADₙ| = '+fmt(data.length)+' LE · |ABₙ| = '+fmt(data.length*.5)+' LE':'')+(showArea?' · Flächeninhalt = '+fmt(data.area)+' FE':'');
+ $('measure').textContent=part===0?(step===0?'Konstruiere zunächst die Gerade g.':step===1?'D₁(−4,50 | 2,75) · D₂(2,00 | 6,00)':'Die Punkte der Parallelogramme werden passend zur Konstruktion ergänzt.'):'Dₙ('+fmt(data.D.x)+' | '+fmt(data.D.y)+')'+(showDistance?' · |ADₙ| = '+fmt(data.length)+' LE · |ABₙ| = '+fmt(data.length*.5)+' LE':'')+(showArea?' · Flächeninhalt = '+fmt(data.area)+' FE':'');
 }
 
 function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;draw();if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution')]);MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)}}
