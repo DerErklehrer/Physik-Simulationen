@@ -45,7 +45,7 @@ const overview=await readFile(join(root,'..','..','index.html'),'utf8');
 test('Jahrgangsübersicht: 2025 führt zur neuen Aufgabenauswahl',overview.includes('2025/haupttermin/index.html?v=20261114-navigation'));
 const index=await readFile(join(root,'index.html'),'utf8');
 for(const name of names)test('Übersicht verlinkt '+name,index.includes('href="'+name+'.html"')||index.includes('href="./'+name+'.html"'));
-test('A1: amtlicher A1.0-Wortlaut Wohnungs- und Briefkastenschlüssel',contents.a1.includes('einen großen Wohnungs- und einen kleinen Briefkastenschlüssel.'));
+test('A1: amtlicher A1.0-Wortlaut Wohnungs- und Briefkastenschlüssel',contents.a1.includes('einen großen Wohnungsschlüssel und einen kleinen Briefkastenschlüssel.'));
 test('A1: Diagrammergebnisse nicht vorzeitig sichtbar',contents.a1.includes("function syncDiagram()")&&contents.a1.includes("syncDiagram();"));
 test('A1: alle zehn Brüche vertikal im SVG',!/>1\/5<|>4\/5<|>16\/25<|>8\/25<|>1\/25</.test(contents.a1));
 const a3Ax=585-288*Math.sqrt(3),a3Mx=(a3Ax+585)/2,a3Sx=(a3Ax+585+585)/3;
