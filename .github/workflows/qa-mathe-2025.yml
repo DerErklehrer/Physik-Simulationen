@@ -3,7 +3,8 @@ on:
   push:
     paths:
       - 'abschlusspruefung/2025/haupttermin/**'
-      - 'abschlusspruefung/tests/**'
+      - 'abschlusspruefung/tests/quality_2025.mjs'
+      - 'abschlusspruefung/tests/browser_2025.mjs'
       - '.github/workflows/qa-mathe-2025.yml'
   workflow_dispatch:
 jobs:
