@@ -125,6 +125,14 @@
 
 **Freigabestatus:** Die fachliche und technische Qualitätsabnahme wird in diesem Protokoll dokumentiert. B 1 ist nach den noch ausstehenden finalen Screenshots zur **Nutzerfreigabe bereit**, aber noch nicht ausdrücklich freigegeben. Die amtliche Originalzeichnung dient als geometrische Referenz; die neue Farbgebung und die interaktive Einblendung sind bewusst ergänzte Lernhilfen.
 
+### B 1 – abschließende technische und visuelle Nachprüfung vom 14.11.2026
+
+- **Letzter inhaltlich/funktional relevanter Stand:** Commit `f2c113cead337abf6e16b1a472d7393d3b833686` mit umschaltbarer mobiler Baumdarstellung und einem dedizierten Browser-Test der Ansichten. B 1.2 koppelt beim letzten Rechenschritt den Wert `p=20` an die Zeichnung und stellt beim Zurückblättern den vorherigen Beispielwert wieder her.
+- **Erfolgreiche GitHub Actions:** [Prüflauf 43595699443](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43595699443): **drei statische/mathematische Durchläufe bestanden; 42 von 42 Chromium-Fällen bestanden (3 Prüfrunden × 7 Aufgaben × 2 Viewports).** Einschließlich B1.1-Auswahl, B1.2-Kopplung/Reset, B1.3-Pfaden, Grenzwerten, Mobilscrollen und Umschalter zwischen Lesemodus und Gesamtübersicht.
+- **Tatsächlich gesichtete Screenshots:** `r3-desktop-b1-loesung.png` zeigt die vier hervorgehobenen günstigen Pfade und 56-%-Addition. `r3-mobile-b1-gesamtansicht.png` zeigt die vollständigen vier Farbgruppen; `r3-mobile-b1-antworten.png` zeigt die auswählbaren MathJax-Bruchantworten mit der vergrößerten Baumgrafik. Die zweite Bildhälfte wurde mit `r3-mobile-b1-rechts.png` gesondert dokumentiert. Screenshots aus drei Prüfzyklen liegen im GitHub-Artefakt `mathematik-2025-browserkontrolle` (ID `14114620446`).
+- **Originaltreue:** Aufgabenstellungen, Operatoren und Anteile stimmen mit dem amtlichen B1-Blatt überein. Das Baumdiagramm ist als farbige dynamische SVG-Neuzeichnung ausgeführt (kein identisches Druckfaksimile); die mathematische Struktur und alle 12 Pfade stimmen. Es werden keine amtlichen Dokument-PDFs verlinkt.
+- **Restgrenzen:** Die drei automatisierten Durchläufe sind kein unabhängiger dreifacher menschlicher Wort-für-Wort-Abgleich aller neun Prüfkategorien. Deshalb wird die technische Prüfung als bestanden dokumentiert und die **ausdrückliche Nutzerfreigabe von B 1 noch offengelassen**.
+
 ## Offene Freigabesperren, in dieser Reihenfolge lösen
 
 1. **ISB-Originaltreue**: Für **alle 26 Teilaufgaben** Wortlaut, Zeichnung, Achsen, Operatoren, Punkteangaben, Graphen, Parameter- und Rundungsbedingungen Zeile für Zeile dokumentiert mit Original abgleichen. Besonders verkürzte Texte der eigenständigen Seiten dürfen nicht als „Originaltext“ deklariert werden, sofern sie nur sinngemäß sind.
