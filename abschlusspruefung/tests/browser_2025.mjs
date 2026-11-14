@@ -135,6 +135,16 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if((await page.locator('#plot').textContent()).includes('F₁'))throw Error('B3.3: Lotfuß F1 schon vor Zeichnung sichtbar');
     await page.locator('#next').click();
     if(!(await page.locator('#plot').textContent()).includes('F₁'))throw Error('B3.3: Lotfuß F1 fehlt nach Zeichnung');
+    const arc=page.locator('#plot path[data-right-angle="quarter-arc"]');
+    const dot=page.locator('#plot circle[data-right-angle="center-dot"]');
+    if(await arc.count()!==1||await dot.count()!==1)throw Error('B3.3: Rechtwinkelsymbol muss Viertelkreis mit Punkt sein');
+    const geometry=await page.evaluate(()=>{
+     const arc=document.querySelector('#plot path[data-right-angle="quarter-arc"]');
+     const dot=document.querySelector('#plot circle[data-right-angle="center-dot"]');
+     const f=document.querySelector('#plot text');
+     return {arc:arc.getAttribute('d'),x:Number(dot.getAttribute('cx')),y:Number(dot.getAttribute('cy'))};
+    });
+    if(!Number.isFinite(geometry.x)||!Number.isFinite(geometry.y)||!geometry.arc.includes(' A16 16 '))throw Error('B3.3: Radius und Mittelpunkt des Viertelkreis-Symbols unplausibel');
     await partButtons.nth(4).click();
     if(await page.locator('#p3').isVisible()||await page.locator('#pexact').isVisible())throw Error('B3.5: numerische x-Lösung vorzeitig sichtbar');
     if(await page.locator('#roundingNote').isVisible())throw Error('B3.5: Rundungsdifferenz vorzeitig verraten');
