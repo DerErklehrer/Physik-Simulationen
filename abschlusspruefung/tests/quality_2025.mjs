@@ -85,6 +85,18 @@ close('A1: beide Schlüssel',1/5*1/5,1/25);
 close('A1: genau einer',2*(1/5)*(4/5),8/25);
 close('A2: Oberflächeninhalt @30°',32*Math.PI*Math.sin(rad(30)),16*Math.PI);
 close('A3: rechter Winkel-Median',Math.atan(Math.sqrt(3))*180/Math.PI,60);
+for(const t of [0.1,1,4,50/6,9.9,10]){
+ const vectorAD=[140,-140],base=[120,390],P=[base[0]+vectorAD[0]*t/10,base[1]+vectorAD[1]*t/10];
+ close('B2: Schrägbildlage P(t) bei t='+t,Math.hypot(P[0]-base[0],P[1]-base[1]),Math.hypot(...vectorAD)*t/10,1e-9);
+ close('B2: Prismenvolumen bei AP='+t,0.5*t*3*4,6*t,1e-9);
+ close('B2: Winkel/Volumen bei AP='+t,18*Math.tan(Math.atan(t/3)),6*t,1e-9);
+ test('B2: Winkelbereich für AP='+t,Math.atan(t/3)>0&&Math.atan(t/3)<=Math.atan(10/3)+1e-10);
+}
+test('B2: Raumdiagonale AG in Originalgrafik',contents.b2.includes("line(A,G,'#778d9c'"));
+test('B2: Phasenweise Konstruktion',contents.b2.includes('phase=construction?step+1:3')&&contents.b2.includes('if(phase>=3)'));
+test('B2: 50 cm³ nicht vor Rechnung',contents.b2.includes("part===2&&step>=2"));
+test('B2: Maximalvolumen nicht vor Rechnung',contents.b2.includes("part===3&&step>=3"));
+close('B2: maximaler Winkel',Math.atan(10/3)*180/Math.PI,73.30075576600639,.00001);
 close('B2: 50 cm³ in φ',Math.atan(50/18)*180/Math.PI,70.20,.005);
 close('B2: maximal 50 %',.5*10*3*4,60);
 close('B4: Abstandsminimum x',-(3+3.5)/1.25,-5.2);
