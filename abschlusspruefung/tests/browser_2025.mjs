@@ -52,6 +52,26 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(await visibility('outcome-only-b')!=='visible')throw Error('A1.2: zweiter Pfad falsch');
     await page.locator('#reset').click();
    }
+   if(name==='a3'){
+    await partButtons.nth(0).click();
+    if(!(await page.locator('#half').isDisabled())||!(await page.locator('#angle').isDisabled()))throw Error('A3.1: geometrische Ergebnisse zu früh freigeschaltet');
+    if(await page.locator('#midpointTicks').isVisible())throw Error('A3.1: Halbierungsmarkierungen vorzeitig sichtbar');
+    await page.locator('#next').click();
+    if(!(await page.locator('#half').isDisabled()))throw Error('A3.1: Halbierung vor Begründung freigeschaltet');
+    await page.locator('#next').click();
+    if(await page.locator('#half').isDisabled())throw Error('A3.1: Halbierung nach Begründung nicht freigeschaltet');
+    await page.locator('#half').check();
+    if(!(await page.locator('#midpointTicks').isVisible()))throw Error('A3.1: markierte gleiche Teilstrecken fehlen');
+    await partButtons.nth(1).click();
+    if(!(await page.locator('#angle').isDisabled()))throw Error('A3.2: 60 Grad vor Rechnung freigeschaltet');
+    for(let i=0;i<3;i++)await page.locator('#next').click();
+    if(await page.locator('#angle').isDisabled())throw Error('A3.2: Winkelanzeige nach Lösung nicht freigeschaltet');
+    await page.locator('#angle').check();
+    if(!(await page.locator('#extra').textContent()).includes('60°'))throw Error('A3.2: Winkelbogenbeschriftung 60 Grad fehlt');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-a3-loesung.png',fullPage:true,animations:'disabled'});
+    await page.locator('#reset').click();
+    if(!(await page.locator('#angle').isDisabled()))throw Error('A3.2: 60 Grad nach Reset noch freigeschaltet');
+   }
    if(name==='a2'){
     await partButtons.nth(0).click();
     if(!(await page.locator('#figure').textContent()).includes('C₁'))throw Error('A2.1: Originaldreieck C1 fehlt');
