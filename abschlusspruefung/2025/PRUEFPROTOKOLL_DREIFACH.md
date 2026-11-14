@@ -162,6 +162,10 @@ Der Nutzer hat **A 2** und **B 2** ausdrücklich genehmigt. Diese Freigaben gelt
 
 **Freigabeentscheidung:** B 2 ist **fachlich bearbeitet, visuell auf Desktop/Mobil geprüft und technisch dreifach erfolgreich getestet**. Es ist **noch keine ausdrückliche Nutzerfreigabe** erfolgt. Die automatisierten Tests und die einmalige dokumentierte Sichtprüfung sind kein Ersatz für drei unabhängige menschliche Vollabgleiche aller neun Kategorien; deren Vollständigkeit wird nicht fälschlich behauptet.
 
+### Nutzerfreigabe B 3 – 14.11.2026
+
+**B 3 ist vom Nutzer ausdrücklich genehmigt.** Die interaktive Lernseite wird nach den dokumentierten fachlichen Nachprüfungen und technischen Tests als Einzelfreigabe geführt. Die nachträglich gewünschte Rechtwinkel-Symbolik ist im Quelltext als Viertelkreisbogen mit Punkt umgesetzt; spätere relevante Änderungen werden weiterhin regressionsgeprüft.
+
 ## Einzelprüfung 2025 B 3 – Funktionen und Trapeze (14.11.2026)
 
 **Quellenbasis:** Amtliche ISB-Prüfung Mathematik I, Haupttermin 2025, Aufgabenblatt B 3 und Lösungsmuster S. 3–4 von 6. Beide Lösungsseiten wurden als PDF-Screenshots gesichtet und mit dem interaktiven Koordinatensystem verglichen. **16 Punkte:** 4 + 2 + 2 + 2 + 4 + 2.
