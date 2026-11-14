@@ -42,6 +42,14 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     const current=()=>page.locator('#stats').innerText();
     await partButtons.nth(0).click();
     if(await page.locator('#choices input').count()!==4)throw Error('B1.1: vier Antwortmöglichkeiten fehlen');
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b1-antworten.png',fullPage:true,animations:'disabled'});
+    if(mode.isMobile){
+     const metrics=await page.locator('.tree-scroll').evaluate(el=>({visible:el.clientWidth,content:el.scrollWidth}));
+     if(metrics.content<=metrics.visible+100)throw Error('B1 mobil: Baumdiagramm nicht sinnvoll vergrößert/scrollbar');
+     await page.locator('.tree-scroll').evaluate(el=>{el.scrollLeft=el.scrollWidth});
+     const right=await page.locator('.tree-scroll').evaluate(el=>el.scrollLeft);
+     if(right<100)throw Error('B1 mobil: horizontale Bedienung blockiert');
+    }
     if((await current()).includes('30 − p'))throw Error('B1.1: Anteil weiß zu früh sichtbar');
     await page.locator('#choices input[value="2"]').check();
     if((await page.locator('#choicefeedback').innerText()).includes('Richtig'))throw Error('B1.1: Ergebnis vorzeitig bestätigt');
