@@ -30,7 +30,7 @@ let part=0,step=0,show3d=false,previousLength=4,exact50=false;
 function shape(tag,attrs={},text){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('geometry').append(e);return e}
 function line(a,b,color='#8297a7',width=2,dash=false){shape('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':width,'stroke-dasharray':dash?'7 5':''})}
 function label(p,t,dx=7,dy=-9){shape('text',{x:p[0]+dx,y:p[1]+dy,'font-size':19,fill:'#273e50'},t)}
-function pointSuffix(n){return part===0&&Math.abs(n-4)<1e-7?'₁':part===2&&step>=2&&exact50?'₂':part===3&&step>=1&&Math.abs(n-10)<1e-7?'₀':'ₙ'}
+function pointSuffix(n){return part===0&&n===4?'₁':part===2&&step>=2&&exact50?'₂':part===3&&step>=1&&n===10?'₀':'ₙ'}
 function draw(){
  const n=exact50?50/6:Number($('length').value),k=n/10;
  // 40px je unverzerrtem cm; AD als verkürzte Schrägbildachse
@@ -50,10 +50,10 @@ function draw(){
   if(phase>=2)line(P,Q,'#a32b4d',2.8);
  }
  const idx=pointSuffix(n);
- const names=[[A,'A',-24,22],[B,'B',-6,25],[C,Math.abs(n-10)<1e-7?'C = Q'+idx:'C',7,-14],[D,Math.abs(n-10)<1e-7?'D = P'+idx:'D',Math.abs(n-10)<1e-7?-78:-26,-14],[E,'E',-25,6],[F,'F',-14,-14],[G,'G',7,-9],[H,'H',7,-9]];
+ const names=[[A,'A',-24,22],[B,'B',-6,25],[C,n===10?'C = Q'+idx:'C',7,-14],[D,n===10?'D = P'+idx:'D',n===10?-78:-26,-14],[E,'E',-25,6],[F,'F',-14,-14],[G,'G',7,-9],[H,'H',7,-9]];
  for(const [pt,t,dx,dy] of names)label(pt,t,dx,dy);
- if(phase>=1&&Math.abs(n-10)>=1e-7){shape('circle',{cx:P[0],cy:P[1],r:3,fill:'#a32b4d'});shape('text',{x:P[0]+(n<1?20:-14),y:P[1]+28,'font-size':19,fill:'#a32b4d'},'P'+idx);}
- if(phase>=2&&Math.abs(n-10)>=1e-7){shape('circle',{cx:Q[0],cy:Q[1],r:3,fill:'#a32b4d'});shape('text',{x:Q[0]+(n<1?32:11),y:Q[1]+(n<1?35:28),'font-size':19,fill:'#a32b4d'},'Q'+idx);}
+ if(phase>=1&&n!==10){shape('circle',{cx:P[0],cy:P[1],r:3,fill:'#a32b4d'});shape('text',{x:P[0]+(n<1?20:-14),y:P[1]+28,'font-size':19,fill:'#a32b4d'},'P'+idx);}
+ if(phase>=2&&n!==10){shape('circle',{cx:Q[0],cy:Q[1],r:3,fill:'#a32b4d'});shape('text',{x:Q[0]+(n<1?32:11),y:Q[1]+(n<1?35:28),'font-size':19,fill:'#a32b4d'},'Q'+idx);}
  if(part===1||part===2||(part===3&&step>=1)){
   const U=[150,550],W=[150,490],Z=[150+20*n,550],radius=Math.min(12,20*n*.35);
   shape('text',{x:95,y:455,'font-size':16,fill:'#526779'},'Dreiecksgrundfläche (unverzerrt)');
@@ -61,7 +61,7 @@ function draw(){
   shape('path',{d:'M150 '+(550-radius)+' A'+radius+' '+radius+' 0 0 1 '+(150+radius)+' 550',stroke:'#526779','stroke-width':1.8,fill:'none','data-right-angle':'quarter-arc'});
   shape('circle',{cx:150+radius/(2*Math.sqrt(2)),cy:550-radius/(2*Math.sqrt(2)),r:Math.min(2,radius/7),fill:'#526779','data-right-angle':'center-dot'});
   shape('text',{x:128,y:565,'font-size':18,fill:'#273e50'},'A');shape('text',{x:128,y:485,'font-size':18,fill:'#273e50'},'E');
-  shape('text',{x:Z[0]+9,y:563,'font-size':18,fill:'#a32b4d'},part===3&&Math.abs(n-10)<1e-7?'D = P₀':'P'+idx);
+  shape('text',{x:Z[0]+9,y:563,'font-size':18,fill:'#a32b4d'},part===3&&n===10?'D = P₀':'P'+idx);
   shape('text',{x:95,y:525,'font-size':17,fill:'#526779'},'3 cm');
   shape('text',{x:Math.max(162,(U[0]+Z[0])/2-18),y:585,'font-size':17,fill:'#526779'},'≈ '+fmt(n)+' cm');
   if(part!==1||step>=1){

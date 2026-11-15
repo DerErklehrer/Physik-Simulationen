@@ -28,7 +28,7 @@ function doubleCone(degrees,phase=3,suffix='ₙ'){
  controls.target.set(0,0,0);syncConeLabels();
 }
 function prism(t,phase=3,suffix='ₙ'){
- const x=Math.max(.1,Math.min(10,Number(t))),atEnd=Math.abs(x-10)<1e-7;
+ const x=Math.max(.1,Math.min(10,Number(t))),atEnd=x===10;
  const A=V(0,0,0),P=V(x,0,0),E=V(0,3,0),B=V(0,0,4),Q=V(x,0,4),F=V(0,3,4),D=V(10,0,0),C=V(10,0,4),H=V(10,3,0),G=V(10,3,4);
  for(const [u,v] of [[A,D],[D,C],[C,B],[B,A],[E,H],[H,G],[G,F],[F,E],[A,E],[B,F],[C,G],[D,H]])model.add(edge(u,v,0xa5b1bf));
  function wire(a,b){const e=edge(a,b,0xa32b4d);e.material.transparent=true;e.material.depthTest=false;e.renderOrder=5;model.add(e);}
@@ -40,7 +40,7 @@ function prism(t,phase=3,suffix='ₙ'){
  for(const [pt,t] of [[A,'A'],[E,'E'],[B,'B'],[F,'F'],[D,atEnd?'D = P'+suffix:'D'],[C,atEnd?'C = Q'+suffix:'C'],[H,'H'],[G,'G']])text(pt.clone().add(V(0,.35,0)),t);
  if(phase>=1&&!atEnd)text(P.clone().add(V(.25,.25,-.5)),'P'+suffix);
  if(phase>=2&&!atEnd)text(Q.clone().add(V(.25,.25,.55)),'Q'+suffix);
- for(const [pos,t] of [[V(-.4,0,-.55),'A/E'],[V(-.4,0,4.7),'B/F'],[V(10.3,0,-.55),atEnd?'D/H = P'+suffix:'D/H'],[V(10.3,0,4.7),atEnd?'C/G = Q'+suffix:'C/G']])text(pos,t,'prism-top');
+ for(const [pos,t] of [[V(-.4,0,-.55),'A/E'],[V(-.4,0,4.7),'B/F'],[V(10.3,0,-.55),atEnd?'D=P'+suffix+' / H':'D/H'],[V(10.3,0,4.7),atEnd?'C=Q'+suffix+' / G':'C/G']])text(pos,t,'prism-top');
  for(const [point,name,z] of [[P,'P'+suffix,-1.3],[Q,'Q'+suffix,5.45]]){
   const allowed=name.startsWith('P')?phase>=1:phase>=2;
   if(!atEnd&&allowed){text(V(x,0,z),name,'prism-top');const leader=edge(point,V(x,0,z<0?-.9:5),0x60758b);leader.userData.coneLabel='prism-top';model.add(leader);}

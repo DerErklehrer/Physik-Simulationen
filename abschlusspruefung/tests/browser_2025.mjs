@@ -300,6 +300,10 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(!(await page.locator('#maximum').isVisible()))throw Error('B2.4: 10-cm-Grenzwert nach Beurteilung fehlt');
     if(await page.locator('#length').inputValue()!=='10')throw Error('B2.4: Endprisma nicht auf 10 cm gesetzt');
     if(!(await page.locator('#measure').innerText()).includes('60,00 cm³'))throw Error('B2.4: Maximalvolumen nicht 60 cm3');
+    await page.locator('#length').evaluate(el=>{el.value=9.99999999;el.dispatchEvent(new Event('input',{bubbles:true}))});
+    if((await labels()).includes('D = P')||(await labels()).includes('C = Q'))throw Error('B2: Grenzgleichheit vor exaktem AP=10 behauptet');
+    await page.locator('#maximum').click();
+
     await page.locator('#prev').click();
     if(await page.locator('#length').inputValue()!=='10')throw Error('B2.4: Maximalprisma im Volumenschritt nicht erhalten');
     await page.locator('#prev').click();
