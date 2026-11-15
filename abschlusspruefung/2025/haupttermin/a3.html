@@ -25,9 +25,9 @@ const T=[
 ['Seitenhalbierende erkennen','Die Gerade BS verläuft durch den Eckpunkt B und den Schwerpunkt S. Daher muss die Strecke BM eine Seitenhalbierende sein.'],
 ['Begründung abschließen','Eine Seitenhalbierende verbindet einen Eckpunkt mit dem Mittelpunkt der gegenüberliegenden Seite. Also ist \\(\\boxed{|\\overline{AM}|=|\\overline{MC}|}\\); M ist der Mittelpunkt von AC.']]},
 {title:'A 3.2',points:'2 P',text:'Bestimmen Sie mithilfe einer Rechnung das Maß des Winkels ∢CBM.',steps:[
-['Länge der halben Seite AC','Aus A 3.1 folgt: \\[|\\overline{MC}|=\\frac12\\cdot|\\overline{AC}|=\\frac12\\cdot8\\sqrt3\\,\\mathrm{cm}=4\\sqrt3\\,\\mathrm{cm}.\\]'],
+['Länge der halben Seite AC','Aus A 3.1 folgt: \\[\\begin{aligned}|\\overline{MC}|&=\\frac12\\cdot|\\overline{AC}|\\\\&=\\frac12\\cdot8\\sqrt3\\,\\mathrm{cm}\\\\&=4\\sqrt3\\,\\mathrm{cm}.\\end{aligned}\\]'],
 ['Rechtwinkliges Dreieck BCM','Da das Dreieck ABC bei C rechtwinklig ist und M auf AC liegt, ist auch BCM bei C rechtwinklig. Für den gesuchten Winkel ∢CBM ist MC die Gegenkathete und BC die Ankathete.'],
-['Tangens aufstellen','\\[\\tan(∢CBM)=\\frac{|\\overline{MC}|}{|\\overline{BC}|}=\\frac{4\\sqrt3\\,\\mathrm{cm}}{4\\,\\mathrm{cm}}=\\sqrt3.\\]'],
+['Tangens aufstellen','\\[\\begin{aligned}\\tan(∢CBM)&=\\frac{|\\overline{MC}|}{|\\overline{BC}|}\\\\&=\\frac{4\\sqrt3\\,\\mathrm{cm}}{4\\,\\mathrm{cm}}\\\\&=\\sqrt3.\\end{aligned}\\]'],
 ['Winkel bestimmen','Aus \\(\\tan60^\\circ=\\sqrt3\\) folgt im rechtwinkligen Dreieck: \\[\\boxed{∢CBM=60^\\circ}.\\]']] }
 ];let part=0,step=0;
 const svg=document.querySelector('svg'),med=$('medianSegment'),ext=$('medianExtension'),S=$('centroidPoint'),Slabel=$('centroidLabel');

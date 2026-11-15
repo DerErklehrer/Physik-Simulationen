@@ -36,6 +36,7 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
       const nodes=[document.getElementById('statement'),document.getElementById('solution')];
       return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
     },null,{timeout:9000});
+    if(name==='a3'&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error('A3: Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
     const statement=(await page.locator('#statement').innerText()).trim();
     const solution=(await page.locator('#solution').innerText()).trim();
     if(statement.length<15||solution.length<10)throw Error('Leerer Aufgabentext/Lösung, Teil '+(i+1));
@@ -49,6 +50,7 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
         const nodes=[document.getElementById('statement'),document.getElementById('solution')];
         return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
       },null,{timeout:9000});
+      if(name==='a3'&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error('A3: Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
       const after=(await page.locator('#solution').innerText()).trim();
       if(['a1','a2','a3'].includes(name))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+currentStep+'.png',fullPage:true,animations:'disabled'});
       if(after.length<10)throw Error('Leerer Lösungsschritt '+currentStep+', Teil '+(i+1));
