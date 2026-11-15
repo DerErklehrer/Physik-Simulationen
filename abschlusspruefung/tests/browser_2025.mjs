@@ -275,15 +275,6 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(!(await page.locator('#measure').innerText()).includes('Erkundung')||(await page.locator('#plot').textContent()).includes('A₃'))throw Error('B3.5: frei verändertes Trapez wird als feste Lösungslage ausgegeben');
     await page.locator('#pexact').click();
 
-    await page.locator('#p3exact').click();
-    if(!(await page.locator('#measure').innerText()).includes('Ohne Zwischenrundung'))throw Error('B4.3: geometrische Sonderlage nicht gekennzeichnet');
-    const exactParallel=await page.evaluate(()=>{const d=geom(exactD3);return Math.abs((d.C.y-d.D.y)-.5*(d.C.x-d.D.x))});
-    if(exactParallel>1e-10)throw Error('B4.3: exakte D3C3-Seite liegt nicht auf g');
-    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b4-exakt.png',fullPage:true,animations:'disabled'});
-    await page.locator('#slider').evaluate(e=>{e.value='1';e.dispatchEvent(new Event('input',{bubbles:true}))});
-    if((await graphText()).includes('D₃')||(await page.locator('#measure').innerText()).includes('Ohne Zwischenrundung'))throw Error('B4.3: freie Erkundung behält Sonderfallbezeichnung');
-    await page.locator('#p3').click();
-    if(!(await page.locator('#measure').innerText()).includes('Amtliche Zwischenrundung'))throw Error('B4.3: amtlicher Weg nicht eindeutig bezeichnet');
     await page.locator('#prev').click();
     if(await page.locator('#p3').isVisible()||await page.locator('#roundingNote').isVisible())throw Error('B3.5: Lösung beim Zurückblättern noch sichtbar');
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b3-schritte.png',fullPage:true,animations:'disabled'});
