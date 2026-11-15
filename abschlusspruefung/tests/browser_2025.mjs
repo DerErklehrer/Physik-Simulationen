@@ -111,6 +111,15 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
    if(name==='a1'){
     const accessibleDiagram=await page.locator('svg[role="img"]').getAttribute('aria-label');
     if(/(?:1|4|8|16)\s*[/⁄]\s*25|(?:4|16|32|64)\s*%/.test(accessibleDiagram))throw Error('A1: Diagrammbeschreibung verrät Ergebnisse vor dem Lösungsschritt');
+    if(mode.isMobile){
+     const diagram=page.locator('.tree-scroll');
+     const widths=await diagram.evaluate(el=>({visible:el.clientWidth,content:el.scrollWidth}));
+     if(widths.content<=widths.visible+100)throw Error('A1 mobil: Diagramm wird zu klein statt lesbar scrollbar');
+     await diagram.evaluate(el=>{el.scrollLeft=el.scrollWidth});
+     if(await diagram.evaluate(el=>el.scrollLeft)<100)throw Error('A1 mobil: rechte Baumhälfte nicht erreichbar');
+     await page.screenshot({path:OUT+'/r'+round+'-mobile-a1-rechts.png',fullPage:true,animations:'disabled'});
+     await diagram.evaluate(el=>{el.scrollLeft=0});
+    }
     const visibility=async id=>page.locator('#'+id).getAttribute('visibility');
     await partButtons.nth(0).click();
     if(await visibility('outcome-both')!=='hidden')throw Error('A1.1: Endergebnis zu früh sichtbar');
