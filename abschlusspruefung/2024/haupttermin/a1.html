@@ -67,7 +67,7 @@ function draw(){
  $('measure').textContent=part===0?(step>=2?'Der Verzerrungsmaßstab steht in der Rechnung rechts.':step>=1?'Gedruckte Zeichnung: 6 cm; tatsächliche Länge: 9 cm.':'Grundfläche ABC: AM unverkürzt, BC in Schrägrichtung.'):phase()===0?'Zuerst die Höhe aus dem rechtwinkligen Dreieck ACS bestimmen.':'Die Spitze S liegt senkrecht über A. 3D und Schrägbild zeigen denselben Konstruktionsschritt.';
  window.dispatchEvent(new Event('pyramid2024Change'));
 }
-function syncView(){ $('figureScroll').hidden=show3d;$('view3d').hidden=!show3d;for(const id of ['top','cameraReset'])$(id).hidden=!show3d;$('threeD').classList.toggle('active',show3d);$('twoD').classList.toggle('active',!show3d);$('threeD').setAttribute('aria-pressed',String(show3d));$('twoD').setAttribute('aria-pressed',String(!show3d));window.dispatchEvent(new Event('pyramid2024Change'))}
+function syncView(){ document.querySelector('.mobile-controls').hidden=show3d;$('figureScroll').hidden=show3d;$('view3d').hidden=!show3d;for(const id of ['top','cameraReset'])$(id).hidden=!show3d;$('threeD').classList.toggle('active',show3d);$('twoD').classList.toggle('active',!show3d);$('threeD').setAttribute('aria-pressed',String(show3d));$('twoD').setAttribute('aria-pressed',String(!show3d));window.dispatchEvent(new Event('pyramid2024Change'))}
 $('threeD').onclick=()=>{show3d=true;syncView()};$('twoD').onclick=()=>{show3d=false;syncView()};
 
 start();</script><script type="module" src="pyramide3d.js"></script></body></html>
