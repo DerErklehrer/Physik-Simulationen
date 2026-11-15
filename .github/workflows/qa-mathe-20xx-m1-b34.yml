@@ -33,6 +33,7 @@ jobs:
       - name: Drei Browserdurchläufe auf Desktop und Mobil
         env:
           QA_OUT: /tmp/20xx-m1-b34-qa
+          QA_TASKS: 3,4
         run: node abschlusspruefung/tests/browser_20xx_m1_b34.mjs
       - uses: actions/upload-artifact@v4
         if: always()
