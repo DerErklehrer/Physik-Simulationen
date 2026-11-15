@@ -109,6 +109,8 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     await page.locator('#resetp').click();
    }
    if(name==='a1'){
+    const accessibleDiagram=await page.locator('svg[role="img"]').getAttribute('aria-label');
+    if(/(?:1|4|8|16)\s*[/⁄]\s*25|(?:4|16|32|64)\s*%/.test(accessibleDiagram))throw Error('A1: Diagrammbeschreibung verrät Ergebnisse vor dem Lösungsschritt');
     const visibility=async id=>page.locator('#'+id).getAttribute('visibility');
     await partButtons.nth(0).click();
     if(await visibility('outcome-both')!=='hidden')throw Error('A1.1: Endergebnis zu früh sichtbar');
