@@ -28,6 +28,7 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
    const partButtons=page.locator('#parts button');
    const count=await partButtons.count();
    if(count!==expected[name])throw Error('Teile: erwartet '+expected[name]+', erhalten '+count);
+   if(name==='a2'&&await page.locator('#phi').inputValue()!=='75')throw Error('A2.1: Winkel beim erstmaligen Öffnen nicht auf Konstruktion eingestellt');
    for(let i=0;i<count;i++){
     await partButtons.nth(i).click();
     // Prüfe das tatsächlich gesetzte MathJax – ein Text mit \(…\) im Browser ist ein Fehler.
@@ -41,7 +42,7 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     const countLabel=await page.locator('#count').innerText();
     const stepCount=Number(countLabel.match(/von\s+(\d+)/)?.[1]||0);
     if(stepCount<2)throw Error('Lösung hat weniger als zwei Schritte, Teil '+(i+1));
-    if(name==='a1')await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-a1-teil'+(i+1)+'-schritt1.png',fullPage:true,animations:'disabled'});
+    if(['a1','a2','a3'].includes(name))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt1.png',fullPage:true,animations:'disabled'});
     for(let currentStep=2;currentStep<=stepCount;currentStep++){
       await page.locator('#next').click();
       await page.waitForFunction(()=>{
@@ -49,12 +50,12 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
         return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
       },null,{timeout:9000});
       const after=(await page.locator('#solution').innerText()).trim();
-      if(name==='a1')await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-a1-teil'+(i+1)+'-schritt'+currentStep+'.png',fullPage:true,animations:'disabled'});
+      if(['a1','a2','a3'].includes(name))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+currentStep+'.png',fullPage:true,animations:'disabled'});
       if(after.length<10)throw Error('Leerer Lösungsschritt '+currentStep+', Teil '+(i+1));
       const displayed=await page.locator('#count').innerText();
       if(!displayed.includes('Schritt '+currentStep+' von '+stepCount))throw Error('Schrittanzeige falsch in Teil '+(i+1));
     }
-    if(name==='a1')await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-a1-teil'+(i+1)+'-schritt'+stepCount+'.png',fullPage:true,animations:'disabled'});
+    if(['a1','a2','a3'].includes(name))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+stepCount+'.png',fullPage:true,animations:'disabled'});
     if(!(await page.locator('#next').isDisabled()))throw Error('Vorwärtsbutton nach letztem Schritt nicht gesperrt, Teil '+(i+1));
     await page.locator('#reset').click();
     if(!(await page.locator('#prev').isDisabled()))throw Error('Reset hat nicht auf ersten Lösungsschritt zurückgesetzt, Teil '+(i+1));
@@ -290,7 +291,21 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(Math.abs(Number(await page.locator('#length').inputValue())-4)>1e-8)throw Error('B2.4: Grenzlage beim Rückwärtsblättern nicht rückgängig');
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b2-vorbereitung.png',fullPage:true,animations:'disabled'});
    }
+   if(['a2','a3'].includes(name)&&mode.isMobile){
+    const scroll=page.locator('.figure-scroll');
+    const sizes=await scroll.evaluate(el=>({visible:el.clientWidth,content:el.scrollWidth}));
+    if(sizes.content<=sizes.visible+100)throw Error(name+': mobile Zeichnung zu klein statt scrollbar');
+    await scroll.evaluate(el=>{el.scrollLeft=el.scrollWidth});
+    if(await scroll.evaluate(el=>el.scrollLeft)<100)throw Error(name+': rechte Zeichnungshälfte nicht erreichbar');
+    await page.screenshot({path:OUT+'/r'+round+'-mobile-'+name+'-rechts.png',fullPage:true,animations:'disabled'});
+    await scroll.evaluate(el=>{el.scrollLeft=0});
+   }
    if(name==='a3'){
+    if((await page.locator('svg').getAttribute('aria-label')).includes('Mittelpunkt'))throw Error('A3: Diagrammbeschreibung verrät Mittelpunkt vor Begründung');
+    if(await page.locator('[data-right-angle="quarter-arc"]').count()!==1||await page.locator('[data-right-angle="center-dot"]').count()!==1)throw Error('A3: Rechtwinkelsymbol Viertelkreis mit Punkt fehlt');
+    await page.locator('#median').uncheck();
+    if(!(await page.locator('#centroidPoint').isVisible())||!(await page.locator('#centroidLabel').isVisible()))throw Error('A3: vorgegebener Schwerpunkt beim Ausblenden der Hilfslinie verschwunden');
+    await page.locator('#median').check();
     await partButtons.nth(0).click();
     if(!(await page.locator('#half').isDisabled())||!(await page.locator('#angle').isDisabled()))throw Error('A3.1: geometrische Ergebnisse zu früh freigeschaltet');
     if(await page.locator('#midpointTicks').isVisible())throw Error('A3.1: Halbierungsmarkierungen vorzeitig sichtbar');
@@ -325,9 +340,27 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     await page.locator('#next').click();
     if(!(await page.locator('#choicefeedback').innerText()).includes('Richtig'))throw Error('A2.2: Intervallauswertung fehlt');
     await partButtons.nth(2).click();
+    if(await page.locator('[data-helper="radius"]').count())throw Error('A2.3: Radius vor Herleitung eingeblendet');
+    await page.locator('#next').click();
+    if(await page.locator('[data-helper="radius"]').count()!==1||await page.locator('[data-helper="mantle"]').count())throw Error('A2.3: Radius und Mantellinie nicht getrennt aufgebaut');
+    await page.locator('#next').click();
+    if(await page.locator('[data-helper="mantle"]').count()!==1)throw Error('A2.3: Mantellinie fehlt bei ihrer Erklärung');
+    await page.locator('#reset').click();
     if((await page.locator('#measure').innerText()).includes('Oberfläche'))throw Error('A2.3: Oberfläche zu früh eingeblendet');
     for(let k=0;k<3;k++)await page.locator('#next').click();
     if(!(await page.locator('#measure').innerText()).includes('Oberfläche'))throw Error('A2.3: Oberfläche nach Herleitung fehlt');
+    await page.locator('#threeD2025').click();
+    const coneCanvas=page.locator('#view3d2025 canvas');await coneCanvas.waitFor({state:'visible',timeout:15000});
+    await page.locator('#reset').click();await page.waitForTimeout(200);
+    const coneStart=await coneCanvas.screenshot({animations:'disabled'});
+    if(round===3)await page.screenshot({path:OUT+'/r3-'+mode.label+'-a2-3d-erkennen.png',fullPage:true,animations:'disabled'});
+    await page.locator('#next').click();await page.waitForTimeout(200);
+    if(round===3)await page.screenshot({path:OUT+'/r3-'+mode.label+'-a2-3d-radius.png',fullPage:true,animations:'disabled'});
+    await page.locator('#next').click();await page.waitForTimeout(200);
+    if(coneStart.equals(await coneCanvas.screenshot({animations:'disabled'})))throw Error('A2.3: 3D-Hilfslinien werden nicht schrittweise aufgebaut');
+    if(round===3)await page.screenshot({path:OUT+'/r3-'+mode.label+'-a2-3d-mantel.png',fullPage:true,animations:'disabled'});
+    await page.locator('#twoD2025').click();
+
     await partButtons.nth(3).click();
     if(await page.locator('#preset30').isVisible())throw Error('A2.4: 30-Grad-Ergebnis vorzeitig sichtbar');
     if(await page.locator('#phi').inputValue()==='30')throw Error('A2.4: Ergebnis vorzeitig am Regler eingestellt');
@@ -394,7 +427,20 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     const afterOrbit=await canvas.screenshot({animations:'disabled'});
     if(beforeOrbit.equals(afterOrbit))throw Error(name+': 3D-Körper reagiert nicht auf '+(mode.isMobile?'Touchgeste':'Mausdrehen'));
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-orbit.png',fullPage:true,animations:'disabled'});
+    if(name==='a2'&&mode.isMobile){
+     const cdp=await context.newCDPSession(page),cx=box.x+box.width*.5,cy=box.y+box.height*.4;
+     const beforePinch=await canvas.screenshot({animations:'disabled'});
+     const points=d=>[{x:cx-d,y:cy,id:1},{x:cx+d,y:cy,id:2}];
+     await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:points(25)});
+     for(let k=1;k<=6;k++){await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:points(25+5*k)});await page.waitForTimeout(40);}
+     await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await cdp.detach();await page.waitForTimeout(300);
+     if(beforePinch.equals(await canvas.screenshot({animations:'disabled'})))throw Error('A2: Doppelkegel reagiert nicht auf Zwei-Finger-Zoom');
+     await page.locator('#resetcamera2025').click();
+     await page.screenshot({path:OUT+'/r'+round+'-mobile-a2-pinch-reset.png',fullPage:true,animations:'disabled'});
+    }
     await page.locator('#top2025').click();
+    await page.waitForTimeout(300);
+    await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-draufsicht.png',fullPage:true,animations:'disabled'});
     await page.locator('#resetcamera2025').click();
     await page.waitForTimeout(450);
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-3d.png',fullPage:true,animations:'disabled'});

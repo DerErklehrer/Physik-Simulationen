@@ -195,3 +195,17 @@ for(const [name,segments] of Object.entries({
 test('2025 B4: Vektor ≠ Länge',contents.b4.includes('overrightarrow{AB_n}')&&contents.b4.includes('overline{AB_n}'));
 console.log('2025: '+checked+' statische und mathematische Prüfungen erfolgreich.');
 console.log('NICHT geprüft: ISB-Wortlaut, sämtliche visuelle Darstellungen, echte Browserlaufzeit, MathJax/Three.js im Browser, Mobile/Touch. Keine Freigabe.');
+
+// Fachliche Regression A2: beide Schenkel, Winkel und Radius/Höhe am tatsächlichen Koordinatenmodell.
+for(const phi of [1,30,40,75,89]){
+ const t=phi*Math.PI/180,A=[0,0],B=[0,8*Math.cos(t)],C=[-4*Math.sin(t),4*Math.cos(t)];
+ close('A2: AC=4 bei '+phi,Math.hypot(C[0],C[1]),4);
+ close('A2: BC=4 bei '+phi,Math.hypot(C[0]-B[0],C[1]-B[1]),4);
+ close('A2: Basiswinkel bei '+phi,Math.acos(C[1]/4)*180/Math.PI,phi,1e-8);
+ close('A2: beide Kegelmantellinien bei '+phi,Math.hypot(-C[0],B[1]/2),4);
+ test('A2: Radius im offenen Intervall bei '+phi,-C[0]>0&&-C[0]<4);
+}
+const marker=contents.a3.match(/data-right-angle="quarter-arc"/g)||[];
+test('A3: rechter Winkel als Viertelkreis',marker.length===1&&contents.a3.includes('data-right-angle="center-dot"'));
+close('A3: Punkt auf Winkelhalbierender in halbem Bogenradius',Math.hypot(585-578.636,98.364-92),9,.001);
+console.log('Zusätzliche A2/A3-Geometrieprüfung erfolgreich; insgesamt '+checked+' statische/fachliche Prüfungen.');
