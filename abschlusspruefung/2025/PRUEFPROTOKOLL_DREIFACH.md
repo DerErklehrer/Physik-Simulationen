@@ -279,3 +279,65 @@ Jeder der sechs A1-Lösungsschritte wird im finalen Browserlauf in beiden Gerät
 - Auf dem **finalen** Code nochmals `r3-desktop-a1-teil2-schritt4.png` und `r3-mobile-a1-rechts.png` geöffnet: oberer Bruch vollständig innerhalb der Zeichenfläche, Astzahlen frei von Linien; rechte Diagrammhälfte lesbar und erreichbar. Der finale Lauf sichert sämtliche A1-Schritte erneut; Artefakt **14154262576**.
 - Kein physisches Mobilgerät und kein tatsächlicher Bildschirmleser verwendet. Der Nachweis zur zugänglichen Beschreibung beruht auf DOM-/Browserprüfung; Touchgerät ist Chromium-Emulation. Nicht ausgeführte Prüfungen bleiben ausdrücklich offen.
 - **Ergebnis A1:** Original-/Fachabgleich einmal erneut ausgeführt; die gefundenen Beschriftungs-, Mobil- und Vorwegnahmefehler sind korrigiert und regressionsgeprüft. Kein Anspruch auf drei vollständige unabhängige Fach-/Sichtdurchgänge. Die Gesamtfreigabe 2025 bleibt offen. **Weiter mit A2.**
+
+## Fortsetzung Gesamtqualitätskontrolle – A2 und A3 (15.11.2026)
+
+**Umfang:** A2.0–A2.4 und A3.0–A3.2, zusammen sechs Teilaufgaben. Ausgangspunkt nach der A1-Prüfung: `a59cff5e686a7b5dcc421e1bf25e5e5e4cf62c0f`. Die neue Bearbeitung ist ein erneuter fachlicher und visueller Arbeitsschritt; sie ist ausdrücklich keine Behauptung dreier vollständiger unabhängiger Freigaberunden.
+
+### Original- und Fachvergleich pro Teilaufgabe
+
+Primärquellen erneut als **gerenderte amtliche PDF-Seiten** gelesen: ISB `2025_mi_ht.pdf`, Seiten 2–3 (A2/A3 einschließlich Zeichnungen, aller Intervalloptionen, Formeln und Punktwerte); `2025_mi_ht_l.pdf`, Seiten 1–2. Die ursprünglichen Nutzerfreigaben bleiben bestehen.
+
+| Teilaufgabe | Originalangaben/Operator und Punkte | Unabhängig nachvollzogenes Ergebnis und Lösungsweg |
+|---|---|---|
+| A2.1 | Dreieck AB₂C₂ für φ = 75° ergänzen; 1 P. Ausgangsfigur AB₁C₁ bei 40°, gleichschenklig mit Basis ABₙ, ACₙ = 4 cm. | Beide Schenkel 4 cm; AB₂ = 8·cos75° cm ≈ 2,07055 cm. Konstruktion: 75°-Strahl von A, C₂ im Abstand 4 cm, zweiter gleich langer Schenkel zur Achse. Originaldreieck bleibt zusätzlich erhalten. |
+| A2.2 | Abstand a = x cm mit x ∈ ℝ; sechs originale Antwortintervalle; passendes Intervall ankreuzen; 1 P. | a = 4·sinφ cm, φ ∈ ]0°;90°[; somit x ∈ ]0;4[. Beide Grenzen ausgeschlossen. Numerische Reglergrenzen 1°/89° sind lediglich die diskrete Lernsteuerung. |
+| A2.3 | Rotation um Gerade ABₙ; O(φ) = 32·π·sinφ cm² zeigen; 2,5 P. | Radius a = 4·sinφ cm, zwei äußere Mantelflächen mit s = 4 cm; O = 2·π·a·s. Die gemeinsame Grundkreisfläche liegt innen und zählt nicht zur Oberfläche. Jeder der vier Lösungsschritte nachgerechnet und mit dem amtlichen Muster verglichen. |
+| A2.4 | Oberfläche 16·π cm² für Rotation von AB₃C₃; zugehöriges Winkelmaß bestimmen; 1,5 P. | 16π = 32π·sinφ; sinφ = 1/2; wegen offenem spitzwinkligem Definitionsbereich eindeutig φ = 30°, L = {30°}. Ergebnisvorgabe und Geometrie erst nach dem letzten Lösungsschritt auf 30° setzen. |
+| A3.1 | Rechtwinkliges Dreieck ABC, Hypotenuse AB, Schwerpunkt S, Gerade BS trifft AC in M; M als Mittelpunkt ohne Messen begründen; 1 P. | S liegt auf jeder Seitenhalbierenden. Die Gerade durch B und S trifft AC in ihrem Mittelpunkt M. Vollständige dreistufige Erläuterung; keine metrische Messung als Begründung. |
+| A3.2 | AC = 8√3 cm, BC = 4 cm; Winkel ∢CBM rechnerisch bestimmen; 2 P. | MC = AC/2 = 4√3 cm; BCM rechtwinklig bei C; tan(∢CBM) = MC/BC = √3; ∢CBM = 60°. Alle vier Lösungsschritte einschließlich Einheitenkürzung nachvollzogen. |
+
+**Geometrische Eigenkontrolle:** A2 verwendet A = (0|0), C = (−4·sinφ|4·cosφ), B = (0|8·cosφ). Für 1°, 30°, 40°, 75° und 89° wurden beide 4-cm-Schenkel, Basiswinkel, Radius im offenen Intervall und 4-cm-Kegelmantellinien numerisch abgesichert. Im 3D-Modell gilt r = 4·sinφ, h = 4·cosφ je Kegel; keine Deckflächen an der innenliegenden gemeinsamen Kreisfläche. A3 besitzt im Maßstab 36 px/cm BC = 144 px und AC = 288√3 px. M = (335,585|92), S ≈ (418,723|140); BS:SM = 2:1 und Winkel CBM = 60°.
+
+### Befunde und Korrekturen nach den neun Kategorien
+
+| Kategorie | A2 | A3 |
+|---|---|---|
+| 1 – Originaltreue | Angaben und alle vier Aufgaben Wort für Wort mit gedrucktem Original abgeglichen, einschließlich sechs Intervalloptionen, Oberfläche, offenem φ-Intervall und 6 Gesamtpunkten. Originaltext fachlich unverändert; dynamische Ergänzungen klar als Lernhilfen beschrieben. | Angaben und beide Aufgaben mit Originalseite verglichen: Hypotenuse, Schwerpunkt, Schnittpunkt, beide Längen, Operatoren, Winkelnotation und 3 Gesamtpunkte stimmen. |
+| 2 – Fachlichkeit | Alle zwölf Erklärungsschritte gegen ISB und eigene Rechnung kontrolliert; Abstand sprachlich als **Länge des Lotes** präzisiert. | Alle sieben Erklärungsschritte gegen ISB und eigene Rechnung kontrolliert; Schwerpunkt-/Mittelpunkteigenschaft und Tangens korrekt. |
+| 3 – Schreibweisen | Vertikale Brüche, Längenbeträge, Einheiten cm/cm², Winkel, Dezimalkomma, Malpunkt und Lösungsmenge kontrolliert. Strecke AC₂ in erklärenden Texten ausdrücklich mit Überstrich gesetzt. | Winkelquadrat durch **Viertelkreisbogen mit Punkt auf der Winkelhalbierenden bei halbem Radius** ersetzt. Längenbeträge, vertikale Brüche, Winkel ∢CBM, Einheiten und Wurzeln kontrolliert. |
+| 4 – Grafik | Startwinkel für A2.1 von 40° auf 75° korrigiert, festes Originaldreieck bei 40° bleibt bestehen. Schritt-/Reset-Übergänge stellen den verlangten Konstruktionswinkel wieder her. Aktueller magentafarbener Winkel wird auch außerhalb A2.1 mit Bogen und Wert dargestellt. Radius/Lot und 4-cm-Mantellinie passend zur Erklärung ergänzt. Für A2.4 erhalten die Punkte den Index 3. | Mittelpunktmarkierung auf die tatsächliche x-Koordinate 335,585 gesetzt; 60°-Beschriftung von der Seitenhalbierenden abgerückt. Vorgegebener Schwerpunkt S bleibt beim Ausblenden der Hilfslinie sichtbar. SVG-Seitenverhältnisse und Schwerpunktlage unverändert korrekt. |
+| 5 – 3D | 2D/3D-Umschaltung, freie Drehung, orthografische Draufsicht, Reset und mobile Gesten werden im Browser geprüft. Radius als echte Linie und Mantellinie schrittweise ergänzt; größere Beschriftungen. In Draufsicht gemeinsame Achsenbeschriftung „A / Bₙ“ statt übereinanderliegender Spitzenlabels; unsichtbar projizierte Mantellängenbeschriftung dort ausgeblendet. Mobile Standardansicht hält auch breite Kegel samt Labels im Ausschnitt. Reset stellt nun **auch Zoom** wieder her; Winkeländerungen erhalten Zoom und Blickrichtung. | Nicht anwendbar: ebenes Dreieck, kein Raumobjekt. |
+| 6 – Abhängigkeiten | Konstruktion, Intervallauswertung, Radius, Mantellinie, Oberflächenanzeige, Aufgabenwechsel, Ergebnis 30°, Reset sowie Winkel 1°/75°/89° in 2D und 3D als Prüfzustände vorgesehen. Die mathematischen Intervalle wurden nicht auf die Reglerstufen eingeschränkt. | Halbierungsmarkierungen erst nach Begründung, 60° erst im Schlussschritt. Zurücksetzen sperrt die Winkelanzeige erneut. Schwerpunkt bleibt eine unveränderliche Originalangabe. |
+| 7 – Didaktik | Grafischer Aufbau von Radius und Mantellinie in 2D **und 3D** an die Lösungsschritte gekoppelt; Oberflächenwert erst nach Herleitung sichtbar. | Vorzeitige Aussage „Mittelpunkt M“ aus der zugänglichen Diagrammbeschreibung entfernt; dort steht nun „Schnittpunkt M“. |
+| 8 – Technik/Mobil | Mobile 2D-Zeichnung in mindestens 560 px Breite scrollbar; Hinweis und per Tastatur fokussierbarer Bereich. Alle zwölf Schritte, Formeln und 3D-Zustände als Browserprüfungen/Screenshots vorgesehen; Zwei-Finger-Zoom und Ein-Finger-Drehen in Touch-Emulation. | Mobile Zeichnung ebenfalls mindestens 560 px breit und scrollbar; rechter Teil erreichbar. Sieben Lösungsschritte und Zusatzmarkierungen werden im Browser geprüft und als Screenshots gesichert. |
+| 9 – Konsistenz | Vor-/Zurückverweise A1/A3 ergänzt bzw. geprüft; Jahrgang, Aufgabennummern, Intervalloptionen und Punkte korrekt; keine PDF-Direktlinks auf Lernseite. Das gemeinsam mit B2 verwendete 3D-Modul wird im gesamten Browser-Regressionslauf geprüft. | Verweise A2/B1, Jahrgang, Aufgabenkennzeichnung und Punkte korrekt; keine PDF-Direktlinks auf Lernseite. |
+
+**Prüfumfang klar abgegrenzt:** Fachlicher/gedruckter Originalabgleich in diesem Arbeitsschritt einmal vollständig neu ausgeführt. Automatisierte Wiederholungen gelten ausschließlich als technische Regression, nicht als drei unabhängige vollständige Fach- und Sichtprüfungen. Physische Touchgeräte und tatsächliche Bildschirmleser wurden nicht verwendet; zugängliche Namen werden im DOM kontrolliert.
+
+### Tatsächliche Sichtprüfung und zusätzliche Funde
+
+Nach dem erfolgreichen Voll-Regressionslauf [43696845276](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43696845276) auf `f172dcc74a23b2727f0df6f7bc3d1438628b23e0` wurden die Screenshots wirklich geöffnet: sämtliche zwölf A2- und sieben A3-Lösungsschritte als Desktop-Kontaktbögen, mobile Intervallauswertung, Oberflächenherleitung, 30°-Schlussrechnung, A3-Halbseitenrechnung, Tangens und 60°-Schlussrechnung sowie A3-rechte Zeichnungshälfte und A2-Draufsicht bei 89°.
+
+Dabei wurden **weitere sichtbare Fehler trotz bestandener Funktionstests** erkannt und korrigiert:
+- A2: Winkelwert und Radiusbezeichnung lagen teilweise auf Linien des fest eingeblendeten Originaldreiecks; ihre Positionen wurden außerhalb der betroffenen Linienzüge gesetzt.
+- A2, 3D: Transparente Mantelflächen schwächten die Beschriftungsfarbe. Beschriftungen werden jetzt ausdrücklich nach den Flächen und Hilfslinien gezeichnet; Hilfslinien bleiben kontrastreich sichtbar.
+- A2: Die Messanzeigen verwendeten Gleichheitszeichen für gerundete Werte. Jetzt steht **≈**, insbesondere bei a ≈ 4,00 cm nahe 90°; der exakte Radius ist weiterhin kleiner als 4 cm.
+- A3: Die Halbseitenrechnung und die Tangensrechnung waren mobil nur horizontal scrollbar vollständig lesbar. Beide Umformungen sind jetzt in drei echte Zeilen aufgeteilt. Der Browser prüft bei allen A3-Schritten zusätzlich, dass die Lösung kein seitliches Überlaufen mehr benötigt.
+
+Mathematische Inhalte, Operatoren und Punktzahlen blieben bei diesen Lesbarkeitskorrekturen unverändert. Die Sichtbefunde lösen eine erneute Regression auf dem endgültigen Code aus.
+
+### Regression und letzte Sichtkontrolle nach den Umbrüchen
+
+- Lauf [43697728275](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43697728275) auf `1b18be429e842266204fbac2d31ef95d48d2ea73`: **success**. Job-Log ausgelesen: **42 erfolgreiche Browserfälle**, je drei Durchläufe mit **404 statischen/mathematischen** und **287 Quellen-/Strukturchecks**. Zusätzliche Prüfung aller A3-Lösungsschritte auf seitliches Überlaufen bestanden.
+- Die finalen mobilen A3-Halbseiten- und Tangensrechnungen aus diesem Lauf wurden erneut tatsächlich geöffnet: alle drei Zeilen stehen vollständig im Lösungsfeld, mit echten Brüchen und unveränderten mathematischen Ergebnissen.
+- A2-Sichtprüfung bestätigt freie 2D-Winkel-/Radiusbeschriftung, Näherungszeichen und sichtbare magentafarbene 3D-Hilfslinien. In den 3D-Textgrafiken blieb ein zusätzlicher Kontrastfehler sichtbar: Canvas-Texturen hatten keine sRGB-Kennzeichnung; dadurch wurden dunkle Schriftfarben aufgehellt. Die A2-Texttexturen erhalten nun ausdrücklich `THREE.SRGBColorSpace`. Letzter Codecommit hierfür: `d6d988333b1b5223dd12bc293759519b14d33e8f`.
+
+### Ergebnis auf dem endgültigen Code
+
+- Finaler Code: `d6d988333b1b5223dd12bc293759519b14d33e8f`.
+- [Abschließender Actions-Lauf 43698225763](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43698225763): **success**. Job-Log geprüft: **42/42 erfolgreiche Browserfälle**, dreimal **404 statische/mathematische** und **287 Quellen-/Strukturprüfungen**. Alle A2/A3-Lösungsschritte, Regler, Sperren und Reset-Zustände erfolgreich; 3D-Drehen und Zwei-Finger-Zoom in mobiler Emulation erfolgreich. Die gemeinsam verwendete B2-3D-Darstellung lief in der Regression mit.
+- Finales Actions-Artefakt **14155412022**. Daraus `r3-mobile-a2-top-phi89.png` und `r3-mobile-a2-3d-mantel.png` tatsächlich geöffnet: Beschriftungen nun dunkel und klar erkennbar, Radius/Mantellinie sichtbar, keine neue Textüberlagerung in diesen gesichteten Zuständen. Textfarbe zusätzlich im Achsenlabel-Pixelausschnitt kontrolliert: dunkle Schriftpixel statt des vorherigen aufgehellten Grau-Blaus.
+- Die zuvor gesichteten neunzehn Fach-/Lösungsschritte und A3-Umbrüche sind inhaltlich unverändert; der finale Lauf sichert sie erneut vollständig als Screenshots. Nach dem A3-Umbruch wurden beide kritischen mobilen Rechnungen tatsächlich geöffnet und vollständig gelesen.
+- **Status:** A2 und A3 in diesem Arbeitsschritt fachlich abgeglichen, sichtbare Mängel korrigiert und technisch regressionsgeprüft. Die bereits bestehenden Nutzer-Einzelfreigaben bleiben erhalten. Dies ist **keine Gesamtfreigabe und keine Behauptung dreier vollständiger unabhängiger Neun-Kategorien-Durchgänge**.
+- **Nächste Aufgaben:** B1 und B2.
