@@ -1,0 +1,102 @@
+   MUSTER
+                            Abschlussprüfung 20XX
+                                 an den Realschulen in Bayern
+
+                                         Mathematik I
+
+
+Name: _______________________________              Vorname: _______________________________
+
+Klasse: ____________              Platznummer: ____________          Punkte: ____________ / 11
+
+        Aufgabengruppe A                                               Muster 20XX
+
+A 1.0 Ein Glücksrad besteht aus drei kongruenten Sektoren, die
+      mit den Zahlen von 1 bis 3 beschriftet sind. Es wird dreimal
+      am Glücksrad gedreht.
+
+
+
+
+A 1.1 Geben Sie die Wahrscheinlichkeit dafür an, dass genau dreimal die Zahl 1 gedreht
+      wird.
+
+
+
+                                                                                          1P
+
+A 1.2 Ergänzen Sie das Baumdiagramm mit allen Pfaden, die sich von der Zahl 2 aus
+      ergeben.
+
+
+
+
+                                                                                          2P
+
+A 1.3 Man erhält einen Gewinn, wenn man bei den drei Drehungen Zahlen erhält, deren
+      Summenwert genau 8 ist.
+      Bestimmen Sie die Wahrscheinlichkeit dafür, dass man diesen Gewinn erhält.
+
+
+
+
+                                                                                          2P
+          Aufgabengruppe A                                            Muster 20XX
+
+
+A 2.0 Gegeben sind Fünfecke AnBnSDnE n mit AnEn BnS . Der
+      Punkt C ist der Fußpunkt der Lote von den Punkten Dn                              S
+                                                                                    ϕ
+      auf die Strecken BnS . Die Punkte En sind die Mittel-
+      punkte der Strecken CDn . Die Winkel DnSC haben das
+      Maß  mit    0 ;90  .
+                                                                              E1
+      Es gilt:                                                         D1               C
+       CS  3 cm; CBn  2  CDn ; CBn An  90.
+
+      Die Zeichnung zeigt das Fünfeck A1B1SD1E 1 für   34 .
+
+
+
+
+                                                                             A1         B1
+
+A 2.1 Zeigen Sie, dass für die Länge der Strecken CDn in Abhängigkeit von  gilt:
+       CDn     3  tan  cm .
+
+
+
+
+                                                                                             1P
+A 2.2 Die Fünfecke AnBnSDnE n rotieren um die Achse BnS .
+      Berechnen Sie das Volumen V der entstehenden Rotationskörper in Abhängigkeit
+      von  .
+
+
+
+
+                                                                                             3P
+         Aufgabengruppe A                                            Muster 20XX
+
+
+A3   Die nebenstehende Skizze        zeigt    das
+     rechtwinklige Dreieck WKR.                     Unterfranken Oberfranken
+                                                     W
+     Es gilt:
+                                                           Mittelfranken
+     KR  134 km ; WRK  60 ; RKW  90 .                               Oberpfalz
+
+
+     Die Luftlinie Würzburg (W) – Rosenheim (R)
+                                                                                 Niederbayern
+     wird durch die Strecke WR dargestellt.               Schwaben
+
+     Berechnen Sie deren Länge.                                  Oberbayern
+                                                                                 R
+                                                         K
+
+
+
+
+                                                                                                2P
+

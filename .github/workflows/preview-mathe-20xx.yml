@@ -1,0 +1,53 @@
+name: Mathematik I 20XX – Layoutvorschau
+on:
+  push:
+    paths:
+      - 'abschlusspruefung/index.html'
+      - 'abschlusspruefung/20xx/index.html'
+      - '.github/workflows/preview-mathe-20xx.yml'
+  workflow_dispatch:
+jobs:
+  layout:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Browser bereitstellen
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Layout auf Desktop und Mobil aufnehmen
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/20xx-server.log 2>&1 &
+          node <<'JS'
+          const {chromium}=require('playwright');
+          const fs=require('fs');
+          (async()=>{
+            fs.mkdirSync('/tmp/20xx-layout',{recursive:true});
+            const browser=await chromium.launch({headless:true});
+            for(const [mode,width,height]of[['desktop',1366,900],['mobile',390,844]]){
+              const page=await browser.newPage({viewport:{width,height}});
+              const errors=[];page.on('pageerror',e=>errors.push(e.message));
+              await page.goto('http://127.0.0.1:8765/abschlusspruefung/',{waitUntil:'networkidle'});
+              await page.screenshot({path:'/tmp/20xx-layout/overview-'+mode+'.png',fullPage:true});
+              await page.locator('a.card[href="20xx/"]').click();
+              await page.screenshot({path:'/tmp/20xx-layout/20xx-'+mode+'.png',fullPage:true});
+              if(await page.locator('article').count()!==15)throw Error('Aufgabenübersicht unvollständig');
+              if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2))throw Error('Seite zu breit');
+              await page.getByRole('link',{name:'Musterprüfung 2',exact:true}).click();
+              if(!page.url().endsWith('#muster2'))throw Error('Sprunglink');
+              if(errors.length)throw Error(errors.join(';'));
+              console.log(mode+': 20XX-Kachel, 15 Aufgabenbereiche, Sprunglink und Seitenbreite OK');
+              await page.close();
+            }
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mathematik-20xx-layout
+          path: /tmp/20xx-layout/

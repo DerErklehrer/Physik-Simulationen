@@ -1,0 +1,399 @@
+                                                                 Bildungsstandards
+
+                                                                           Mathematik
+
+
+
+
+                                          (K1)    Mathematisch argumentieren
+Allgemeine mathematische Kompetenzen
+
+
+
+
+                                          (K2)    Probleme mathematisch lösen
+
+                                          (K3)    Mathematisch modellieren
+
+                                          (K4)    Mathematische Darstellungen verwenden
+
+                                          (K5)    Mit symbolischen, formalen und technischen
+                                                  Elementen der Mathematik umgehen
+
+                                          (K6)    Kommunizieren
+
+
+
+
+                                          (L1)    Zahl
+Mathematische Leitideen
+
+
+
+
+                                          (L2)    Messen
+
+                                          (L3)    Raum und Form
+
+                                          (L4)    Funktionaler Zusammenhang
+
+                                          (L5)    Daten und Zufall
+
+
+
+
+                                       Hinweis:   Im Lösungsmuster ist zu jeder Aufgabe eine Zuordnung zu den
+                                                  allgemeinen mathematischen Kompetenzen und mathematischen
+                                                  Leitideen grau hinterlegt.
+                                                  Aufgeführt sind jeweils die im Vordergrund stehenden Kompetenzen und
+                                                  Leitideen, bezogen auf den dargestellten Lösungsvorschlag.
+                                                  So sind beispielsweise die allgemeine mathematische Kompetenz
+                                                  „(K6) Kommunizieren“ – hierzu gehören das Verstehen der Aufgabentexte
+                                                  und die verständliche Darstellung der Überlegungen, Lösungswege bzw.
+                                                  Ergebnisse – und die mathematische Leitidee „(L1) Zahl“ – diese beinhaltet
+                                                  das vorteilhafte Rechnen und das sinnvolle Runden – bei fast jeder
+                                                  Aufgabe zutreffend, aber nicht explizit angegeben, sofern sie nicht im
+                                                  Vordergrund stehen.
+ Lösungsmuster                        Abschlussprüfung 20XX
+ und Bewertung                               an den Realschulen in Bayern
+
+                                            Mathematik I – Muster 20XX
+
+
+          Aufgabengruppe A
+
+AUFGABE A 1: DATEN UND ZUFALL
+
+          1                                                                                                                   L5
+A 1.1                                                                                                                    1    K5
+         27
+
+A 1.2
+
+
+
+
+                                                                                                                              L5
+                                                                                                                         2    K4
+
+
+
+
+                                                    1         1        1         3
+A 1.3 P  2 3 3   P  3 3 2   P  3 2 3                              
+                                                   27       27         27        27                                           L5
+                                                                                      1                                       K2
+        Hinweis: Auch gleichwertige Lösungen wie z. B.                                    oder 11,1 % sind bei           2    K3
+                                                                                      9                                       K5
+                       derartigen Aufgaben gültig.
+
+AUFGABE A 2: RAUMGEOMETRIE
+
+                   CDn                                                                                                        L3
+A 2.1 tan                                             CDn     3  tan  cm                        0 ;90    1    L4
+                  3 cm                                                                                                        K5
+
+
+
+                 1           
+                                 2
+                                                      1                        
+A 2.2 V       3  tan      2  3  tan     3  tan      3  cm3
+                                                                      2
+                                                                                                        0 ;90 
+                 2                                3                                                                     L3
+
+                  
+         V     13,5     tan    9     tan  
+                                       3                      2
+                                                                   cm   3
+                                                                                                                         3
+                                                                                                                              L4
+                                                                                                                              K2
+                                                                                                                              K5
+        Hinweis: Der Operator „Berechnen“ verlangt auch das Zusammenfassen von
+                 Termen.
+
+AUFGABE A 3: EBENE GEOMETRIE
+
+                      134 km                            1         134 km
+A3       cos60                                                                                     WR  268 km
+                        WR                              2              WR                                                     L2
+                                                                                                                         2    K3
+                                                                                                                              K5
+        Hinweis: Der Operator „Berechnen“ verlangt eine Lösung ohne Zuhilfenahme
+                 von Messergebnissen.
+
+                                                                                                                         11
+
+                                                                  Seite 1 von 6
+         Aufgabengruppe B
+
+AUFGABE B1: FUNKTIONEN
+
+                                                                                                                L1
+B 1.1 Die Konzentration reduziert sich in einer Woche um 7 %.                                               1   K5
+
+
+B 1.2 y  55  0,93 3                                                             y  44,24
+                                                                                                                L1
+                                                                                                 ng         1   K3
+        Nach 21 Tagen beträgt die Konzentration an Vitamin D bei Andreas 44,24                        .         K5
+                                                                                                 ml
+
+
+B 1.3            0,5  55  55  0,93 x                                           x  IR0
+                 ...                                                                                            L4
+                x  9,6                                                          L  {9,6}                 2   K3
+                                                                                                                K5
+
+        Die Konzentration an Vitamin D halbiert sich in der 10. Woche.
+
+
+        0,93
+B 1.4 55          x
+             51 0,91
+                       x
+                                                                                  x  IR0
+       51  0,91
+                                                                                                               L4
+             0,91x                                                                                         1   K1
+                                                                                                                K6
+        Die Konzentrationen können folglich niemals den gleichen Wert erreichen.
+
+
+                                                                                                            5
+
+
+
+AUFGABE B 2: EBENE GEOMETRIE
+
+                                                                                                                L3
+B 2.1 DFnEn  180  90   90           DFnEn                                                     1   K1
+
+
+
+B 2.2   CFn  CD  DFn
+                           DEn
+                 sin  
+                           DFn
+                                     3 cm                      3
+                           cos               DEn                 cm           24,30 ; 65,70       L2
+                                     DEn                     cos                                               L4
+                                                                                                            3   K2
+                           3 cm                                                                                 K5
+                           cos                                    3
+                 sin                         DFn                       cm   24,30 ; 65,70
+                            DFn                              sin   cos 
+                               3       
+        CFn      8                 cm                                        24,30 ; 65,70
+                         sin   cos  
+
+
+                          3                                                                                   L2
+B 2.3   CF1   8                    cm                                         CF1  1,91cm              1   K5
+                   sin50  cos 50 
+
+                                                                                                            5
+
+                                                   Seite 2 von 6
+AUFGABE B 3: FUNKTIONEN
+
+B 3.1 D  x x  1
+
+        h: x  1
+
+                             y
+
+
+                                                                       C2             Graph zu f2
+
+                             5
+                             C1
+
+                                                      D2                        B2
+                                                                           M2
+                                                                                                                     L4
+                                                                                                                 3   K4
+                                                                                                                     K5
+                                                                                      Graph zu f1
+                    D1       1                  B1                     A2
+                                  M1
+
+                             O         1                               5                          x
+
+
+
+                                  A1
+
+
+
+
+B 3.2           0               x            a
+                 4    2  log  x  1  2    4                          a  IR ; x  IR ; x  1
+                              3               
+                …
+                                                                                    2
+               a  2                                                           v  
+                                                                                     4 
+                                                                                                                     L4
+                 x'               x             2                                                         4
+                                                                                                                     K2
+                 y '    2  log  x  1  2    4                        x',y '  IR ; x  IR ; x  1       K4
+                                3                                                                              K5
+
+                …
+               y '  2  log 3  x' 3   2
+                f2 : y  2  log 3  x  3   2
+
+        Einzeichnen des Graphen zu f2
+
+
+
+
+                                                           Seite 3 von 6
+B 3.3 Einzeichnen der Rauten Rauten A 1B1C1D1 und A 2B2C2D2                                         L3
+                                                                                               2    K4
+
+
+
+
+           x  x 2  log 3  x  1  2  2  log 3  x  3   2 
+B 3.4 M n                                                               x  IR ; x  1
+           2                            2                         
+                                                                  
+                                                                                                    L4
+      …                                                                                        2    K5
+
+
+             
+         M n x log 3  x2  4x  3    
+
+B 3.5 Für die y-Koordinate des Punktes M 3 gilt:
+
+                   log 3  x 2  4x  3   0                             x  IR ; x  1
+                  …
+                                                                                                    L4
+                   x   3,41               x   0,59                L   0,59         4    K2
+                                                                                                    K5
+
+
+         B3   0,59  1,5 0                                             B3  0,91 0 
+
+
+             
+         C3  0,59 2  log 3   0,59  3   2                          C3   0,59 3,60 
+
+
+                                                                                               15
+
+
+
+
+                                                          Seite 4 von 6
+AUFGABE B 4: RAUMGEOMETRIE
+
+
+B 4.1                                    F
+
+
+
+
+                      N                                                      E
+                                                                         ϕ
+
+
+
+        D
+                                                                                                           L2
+                                           C                                                               L3
+                                                               Q1                                      3   K4
+                                                                                                           K5
+
+
+
+                      M                                                      B
+                                                 P1
+
+
+
+        A
+                          5
+        tan NBM                                                                NBM  32,01
+                          8
+
+
+B 4.2 Einzeichnen der Strecke EP1 und des Punktes Q1                                                       L2
+                                                                                                           L3
+                                                                                                       2
+                                             8                                                             K2
+        Für  muss gelten: tan                    57,99.                                             K4
+                                             5
+
+
+B 4.3       EQn                EB
+                      
+        sin EBQn          sin BQnE
+             EBQn  90  32,01                                                EBQn  57,99
+         EQn                      5 cm
+                                                                                   0 ;57,99       L3
+        sin57,99         sin 180     57,99                                                   4
+                                                                                                           L4
+                                                                                                           K2
+                                                                                                           K5
+                              4,24
+        EQn                             cm
+                      sin    57,99 
+
+        EQ0  4,24 cm
+
+        NQ0  82  4,242 cm                                                      NQ0  6,78 cm
+
+
+
+
+                                                         Seite 5 von 6
+B 4.4 Einzeichnen der Pyramide Q1BEA
+            1 1
+       V      EQn  EB  sin   AM
+            3 2
+                                                                                                            L3
+                1 1         4,24                                                                     3
+                                                                                                            L4
+       V                           5  sin   6  cm3                    0 ;57,99          K2
+                 3 2 sin    57,99                                                                    K4
+                                                        
+                      21,2  sin 
+       V                            cm3
+                  sin    57,99 
+
+
+
+                      1
+B 4.5 VABCDEF            12  8  5 cm3                                      VABCDEF  240 cm3
+                      2
+                                       21,2  sin                                                          L2
+                  0,05  240                                                     0 ;57,99          L4
+                                    sin    57,99                                                  4    K2
+                                                                                                            K5
+                  …
+                   34,44                                                   L  34,44
+
+
+                                                                                                      16
+
+
+ Hinweis:   Bei einigen Teilaufgaben sind auch andere Lösungswege möglich. Für richtige andere Lösungen
+            gelten die jeweils angegebenen Punkte entsprechend; die Anzahl der Punkte bei den einzelnen
+            Teilaufgaben darf jedoch nicht verändert werden. Insbesondere sind Lösungswege, bei denen der
+            (grafikfähige) Taschenrechner verwendet wird, entsprechend ihrer Dokumentation bzw. ihrer
+            Nachvollziehbarkeit zu bepunkten.
+
+            Bei der Korrektur ist zu beachten, dass die Vervielfältigung der Lösungsvorlage zu Verzerrungen der
+            Zeichnungen führen kann.
+
+
+
+
+                                                         Seite 6 von 6
+

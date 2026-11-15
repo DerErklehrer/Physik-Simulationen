@@ -1,0 +1,105 @@
+        Muster                    Abschlussprüfung 20XX
+  (vgl. AP 2008 HT)                      an den Realschulen in Bayern
+
+                                                      Mathematik I
+
+           Aufgabe B 3                                                             Muster 20XX
+
+B 3.0 Gegeben ist die Funktion f1 mit der Gleichung y  2  log 3  x  1  2  x,y  IR  .
+
+
+B 3.1 Geben Sie die Definitionsmenge der Funktion f1 sowie die Gleichung der
+       Asymptote h an und zeichnen Sie den Graphen zu f1 für x   0,5; 9 in ein
+       Koordinatensystem.
+       Für die Zeichnung: Längeneinheit 1 cm;  3  x  9 ;  4  y  7                                  3P
+
+                                                                                  a
+B 3.2 Der Graph der Funktion f1 wird durch Parallelverschiebung mit dem Vektor v   
+                                                                                   4
+       mit a  IR auf den Graphen der Funktion f2 abgebildet. Der Punkt P  0 4  liegt auf
+       dem Graphen zu f2 .
+       Berechnen Sie den Wert von a und zeigen Sie rechnerisch, dass für die Gleichung
+       der Funktion f2 gilt: y  2  log 3  x  3   2 .
+
+       Zeichnen Sie sodann den Graphen zu f2 für x   2,5; 9 in das Koordinatensystem
+       zu B 3.1 ein.                                                                                     4P
+
+
+B 3.3 Punkte           
+                   A n x 2  log 3  x  1  2      auf    dem   Graphen   zu   f1   und      Punkte
+
+                                  
+        Cn x 2  log 3  x  3   2 auf dem Graphen zu f2 haben dieselbe Abszisse x und sind
+       für x  1 zusammen mit Punkten Bn und Dn die Eckpunkte von Rauten A nBnCnDn .
+
+       Es gilt: BnDn  3 LE .
+       Zeichnen Sie die Rauten A 1B1C1D1 für x  0 und A 2B2C2D2 für x  5 in das
+       Koordinatensystem zu B 3.1 ein.                                                                   2P
+
+B 3.4 Zeigen Sie rechnerisch, dass für die Koordinaten der Diagonalenschnittpunkte M n
+       der Rauten A nBnCnDn in Abhängigkeit von der Abszisse x der Punkte A n und Cn
+       gilt:
+                                  
+       M n x log 3  x2  4x  3  .                                                                     2P
+
+
+B 3.5 Der Diagonalenschnittpunkt M 3 der Raute A 3B3C3D3 liegt auf der x-Achse.
+
+       Berechnen Sie die Koordinaten der Punkte B3 und C3 . Runden Sie auf zwei Stellen
+       nach dem Komma.                                                                                   4P
+
+
+                                                      Bitte wenden!
+       Muster                   Abschlussprüfung 20XX
+ (vgl. AP 2019 NT)                    an den Realschulen in Bayern
+
+                                                Mathematik I
+
+         Aufgabe B 4                                                       Muster 20XX
+
+B 4.0 Das gleichschenklige Dreieck ABC ist die Grundfläche des Prismas ABCDEF mit
+      der Höhe AD . Der Punkt M ist der Mittelpunkt der Basis AC und der Punkt N ist der
+      Mittelpunkt der Strecke DF .
+      Es gilt: AC  12 cm; MB  8 cm; AD  5 cm.
+
+      Runden Sie im Folgenden auf zwei Stellen nach dem Komma.
+
+B 4.1 Zeichnen Sie das Schrägbild des Prismas ABCDEF, wobei die Strecke MB auf der
+      Schrägbildachse und der Punkt M links vom Punkt B liegen soll.
+                                 1
+      Für die Zeichnung gilt: q = ;  = 45°.
+                                 2
+      Zeichnen Sie sodann die Strecke BN ein und berechnen Sie das Maß des
+      Winkels NBM.                                                                         3P
+
+B 4.2 Punkte Pn liegen auf der Strecke MB . Die Winkel PnEB haben das Maß  mit
+         0 ;57,99 . Die Strecken BN und EPn schneiden sich in Punkten Qn .
+
+      Zeichnen Sie für   45 die Strecke EP1 und den Punkt Q1 in das Schrägbild zu
+      B 4.1 ein.
+      Begründen Sie sodann rechnerisch die obere Intervallgrenze für  .                   2P
+
+B 4.3 Zeigen Sie, dass für die Länge der Strecken EQn in Abhängigkeit von  gilt:
+                          4,24
+       EQn                        cm .
+                   sin    57,99 
+
+      Unter den Strecken EQn hat die Strecke EQ0 die minimale Länge.
+      Berechnen Sie die Länge der Strecke NQ0 .                                            4P
+
+B 4.4 Der Punkt A ist die Spitze von Pyramiden QnBEA mit den Grundflächen QnBE .
+      Zeichnen Sie die Pyramide Q1BEA in das Schrägbild zu B 4.1 ein und ermitteln Sie
+      sodann rechnerisch das Volumen V der Pyramiden QnBEA in Abhängigkeit von  .
+                             21,2  sin         
+      Ergebnis: V                        cm3                                         3P
+                         sin    57,99      
+
+B 4.5 Das Volumen der Pyramide Q2BEA ist um 95 % kleiner als das Volumen des
+      Prismas ABCDEF.
+      Berechnen Sie das zugehörige Maß für  .                                             4P
+
+
+
+
+                                                Bitte wenden!
+

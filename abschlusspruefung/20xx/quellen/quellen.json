@@ -1,0 +1,54 @@
+{
+  "read_date": "2026-11-15",
+  "isb_index": "https://www.isb.bayern.de/schularten/realschule/leistungserhebungen/abschlusspruefungen/mathematik/informationen/beispielaufgaben/",
+  "documents": [
+    {
+      "set": 1,
+      "document": "a",
+      "url": "https://www.isb.bayern.de/fileadmin/user_upload/Realschule/Mathematik/Weiterentwicklung_Abschlusspruefung/Muster-Abschlusspruefungen_I/mi_muster2021_a.pdf",
+      "sha256": "8e6734f4b8efd8cdaade637e65ca55a5f4cff80e1def1046c9df83a64d6477ca"
+    },
+    {
+      "set": 1,
+      "document": "b1b2",
+      "url": "https://www.isb.bayern.de/fileadmin/user_upload/Realschule/Mathematik/Weiterentwicklung_Abschlusspruefung/Muster-Abschlusspruefungen_I/mi_muster2021_b1b2.pdf",
+      "sha256": "337cf4582c5d46c225aa0281e764c13f665ace50f1f5871fb533d56ef7cae2ac"
+    },
+    {
+      "set": 1,
+      "document": "b3b4",
+      "url": "https://www.isb.bayern.de/fileadmin/user_upload/Realschule/Mathematik/Weiterentwicklung_Abschlusspruefung/Muster-Abschlusspruefungen_I/mi_muster2021_b3b4.pdf",
+      "sha256": "e10c17e56f26b43eb1d346700930b8d1b055d7c8a2776fb194592909e2ae3062"
+    },
+    {
+      "set": 1,
+      "document": "loesung",
+      "url": "https://www.isb.bayern.de/fileadmin/user_upload/Realschule/Mathematik/Weiterentwicklung_Abschlusspruefung/Muster-Abschlusspruefungen_I/mi_muster2021_loesung.pdf",
+      "sha256": "ad7c6c2ec62665ece036c8ca20173f4160f25066fd90803fb72e40bfa3461d6a"
+    },
+    {
+      "set": 2,
+      "document": "a",
+      "url": "https://www.isb.bayern.de/fileadmin/user_upload/Realschule/Mathematik/Weiterentwicklung_Abschlusspruefung/Muster-Abschlusspruefungen_I/mi_muster2022_a.pdf",
+      "sha256": "5249959f6061462950ba41db1d740be93168ebea9c23d4853dfca96d15a13b23"
+    },
+    {
+      "set": 2,
+      "document": "b1b2",
+      "url": "https://www.isb.bayern.de/fileadmin/user_upload/Realschule/Mathematik/Weiterentwicklung_Abschlusspruefung/Muster-Abschlusspruefungen_I/mi_muster2022_b1b2.pdf",
+      "sha256": "e563e782c4071b50d17d78cc7b5a064935ca658e1d0a54f71954712325b28730"
+    },
+    {
+      "set": 2,
+      "document": "b3b4",
+      "url": "https://www.isb.bayern.de/fileadmin/user_upload/Realschule/Mathematik/Weiterentwicklung_Abschlusspruefung/Muster-Abschlusspruefungen_I/mi_muster2022_b3b4.pdf",
+      "sha256": "6810a1f945c269575703c817cb62ad4b44ed697443fa161a40894012bc9955e7"
+    },
+    {
+      "set": 2,
+      "document": "loesung",
+      "url": "https://www.isb.bayern.de/fileadmin/user_upload/Realschule/Mathematik/Weiterentwicklung_Abschlusspruefung/Muster-Abschlusspruefungen_I/mi_muster2022_loesung.pdf",
+      "sha256": "8fdfa20b160602406d9f0e4bd04f320035ebce8b1b7ebc408130e259727ccc43"
+    }
+  ]
+}

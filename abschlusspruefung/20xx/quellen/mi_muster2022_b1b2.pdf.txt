@@ -1,0 +1,110 @@
+                          Abschlussprüfung 20XX
+    Muster
+                               an den Realschulen in Bayern
+
+                                        Mathematik I
+
+
+
+
+Prüfungsdauer: 150 Minuten
+
+Die Aufgabengruppe A (Bearbeitung ohne Taschenrechner, aber mit zugelassener Formel-
+sammlung) ist ausschließlich auf dem dafür vorgesehenen Bogen zu bearbeiten und nach
+30 Minuten abzugeben. Wird für die Aufgabengruppe A weniger Zeit benötigt, kann bereits
+– zunächst ohne Taschenrechner – mit der Aufgabengruppe B begonnen werden.
+
+Anschließend dürfen alle zugelassenen Hilfsmittel verwendet werden.
+
+
+
+
+Name: __________________________              Vorname: __________________________
+
+
+Klasse: ________                              Platznummer: ________
+
+
+
+
+                                              Erstkorrektur:          Zweitkorrektur:
+
+Erreichte Punkte:      Aufgabengruppe A:      _____ / 10              _____ / 10
+
+
+                              Aufgabe B 1:    _____ / 6               _____ / 6
+
+
+                              Aufgabe B 2:    _____ / 4               _____ / 4
+
+
+                              Aufgabe B 3:    _____ / 17              _____ / 17
+
+
+                              Aufgabe B 4:    _____ / 16              _____ / 16
+
+
+                                 Gesamt:      _____ / 53              _____ / 53
+
+
+                                     Note:    ________                ________
+
+
+                              Unterschrift:   ______________          ______________
+        Aufgabengruppe B                                                       Muster 20XX
+
+B 1.0 Punkte Bn      auf   der      Geraden g   mit   der   Gleichung      y  1,5   und    Punkte
+
+         
+      Cn x  0,25  0,5x  4  2    auf dem Graphen der Funktion f mit der Gleichung
+       y   0,25  0,5 x  4  2 haben dieselbe Abszisse x  x,y  IR  . Sie bilden für x  0,19
+      zusammen mit dem Punkt A  0 0  Dreiecke ABnCn .
+
+B 1.1 Im Koordinatensystem ist der Graph der Funktion f bereits eingezeichnet.
+      Ergänzen Sie die Gerade g und das Dreieck AB1C1 für x  6 .
+                   y
+
+                                                                                            Muster
+                                                                                      (vgl. AP 2020 NT)
+                                                              Graph zu f
+                   1
+
+
+                   O       1                          5                    x
+
+
+
+
+                                                                                                      2P
+
+B 1.2 Unter den Dreiecken ABnCn gibt es das gleichschenklige Dreieck AB2 C2 mit der
+      Basis B2C2 .
+      Bestimmen Sie rechnerisch die Koordinaten des Punktes C2 sowie den Flächeninhalt
+      des Dreiecks AB2 C2 .
+
+
+
+
+                                                                                                      4P
+        Aufgabengruppe B                                                Muster 20XX
+
+B 2.0 Laut einer Statistik haben 20 % aller Lastwagen Mängel. Man unterscheidet im
+      Folgenden Lastwagen mit Mängeln („M“) und Lastwagen ohne Mängel („oM“). Bei
+      einer Verkehrskontrolle werden 30 % der Lastwagen mit Mängeln nicht als solche
+      erkannt („ne“). Lastwagen ohne Mängel werden zu 85 % als solche erkannt („e“).
+
+B 2.1 Zeichnen Sie ein zugehöriges Baumdiagramm, in dem die Anteile ersichtlich sind.
+
+
+
+
+                                                                                               2,5 P
+
+B 2.2 Bei dieser Verkehrskontrolle wird ein zufällig ausgewählter Lastwagen überprüft.
+      Berechnen Sie die Wahrscheinlichkeit dafür, dass der Lastwagen richtig beurteilt wird.
+
+
+
+
+                                                                                               1,5 P
+

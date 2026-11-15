@@ -1,0 +1,109 @@
+ Bearbeitungszeit              Abschlussprüfung 20XX
+Aufgabengruppe A:
+                                     an den Realschulen in Bayern
+    30 Minuten
+
+                                             Mathematik I
+                                        taschenrechnerfreier Teil
+
+Name: _____________________________                       Vorname: _____________________________
+
+Klasse: ________                         Platznummer: ________                   Punkte: ________ / 10
+
+         Aufgabengruppe A                                                    Muster 20XX
+
+A 1.0 Die Funktion f hat eine Gleichung der Form y  3  log2  x  b  mit b,x,y  IR .
+
+A 1.1 Der Graph der Funktion f verläuft durch den Punkt A 10 12  .
+       Berechnen Sie den zugehörigen Wert von b.
+
+
+
+
+                                                                                                  2P
+
+A 1.2 Begründen Sie ohne Rechnung, weshalb es auf dem Graphen der Funktion f einen
+       Punkt P  xP yP  gibt, für den gilt: yP   2 .
+
+
+
+
+                                                                                                  1P
+
+
+
+
+          taschenrechnerfreier Teil
+       Aufgabengruppe A                                                 Muster 20XX
+
+A2   Bei einem Gewinnspiel muss Petra die fünf abgebildeten
+     Karten in einer beliebigen Reihenfolge von links nach rechts
+     nebeneinanderlegen. Sie gewinnt, wenn diese Reihenfolge
+     mit einer zufällig festgelegten Reihenfolge übereinstimmt.
+     Petra vermutet, dass die Wahrscheinlichkeit zu gewinnen
+     mindestens 1 % beträgt.
+     Beurteilen Sie diese Vermutung.
+
+
+
+
+                                                                                      2,5 P
+
+
+
+A3   Gegeben sind Drachenvierecke A nBCD mit den                                 D
+     Symmetrieachsen A nC und dem Diagonalen-
+     schnittpunkt S. Die Winkel BA nD haben das
+     Maß  mit    0 ; 180  (vgl. Skizze).
+                                                            An      M                    C
+     Es gilt: DCB  90 ; SC  2,5 cm .                                          S
+
+     Berechnen Sie die Länge der Strecken AnS in
+     Abhängigkeit von  .
+                                                                                 B
+
+
+
+
+                                                                                      1,5 P
+
+
+
+
+        taschenrechnerfreier Teil
+       Aufgabengruppe A                                              Muster 20XX
+
+A4   Das untenstehende Schrägbild zeigt eine Pyramide mit quadratischer Grundfläche.
+     Alle Kanten, die von der Spitze ausgehen, sind gleich lang. Diese Pyramide dient als
+     Vorlage für eine Verpackung von Kaffeesahne.
+
+     Für das Schrägbild gilt: q  1 ;   45 .
+                                  2
+     Es werden 8 cm³ Kaffeesahne abgefüllt. Dieses Volumen soll mindestens 80 % des
+     Volumens der Pyramide betragen.
+     Ermitteln Sie, ob die Verpackung diese Vorgabe erfüllt. Entnehmen Sie dem Schrägbild
+     die dafür erforderlichen Maße.
+
+
+
+
+                                                                  Schrägbildachse
+
+
+
+
+                                                                                            3P
+
+
+
+
+        taschenrechnerfreier Teil
+           Aufgabengruppe A            Muster 20XX
+
+Notizen:
+
+
+
+
+           taschenrechnerfreier Teil
+

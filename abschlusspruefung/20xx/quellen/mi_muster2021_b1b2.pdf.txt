@@ -1,0 +1,137 @@
+  MUSTER
+                       Abschlussprüfung 20XX
+                             an den Realschulen in Bayern
+
+                                    Mathematik I
+
+
+
+
+Prüfungsdauer: 150 Minuten
+
+Nach 30 Minuten ist die Aufgabengruppe A (taschenrechnerfreier Teil) abzugeben.
+
+Anschließend dürfen alle zugelassenen Hilfsmittel verwendet werden.
+
+
+
+
+Name: __________________________            Vorname: __________________________
+
+
+Klasse: ________                            Platznummer: ________
+
+
+
+
+                                            Erstkorrektur:        Zweitkorrektur:
+
+Erreichte Punkte:   Aufgabengruppe A:       _____ / 11            _____ / 11
+
+
+                         Aufgabe B 1:       _____ / 5             _____ / 5
+
+
+                         Aufgabe B 2:       _____ / 5             _____ / 5
+
+
+                         Aufgabe B 3:       _____ / 15            _____ / 15
+
+
+                         Aufgabe B 4:       _____ / 16            _____ / 16
+
+
+                             Gesamt:        _____ / 52            _____ / 52
+
+
+                                Note:       ________              ________
+
+
+                          Unterschrift:     ______________        ______________
+          Aufgabengruppe B                                                   Muster 20XX
+
+B 1.0 Vitamin D kann im menschlichen Körper produziert werden, wenn Sonnenstrahlung
+      unter bestimmten Bedingungen auf die Haut trifft. Im Winterhalbjahr nimmt daher
+      die Konzentration von Vitamin D im Körper normalerweise ab.
+      Bei Andreas wurde Ende September eine Anfangskonzentration von
+                                                               ng 
+      55 Nanogramm        Vitamin D     pro    Milliliter   Blut
+                                                            55     gemessen. Der
+                                                               ml 
+      Zusammenhang zwischen der Anzahl x der Wochen und der verbleibenden
+                      ng
+      Konzentration y    an Vitamin D lässt sich bei Andreas näherungsweise durch die
+                      ml
+      Funktion f1 mit der Gleichung y  55  0,93x  x  IR0 ,y  IR   beschreiben.
+
+B 1.1 Um wie viel Prozent reduziert sich folglich bei Andreas die Konzentration an
+      Vitamin D in einer Woche? Ergänzen Sie.
+
+      Die Konzentration reduziert sich in einer Woche um                %.
+                                                                                                     1P
+B 1.2 Berechnen Sie mithilfe der Funktion f1 die Konzentration an Vitamin D bei Andreas
+      nach 21 Tagen.
+                                                                                         Muster
+      Runden Sie auf zwei Nachkommastellen.
+                                                                                 (vgl. AP 2019 HT)
+
+
+                                                                                                     1P
+B 1.3 Berechnen Sie, in welcher Woche sich die Anfangskonzentration an Vitamin D bei
+      Andreas entsprechend der Funktion f1 halbiert.
+
+
+
+
+                                                                                                     2P
+B 1.4 Bei Stephan wurde gleichzeitig mit Andreas eine Messung begonnen. Bei Stephan
+      lässt sich der Zusammenhang zwischen der Anzahl x der Wochen und der
+                                       ng
+      verbleibenden Konzentration y          an Vitamin D annähernd durch die Funktion f2
+                                        ml
+      mit der Gleichung y  51 0,91x  x  IR0 ,y  IR   beschreiben.
+      Ist es unter diesen Voraussetzungen möglich, dass die Konzentrationen an Vita-
+      min D zu einem Zeitpunkt bei Stephan und Andreas den gleichen Wert erreichen?
+      Begründen Sie Ihre Entscheidung ohne Rechnung.
+
+
+
+
+                                                                                                     1P
+            Aufgabengruppe B                                        Muster 20XX
+
+B 2.0 Gegeben ist das Rechteck ABCD.                 D                            F1          C
+      Punkte En auf der Seite AB und                     ϕ
+      Punkte Fn auf der Seite CD legen
+      zusammen mit dem                  Punkt D
+      Dreiecke DEnFn fest.
+      Die    Winkel ADEn          haben      das
+                                                     A              E1                        B
+      Maß  mit   24,30; 65,70 .
+                                                                              Muster
+      Es gilt: AB  8 cm; AD  3 cm; FnEnD  90.                       (vgl. AP 2020 NT)
+      Die Skizze zeigt das Dreieck DE1F1 für   50 .
+
+B 2.1 Begründen Sie, weshalb die Winkel DFnEn stets das Maß  haben.
+
+
+
+
+                                                                                             1P
+B 2.2 Zeigen Sie rechnerisch, dass für die Länge der Strecken CFn in Abhängigkeit von 
+                                   3       
+      gilt: CFn      8                 cm .
+                             sin   cos  
+
+
+
+
+                                                                                             3P
+B 2.3 Berechnen Sie die Länge der Strecke CF1 .
+      Runden Sie auf zwei Nachkommastellen.
+
+
+
+
+                                                                                             1P
+

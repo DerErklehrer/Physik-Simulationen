@@ -1,0 +1,402 @@
+                                                                 Bildungsstandards
+
+                                                                           Mathematik
+
+
+
+
+                                          (K1)    Mathematisch argumentieren
+Allgemeine mathematische Kompetenzen
+
+
+
+
+                                          (K2)    Probleme mathematisch lösen
+
+                                          (K3)    Mathematisch modellieren
+
+                                          (K4)    Mathematische Darstellungen verwenden
+
+                                          (K5)    Mit symbolischen, formalen und technischen
+                                                  Elementen der Mathematik umgehen
+
+                                          (K6)    Kommunizieren
+
+
+
+
+                                          (L1)    Zahl
+Mathematische Leitideen
+
+
+
+
+                                          (L2)    Messen
+
+                                          (L3)    Raum und Form
+
+                                          (L4)    Funktionaler Zusammenhang
+
+                                          (L5)    Daten und Zufall
+
+
+
+
+                                       Hinweis:   Im Lösungsmuster ist zu jeder Aufgabe eine Zuordnung zu den
+                                                  allgemeinen mathematischen Kompetenzen und mathematischen
+                                                  Leitideen grau hinterlegt.
+                                                  Aufgeführt sind jeweils die im Vordergrund stehenden Kompetenzen und
+                                                  Leitideen, bezogen auf den dargestellten Lösungsvorschlag.
+                                                  So sind beispielsweise die allgemeine mathematische Kompetenz „(K6)
+                                                  Kommunizieren“ – hierzu gehören das Verstehen der Aufgabentexte und
+                                                  die verständliche Darstellung der Überlegungen, Lösungswege bzw.
+                                                  Ergebnisse – und die mathematische Leitidee „(L1) Zahl“ – diese beinhaltet
+                                                  das vorteilhafte Rechnen und das sinnvolle Runden – bei fast jeder
+                                                  Aufgabe zutreffend, aber nicht explizit angegeben, sofern sie nicht im
+                                                  Vordergrund stehen.
+ Lösungsmuster                        Abschlussprüfung 20XX
+ und Bewertung                              an den Realschulen in Bayern
+
+                                            Mathematik I – Muster 20XX
+
+         Aufgabengruppe A                                                                          Muster 20XX
+
+ AUFGABE A 1: FUNKTIONEN
+
+                   12  3  log2 10  b                                                b  IR
+                  4  log2 10  b                                                                                 L4
+A 1.1                                                                                                            2   K5
+                  2  10  b
+                      4
+
+
+                  b6                                                                   L  6
+
+        Die Wertemenge der Funktion f ist die Menge der reellen Zahlen.                                              L4
+A 1.2                                                                                                            1
+        Daher gibt es auf jeden Fall einen solchen Punkt P.                                                          K1
+
+
+ AUFGABE A 2: DATEN UND ZUFALL
+
+        Es gibt 120 Möglichkeiten, die Karten nebeneinander zu legen.
+        Daher liegt die Wahrscheinlichkeit zu gewinnen bei                     1 .
+                                                                                                                     L1
+                                                                              120                                    L5
+A2      Wegen      1  1% ist die Vermutung falsch.                                                           2,5    K1
+                  120                                                                                                K3
+                                                                                                                     K5
+        Hinweis:          Der Operator „Beurteilen“ verlangt eine mathematisch begründete
+                          Einschätzung.
+
+ AUFGABE A 3: EBENE GEOMETRIE
+                                                                                                                     L3
+                            2,5 cm                               2,5
+A3      tan  0,5                         AnS                         cm            0; 180    1,5
+                                                                                                                     L4
+                             An S                           tan  0,5                                             K2
+                                                                                                                     K5
+
+ AUFGABE A 4: RAUMGEOMETRIE
+
+        Entnahme der erforderlichen Maße aus dem Schrägbild, z. B.:
+                                                3 cm
+
+
+
+
+                                                                                                                     L1
+                                                                                                                     L2
+                                                                                     Schrägbildachse                 L3
+A4                                                                                                               3   K2
+                                                3 cm                                                                 K4
+                                                                                                                     K5
+                      1
+        VPyramide         3  3  3 cm3                                                VPyramide  9 cm3
+                      3
+        9 cm  0,8  7,2 cm3
+              3
+
+
+
+        Wegen 7,2 cm3  8 cm3 ist diese Verpackung folglich geeignet.
+
+                                                                                                              10
+
+
+
+                                                       Seite 1 von 6
+         Aufgabengruppe B                                                                         Muster 20XX
+
+ AUFGABE B 1: FUNKTIONEN
+
+                        y
+
+
+
+                                                                   C1
+                                                                        Graph zu f
+                        1
+                        A                                                                                           L4
+B 1.1                                                                                                           2   K4
+                        O        1                      5                            x
+
+
+                                                                   B1          g
+
+
+
+
+                    1,5   0,25  0,5x  4  2                                          x  IR; x  0,19
+                                                                                                                   L2
+                                                                                                                    L3
+B 1.2              x3                                                              L  {3}                    4   L4
+
+        C2  3 1,5 
+                                                                                                                    K2
+                                                                                                                    K5
+
+        AAB2C2  0,5  2 1,5  3 FE                                                     AAB2C2  4,5 FE
+
+                                                                                                                6
+
+
+
+ AUFGABE B 2: DATEN UND ZUFALL
+
+
+
+
+                                 20 %                             80 %
+
+
+                            M                                             oM
+                                                                                                                    L5
+B 2.1                                                                                                       2,5     K4
+             70 %                      30 %              85 %                            15 %
+
+         e                                 ne          e                                     ne
+
+        Hinweis:        Die Formulierung „in dem die Anteile ersichtlich sind“ bedeutet, dass
+                        an jedem Zweig ein Anteil stehen muss.
+
+
+
+
+                                                  Seite 2 von 6
+                                                                                                                L5
+        0,2  0,7  0,8  0,85  0,82                                                                           K2
+B 2.2                                                                                                     1,5   K3
+        Die Wahrscheinlichkeit beträgt 82 %.
+                                                                                                                K5
+
+
+                                                                                                          4
+
+
+
+ AUFGABE B 3: EBENE GEOMETRIE
+
+                                                 y
+                           g                                                    s
+
+
+
+
+                                                 5
+                                                                       C1
+            D2
+
+                                                 D1
+                                                           C2
+                                                                       B1                                       L3
+B 3.1                                                                                                     4     K4
+
+
+                                                 1
+                                                       ϕ
+                 −5                              O          1                        5              x
+
+
+                                                                                               B2
+                                           A
+
+
+
+
+        Bn I
+             ACn
+                  Dn
+                  tan   2                                                                  63,43
+        Für x,x ',y '  IR; 1,5  x  14 gilt:
+         x'   cos  2  63,43  sin  2  63,43       x                                                L3
+B 3.2    y '                                                                                      3     K2
+           sin  2  63,43   cos  2  63,43     x  4,5                                            K5
+
+        
+         x'   1,40x  3,60 
+         y'    0,20x  2,70                                      Dn  1,40x  3,60 0,20x  2,70 
+                             
+
+
+
+
+                                                      Seite 3 von 6
+                     xDn  1,40x  3,60
+                                                                      xDn ,yDn ,x  IR; 1,5  x  14
+                   yDn  0,20x  2,70
+                                                                                                            L4
+B 3.3                                                                                                 2    K5
+                yDn   0,14xDn  3,21
+        t: y   0,14x  3,21                                         x,y  IR
+
+                 0,20x  2,70    1,40x  3,60                    x  IR; 1,5  x  14
+                                                                                                           L4
+B 3.4                                                                                                  3    K2
+                x  5,25                 L  5,25                  xB3  5,25                            K5
+
+        xD3  1,40  5,25  3,60                                     xD3   3,75
+
+
+        B4   AB4  g
+                 AB4 : y  mAB4   x  x A   y A                   x,y  IR ; 1,5  x  14
+                            mAB4  tan  63,43  35                mAB4  0,54
+                                                                                                            L4
+B 3.5            AB4 : y  0,54   x  1  2                                                         3    K2
+                                                                                                            K5
+                 0,54   x  1  2   x  4,5                      x  IR; 1,5  x  14
+                 
+                x  3,87                                             L  3,87
+
+        Es gilt: B5 AD5  90 .
+        Folglich ist das Dreieck AB5M5 gleichschenklig-rechtwinklig mit M5B5  AM5 .
+
+        A  0,5  AC 5  B 5D5                                                                              L3
+B 3.6                                                                                                  2    K1
+                  AC 5  1,5  AM5                                                                          K6
+
+
+                  B 5D5  2  AM5
+                                                                                      2
+        A  0,5 1,5  AM5  2  AM5                                  A  1,5  AM5
+
+                                                                                                       17
+
+
+
+
+                                                      Seite 4 von 6
+ AUFGABE B 4: RAUMGEOMETRIE
+
+        AC  72  72 cm                                                 AC  9,90 cm
+                                                            H
+
+
+
+                                              N                          T1
+        E       ϕ                                                                  G
+
+
+
+
+                                  F
+
+
+
+                                                                                                                     L2
+                                                                                                                     L3
+B 4.1                                                                                                            3   K4
+                                                                                                                     K5
+
+
+
+
+                                                            D           P1
+
+
+
+        A                                                                          C
+                                                   M
+
+
+
+                                  B
+
+
+        CN  92   0,5  9,90  cm
+                                       2
+                                                                        CN  10,27 cm
+                                                                                                                     L2
+B 4.2                         9                                                                                  2   K5
+        tan CNG                                                       CNG  61,19
+                         0,5  9,90
+
+        Einzeichnen des Dreiecks P1NE
+                                                                                                                     L2
+        Das maximale Maß der Winkel PnEN ist das Maß des Winkels CEN.                                                L4
+B 4.3                                                                                                            2   K1
+                          9                                                                                          K4
+        tan CEN                                                       CEN  42,27
+                         9,90
+
+        NPn                       EN
+                                                                         0;42,27 
+        sin        sin 180     ENC  
+                                                                                                                     L3
+B 4.4               ENC  180  61,19                                ENC  118,81                           2   L4
+                                                                                                                     K2
+                              0,5  9,90  sin                                          4,95  sin 
+        NPn                                        cm               NPn                             cm
+                       sin 180     118,81                                    sin    118,81 
+
+
+                                                        Seite 5 von 6
+        Einzeichnen der Pyramide EFHP1 und ihrer Höhe PT
+                                                       1 1
+
+              1 1    2
+         V      EF  PnTn
+              3 2
+                                    PnTn                          4,34  sin 
+                                                PnTn    
+                                                                                                                       L3
+                     sin61,19                                                      cm        0;42,27 
+                                                               sin    118,81 
+                                                                                                                       L4
+B 4.5                               NPn                                                                           3    K2
+                                                                                                                       K4
+                    1 1 2       4,34  sin 
+         V        7                      cm3                                            0;42,27 
+                    3 2     sin    118,81 
+                      35,44  sin 
+         V                            cm3
+                    sin    118,81 
+
+
+        Für die Pyramiden EFHP2 und ABCDP2 gilt: hABCDP2  0,5  P2 T2 .
+
+         P2 T2  0,5  P2 T2  9 cm                                                       P2 T2  6 cm
+                                                                                                                       L2
+                             4,34  sin                                                                               L4
+B 4.6                6                                                                     0;42,27       4    K2
+                          sin    118,81                                                                           K5
+
+                     
+                      36,02                                                           L  36,02
+
+                                                                                                                  16
+
+
+Hinweis: Bei einigen Teilaufgaben sind auch andere Lösungswege möglich. Für richtige andere Lösungen gelten die
+         jeweils angegebenen Punkte entsprechend; die Anzahl der Punkte bei den einzelnen Teilaufgaben darf jedoch
+         nicht verändert werden. Insbesondere sind Lösungswege, bei denen der (grafikfähige) Taschenrechner
+         verwendet wird, entsprechend ihrer Dokumentation bzw. ihrer Nachvollziehbarkeit zu bepunkten.
+
+         Bei der Korrektur ist zu beachten, dass die Vervielfältigung der Lösungsvorlage zu Verzerrungen der
+         Zeichnungen führen kann.
+
+
+
+
+                                                       Seite 6 von 6
+

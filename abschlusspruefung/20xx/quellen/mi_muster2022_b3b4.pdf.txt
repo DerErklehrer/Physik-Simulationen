@@ -1,0 +1,91 @@
+      Muster                  Abschlussprüfung 20XX
+(vgl. AP 2020 HT)                   an den Realschulen in Bayern
+
+                                            Mathematik I
+
+            Aufgabe B 3                                                  Muster 20XX
+
+B 3.0 Punkte Bn  x  x  4,5  liegen auf der Geraden g mit der Gleichung y   x  4,5
+       x,y  IR  . Für 1,5  x  14 sind sie zusammen mit Punkten A  1  2  , Cn und Dn
+      Eckpunkte von Drachenvierecken ABnCnDn . Die Punkte A und Cn liegen auf deren
+      Symmetrieachse s mit der Gleichung y  2x  x,y  IR  .
+      Für die Diagonalenschnittpunkte Mn der Drachenvierecke ABnCnDn gilt:
+       MnCn  0,5  AMn .
+      Runden Sie im Folgenden auf zwei Stellen nach dem Komma.
+
+B 3.1 Zeichnen Sie die Geraden g und s sowie die Drachenvierecke AB1C1D1 für x  2,5 und
+      AB2C2D2 für x  6,5 in ein Koordinatensystem.
+      Für die Zeichnung: Längeneinheit 1 cm;  6  x  7 ;  4  y  8                         4P
+
+B 3.2 Zeigen Sie, dass für die Koordinaten der Punkte Dn in Abhängigkeit von der
+      Abszisse x der Punkte Bn gilt:
+      Dn  1,40x  3,60 0,20x  2,70  .                                                      3P
+
+B 3.3 Bestimmen Sie rechnerisch die Gleichung des Trägergraphen t der Punkte Dn .              2P
+
+B 3.4 Im Drachenviereck AB3C3D3 liegt der Punkt D3 auf der Winkelhalbierenden des
+      2. und 4. Quadranten.
+      Bestimmen Sie rechnerisch die x-Koordinaten der Punkte B3 und D3 .                       3P
+
+B 3.5 Für das Drachenviereck AB4C4D4 gilt: B4 AC4  35 .
+      Berechnen Sie den zugehörigen Wert für x.                                                3P
+
+B 3.6 Für das Drachenviereck AB5C5D5 gilt: B5 AD5  90 .
+      Begründen Sie, weshalb für den Flächeninhalt A des Drachenvierecks AB5C5D5 gilt:
+                     2
+      A  1,5  AM5 .                                                                          2P
+
+
+
+
+                                            Bitte wenden!
+      Muster                  Abschlussprüfung 20XX
+(vgl. AP 2019 HT)                  an den Realschulen in Bayern
+
+                                             Mathematik I
+
+            Aufgabe B 4                                              Muster 20XX
+
+B 4.0 Das Quadrat ABCD mit dem Diagonalenschnittpunkt M ist die Grundfläche des
+      geraden Prismas ABCDEFGH mit der Höhe AE . Der Schnittpunkt der Diagonalen EG
+      und FH des Quadrats EFGH ist der Punkt N.
+      Es gilt: AB  7 cm; AE  9 cm .
+      Runden Sie im Folgenden auf zwei Stellen nach dem Komma.
+
+B 4.1 Zeigen Sie, dass für die Länge der Strecke AC gilt: AC  9,90 cm .
+      Zeichnen Sie sodann das Schrägbild des Prismas ABCDEFGH, wobei die
+      Strecke AC auf der Schrägbildachse und der Punkt A links vom Punkt C liegen soll.
+      Für die Zeichnung gilt: q = 1 ;  = 45°.                                            3P
+                                  2
+
+B 4.2 Berechnen Sie die Länge der Strecke CN sowie das Maß des Winkels CNG.
+      Teilergebnis: CNG  61,19                                                     2P
+
+B 4.3 Punkte Pn liegen auf der Strecke CN . Die Winkel PnEN haben das Maß  mit
+         0;42,27  . Die Punkte Pn sind zusammen mit den Punkten N und E die
+      Eckpunkte von Dreiecken PnNE .
+      Zeichnen Sie das Dreieck P1NE für   38 in das Schrägbild zu B 4.1 ein und
+      begründen Sie sodann die obere Intervallgrenze für  .                              2P
+
+B 4.4 Zeigen Sie durch Rechnung, dass für die Länge der Strecken NPn in Abhängigkeit
+      von  gilt:
+                       4,95  sin 
+       NPn                         cm.                                                2P
+                   sin    118,81 
+
+B 4.5 Die Punkte Pn sind die Spitzen von Pyramiden EFHPn mit den Höhen PnTn , deren
+      Fußpunkte Tn auf der Strecke EG liegen.
+      Zeichnen Sie die Pyramide EFHP1 und ihre Höhe PT
+                                                     1 1 in das Schrägbild zu B 4.1 ein
+      und ermitteln Sie sodann rechnerisch das Volumen V der Pyramiden EFHPn in
+      Abhängigkeit von  .
+                                         4,34  sin        
+      Zwischenergebnis: PnTn                         cm                             3P
+                                    sin    118,81     
+
+B 4.6 Die Punkte Pn sind auch die Spitzen von Pyramiden ABCDPn .
+      Für die Pyramiden EFHP2 und ABCDP2 gilt: VEFHP2  VABCDP2 .
+      Berechnen Sie den zugehörigen Wert für  .                                          4P
+
+                                            Bitte wenden!
+
