@@ -1,5 +1,7 @@
 # Prüfstatus Mathematik I — Haupttermine 2023, 2024, 2025
 
+**Aktueller Arbeitsstand 2023 A (15.11.2026):** A1–A4 sind jetzt als vier eigene interaktive Seiten mit sieben vollständigen Teilaufgaben und 29 Lösungsschritten ausgearbeitet. Originale und amtliche Lösungen visuell abgeglichen, 146 fachliche/strukturelle Checks bestanden. Browser- und Sichtnachweise sowie Korrekturen: [Prüfprotokoll A 2023](2023/PRUEFPROTOKOLL_A.md). B1–B4 bleiben im ausdrücklich vorläufigen Altstand. Dies ist keine jahrgangsweite Dreifachfreigabe; ältere Bestandsaufnahmen weiter unten sind hinsichtlich der A-Umsetzung durch diesen Eintrag ersetzt.
+
 **Status: NICHT ZUR ENDGÜLTIGEN FREIGABE GEEIGNET.**
 
 **Neuester vollständiger technischer Prüfnachweis 2025:** [Dreifach-Prüfprotokoll](2025/PRUEFPROTOKOLL_DREIFACH.md), [GitHub-Actions-Lauf](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43522790118). Drei technische Wiederholungen erfolgreich; die drei vollständigen fachlichen/visuellen neun Kategorien umfassenden Freigabedurchgänge sind **nicht** als bestanden dokumentiert.
