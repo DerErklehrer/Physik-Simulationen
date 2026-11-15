@@ -401,6 +401,19 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
      if(before.equals(after))throw Error('B2: 3D-Modell wird bei der Konstruktion nicht vervollständigt');
      await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b2-3d-schritt3.png',fullPage:true,animations:'disabled'});
     }
+    if(name==='a2'){
+     for(const value of [1,75,89]){
+      await page.locator('#phi').evaluate((el,v)=>{el.value=v;el.dispatchEvent(new Event('input',{bubbles:true}))},value);
+      await page.waitForTimeout(200);
+      if(round===3)await page.screenshot({path:OUT+'/r3-'+mode.label+'-a2-3d-phi'+value+'.png',fullPage:true,animations:'disabled'});
+      if(value>=75){
+       await page.locator('#top2025').click();await page.waitForTimeout(200);
+       if(round===3)await page.screenshot({path:OUT+'/r3-'+mode.label+'-a2-top-phi'+value+'.png',fullPage:true,animations:'disabled'});
+       await page.locator('#resetcamera2025').click();
+      }
+     }
+     await page.locator('#phi').evaluate(el=>{el.value=40;el.dispatchEvent(new Event('input',{bubbles:true}))});
+    }
     // Echter OrbitControls-Bewegungstest – Mausschleppung bzw. Touchgeste.
     const canvas=page.locator('#view3d2025 canvas');
     const box=await canvas.boundingBox();
