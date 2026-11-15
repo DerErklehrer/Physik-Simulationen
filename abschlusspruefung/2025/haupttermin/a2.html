@@ -41,11 +41,9 @@ function draw(){
  dot(...base.C,'C₁','#2e708e',-38,-9);dot(...base.B,'B₁','#2e708e');dot(...A,'A','#2e708e');
  if(phi!==40){
   const edgeColor='#a32b4d',canShowArm=!construction||step>=1,canShowBody=!construction||step>=2;
-  if(construction){
-   shape('line',{x1:A[0],y1:A[1],x2:selected.C[0],y2:selected.C[1],stroke:edgeColor,'stroke-width':2,'stroke-dasharray':step===0?'6 5':''});
-   shape('path',{d:'M'+A[0]+' '+(A[1]-rr-12)+' A'+(rr+12)+' '+(rr+12)+' 0 0 0 '+(A[0]-(rr+12)*Math.sin(rad))+' '+(A[1]-(rr+12)*Math.cos(rad)),stroke:edgeColor,'stroke-width':2,fill:'none'});
-   if(phi===75)shape('text',{x:330,y:424,'font-size':18,fill:edgeColor},'75°');
-  }
+  if(construction)shape('line',{x1:A[0],y1:A[1],x2:selected.C[0],y2:selected.C[1],stroke:edgeColor,'stroke-width':2,'stroke-dasharray':step===0?'6 5':''});
+  shape('path',{d:'M'+A[0]+' '+(A[1]-rr-12)+' A'+(rr+12)+' '+(rr+12)+' 0 0 0 '+(A[0]-(rr+12)*Math.sin(rad))+' '+(A[1]-(rr+12)*Math.cos(rad)),stroke:edgeColor,'stroke-width':2,fill:'none'});
+  shape('text',{x:A[0]-82*Math.sin(rad/2)-20,y:A[1]-82*Math.cos(rad/2)-4,'font-size':18,fill:edgeColor},phi+'°');
   if(canShowArm)dot(...selected.C,construction?'C₂':part===3?'C₃':'Cₙ',edgeColor,-40,20);
   if(canShowBody){
    shape('line',{x1:selected.C[0],y1:selected.C[1],x2:selected.B[0],y2:selected.B[1],stroke:edgeColor,'stroke-width':3});
