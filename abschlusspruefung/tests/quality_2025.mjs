@@ -224,3 +224,14 @@ for(const t of [.1,4,25/3,10]){
  test('B2: höchstens halbes Quadervolumen bei '+t,6*t<=60);
 }
 console.log('B1/B2-Blockprüfung bestanden; insgesamt '+checked+' statische/fachliche Prüfungen.');
+
+const b3Height=2*Math.cos(Math.PI/9),b3Supremum=7.5*b3Height;
+test('B3: exakte Höhe ist kleiner als ihre aufgerundete Schranke',b3Height<1.88);
+test('B3: exakte Flächengrenze liegt strikt unter 14,1 FE',b3Supremum<14.1);
+for(const x of [-3.999,-3,0.28,2.1,10,100]){
+ const length=-3.5*Math.pow(.5,x+3)+7,area=(length+8)*b3Height/2;
+ test('B3: mathematische Flächenschranke bei x='+x,area<14.1);
+}
+close('B3: Gleichung mit amtlichem Teilergebnis',Math.log((7-6.64)/3.5)/Math.log(.5)-3,.2812861103900155,1e-12);
+close('B3: geometrisch gleichschenklige Lösung unabhängig',Math.log((4*Math.sin(Math.PI/9)-1)/3.5)/Math.log(.5)-3,.24926140832455124,1e-12);
+console.log('B3-Endkontrolle bestanden; insgesamt '+checked+' statische/fachliche Prüfungen.');

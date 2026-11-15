@@ -36,28 +36,28 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
       const nodes=[document.getElementById('statement'),document.getElementById('solution')];
       return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
     },null,{timeout:9000});
-    if(['a3','b1','b2'].includes(name)&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error(name+': Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
+    if(['a3','b1','b2','b3'].includes(name)&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error(name+': Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
     const statement=(await page.locator('#statement').innerText()).trim();
     const solution=(await page.locator('#solution').innerText()).trim();
     if(statement.length<15||solution.length<10)throw Error('Leerer Aufgabentext/Lösung, Teil '+(i+1));
     const countLabel=await page.locator('#count').innerText();
     const stepCount=Number(countLabel.match(/von\s+(\d+)/)?.[1]||0);
     if(stepCount<2)throw Error('Lösung hat weniger als zwei Schritte, Teil '+(i+1));
-    if(['a1','a2','a3'].includes(name)||(round===3&&['b1','b2'].includes(name)))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt1.png',fullPage:true,animations:'disabled'});
+    if(['a1','a2','a3'].includes(name)||(round===3&&['b1','b2','b3'].includes(name)))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt1.png',fullPage:true,animations:'disabled'});
     for(let currentStep=2;currentStep<=stepCount;currentStep++){
       await page.locator('#next').click();
       await page.waitForFunction(()=>{
         const nodes=[document.getElementById('statement'),document.getElementById('solution')];
         return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
       },null,{timeout:9000});
-      if(['a3','b1','b2'].includes(name)&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error(name+': Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
+      if(['a3','b1','b2','b3'].includes(name)&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error(name+': Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
       const after=(await page.locator('#solution').innerText()).trim();
-      if(['a1','a2','a3'].includes(name)||(round===3&&['b1','b2'].includes(name)))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+currentStep+'.png',fullPage:true,animations:'disabled'});
+      if(['a1','a2','a3'].includes(name)||(round===3&&['b1','b2','b3'].includes(name)))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+currentStep+'.png',fullPage:true,animations:'disabled'});
       if(after.length<10)throw Error('Leerer Lösungsschritt '+currentStep+', Teil '+(i+1));
       const displayed=await page.locator('#count').innerText();
       if(!displayed.includes('Schritt '+currentStep+' von '+stepCount))throw Error('Schrittanzeige falsch in Teil '+(i+1));
     }
-    if(['a1','a2','a3'].includes(name)||(round===3&&['b1','b2'].includes(name)))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+stepCount+'.png',fullPage:true,animations:'disabled'});
+    if(['a1','a2','a3'].includes(name)||(round===3&&['b1','b2','b3'].includes(name)))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+stepCount+'.png',fullPage:true,animations:'disabled'});
     if(!(await page.locator('#next').isDisabled()))throw Error('Vorwärtsbutton nach letztem Schritt nicht gesperrt, Teil '+(i+1));
     await page.locator('#reset').click();
     if(!(await page.locator('#prev').isDisabled()))throw Error('Reset hat nicht auf ersten Lösungsschritt zurückgesetzt, Teil '+(i+1));
@@ -230,10 +230,18 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     for(let k=0;k<3;k++)await page.locator('#next').click();
     if(await polygonCount()!==2)throw Error('B3.2: beide Trapeze fehlen nach Konstruktion');
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b3-trapeze.png',fullPage:true,animations:'disabled'});
+    await page.locator('#p1').click();
+    if(await polygonCount()!==1||!(await page.locator('#fixed1').isChecked())||await page.locator('#fixed2').isChecked())throw Error('B3.2: Taste Trapez 1 schaltet nicht auf die zugehörige Konstruktion');
+    await page.locator('#p2').click();
+    if(await polygonCount()!==1||!(await page.locator('#fixed2').isChecked())||await page.locator('#fixed1').isChecked())throw Error('B3.2: Taste Trapez 2 schaltet nicht auf die zugehörige Konstruktion');
+    await page.locator('#reset').click();
+    if(!(await page.locator('#fixed1').isChecked())||!(await page.locator('#fixed2').isChecked()))throw Error('B3.2: Reset stellt Originalkonstruktionen nicht wieder her');
+
     await partButtons.nth(2).click();
     if((await page.locator('#plot').textContent()).includes('F₁'))throw Error('B3.3: Lotfuß F1 schon vor Zeichnung sichtbar');
     await page.locator('#next').click();
     if(!(await page.locator('#plot').textContent()).includes('F₁'))throw Error('B3.3: Lotfuß F1 fehlt nach Zeichnung');
+    if(await page.locator('[data-angle="20"]').count()!==1)throw Error('B3.3: 20-Grad-Winkel für Kosinus fehlt');
     const arc=page.locator('#plot path[data-right-angle="quarter-arc"]');
     const dot=page.locator('#plot circle[data-right-angle="center-dot"]');
     if(await arc.count()!==1||await dot.count()!==1)throw Error('B3.3: Rechtwinkelsymbol muss Viertelkreis mit Punkt sein');
@@ -253,6 +261,11 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(Math.abs(Number(await page.locator('#xval').innerText().then(x=>x.replace(',','.')))-.28)>.005)throw Error('B3.5: amtlich gerundete Lösung nicht synchronisiert');
     await page.locator('#pexact').click();
     if(!(await page.locator('#xval').innerText()).includes('0,25'))throw Error('B3.5: geometrisch exakte Sonderlage fehlt');
+    if(!(await page.locator('#measure').innerText()).includes('Ohne Zwischenrundung'))throw Error('B3.5: Messanzeige unterscheidet Rundungswege nicht');
+    await page.locator('#x').evaluate(el=>{el.value=1;el.dispatchEvent(new Event('input',{bubbles:true}))});
+    if(!(await page.locator('#measure').innerText()).includes('Erkundung')||(await page.locator('#plot').textContent()).includes('A₃'))throw Error('B3.5: frei verändertes Trapez wird als feste Lösungslage ausgegeben');
+    await page.locator('#pexact').click();
+
     await page.locator('#prev').click();
     if(await page.locator('#p3').isVisible()||await page.locator('#roundingNote').isVisible())throw Error('B3.5: Lösung beim Zurückblättern noch sichtbar');
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b3-schritte.png',fullPage:true,animations:'disabled'});
