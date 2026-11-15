@@ -183,7 +183,7 @@ function draw(){
  const offsets={A:[-20,19],B:[10,13],C:[10,18],D:[-23,0],E:[12,0],F:[-4,-13],M:[-23,7],N:[-23,-7],P:[-7,27],Q:[8,5]};
  for(const k of st.phase>=1?['A','B','C','D','E','F','M','N']:['A','B','C','M']){el('circle',{cx:P[k][0],cy:P[k][1],r:3,fill:'#60758b'});caption(P[k][0]+offsets[k][0],P[k][1]+offsets[k][1],k)}
  if(st.showQ){for(const k of ['P','Q']){el('circle',{cx:P[k][0],cy:P[k][1],r:3.8,fill:'#d17720'});let off=offsets[k];if(k==='Q'&&g.t<.01)off=[-52,-8];if(k==='P'&&g.P[0]<.05)off=[8,28];mathCaption(P[k][0]+off[0],P[k][1]+off[1],k+'_'+pointName,'#a32b4d',17)}}
- mathCaption(300,450,'8\\,\\mathrm{cm}','#637384',16);
+ mathCaption(270,450,'|\\overline{MB}|=8\\,\\mathrm{cm}','#637384',16);
  if(st.phase>=1)mathCaption(508,290,'5\\,\\mathrm{cm}','#637384',16);
  if(st.showHeight)mathCaption(45,415,'|\\overline{AM}|=6\\,\\mathrm{cm}','#198576',16);
  let label='';if(part===0&&step>=3)label='\\sphericalangle NBM\\approx32{,}01^\\circ';
