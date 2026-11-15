@@ -27,12 +27,12 @@ function doubleCone(degrees,phase=3,suffix='ₙ'){
  controls.target.set(0,0,0);syncConeLabels();
 }
 function prism(t,phase=3,suffix='ₙ'){const x=Math.max(.1,Math.min(10,Number(t)));const A=V(0,0,0),P=V(x,0,0),E=V(0,3,0),B=V(0,0,4),Q=V(x,0,4),F=V(0,3,4);const D=V(10,0,0),C=V(10,0,4),H=V(10,3,0),G=V(10,3,4);for(const [u,v] of [[A,D],[D,C],[C,B],[B,A],[E,H],[H,G],[G,F],[F,E],[A,E],[B,F],[C,G],[D,H]])model.add(edge(u,v,0xa5b1bf));for(const [pt,t] of [[D,Math.abs(x-10)<1e-7?'D = P'+suffix:'D'],[C,Math.abs(x-10)<1e-7?'C = Q'+suffix:'C'],[H,'H'],[G,'G']])model.add(label(pt.clone().add(V(0,.3,0)),t));if(phase>=3){const p=[[A,P,E],[B,Q,F],[A,E,F,B],[A,P,Q,B],[P,E,F,Q]];p.forEach((q,i)=>model.add(face(q,[0x88c5dc,0x88c5dc,0x9cb8cf,0xd7adc0,0xb7d5bb][i],i<2?.65:.27)));for(const [u,v] of [[A,P],[P,E],[E,A],[B,Q],[Q,F],[F,B],[A,B],[P,Q],[E,F]])model.add(edge(u,v));}else{if(phase>=1)model.add(edge(A,P,0xa32b4d));if(phase>=2)model.add(edge(P,Q,0xa32b4d));}for(const [pt,t] of [[A,'A'],[E,'E'],[B,'B'],[F,'F']])model.add(label(pt.clone().add(V(0,.35,0)),t));if(phase>=1&&Math.abs(x-10)>=1e-7)model.add(label(P.clone().add(V(0,.35,0)),'P'+suffix));if(phase>=2&&Math.abs(x-10)>=1e-7)model.add(label(Q.clone().add(V(0,.35,0)),'Q'+suffix));controls.target.set(4,1.5,2);}
-function build(task,value,phase=3,suffix='ₙ'){if(!renderer)return;dispose();model=new THREE.Group();scene.add(model);if(task==='A 2')doubleCone(value,phase,suffix);else if(task==='B 2')prism(value,phase,suffix);camera.zoom=task==='A 2'?1.38:1.52;camera.updateProjectionMatrix();controls.update();}
+function build(task,value,phase=3,suffix='ₙ',resetZoom=false){if(!renderer)return;dispose();model=new THREE.Group();model.userData.task=task;scene.add(model);if(task==='A 2')doubleCone(value,phase,suffix);else if(task==='B 2')prism(value,phase,suffix);if(resetZoom)camera.zoom=task==='A 2'?1.38:1.52;camera.updateProjectionMatrix();controls.update();}
 window.exam2025Three={
-show(task,value,phase=3,suffix='ₙ'){if(!['A 2','B 2'].includes(task))return;setup();active=true;build(task,value,phase,suffix);resize();},
+show(task,value,phase=3,suffix='ₙ'){if(!['A 2','B 2'].includes(task))return;setup();active=true;build(task,value,phase,suffix,true);resize();},
 update(task,value,phase=3,suffix='ₙ'){if(active&&renderer)build(task,value,phase,suffix);},
 hide(){active=false;},
 top(){if(!renderer)return;topMode=true;syncConeLabels();camera.up.set(0,0,-1);camera.position.copy(controls.target).add(V(0,20,0.001));controls.update();},
-reset(){if(!renderer)return;topMode=false;syncConeLabels();camera.up.set(0,1,0);camera.position.set(12,10,13);controls.update();}
+reset(){if(!renderer)return;topMode=false;syncConeLabels();camera.zoom=model?.userData.task==='A 2'?1.38:1.52;camera.updateProjectionMatrix();camera.up.set(0,1,0);camera.position.set(12,10,13);controls.update();}
 };
 window.dispatchEvent(new Event('exam2025ThreeReady'));
