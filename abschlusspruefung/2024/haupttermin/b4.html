@@ -1,0 +1,177 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B 4 · Mathematik I 2024 – Der ErkLehrer</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style> :root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:white;padding:17px 4%;font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted,.small{color:#637384}.small{font-size:.87rem;line-height:1.5}.grid{display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(300px,1fr);gap:16px}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}button{font:inherit;cursor:pointer;background:white;border:1px solid #b9c4d1;border-radius:8px;padding:8px 11px;color:#253341}button.active{background:#8e2948;color:white}button:disabled{opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e68b3c;outline-offset:2px}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.original,.step{background:#f6f8fb;padding:12px;border-radius:8px;line-height:1.75}.step{border-left:4px solid #a32b4d;min-height:140px}.tag{display:inline-block;background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:7px;margin:7px}.plot{display:block;width:100%;height:auto}.figure-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}.three{height:440px;position:relative;touch-action:none;background:#f8fafc;border-radius:8px;overflow:hidden}.three canvas{display:block;width:100%;height:100%}.threehelp{position:absolute;bottom:7px;left:9px;font-size:12px;pointer-events:none;color:#637384}input[type=range]{width:100%;accent-color:#9a2848}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.choices label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #dce1e8;border-radius:8px}.mobile-controls{display:none}[hidden]{display:none!important}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}.panel{padding:12px}.plot{width:620px;max-width:none}.figure-scroll.overview .plot{width:100%}.mobile-controls{display:block}.three{height:420px}}</style><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><nav class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2024</a><a href="b3.html">← B 3</a></nav><p class="muted">Realschule Bayern · Mathematik I · Haupttermin · Aufgabengruppe B</p><h1>Abschlussprüfung 2024 · B 4</h1><div class="grid"><section class="panel"><h2>Pyramiden in einer Rautenpyramide</h2><div id="figureScroll" class="figure-scroll" tabindex="0" role="region" aria-label="Zeichnung, auf schmalen Bildschirmen seitlich verschiebbar"><svg id="plot" class="plot" viewBox="0 0 640 540" role="img" aria-label="Pyramiden in einer Rautenpyramide; Zeichnung passend zu den Lösungsschritten"></svg></div><div class="mobile-controls"><button id="overview" aria-pressed="false">Gesamte Zeichnung anzeigen</button><p class="small">Lesemodus: Zeichnung seitlich wischen.</p></div><div class="buttons"><button id="twoD" aria-pressed="true">Schrägbild 2D</button><button id="threeD" aria-pressed="false">Drehbare 3D-Ansicht</button></div><div id="view3d" hidden style="height:410px;position:relative;touch-action:none"></div><div id="cameraButtons" class="buttons" hidden><button id="top">Orthografische Draufsicht</button><button id="cameraReset">Kamera zurücksetzen</button></div><div id="explore" hidden><label for="phi">Winkel φ: <strong id="phival">35,00°</strong></label><input id="phi" type="range" min=".1" max="50.83" step=".01" value="35"><div class="buttons"><button id="p1">P₁: φ = 35°</button><button id="endPoint">Endpunkt P = S</button><button id="p2" hidden>Exakt 10 cm</button><button id="p3" hidden>Gleich große Teilvolumina</button></div><p class="small">0° ist ausgeschlossen. Der Regler beginnt bei 0,1°. Die Endpunkttaste setzt P exakt auf S; die gedruckte Winkelgrenze 50,83° ist gerundet. 3D: mit Maus oder Finger drehen; mit Mausrad oder zwei Fingern zoomen.</p></div><p id="measure" class="small" aria-live="polite"></p></section><section class="panel"><h2>Originalaufgabe und Musterlösung</h2><div class="original"><strong>B 4.0 – Ausgangsangaben</strong><div><p>Die Diagonalen \(\overline{AC}\) und \(\overline{BD}\) der Raute \(ABCD\) schneiden sich im Punkt \(M\). Die Raute \(ABCD\) ist die Grundfläche der Pyramide \(ABCDS\) mit der Höhe \(\overline{MS}\).</p><p>Es gilt: \(|\overline{AC}|=12\,\mathrm{cm}\); \(|\overline{BD}|=8\,\mathrm{cm}\); \(|\overline{CS}|=9{,}5\,\mathrm{cm}\).</p><p>Runden Sie im Folgenden auf zwei Stellen nach dem Komma.</p></div></div><div id="parts" class="buttons"></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong><span id="count" class="tag"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Ausführliche eigenständige Lernlösung nach dem amtlichen ISB-Lösungsmuster. Keine amtliche Lösung.</p></section></div></main><script>const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';let part=0,step=0;
+function el(t,a={},text){let e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('plot').append(e);return e}
+function line(a,b,color='#60758b',w=2,dash=''){return el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':dash})}
+function caption(x,y,t,color='#253341',size=16){return el('text',{x,y,fill:color,'font-size':size,stroke:'#fff','stroke-width':4,'paint-order':'stroke','stroke-linejoin':'round'},t)}
+function mark(p,t,color='#253341'){el('circle',{cx:p[0],cy:p[1],r:3.5,fill:color});caption(p[0]+7,p[1]-8,t,color)}
+function fraction(x,y,n,d,visible=true,color='#253341'){let g=el('g',{'data-probability':n+'/'+d,visibility:visible?'visible':'hidden'});for(const[tag,a,t]of [['rect',{x:x-23,y:y-24,width:46,height:53,rx:9,fill:'#fff',stroke:'#b9c4d1'}],['text',{x,y:y-5,'text-anchor':'middle','font-size':17,fill:color},n],['line',{x1:x-14,x2:x+14,y1:y,y2:y,stroke:color,'stroke-width':1.4}],['text',{x,y:y+21,'text-anchor':'middle','font-size':17,fill:color},d]]){const c=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>c.setAttribute(k,v));if(t!==undefined)c.textContent=t;g.append(c)}return g}
+function math(){if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution')]);MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)}}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;draw();math()}
+function start(){tasks.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.n;b.onclick=()=>{part=i;step=0;initPart();render()};$('parts').append(b)});$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[part].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;initPart();render()};$('overview').onclick=()=>{const v=$('figureScroll').classList.toggle('overview');$('overview').setAttribute('aria-pressed',String(v));$('overview').textContent=v?'Zum Lesemodus wechseln':'Gesamte Zeichnung anzeigen';$('figureScroll').scrollLeft=0};initPart();render();window.addEventListener('load',math)}
+
+
+const tasks=[
+ {
+  "n": "B 4.1",
+  "p": "4 P",
+  "q": "Zeichnen Sie das Schrägbild der Pyramide \\(ABCDS\\), wobei die Strecke \\(\\overline{AC}\\) auf der Schrägbildachse und der Punkt \\(A\\) links vom Punkt \\(C\\) liegen soll.<br>Für die Zeichnung gilt: \\(q=\\frac12\\); \\(\\omega=45^\\circ\\).<br>Berechnen Sie sodann das Maß des Winkels \\(SCA\\) und die Länge der Strecke \\(\\overline{MS}\\).<br>[Teilergebnisse: \\(\\sphericalangle SCA=50{,}83^\\circ\\); \\(|\\overline{MS}|=7{,}37\\,\\mathrm{cm}\\)]",
+  "steps": [
+   [
+    "Diagonale AC zeichnen",
+    "Zeichne die Strecke \\(\\overline{AC}\\) waagerecht mit \\(|\\overline{AC}|=12\\,\\mathrm{cm}\\). Der Punkt \\(A\\) liegt links von \\(C\\). Markiere ihren Mittelpunkt \\(M\\). In einer Raute halbieren sich die Diagonalen:\\[|\\overline{AM}|=|\\overline{MC}|=6\\,\\mathrm{cm}.\\]"
+   ],
+   [
+    "Raute im Schrägbild ergänzen",
+    "Die Diagonalen einer Raute stehen senkrecht aufeinander. Zeichne durch \\(M\\) die Schrägbildrichtung unter \\(45^\\circ\\). Mit \\(q=\\frac12\\) werden die beiden halben Diagonalen von jeweils \\(4\\,\\mathrm{cm}\\) auf jeweils \\(2\\,\\mathrm{cm}\\) verkürzt dargestellt. Markiere \\(B\\) links unten und \\(D\\) rechts oben. Verbinde die Eckpunkte der Raute."
+   ],
+   [
+    "Winkel SCA berechnen",
+    "Betrachte das rechtwinklige Dreieck \\(MCS\\). Setze \\(\\alpha=\\sphericalangle SCA=\\sphericalangle SCM\\). Dann gilt:\\[\\cos\\alpha=\\frac{|\\overline{MC}|}{|\\overline{CS}|}=\\frac{6}{9{,}5}.\\]\\[\\boxed{\\alpha\\approx50{,}83^\\circ}.\\]Die Winkelberechnung benutzt die wahren Längen, nicht die verkürzten Längen des Schrägbilds."
+   ],
+   [
+    "Höhe mit Pythagoras bestimmen",
+    "Im rechtwinkligen Dreieck \\(MCS\\) ist \\(\\overline{CS}\\) die Hypotenuse. Somit:\\[\\begin{aligned}|\\overline{MS}|^2&=9{,}5^2-6^2\\;\\mathrm{cm}^2,\\\\|\\overline{MS}|&=\\sqrt{54{,}25}\\,\\mathrm{cm}\\\\&\\approx\\boxed{7{,}37\\,\\mathrm{cm}}.\\end{aligned}\\]"
+   ],
+   [
+    "Schrägbild vervollständigen",
+    "Trage von \\(M\\) aus die Höhe senkrecht nach oben ab und markiere \\(S\\). Eine senkrechte Strecke wird im Schrägbild in wahrer Länge dargestellt. Verbinde \\(S\\) mit \\(A\\), \\(B\\), \\(C\\) und \\(D\\). Die Zeichnung verwendet \\(\\sqrt{54{,}25}\\,\\mathrm{cm}\\) als ungerundete Höhe. In der 3D-Ansicht kannst du die Pyramide drehen und ihre Grundfläche von oben betrachten."
+   ]
+  ]
+ },
+ {
+  "n": "B 4.2",
+  "p": "1 P",
+  "q": "Punkte \\(P_n\\) liegen auf der Strecke \\(\\overline{CS}\\). Die Winkel \\(CAP_n\\) haben das Maß \\(\\varphi\\) mit \\(\\varphi\\in\\left]0^\\circ;50{,}83^\\circ\\right]\\). Die Punkte \\(P_n\\) sind zusammen mit \\(A\\) und \\(C\\) die Eckpunkte von Dreiecken \\(ACP_n\\). Die Dreiecke \\(ACP_n\\) sind Grundflächen von Pyramiden \\(ACP_nB\\) mit der Spitze \\(B\\).<br>Zeichnen Sie die Pyramide \\(ACP_1B\\) für \\(\\varphi=35^\\circ\\) in das Schrägbild zu B 4.1 ein.",
+  "steps": [
+   [
+    "Winkel bei A abtragen",
+    "Das Dreieck \\(ACS\\) liegt in einer zur Bildebene parallelen Ebene. Seine Winkel erscheinen daher in wahrer Größe. Trage in \\(A\\) über der Strecke \\(\\overline{AC}\\) den Winkel \\(\\varphi=35^\\circ\\) ab."
+   ],
+   [
+    "Schnittpunkt P₁ markieren",
+    "Der freie Winkelschenkel schneidet die Strecke \\(\\overline{CS}\\) im Punkt \\(P_1\\). Verbinde \\(A\\), \\(C\\) und \\(P_1\\). Damit ist die dreieckige Grundfläche der gesuchten Pyramide eingezeichnet."
+   ],
+   [
+    "Spitze B mit der Grundfläche verbinden",
+    "Die Spitze dieser Pyramide ist \\(B\\). Die Kanten \\(\\overline{BA}\\) und \\(\\overline{BC}\\) sind bereits vorhanden; ergänze \\(\\overline{BP_1}\\). So entsteht die Pyramide \\(ACP_1B\\). Die farbige Grundfläche liegt senkrecht zur Rautenebene. In der 3D-Ansicht wird diese Lage besonders deutlich."
+   ]
+  ]
+ },
+ {
+  "n": "B 4.3",
+  "p": "3,5 P",
+  "q": "Zeigen Sie, dass für die Länge der Strecken \\(\\overline{AP_n}\\) in Abhängigkeit von \\(\\varphi\\) gilt:\\[|\\overline{AP_n}|(\\varphi)=\\frac{9{,}30}{\\sin(\\varphi+50{,}83^\\circ)}\\,\\mathrm{cm}.\\]Für die Strecke \\(\\overline{AP_2}\\) gilt: \\(|\\overline{AP_2}|=10\\,\\mathrm{cm}\\).<br>Berechnen Sie den zugehörigen Wert von \\(\\varphi\\).",
+  "steps": [
+   [
+    "Winkel im Dreieck ACPₙ",
+    "Weil \\(P_n\\) auf \\(\\overline{CS}\\) liegt, bleibt der Winkel bei \\(C\\) konstant: \\(\\alpha=\\sphericalangle ACP_n\\approx50{,}83^\\circ\\). Mit der Winkelsumme gilt am Punkt \\(P_n\\):\\[\\gamma=180^\\circ-(\\varphi+\\alpha).\\]"
+   ],
+   [
+    "Sinussatz anwenden",
+    "Der Strecke \\(\\overline{AP_n}\\) liegt der Winkel \\(\\alpha\\) gegenüber, der Strecke \\(\\overline{AC}\\) der Winkel \\(\\gamma\\). Deshalb:\\[\\frac{|\\overline{AP_n}|}{\\sin\\alpha}=\\frac{12\\,\\mathrm{cm}}{\\sin\\gamma}.\\]"
+   ],
+   [
+    "Längenfunktion herleiten",
+    "Wegen \\(\\sin(180^\\circ-\\beta)=\\sin\\beta\\) folgt exakt:\\[|\\overline{AP_n}|=\\frac{12\\cdot\\sin\\alpha}{\\sin(\\varphi+\\alpha)}\\,\\mathrm{cm}.\\]Mit den Zwischenrundungen \\(\\alpha\\approx50{,}83^\\circ\\) und \\(12\\cdot\\sin\\alpha\\approx9{,}30\\):\\[\\boxed{|\\overline{AP_n}|(\\varphi)\\approx\\frac{9{,}30}{\\sin(\\varphi+50{,}83^\\circ)}\\,\\mathrm{cm}}.\\]<p class=\"small\">Die Originalangabe schreibt ein Gleichheitszeichen. Das Näherungszeichen kennzeichnet hier die gerundeten Konstanten.</p>"
+   ],
+   [
+    "Länge 10 cm einsetzen",
+    "Setze in die verlangte gerundete Darstellung ein:\\[10=\\frac{9{,}30}{\\sin(\\varphi+50{,}83^\\circ)}.\\]Umformen liefert:\\[\\sin(\\varphi+50{,}83^\\circ)=0{,}93.\\]"
+   ],
+   [
+    "Beide Sinuslösungen prüfen",
+    "Für den Winkel \\(\\beta=\\varphi+50{,}83^\\circ\\) gilt:\\[\\begin{aligned}\\beta_1&=\\arcsin(0{,}93)\\approx68{,}43^\\circ,\\\\\\beta_2&=180^\\circ-\\beta_1\\approx111{,}57^\\circ.\\end{aligned}\\]Daraus folgen \\(\\varphi_1\\approx17{,}60^\\circ\\) und \\(\\varphi_2\\approx60{,}74^\\circ\\). Der zweite Wert liegt außerhalb von \\(\\left]0^\\circ;50{,}83^\\circ\\right]\\) und entfällt."
+   ],
+   [
+    "Zulässiges Ergebnis",
+    "Damit erhält man entsprechend dem amtlichen Lösungsmuster:\\[\\boxed{\\varphi\\approx17{,}60^\\circ}.\\]Die Zeichnung setzt zunächst diesen gerundeten Winkel ein. Die Taste „Exakt 10 cm“ bestimmt den Punkt auf der ursprünglichen Strecke \\(\\overline{CS}\\) ohne Zwischenrundungen. Kleine Abweichungen zwischen amtlichem Rechenwert und exakter Geometrie entstehen durch die Rundungen."
+   ]
+  ]
+ },
+ {
+  "n": "B 4.4",
+  "p": "5 P",
+  "q": "Zeigen Sie, dass für das Volumen \\(V\\) der Pyramiden \\(ACP_nB\\) in Abhängigkeit von \\(\\varphi\\) gilt:\\[V(\\varphi)=\\frac{74{,}40\\cdot\\sin\\varphi}{\\sin(\\varphi+50{,}83^\\circ)}\\,\\mathrm{cm}^3.\\]Berechnen Sie sodann, um wie viel Prozent das Volumen der Pyramide \\(ACP_1B\\) kleiner ist als das Volumen der Pyramide \\(ABCDS\\).",
+  "steps": [
+   [
+    "Grundfläche und Pyramidenhöhe unterscheiden",
+    "Für die Pyramide \\(ACP_nB\\) ist \\(ACP_n\\) die Grundfläche und \\(B\\) die Spitze. Die Ebene \\(ACS\\) enthält \\(\\overline{AC}\\) und die senkrechte Höhe \\(\\overline{MS}\\). Die Strecke \\(\\overline{BM}\\) steht auf dieser Ebene senkrecht. Daher beträgt die Pyramidenhöhe:\\[h_B=|\\overline{BM}|=\\frac{8}{2}\\,\\mathrm{cm}=4\\,\\mathrm{cm}.\\]"
+   ],
+   [
+    "Dreiecksfläche berechnen",
+    "Die Seiten \\(\\overline{AC}\\) und \\(\\overline{AP_n}\\) schließen den Winkel \\(\\varphi\\) ein. Mit der Flächenformel für ein Dreieck gilt:\\[G(\\varphi)=\\frac12\\cdot12\\,\\mathrm{cm}\\cdot|\\overline{AP_n}|\\cdot\\sin\\varphi.\\]"
+   ],
+   [
+    "Volumenfunktion aufstellen",
+    "Für eine Pyramide gilt \\(V=\\frac13\\cdot G\\cdot h_B\\). Setze die Längenfunktion aus B 4.3 ein:\\[\\begin{aligned}V(\\varphi)&\\approx\\frac13\\cdot\\frac12\\cdot12\\\\&\\quad\\cdot\\frac{9{,}30}{\\sin(\\varphi+50{,}83^\\circ)}\\\\&\\quad\\cdot\\sin\\varphi\\cdot4\\;\\mathrm{cm}^3.\\end{aligned}\\]"
+   ],
+   [
+    "Vereinfachen",
+    "Die konstanten Faktoren ergeben \\(\\frac13\\cdot\\frac12\\cdot12\\cdot9{,}30\\cdot4=74{,}40\\). Somit lautet die verlangte gerundete Darstellung:\\[\\boxed{V(\\varphi)\\approx\\frac{74{,}40\\cdot\\sin\\varphi}{\\sin(\\varphi+50{,}83^\\circ)}\\,\\mathrm{cm}^3}.\\]Die Höhe \\(h_B=4\\,\\mathrm{cm}\\) ist für alle diese Teilpyramiden gleich."
+   ],
+   [
+    "Volumen der Pyramide ACP₁B",
+    "Für \\(P_1\\) ist \\(\\varphi=35^\\circ\\). Einsetzen in die verlangte Formel liefert:\\[\\begin{aligned}V_1&\\approx\\frac{74{,}40\\cdot\\sin35^\\circ}{\\sin(35^\\circ+50{,}83^\\circ)}\\,\\mathrm{cm}^3\\\\&\\approx\\boxed{42{,}79\\,\\mathrm{cm}^3}.\\end{aligned}\\]"
+   ],
+   [
+    "Volumen der Ausgangspyramide",
+    "Die Grundfläche der Raute berechnet man aus den Diagonalen:\\[G_{ABCD}=\\frac12\\cdot12\\cdot8\\;\\mathrm{cm}^2=48\\,\\mathrm{cm}^2.\\]Mit der gerundeten Höhe aus B 4.1 folgt entsprechend dem Lösungsmuster:\\[\\begin{aligned}V_{ABCDS}&\\approx\\frac13\\cdot48\\cdot7{,}37\\;\\mathrm{cm}^3\\\\&=117{,}92\\,\\mathrm{cm}^3.\\end{aligned}\\]"
+   ],
+   [
+    "Prozentuale Abnahme berechnen",
+    "Die Bezugsgröße ist das Volumen der Ausgangspyramide:\\[\\begin{aligned}p&\\approx\\frac{117{,}92-42{,}79}{117{,}92}\\cdot100\\,\\%\\\\&\\approx\\boxed{63{,}71\\,\\%}.\\end{aligned}\\]Das Volumen von \\(ACP_1B\\) ist damit um etwa \\(63{,}71\\,\\%\\) kleiner. <p class=\"small\">Amtliche Ergebnisse mit gerundeten Zwischenwerten. Die Messanzeige der Zeichnung rechnet mit der ungerundeten Originalgeometrie.</p>"
+   ]
+  ]
+ },
+ {
+  "n": "B 4.5",
+  "p": "2 P",
+  "q": "Die Pyramide \\(ACP_3B\\) hat dasselbe Volumen wie die Pyramide \\(AP_3SB\\).<br>In welchem Verhältnis steht das Volumen der Pyramide \\(ACP_3B\\) zum Volumen der Pyramide \\(ABCDS\\)? Begründen Sie.",
+  "steps": [
+   [
+    "Gemeinsame Teilpyramide erkennen",
+    "Die Dreiecke \\(ACP_3\\) und \\(AP_3S\\) liegen in derselben Ebene und zerlegen das Dreieck \\(ACS\\). Mit der gemeinsamen Spitze \\(B\\) setzen sich daher die Pyramiden \\(ACP_3B\\) und \\(AP_3SB\\) zur Pyramide \\(ACSB\\) zusammen."
+   ],
+   [
+    "Hälfte der Ausgangspyramide begründen",
+    "Die Diagonale \\(\\overline{AC}\\) halbiert die Rautenfläche. Die Pyramiden \\(ACBS\\) und \\(ACDS\\) besitzen gleich große Grundflächen und dieselbe Höhe \\(|\\overline{MS}|\\). Deshalb gilt:\\[V_{ACSB}=\\frac12\\,V_{ABCDS}.\\]"
+   ],
+   [
+    "Gleiche Volumina aufteilen",
+    "Nach Voraussetzung sind die beiden Teilvolumina gleich groß. Jedes ist also die Hälfte von \\(V_{ACSB}\\):\\[\\begin{aligned}V_{ACP_3B}&=\\frac12\\,V_{ACSB}\\\\&=\\frac12\\cdot\\frac12\\,V_{ABCDS}\\\\&=\\frac14\\,V_{ABCDS}.\\end{aligned}\\]Die Zeichnung zeigt nun die beiden gleich großen Teilpyramiden. Weil ihre Höhe zur Ebene \\(ACS\\) gleich ist, sind auch ihre Grundflächen gleich groß; \\(P_3\\) halbiert daher \\(\\overline{CS}\\)."
+   ],
+   [
+    "Gesuchtes Verhältnis",
+    "Das Volumenverhältnis lautet:\\[\\boxed{V_{ACP_3B}:V_{ABCDS}=1:4}.\\]Die Teilpyramide nimmt also \\(25\\,\\%\\) des ursprünglichen Volumens ein. Die zweite gleich große Teilpyramide ergänzt weitere \\(25\\,\\%\\); die Pyramide auf der anderen Hälfte der Raute umfasst die übrigen \\(50\\,\\%\\)."
+   ]
+  ]
+ }
+];
+
+const H=Math.sqrt(54.25),rad=x=>x*Math.PI/180,deg=x=>180*x/Math.PI,alpha=deg(Math.atan(H/6)),t10=(144-Math.sqrt(144**2-4*90.25*44))/(2*90.25),phi10=deg(Math.atan(H*t10/(12-6*t10))),X=x=>320+37*x,Y=y=>400-37*y;
+let precisePhi=null,pointName='₁',manual=false,lastStage='';
+function geometry(phi){const u=Math.tan(rad(phi)),t=12*u/(H+6*u),x=6*(1-t),y=H*t;return {t,x,y,ap:Math.hypot(x+6,y),volume:8*y,total:16*H}}
+function initPart(){precisePhi=null;pointName=part===1||part===3?'₁':'ₙ';manual=false;lastStage='';$('phi').value=35}
+function state(){const phase=part===0?(step===0?0:step===1?1:step<4?2:3):3,showP=part===1?step>=1:part>=2,connect=part===1?step>=2:part>=2,split=part===4&&step>=2;return {phase,showP,connect,split,phi:precisePhi??Number($('phi').value),pointName,part,step}}
+window.exam2024B4State=state;
+function angle(p,u,v,label,r=38){let a=Math.atan2(u[1]-p[1],u[0]-p[0]),b=Math.atan2(v[1]-p[1],v[0]-p[0]),d=(b-a+Math.PI*3)%(2*Math.PI)-Math.PI;el('path',{d:`M${p[0]+r*Math.cos(a)} ${p[1]+r*Math.sin(a)} A${r} ${r} 0 0 ${d>0?1:0} ${p[0]+r*Math.cos(b)} ${p[1]+r*Math.sin(b)}`,fill:'none',stroke:'#a32b4d','stroke-width':1.8});caption(p[0]+(r+16)*Math.cos(a+d/2)-4,p[1]+(r+16)*Math.sin(a+d/2)+4,label,'#a32b4d',15)}
+function right(p,u,v){const r=18;el('path',{d:`M${p[0]+r*u[0]} ${p[1]+r*u[1]} A${r} ${r} 0 0 ${u[0]*v[1]-u[1]*v[0]>0?1:0} ${p[0]+r*v[0]} ${p[1]+r*v[1]}`,fill:'none',stroke:'#198576','stroke-width':1.5,'data-right-angle':'quarter-arc'});el('circle',{cx:p[0]+r*(u[0]+v[0])/(2*Math.sqrt(2)),cy:p[1]+r*(u[1]+v[1])/(2*Math.sqrt(2)),r:2.1,fill:'#198576','data-right-angle':'center-dot'})}
+function draw(){
+ const stage=part+':'+step;if(stage!==lastStage){manual=false;precisePhi=null;pointName=part===1||part===3?'₁':'ₙ';$('phi').value=35;if(part===2&&step>=5){$('phi').value=17.60;pointName='₂'}if(part===4&&step>=2){precisePhi=deg(Math.atan(H/18));pointName='₃'}lastStage=stage}
+ const st=state(),g=geometry(st.phi),A=[X(-6),Y(0)],C=[X(6),Y(0)],M=[X(0),Y(0)],B=[X(-Math.SQRT2),Y(-Math.SQRT2)],D=[X(Math.SQRT2),Y(Math.SQRT2)],S=[X(0),Y(H)],P=[X(g.x),Y(g.y)];$('plot').replaceChildren();
+ const polygon=(points,color,kind)=>el('polygon',{points:points.map(p=>p.join(',')).join(' '),fill:color,'fill-opacity':.16,stroke:'none','data-face':kind});
+ if(st.phase>=1){polygon([A,B,C,D],'#b6cbd6','raute');for(const[a,b]of[[A,B],[B,C],[C,D],[D,A],[B,D]])line(a,b,'#60758b',1.7)}line(A,C,'#60758b',2);mark(A,'A');mark(C,'C');mark(M,'M','#60758b');caption(280,487,'AC = 12 cm','#60758b',15);
+ if(st.phase>=1){mark(B,'B');mark(D,'D');caption(350,463,'BD = 8 cm (verkürzt)','#60758b',14)}
+ if(st.phase>=2){line(M,S,'#198576',2,'5 4');line(C,S,'#60758b',2);mark(S,'S');right(M,[1,0],[0,-1]);angle(C,A,S,'α');caption(420,245,'CS = 9,5 cm','#60758b',15)}
+ if(st.phase>=3){line(A,S,'#60758b',2);line(B,S,'#60758b',1.7);line(D,S,'#60758b',1.7)}
+ if(part===1&&step===0)angle(A,C,[X(-6+8*Math.cos(rad(35))),Y(8*Math.sin(rad(35)))],'35°',57);
+ if(st.showP){polygon([A,C,P],'#a32b4d','ACP');line(A,P,'#a32b4d',2.8);line(P,C,'#a32b4d',2.8);line(A,C,'#a32b4d',2.5);if(st.connect){line(B,P,'#a32b4d',2.6);line(A,B,'#a32b4d',2.3);line(C,B,'#a32b4d',2.3)}mark(P,'P'+st.pointName,'#a32b4d');angle(A,C,P,'φ',54)}
+ if(st.split){polygon([A,P,S],'#198576','APS');line(A,S,'#198576',2.8);line(P,S,'#198576',2.8);line(S,B,'#198576',2.6);caption(92,75,Math.abs(g.t-.5)<1e-10?'Gleiche Teilvolumina: je ¼ der Ausgangspyramide':'Rote und grüne Teilpyramide ergeben zusammen ½','#253341',16)}
+ $('explore').hidden=!(part===1&&step>=2||part>=2);$('p2').hidden=!(part===2&&step>=5);$('p3').hidden=!st.split;$('phival').textContent=st.phi.toFixed(precisePhi===null?2:5).replace('.',',')+'°';
+ const fmt=x=>x.toFixed(2).replace('.',',');$('measure').textContent=st.showP?`Exakte Originalgeometrie: AP${st.pointName} = ${fmt(g.ap)} cm; V(ACP${st.pointName}B) = ${fmt(g.volume)} cm³; Anteil an ABCDS: ${fmt(100*g.volume/g.total)} %.${st.split?' Grüne Teilpyramide: '+fmt(50-100*g.volume/g.total)+' %.':''}`:'Schrägbild: AC in wahrer Länge; BD unter 45° und auf die Hälfte verkürzt. Die 3D-Ansicht zeigt die unverzerrte Raumgeometrie.';
+ window.dispatchEvent(new Event('pyramid2024B4Change'));
+}
+$('phi').oninput=()=>{precisePhi=null;pointName='ₙ';manual=true;draw()};$('p1').onclick=()=>{precisePhi=null;pointName='₁';$('phi').value=35;draw()};$('endPoint').onclick=()=>{precisePhi=alpha;pointName=' = S';draw()};$('p2').onclick=()=>{precisePhi=phi10;pointName='₂';draw()};$('p3').onclick=()=>{precisePhi=deg(Math.atan(H/18));pointName='₃';draw()};
+function mode(three){$('view3d').hidden=!three;$('cameraButtons').hidden=!three;$('figureScroll').hidden=three;document.querySelector('.mobile-controls').hidden=three;$('threeD').setAttribute('aria-pressed',three);$('twoD').setAttribute('aria-pressed',!three);window.dispatchEvent(new Event('pyramid2024B4Change'))}
+$('twoD').onclick=()=>mode(false);$('threeD').onclick=()=>mode(true);
+
+start();</script><script type="module" src="pyramide-b4-3d.js"></script></body></html>
