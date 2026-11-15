@@ -1,0 +1,70 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A 2 · Mathematik I 2023 – Der ErkLehrer</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style> :root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:white;padding:17px 4%;font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted,.small{color:#637384}.small{font-size:.87rem;line-height:1.5}.grid{display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(300px,1fr);gap:16px}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}button{font:inherit;cursor:pointer;background:white;border:1px solid #b9c4d1;border-radius:8px;padding:8px 11px;color:#253341}button.active{background:#8e2948;color:white}button:disabled{opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e68b3c;outline-offset:2px}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.original,.step{background:#f6f8fb;padding:12px;border-radius:8px;line-height:1.75}.step{border-left:4px solid #a32b4d;min-height:140px}.tag{display:inline-block;background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:7px;margin:7px}.plot{display:block;width:100%;height:auto}.figure-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}.three{height:440px;position:relative;touch-action:none;background:#f8fafc;border-radius:8px;overflow:hidden}.three canvas{display:block;width:100%;height:100%}.threehelp{position:absolute;bottom:7px;left:9px;font-size:12px;pointer-events:none;color:#637384}input[type=range]{width:100%;accent-color:#9a2848}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.choices label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #dce1e8;border-radius:8px}.mobile-controls{display:none}[hidden]{display:none!important}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}.panel{padding:12px}.plot{width:620px;max-width:none}.figure-scroll.overview .plot{width:100%}.mobile-controls{display:block}.three{height:420px}}</style></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><nav class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2023</a><a href="a1.html">← A 1</a><a href="a3.html">A 3 →</a></nav><p class="muted">Realschule Bayern · Mathematik I · Haupttermin · taschenrechnerfreier Teil</p><h1>Abschlussprüfung 2023 · A 2</h1><div class="grid"><section class="panel"><h2>Exponentialfunktion: Nullstelle und Asymptote</h2><div id="figureScroll" class="figure-scroll" tabindex="0" role="region" aria-label="Zeichnung, auf schmalen Bildschirmen seitlich verschiebbar"><svg id="plot" class="plot" viewBox="0 0 640 540" role="img" aria-label="Exponentialfunktion: Nullstelle und Asymptote; Zeichnung passend zu den Lösungsschritten"></svg></div><div class="mobile-controls"><button id="overview" aria-pressed="false">Gesamte Zeichnung anzeigen</button><p class="small">Lesemodus: Zeichnung seitlich wischen.</p></div><div id="explore" hidden><label for="x">Abszisse eines Graphenpunkts: <strong id="xval">0,00</strong></label><input id="x" type="range" min="-5" max="4" step=".1" value="0"><button id="original">Erkundung zurücksetzen</button></div><p class="small">Die Achsen sind unterschiedlich skaliert: waagerecht 1 Einheit je Rasterspalte, senkrecht 6 Einheiten je Rasterzeile.</p><p id="measure" class="small" aria-live="polite"></p></section><section class="panel"><h2>Originalaufgabe und Musterlösung</h2><div class="original"><strong>Ausgangsangaben zu A 2</strong><div><p>Gegeben ist die Funktion \(f\) mit der Gleichung \(y=3\cdot2^x-24\) \((x,y\in\mathbb R)\).</p></div></div><div id="parts" class="buttons"></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong><span id="count" class="tag"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Ausführliche eigenständige Lernlösung nach dem amtlichen ISB-Lösungsmuster. Keine amtliche Lösung.</p></section></div></main><script>const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';let part=0,step=0;
+function el(t,a={},text){let e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('plot').append(e);return e}
+function line(a,b,color='#60758b',w=2,dash=''){return el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':dash})}
+function caption(x,y,t,color='#253341',size=16){return el('text',{x,y,fill:color,'font-size':size,stroke:'#fff','stroke-width':4,'paint-order':'stroke','stroke-linejoin':'round'},t)}
+function mark(p,t,color='#253341'){el('circle',{cx:p[0],cy:p[1],r:3.5,fill:color});caption(p[0]+7,p[1]-8,t,color)}
+function fraction(x,y,n,d,visible=true,color='#253341'){let g=el('g',{'data-probability':n+'/'+d,visibility:visible?'visible':'hidden'});for(const[tag,a,t]of [['rect',{x:x-23,y:y-24,width:46,height:53,rx:9,fill:'#fff',stroke:'#b9c4d1'}],['text',{x,y:y-5,'text-anchor':'middle','font-size':17,fill:color},n],['line',{x1:x-14,x2:x+14,y1:y,y2:y,stroke:color,'stroke-width':1.4}],['text',{x,y:y+21,'text-anchor':'middle','font-size':17,fill:color},d]]){const c=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>c.setAttribute(k,v));if(t!==undefined)c.textContent=t;g.append(c)}return g}
+function math(){if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution')]);MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)}}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;draw();math()}
+function start(){tasks.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.n;b.onclick=()=>{part=i;step=0;initPart();render()};$('parts').append(b)});$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[part].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;initPart();render()};$('overview').onclick=()=>{const v=$('figureScroll').classList.toggle('overview');$('overview').setAttribute('aria-pressed',String(v));$('overview').textContent=v?'Zum Lesemodus wechseln':'Gesamte Zeichnung anzeigen';$('figureScroll').scrollLeft=0};initPart();render();window.addEventListener('load',math)}
+
+
+const tasks=[
+ {
+  "n": "A 2.1",
+  "p": "2 P",
+  "q": "Berechnen Sie die Nullstelle der Funktion \\(f\\).",
+  "steps": [
+   [
+    "Nullstellenbedingung einsetzen",
+    "An einer Nullstelle ist der Funktionswert null. Setze deshalb \\(y=0\\):\\[0=3\\cdot2^x-24.\\]Gesucht ist diejenige Abszisse, bei der der Graph die \\(x\\)-Achse schneidet."
+   ],
+   [
+    "Exponentialterm freistellen",
+    "Addiere zuerst 24 und dividiere anschließend durch 3:\\[\\begin{aligned}24&=3\\cdot2^x,\\\\8&=2^x.\\end{aligned}\\]Diese Umformungen sind umkehrbar und verändern die Lösungsmenge nicht."
+   ],
+   [
+    "Passende Zweierpotenz erkennen",
+    "Ohne Taschenrechner genügt die bekannte Potenz:\\[8=2^3.\\]Also gilt \\(2^x=2^3\\). Weil die Exponentialfunktion zur Basis 2 streng monoton wächst, können gleiche Funktionswerte nur zu gleichen Exponenten gehören:\\[x=3.\\]"
+   ],
+   [
+    "Nullstelle und Probe",
+    "Die Nullstelle ist \\(\\boxed{x=3}\\), die Lösungsmenge der Nullstellengleichung lautet \\(L=\\{3\\}\\). Der Schnittpunkt mit der \\(x\\)-Achse ist \\(N(3\\mid0)\\). Die Probe bestätigt:\\[f(3)=3\\cdot2^3-24=24-24=0.\\]"
+   ]
+  ]
+ },
+ {
+  "n": "A 2.2",
+  "p": "1 P",
+  "q": "Geben Sie die Gleichung der Asymptote des Graphen von \\(f\\) an.",
+  "steps": [
+   [
+    "Grundfunktion betrachten",
+    "Der Graph der Exponentialfunktion \\(y=2^x\\) nähert sich für immer kleinere \\(x\\)-Werte der \\(x\\)-Achse. Der Term \\(2^x\\) bleibt dabei positiv und nähert sich null."
+   ],
+   [
+    "Streckung und Verschiebung berücksichtigen",
+    "Der Faktor 3 verändert diese Annäherung an null nicht: Auch \\(3\\cdot2^x\\) nähert sich null. Durch den Summanden \\(-24\\) wird der gesamte Graph um 24 Einheiten nach unten verschoben. Seine waagrechte Asymptote verschiebt sich entsprechend."
+   ],
+   [
+    "Asymptotengleichung angeben",
+    "Die gesuchte Gleichung lautet:\\[\\boxed{y=-24}.\\]Der Graph liegt stets oberhalb dieser Geraden, weil \\(3\\cdot2^x>0\\) für alle \\(x\\in\\mathbb R\\) gilt. Der Abstand zur Asymptote wird für immer kleinere \\(x\\) beliebig klein."
+   ]
+  ]
+ }
+];
+
+function arrow(a,b,color='#a32b4d',w=2.6){line(a,b,color,w);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]),p=t=>[b[0]-11*Math.cos(ang+t),b[1]-11*Math.sin(ang+t)];el('polygon',{points:[b,p(.4),p(-.4)].map(v=>v.join(',')).join(' '),fill:color})}
+function axes(X,Y,xmin,xmax,ymin,ymax,dx=1,dy=1){for(let x=Math.ceil(xmin/dx)*dx;x<=xmax+1e-8;x+=dx)line([X(x),Y(ymin)],[X(x),Y(ymax)],'#e7ecf0',1);for(let y=Math.ceil(ymin/dy)*dy;y<=ymax+1e-8;y+=dy)line([X(xmin),Y(y)],[X(xmax),Y(y)],'#e7ecf0',1);arrow([X(xmin),Y(0)],[X(xmax)+12,Y(0)],'#60758b',1.7);arrow([X(0),Y(ymin)],[X(0),Y(ymax)-12],'#60758b',1.7);caption(X(xmax)+12,Y(0)+20,'x');caption(X(0)-21,Y(ymax)-5,'y');caption(X(0)-23,Y(0)+23,'O','#637384',14)}
+function right(p,u,v){const r=20;el('path',{d:`M${p[0]+r*u[0]} ${p[1]+r*u[1]} A${r} ${r} 0 0 ${u[0]*v[1]-u[1]*v[0]>0?1:0} ${p[0]+r*v[0]} ${p[1]+r*v[1]}`,stroke:'#198576','stroke-width':1.7,fill:'none','data-right-angle':'quarter-arc'});el('circle',{cx:p[0]+r*(u[0]+v[0])/(2*Math.sqrt(2)),cy:p[1]+r*(u[1]+v[1])/(2*Math.sqrt(2)),r:2.1,fill:'#198576','data-right-angle':'center-dot'})}
+
+
+const f=x=>3*2**x-24,X=x=>315+50*x,Y=y=>310-7*y;let live=false;
+function initPart(){live=false;$('x').value=0}
+function draw(){$('plot').replaceChildren();axes(X,Y,-5,5,-27,30,1,6);for(const x of [-5,-3,-1,1,3,5])caption(X(x)-5,Y(0)+24,String(x),'#637384',14);for(const y of [-24,-12,12,24])caption(X(0)-35,Y(y)+5,String(y),'#637384',14);el('defs').innerHTML='<clipPath id="frame"><rect x="65" y="100" width="500" height="399"/></clipPath>';let d='';for(let i=0;i<=1000;i++){const x=-5+i/100;d+=(i?'L':'M')+X(x)+' '+Y(f(x))}el('path',{d,fill:'none',stroke:'#2478a4','stroke-width':2.8,'clip-path':'url(#frame)'});caption(X(4.1),Y(25),'Graph zu f','#2478a4',15);
+ if(part===0&&step>=3)mark([X(3),Y(0)],'N','#a32b4d');if(part===1&&step>=1){line([X(-5),Y(-24)],[X(5),Y(-24)],'#a32b4d',2,'6 4');caption(72,Y(-24)-12,step>=2?'Asymptote: y = −24':'Verschobene waagrechte Grenze','#a32b4d',15)}
+ $('explore').hidden=!(part===0&&step>=3||part===1&&step>=2);const x=Number($('x').value);$('xval').textContent=x.toFixed(2).replace('.',',');if(live){const p=[X(x),Y(f(x))];mark(p,'P','#198576');line(p,[X(x),Y(-24)],'#198576',2,'4 3');$('measure').textContent=`Erkundung: x = ${x.toFixed(2).replace('.',',')}; f(x) = ${f(x).toFixed(4).replace('.',',')}. Der senkrechte Abstand zur Geraden y = −24 ist positiv.`}else $('measure').textContent='Blau: Graph zu f. Markierungen und Hilfslinien werden passend zum Lösungsschritt ergänzt.';
+}
+$('x').oninput=()=>{live=true;draw()};$('original').onclick=()=>{live=false;$('x').value=0;draw()};
+
+start();</script></body></html>

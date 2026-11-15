@@ -1,0 +1,74 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A 3 · Mathematik I 2023 – Der ErkLehrer</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style> :root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:white;padding:17px 4%;font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted,.small{color:#637384}.small{font-size:.87rem;line-height:1.5}.grid{display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(300px,1fr);gap:16px}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}button{font:inherit;cursor:pointer;background:white;border:1px solid #b9c4d1;border-radius:8px;padding:8px 11px;color:#253341}button.active{background:#8e2948;color:white}button:disabled{opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e68b3c;outline-offset:2px}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.original,.step{background:#f6f8fb;padding:12px;border-radius:8px;line-height:1.75}.step{border-left:4px solid #a32b4d;min-height:140px}.tag{display:inline-block;background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:7px;margin:7px}.plot{display:block;width:100%;height:auto}.figure-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}.three{height:440px;position:relative;touch-action:none;background:#f8fafc;border-radius:8px;overflow:hidden}.three canvas{display:block;width:100%;height:100%}.threehelp{position:absolute;bottom:7px;left:9px;font-size:12px;pointer-events:none;color:#637384}input[type=range]{width:100%;accent-color:#9a2848}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.choices label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #dce1e8;border-radius:8px}.mobile-controls{display:none}[hidden]{display:none!important}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}.panel{padding:12px}.plot{width:620px;max-width:none}.figure-scroll.overview .plot{width:100%}.mobile-controls{display:block}.three{height:420px}}</style></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><nav class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2023</a><a href="a2.html">← A 2</a><a href="a4.html">A 4 →</a></nav><p class="muted">Realschule Bayern · Mathematik I · Haupttermin · taschenrechnerfreier Teil</p><h1>Abschlussprüfung 2023 · A 3</h1><div class="grid"><section class="panel"><h2>Glücksrad und Pfadregeln</h2><div id="figureScroll" class="figure-scroll" tabindex="0" role="region" aria-label="Zeichnung, auf schmalen Bildschirmen seitlich verschiebbar"><svg id="plot" class="plot" viewBox="0 0 640 540" role="img" aria-label="Glücksrad und Pfadregeln; Zeichnung passend zu den Lösungsschritten"></svg></div><div class="mobile-controls"><button id="overview" aria-pressed="false">Gesamte Zeichnung anzeigen</button><p class="small">Lesemodus: Zeichnung seitlich wischen.</p></div><div id="pathControls" class="buttons" hidden><button id="allPaths">Alle passenden Pfade</button><button id="tenPath">Nur Zehnerpfad</button><button id="fifteenPath" hidden>Nur Fünfzehnerpfad</button></div><p class="small">Originalrad: oben links 10, oben rechts 15, unten 10. Im Baum werden die beiden gleich beschrifteten Zehnersektoren zum Ergebnis „10“ zusammengefasst.</p><p id="measure" class="small" aria-live="polite"></p></section><section class="panel"><h2>Originalaufgabe und Musterlösung</h2><div class="original"><strong>Ausgangsangaben zu A 3</strong><div><p>Ein Glücksrad besteht aus drei kongruenten Sektoren, die wie abgebildet beschriftet sind.</p></div></div><div id="parts" class="buttons"></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong><span id="count" class="tag"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Ausführliche eigenständige Lernlösung nach dem amtlichen ISB-Lösungsmuster. Keine amtliche Lösung.</p></section></div></main><script>const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';let part=0,step=0;
+function el(t,a={},text){let e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('plot').append(e);return e}
+function line(a,b,color='#60758b',w=2,dash=''){return el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':dash})}
+function caption(x,y,t,color='#253341',size=16){return el('text',{x,y,fill:color,'font-size':size,stroke:'#fff','stroke-width':4,'paint-order':'stroke','stroke-linejoin':'round'},t)}
+function mark(p,t,color='#253341'){el('circle',{cx:p[0],cy:p[1],r:3.5,fill:color});caption(p[0]+7,p[1]-8,t,color)}
+function fraction(x,y,n,d,visible=true,color='#253341'){let g=el('g',{'data-probability':n+'/'+d,visibility:visible?'visible':'hidden'});for(const[tag,a,t]of [['rect',{x:x-23,y:y-24,width:46,height:53,rx:9,fill:'#fff',stroke:'#b9c4d1'}],['text',{x,y:y-5,'text-anchor':'middle','font-size':17,fill:color},n],['line',{x1:x-14,x2:x+14,y1:y,y2:y,stroke:color,'stroke-width':1.4}],['text',{x,y:y+21,'text-anchor':'middle','font-size':17,fill:color},d]]){const c=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>c.setAttribute(k,v));if(t!==undefined)c.textContent=t;g.append(c)}return g}
+function math(){if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution')]);MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)}}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;draw();math()}
+function start(){tasks.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.n;b.onclick=()=>{part=i;step=0;initPart();render()};$('parts').append(b)});$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[part].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;initPart();render()};$('overview').onclick=()=>{const v=$('figureScroll').classList.toggle('overview');$('overview').setAttribute('aria-pressed',String(v));$('overview').textContent=v?'Zum Lesemodus wechseln':'Gesamte Zeichnung anzeigen';$('figureScroll').scrollLeft=0};initPart();render();window.addEventListener('load',math)}
+
+
+const tasks=[
+ {
+  "n": "A 3.1",
+  "p": "1 P",
+  "q": "Lionel dreht dreimal am Glücksrad.<br>Geben Sie die Wahrscheinlichkeit dafür an, dass er dreimal die Zahl 10 erhält.",
+  "steps": [
+   [
+    "Gleich große Sektoren zählen",
+    "Das Glücksrad hat drei kongruente Sektoren. Jeder Sektor besitzt daher dieselbe Trefferwahrscheinlichkeit. Zwei Sektoren tragen die Zahl 10, nur einer trägt die Zahl 15."
+   ],
+   [
+    "Wahrscheinlichkeiten einer Drehung",
+    "Damit gilt für jede einzelne Drehung:\\[P(10)=\\frac23,\\qquad P(15)=\\frac13.\\]Die Drehungen sind voneinander unabhängig: Das Ergebnis einer Drehung verändert die Chancen bei der nächsten Drehung nicht."
+   ],
+   [
+    "Pfadregel anwenden",
+    "Das gesuchte Ereignis ist die geordnete Folge \\((10;10;10)\\). Für unabhängige Drehungen werden die Wahrscheinlichkeiten entlang dieses Pfades multipliziert:\\[P(10;10;10)=\\frac23\\cdot\\frac23\\cdot\\frac23.\\]"
+   ],
+   [
+    "Ergebnis angeben",
+    "Multipliziere die Zähler und die Nenner:\\[P(10;10;10)=\\frac{2\\cdot2\\cdot2}{3\\cdot3\\cdot3}=\\boxed{\\frac8{27}}.\\]Der markierte Pfad zeigt das gesuchte Ereignis. Bei jeder neuen Drehung gelten wieder dieselben Einzelwahrscheinlichkeiten. Das Produkt beschreibt die Wahrscheinlichkeit genau dieser Ergebnisfolge."
+   ]
+  ]
+ },
+ {
+  "n": "A 3.2",
+  "p": "2 P",
+  "q": "Christiane dreht nur zweimal am Glücksrad.<br>Bestimmen Sie die Wahrscheinlichkeit dafür, dass sie zweimal hintereinander die gleiche Zahl erhält.",
+  "steps": [
+   [
+    "Passende Ergebnisfolgen bestimmen",
+    "„Zweimal die gleiche Zahl“ ist auf zwei Arten möglich: entweder \\((10;10)\\) oder \\((15;15)\\). Die beiden anderen Folgen \\((10;15)\\) und \\((15;10)\\) erfüllen die Bedingung nicht."
+   ],
+   [
+    "Zweimal 10 berechnen",
+    "Für den ersten passenden Pfad gilt nach der Pfadregel:\\[P(10;10)=\\frac23\\cdot\\frac23=\\frac49.\\]Die beiden Faktoren gehören zur ersten und zur zweiten unabhängigen Drehung."
+   ],
+   [
+    "Zweimal 15 berechnen",
+    "Für den zweiten passenden Pfad gilt entsprechend:\\[P(15;15)=\\frac13\\cdot\\frac13=\\frac19.\\]Auch diese Folge erfüllt das Ereignis „zweimal die gleiche Zahl“ und muss mitgezählt werden."
+   ],
+   [
+    "Unvereinbare Fälle addieren",
+    "Die beiden Folgen schließen einander aus. Deshalb werden ihre Wahrscheinlichkeiten addiert:\\[\\begin{aligned}P(\\text{gleiche Zahl})&=P(10;10)+P(15;15)\\\\&=\\frac49+\\frac19\\\\&=\\boxed{\\frac59}.\\end{aligned}\\]Beide passenden Pfade sind markiert; du kannst sie einzeln betrachten."
+   ]
+  ]
+ }
+];
+
+function arrow(a,b,color='#a32b4d',w=2.6){line(a,b,color,w);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]),p=t=>[b[0]-11*Math.cos(ang+t),b[1]-11*Math.sin(ang+t)];el('polygon',{points:[b,p(.4),p(-.4)].map(v=>v.join(',')).join(' '),fill:color})}
+function axes(X,Y,xmin,xmax,ymin,ymax,dx=1,dy=1){for(let x=Math.ceil(xmin/dx)*dx;x<=xmax+1e-8;x+=dx)line([X(x),Y(ymin)],[X(x),Y(ymax)],'#e7ecf0',1);for(let y=Math.ceil(ymin/dy)*dy;y<=ymax+1e-8;y+=dy)line([X(xmin),Y(y)],[X(xmax),Y(y)],'#e7ecf0',1);arrow([X(xmin),Y(0)],[X(xmax)+12,Y(0)],'#60758b',1.7);arrow([X(0),Y(ymin)],[X(0),Y(ymax)-12],'#60758b',1.7);caption(X(xmax)+12,Y(0)+20,'x');caption(X(0)-21,Y(ymax)-5,'y');caption(X(0)-23,Y(0)+23,'O','#637384',14)}
+function right(p,u,v){const r=20;el('path',{d:`M${p[0]+r*u[0]} ${p[1]+r*u[1]} A${r} ${r} 0 0 ${u[0]*v[1]-u[1]*v[0]>0?1:0} ${p[0]+r*v[0]} ${p[1]+r*v[1]}`,stroke:'#198576','stroke-width':1.7,fill:'none','data-right-angle':'quarter-arc'});el('circle',{cx:p[0]+r*(u[0]+v[0])/(2*Math.sqrt(2)),cy:p[1]+r*(u[1]+v[1])/(2*Math.sqrt(2)),r:2.1,fill:'#198576','data-right-angle':'center-dot'})}
+
+
+let selected='all';function initPart(){selected='all'}
+function draw(){$('plot').replaceChildren();const cx=320,cy=95,r=68;for(let j=0;j<3;j++){const a=(-90+j*120)*Math.PI/180,b=a+2*Math.PI/3,m=(a+b)/2,pt=z=>[cx+r*Math.cos(z),cy+r*Math.sin(z)];el('path',{d:`M${cx} ${cy} L${pt(a)} A${r} ${r} 0 0 1 ${pt(b)} Z`,fill:j===0?'#eadfe7':'#dceef0',stroke:'#60758b','stroke-width':2,'data-sector':j===0?'15':'10'});caption(cx+39*Math.cos(m)-11,cy+39*Math.sin(m)+6,j===0?'15':'10','#253341',19)}
+ const levels=part===0?3:2,rootY=215,dy=levels===3?90:125,root=[320,rootY],ready=step>=1;mark(root,'Start','#637384');let active=step>=3?selected:null;if(part===1&&step===1)active='ten';if(part===1&&step===2)active='fifteen';
+ function branch(prefix,from,depth){if(depth>levels)return;for(let j=0;j<2;j++){const seq=[...prefix,j===0?10:15],count=2**depth,index=seq.reduce((a,v)=>2*a+(v===15?1:0),0),to=[30+(index+.5)*580/count,rootY+depth*dy],allTen=seq.every(v=>v===10),all15=seq.every(v=>v===15),success=allTen&&(active==='all'||active==='ten')||part===1&&all15&&(active==='all'||active==='fifteen');line(from,to,success?'#198576':'#9aa9b6',success?3.5:1.4);const mx=(from[0]+to[0])/2,my=(from[1]+to[1])/2;fraction(mx+(to[0]>from[0]?12:-12),my,j===0?2:1,3,ready,success?'#198576':'#253341');el('circle',{cx:to[0],cy:to[1],r:13,fill:success?'#dcefe8':'#f6f8fb',stroke:success?'#198576':'#9aa9b6'});caption(to[0]-8,to[1]+5,String(seq.at(-1)),success?'#198576':'#253341',14);if(depth===levels&&success)el('circle',{cx:to[0],cy:to[1],r:18,fill:'none',stroke:'#198576','stroke-width':2,'data-success':seq.join('-')});branch(seq,to,depth+1)}}branch([],root,1);
+ $('pathControls').hidden=step<3;$('fifteenPath').hidden=part===0;$('measure').textContent=part===0?'Drei unabhängige Drehungen: drei Stufen im Baum.':'Zwei unabhängige Drehungen: zwei Stufen im Baum. Gleiche Zahl bedeutet 10–10 oder 15–15.';
+}
+$('allPaths').onclick=()=>{selected='all';draw()};$('tenPath').onclick=()=>{selected='ten';draw()};$('fifteenPath').onclick=()=>{selected='fifteen';draw()};
+
+start();</script></body></html>
