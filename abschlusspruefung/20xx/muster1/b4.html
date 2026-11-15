@@ -167,11 +167,11 @@ const num=(n,d=2)=>n.toFixed(d).replace('.','{,}'),inline=s=>'\\('+s+'\\)';
 function geometry(phi){const a=phi*Math.PI/180,t=5*Math.sin(a)/(8*Math.cos(a)+5*Math.sin(a)),Q=[8*(1-t),5*t,0],P=[8-5*Math.tan(a),0,0];return {t,Q,P,eq:Math.hypot(Q[0]-8,Q[1]-5),nq:Math.hypot(Q[0],Q[1]-5),volume:40*t,total:240,area:20*t}}
 function state(){return {phi:precisePhi??Number($('phi').value),pointName,phase:part===0?Math.min(step,2):2,showQ:part>0,pyramid:part>=3,showHeight:part>=3&&step>=1,minimum:part===2&&step>=3,part,step}}
 window.exam20xxB4State=state;window.exam20xxB4Geometry=geometry;
-function initPart(){lastStage='';precisePhi=part===4?phiTarget:null;pointName=part===4?'2':'1';$('phi').value=precisePhi??45}
+function initPart(){lastStage='';precisePhi=null;pointName='1';$('phi').value=45}
 function project([x,y,z]){return [160+42*(x-.5*Math.SQRT1_2*z),390-42*(y-.5*Math.SQRT1_2*z)]}
 function arc(p,u,v,label,r=28,color='#a32b4d'){let a=Math.atan2(u[1]-p[1],u[0]-p[0]),b=Math.atan2(v[1]-p[1],v[0]-p[0]),d=(b-a+Math.PI*3)%(2*Math.PI)-Math.PI;el('path',{d:'M'+(p[0]+r*Math.cos(a))+' '+(p[1]+r*Math.sin(a))+' A'+r+' '+r+' 0 0 '+(d>0?1:0)+' '+(p[0]+r*Math.cos(b))+' '+(p[1]+r*Math.sin(b)),fill:'none',stroke:color,'stroke-width':1.6});mathCaption(p[0]+(r+17)*Math.cos(a+d/2)-7,p[1]+(r+17)*Math.sin(a+d/2)+5,label,color,16)}
 function draw(){
- const stage=part+':'+step;if(stage!==lastStage){if(part===2&&step>=3){precisePhi=alpha;pointName='0';$('phi').value=alpha}lastStage=stage}
+ const stage=part+':'+step;if(stage!==lastStage){if(part===2){precisePhi=step>=3?alpha:null;pointName=step>=3?'0':'1';$('phi').value=precisePhi??45}if(part===4){precisePhi=step>=4?phiTarget:null;pointName=step>=4?'2':'1';$('phi').value=precisePhi??45}lastStage=stage}
  const st=state(),g=geometry(st.phi),p={A:[0,0,6],B:[8,0,0],C:[0,0,-6],D:[0,5,6],E:[8,5,0],F:[0,5,-6],M:[0,0,0],N:[0,5,0],P:g.P,Q:g.Q},P=Object.fromEntries(Object.entries(p).map(([k,v])=>[k,project(v)]));$('plot').replaceChildren();
  const edge=(a,b,col='#60758b',w=2,dash='')=>line(P[a],P[b],col,w,dash),face=(keys,col,opacity)=>el('polygon',{points:keys.map(k=>P[k].join(',')).join(' '),fill:col,'fill-opacity':opacity,stroke:'none'});
  face(['A','B','C'],'#8dbbc9',.08);for(const[a,b]of[['A','B'],['B','C'],['C','A']])edge(a,b);
@@ -183,7 +183,7 @@ function draw(){
  const offsets={A:[-20,19],B:[10,13],C:[10,18],D:[-23,0],E:[12,0],F:[-4,-13],M:[-23,7],N:[-23,-7],P:[-7,27],Q:[8,5]};
  for(const k of st.phase>=1?['A','B','C','D','E','F','M','N']:['A','B','C','M']){el('circle',{cx:P[k][0],cy:P[k][1],r:3,fill:'#60758b'});caption(P[k][0]+offsets[k][0],P[k][1]+offsets[k][1],k)}
  if(st.showQ){for(const k of ['P','Q']){el('circle',{cx:P[k][0],cy:P[k][1],r:3.8,fill:'#d17720'});let off=offsets[k];if(k==='Q'&&g.t<.01)off=[-52,-8];if(k==='P'&&g.P[0]<.05)off=[8,28];mathCaption(P[k][0]+off[0],P[k][1]+off[1],k+'_'+pointName,'#a32b4d',17)}}
- mathCaption(300,423,'8\\,\\mathrm{cm}','#637384',16);
+ mathCaption(300,450,'8\\,\\mathrm{cm}','#637384',16);
  if(st.phase>=1)mathCaption(508,290,'5\\,\\mathrm{cm}','#637384',16);
  if(st.showHeight)mathCaption(45,415,'|\\overline{AM}|=6\\,\\mathrm{cm}','#198576',16);
  let label='';if(part===0&&step>=3)label='\\sphericalangle NBM\\approx32{,}01^\\circ';

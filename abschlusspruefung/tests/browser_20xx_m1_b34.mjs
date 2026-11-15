@@ -7,6 +7,7 @@ for(let i=0;i<await parts.count();i++){await parts.nth(i).click();const count=Nu
 if(n===3){await parts.nth(2).click();for(let j=0;j<3;j++)await p.locator('#next').click();if(await p.locator('[data-rhombus]').count()!==2)throw Error('Beide Originalrauten fehlen');await shot('originalrauten');await parts.nth(3).click();for(let j=0;j<3;j++)await p.locator('#next').click();for(const x of [-.6,0,5,7.5]){await p.locator('#xval').evaluate((e,x)=>{e.value=x;e.dispatchEvent(new Event('input'))},x);await ready();const g=await p.evaluate(()=>geometry(state().x));if(Math.abs(g.m-Math.log(g.x*g.x+4*g.x+3)/Math.log(3))>1e-8)throw Error('Mittelpunktkopplung');await shot('x'+String(x).replace('.','_'))}await p.locator('#xroot').click();if(Math.abs(await p.evaluate(()=>geometry(state().x).m))>1e-9)throw Error('Exakter Wurzelwert');await shot('mittelpunkt-achse');await parts.nth(4).click();for(let j=0;j<5;j++)await p.locator('#next').click();await shot('ergebnis');await parts.nth(0).click();if(await p.locator('[data-rhombus],[data-curve="f2"]').count())throw Error('Spätere Objekte bleiben')}
 
 if(n===4){
+ await parts.nth(4).click();if(await p.evaluate(()=>state().pointName)!=='1')throw Error('Zielwinkel vorzeitig sichtbar');
  await parts.nth(2).click();for(let j=0;j<5;j++)await p.locator('#next').click();
  await p.locator('#minimum').click();await ready();
  const minimum=await p.evaluate(()=>({st:state(),g:geometry(state().phi)}));
