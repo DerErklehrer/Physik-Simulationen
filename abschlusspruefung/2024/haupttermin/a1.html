@@ -1,0 +1,73 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A 1 · Mathematik I 2024 – Der ErkLehrer</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script><style> :root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:white;padding:17px 4%;font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted,.small{color:#637384}.small{font-size:.87rem;line-height:1.5}.grid{display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(300px,1fr);gap:16px}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}button{font:inherit;cursor:pointer;background:white;border:1px solid #b9c4d1;border-radius:8px;padding:8px 11px;color:#253341}button.active{background:#8e2948;color:white}button:disabled{opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e68b3c;outline-offset:2px}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.original,.step{background:#f6f8fb;padding:12px;border-radius:8px;line-height:1.75}.step{border-left:4px solid #a32b4d;min-height:140px}.tag{display:inline-block;background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:7px;margin:7px}.plot{display:block;width:100%;height:auto}.figure-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}.three{height:440px;position:relative;touch-action:none;background:#f8fafc;border-radius:8px;overflow:hidden}.three canvas{display:block;width:100%;height:100%}.threehelp{position:absolute;bottom:7px;left:9px;font-size:12px;pointer-events:none;color:#637384}input[type=range]{width:100%;accent-color:#9a2848}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.choices label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #dce1e8;border-radius:8px}.mobile-controls{display:none}[hidden]{display:none!important}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}.panel{padding:12px}.plot{width:620px;max-width:none}.figure-scroll.overview .plot{width:100%}.mobile-controls{display:block}.three{height:420px}}</style></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><nav class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2024</a><a href="a2.html">A 2 →</a></nav><p class="muted">Realschule Bayern · Mathematik I · Haupttermin · taschenrechnerfreier Teil</p><h1>Abschlussprüfung 2024 · A 1</h1><div class="grid"><section class="panel"><h2>Pyramide im Schrägbild</h2><div id="figureScroll" class="figure-scroll" tabindex="0" role="region" aria-label="Zeichnung, auf schmalen Bildschirmen seitlich verschiebbar"><svg id="plot" class="plot" viewBox="0 0 640 540" role="img" aria-label="Pyramide im Schrägbild; die Zeichnung folgt den Lösungsschritten"></svg></div><div class="mobile-controls"><button id="overview" aria-pressed="false">Gesamte Zeichnung anzeigen</button><p class="small">Lesemodus: Zeichnung seitlich wischen.</p></div><div class="buttons"><button id="twoD" class="active" aria-pressed="true">2D-Schrägbild</button><button id="threeD" aria-pressed="false">3D drehen</button><button id="top" hidden>Draufsicht</button><button id="cameraReset" hidden>Ansicht zurücksetzen</button></div><div id="view3d" class="three" hidden role="img" aria-label="Drehbare dreieckige Pyramide"><span class="threehelp">Ein Finger: drehen · zwei Finger: zoomen</span></div><p class="small">Die Grundfläche entspricht dem amtlichen Schrägbild. Bildschirmgrößen verändern die angezeigten Zentimeterlängen; das Verhältnis bleibt gleich.</p><p id="measure" class="small" aria-live="polite"></p></section><section class="panel"><h2>Originalaufgabe und Musterlösung</h2><div class="original"><strong>A 1.0 – Ausgangsangaben</strong><div><p>Das gleichschenklige Dreieck \(ABC\) mit der Basis \(\overline{BC}\) ist die Grundfläche einer Pyramide \(ABCS\) mit der Höhe \(\overline{AS}\). Der Punkt \(M\) ist der Mittelpunkt der Basis \(\overline{BC}\).</p><p>Es gilt: \(|\overline{BC}|=9\,\mathrm{cm}\); \(|\overline{AC}|=7\,\mathrm{cm}\); \(\sphericalangle SCA=45^\circ\).</p><p>Die Zeichnung zeigt nur die Grundfläche der Pyramide \(ABCS\) im Schrägbild.<br>Für das Schrägbild gilt: \(\omega=60^\circ\); \(\overline{AM}\) liegt auf der Schrägbildachse.</p></div></div><div id="parts" class="buttons"></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong><span id="count" class="tag"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Ausführliche eigenständige Lernlösung nach dem amtlichen ISB-Lösungsmuster. Keine amtliche Lösung.</p></section></div></main><script>
+const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';let part=0,step=0;
+function el(t,a={},text){let e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('plot').append(e);return e}
+function line(a,b,color='#60758b',w=2,dash=''){return el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':dash})}
+function caption(x,y,t,color='#253341',size=16){return el('text',{x,y,fill:color,'font-size':size,stroke:'#fff','stroke-width':4,'paint-order':'stroke','stroke-linejoin':'round'},t)}
+function mark(p,t,color='#253341'){el('circle',{cx:p[0],cy:p[1],r:3.5,fill:color});caption(p[0]+7,p[1]-8,t,color)}
+function fraction(x,y,n,d,visible=true,color='#253341'){let g=el('g',{'data-probability':n+'/'+d,visibility:visible?'visible':'hidden'});for(const[tag,a,t]of [['rect',{x:x-23,y:y-24,width:46,height:53,rx:9,fill:'#fff',stroke:'#b9c4d1'}],['text',{x,y:y-5,'text-anchor':'middle','font-size':17,fill:color},n],['line',{x1:x-14,x2:x+14,y1:y,y2:y,stroke:color,'stroke-width':1.4}],['text',{x,y:y+21,'text-anchor':'middle','font-size':17,fill:color},d]]){const c=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>c.setAttribute(k,v));if(t!==undefined)c.textContent=t;g.append(c)}return g}
+function math(){if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution')]);MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)}}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;draw();math()}
+function start(){tasks.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.n;b.onclick=()=>{part=i;step=0;initPart();render()};$('parts').append(b)});$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[part].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;initPart();render()};$('overview').onclick=()=>{const v=$('figureScroll').classList.toggle('overview');$('overview').setAttribute('aria-pressed',String(v));$('overview').textContent=v?'Zum Lesemodus wechseln':'Gesamte Zeichnung anzeigen';$('figureScroll').scrollLeft=0};initPart();render();window.addEventListener('load',math)}
+
+const tasks=[
+ {
+  "n": "A 1.1",
+  "p": "1 P",
+  "q": "Geben Sie den Wert für den Verzerrungsmaßstab q an. Entnehmen Sie der Zeichnung zu A 1.0 die dazu erforderlichen Maße.",
+  "steps": [
+   [
+    "Verkürzte Richtung erkennen",
+    "Die Strecke \\(\\overline{AM}\\) liegt auf der Schrägbildachse und wird in wahrer Länge dargestellt. Die dazu senkrechte Strecke \\(\\overline{BC}\\) verläuft im Schrägbild unter \\(60^\\circ\\) und ist verkürzt."
+   ],
+   [
+    "Originalzeichnung ausmessen",
+    "Die tatsächliche Länge ist \\(|\\overline{BC}|=9\\,\\mathrm{cm}\\). In der gedruckten Originalzeichnung misst dieselbe Strecke \\(6\\,\\mathrm{cm}\\). Die Bildschirmansicht kann vergrößert oder verkleinert sein; maßgeblich ist das Verhältnis."
+   ],
+   [
+    "Verzerrungsmaßstab bestimmen",
+    "\\[\\begin{aligned}q&=\\frac{\\text{Länge im Schrägbild}}{\\text{tatsächlicher Länge}}\\\\&=\\frac{6\\,\\mathrm{cm}}{9\\,\\mathrm{cm}}=\\boxed{\\frac23}.\\end{aligned}\\]"
+   ]
+  ]
+ },
+ {
+  "n": "A 1.2",
+  "p": "1,5 P",
+  "q": "Ergänzen Sie die Zeichnung zu A 1.0 zum Schrägbild der Pyramide ABCS.",
+  "steps": [
+   [
+    "Höhe der Pyramide bestimmen",
+    "Da \\(\\overline{AS}\\) die Höhe ist, steht sie senkrecht zur Grundfläche und damit auf \\(\\overline{AC}\\). Im rechtwinkligen Dreieck \\(ACS\\) gilt \\(\\sphericalangle SCA=45^\\circ\\). Der dritte Winkel ist ebenfalls \\(45^\\circ\\); die Katheten sind gleich lang: \\[|\\overline{AS}|=|\\overline{AC}|=7\\,\\mathrm{cm}.\\]"
+   ],
+   [
+    "Spitze S festlegen",
+    "Errichte in \\(A\\) eine Senkrechte nach oben. Die Höhenrichtung wird unverkürzt dargestellt. Trage darauf \\(|\\overline{AS}|=7\\,\\mathrm{cm}\\) ab; ihr Endpunkt ist \\(S\\)."
+   ],
+   [
+    "Seitenkante SC zeichnen",
+    "Verbinde \\(S\\) mit \\(C\\). Das Dreieck \\(ACS\\) ist damit ergänzt. Der räumliche Winkel \\(\\sphericalangle SCA=45^\\circ\\) erscheint im Schrägbild verzerrt; er darf dort nicht einfach mit dem Geodreieck als \\(45^\\circ\\) abgetragen werden."
+   ],
+   [
+    "Pyramide vervollständigen",
+    "Verbinde außerdem \\(S\\) mit \\(B\\). Wie im amtlichen Lösungsmuster sind in dieser Ansicht alle sechs Pyramidenkanten sichtbar und durchgezogen. \\(\\overline{AM}\\) ist eine Hilfsstrecke, keine zusätzliche Pyramidenkante."
+   ]
+  ]
+ }
+];
+
+let show3d=false;function initPart(){}
+function phase(){return part===1?step:0}
+window.exam2024State=()=>({phase:phase()});
+function draw(){
+ $('plot').replaceChildren();const am=Math.sqrt(7**2-4.5**2),scale=47,A=[110,370],M=[110+am*scale,370],B=[M[0]-1.5*scale,M[1]+Math.sqrt(3)*1.5*scale],C=[M[0]+1.5*scale,M[1]-Math.sqrt(3)*1.5*scale],S=[A[0],A[1]-7*scale];
+ line(A,B);line(B,C);line(C,A);line(A,M,'#95a4b1',1.5);for(const[p,t]of[[A,'A'],[B,'B'],[C,'C'],[M,'M']])mark(p,t);
+ if(part===0&&step>=1)caption(480,390,'6 cm im Original','#9a2848');
+ if(phase()>=1){line(A,S,'#9a2848',2.8);mark(S,'S','#9a2848');caption(30,215,'7 cm','#9a2848')}
+ if(phase()>=2)line(S,C,'#9a2848',2.8);
+ if(phase()>=3)line(S,B,'#9a2848',2.8);
+ $('measure').textContent=part===0?(step>=2?'Der Verzerrungsmaßstab steht in der Rechnung rechts.':step>=1?'Gedruckte Zeichnung: 6 cm; tatsächliche Länge: 9 cm.':'Grundfläche ABC: AM unverkürzt, BC in Schrägrichtung.'):phase()===0?'Zuerst die Höhe aus dem rechtwinkligen Dreieck ACS bestimmen.':'Die Spitze S liegt senkrecht über A. 3D und Schrägbild zeigen denselben Konstruktionsschritt.';
+ window.dispatchEvent(new Event('pyramid2024Change'));
+}
+function syncView(){ $('figureScroll').hidden=show3d;$('view3d').hidden=!show3d;for(const id of ['top','cameraReset'])$(id).hidden=!show3d;$('threeD').classList.toggle('active',show3d);$('twoD').classList.toggle('active',!show3d);$('threeD').setAttribute('aria-pressed',String(show3d));$('twoD').setAttribute('aria-pressed',String(!show3d));window.dispatchEvent(new Event('pyramid2024Change'))}
+$('threeD').onclick=()=>{show3d=true;syncView()};$('twoD').onclick=()=>{show3d=false;syncView()};
+
+start();</script><script type="module" src="pyramide3d.js"></script></body></html>
