@@ -1,0 +1,199 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B 3 · Musterprüfung 1 · 20XX – Der ErkLehrer</title><script>window.MathJax={svg:{fontCache:'none'},tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><style> :root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:white;padding:17px 4%;font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted,.small{color:#637384}.small{font-size:.87rem;line-height:1.5}.grid{display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(300px,1fr);gap:16px}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}button{font:inherit;cursor:pointer;background:white;border:1px solid #b9c4d1;border-radius:8px;padding:8px 11px;color:#253341}button.active{background:#8e2948;color:white}button:disabled{opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e68b3c;outline-offset:2px}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.original,.step{background:#f6f8fb;padding:12px;border-radius:8px;line-height:1.75}.step{border-left:4px solid #a32b4d;min-height:140px}.tag{display:inline-block;background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:7px;margin:7px}.plot{display:block;width:100%;height:auto}.figure-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}.three{height:440px;position:relative;touch-action:none;background:#f8fafc;border-radius:8px;overflow:hidden}.three canvas{display:block;width:100%;height:100%}.threehelp{position:absolute;bottom:7px;left:9px;font-size:12px;pointer-events:none;color:#637384}input[type=range]{width:100%;accent-color:#9a2848}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.choices label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #dce1e8;border-radius:8px}.mobile-controls{display:none}[hidden]{display:none!important}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}.panel{padding:12px}.plot{width:620px;max-width:none}.figure-scroll.overview .plot{width:100%}.mobile-controls{display:block}.three{height:420px}}table{border-collapse:collapse;width:100%;font-size:.9rem;margin:14px 0}td,th{padding:4px;border:1px solid #dce1e8;text-align:center}.legend{display:flex;flex-wrap:wrap;gap:12px}.key{padding:3px 7px;border-radius:5px;background:#f4e7eb}.key.cone{background:#fff0d9}.key.cylinder{background:#dcefe8}</style></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><nav class="buttons"><a href="../../../">← Abschlussprüfungen</a><a href="../#muster1">Musterprüfung 1 · Übersicht</a><a href="b2.html">← B 2</a><a href="b3.html" aria-current="page">B 3</a></nav><p class="muted">Realschule Bayern · Mathematik I · Musterprüfung 1 · Aufgabengruppe B</p><h1>Abschlussprüfung 20XX · B 3</h1><div class="grid"><section class="panel"><h2>Logarithmusfunktionen und Rauten</h2><div id="figureScroll" class="figure-scroll" tabindex="0" role="region" aria-label="Zeichnung, auf schmalen Bildschirmen seitlich verschiebbar"><svg id="plot" class="plot" viewBox="0 0 640 540" role="img" aria-label="Logarithmusfunktionen und Rauten passend zum Lösungsschritt"></svg></div><div class="mobile-controls"><button id="overview" aria-pressed="false">Gesamte Zeichnung anzeigen</button><p class="small">Lesemodus: Zeichnung seitlich wischen.</p></div><div id="explore" hidden><label for="xval">Abszisse x: <strong id="xdisplay"></strong></label><input id="xval" type="range" min="-.6" max="7.5" step=".01" value="0"><div class="buttons"><button id="x0">x = 0</button><button id="x5">x = 5</button><button id="xroot">Mittelpunkt auf der x-Achse</button></div><p class="small">Erkundungsfenster: −0,60 ≤ x ≤ 7,50. Die Rautenfamilie ist für alle x &gt; −1 definiert.</p></div><p class="small">Gleiche Längeneinheiten auf beiden Achsen. Die Graphen werden in den geforderten Zeichenintervallen dargestellt.</p><p id="measure" class="small" aria-live="polite"></p></section><section class="panel"><h2>Originalaufgabe und Musterlösung</h2><div id="intro" class="original"><strong>B 3.0 – Ausgangsangaben</strong><p>Gegeben ist die Funktion \(f_1\) mit der Gleichung \(y=2\cdot\log_3(x+1)-2\) \((x,y\in\mathbb R)\).</p></div><div id="parts" class="buttons"></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong><span id="count" class="tag"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Ausführliche eigenständige Lernlösung nach dem amtlichen ISB-Lösungsmuster. Keine amtliche Lösung.</p></section></div></main><script>const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';let part=0,step=0;
+function el(t,a={},text){let e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('plot').append(e);return e}
+function line(a,b,color='#60758b',w=2,dash=''){return el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':dash})}
+function caption(x,y,t,color='#253341',size=16){return el('text',{x,y,fill:color,'font-size':size,stroke:'#fff','stroke-width':4,'paint-order':'stroke','stroke-linejoin':'round'},t)}
+function mark(p,t,color='#253341'){el('circle',{cx:p[0],cy:p[1],r:3.5,fill:color});caption(p[0]+7,p[1]-8,t,color)}
+function fraction(x,y,n,d,visible=true,color='#253341'){let g=el('g',{'data-probability':n+'/'+d,visibility:visible?'visible':'hidden'});for(const[tag,a,t]of [['rect',{x:x-23,y:y-24,width:46,height:53,rx:9,fill:'#fff',stroke:'#b9c4d1'}],['text',{x,y:y-5,'text-anchor':'middle','font-size':17,fill:color},n],['line',{x1:x-14,x2:x+14,y1:y,y2:y,stroke:color,'stroke-width':1.4}],['text',{x,y:y+21,'text-anchor':'middle','font-size':17,fill:color},d]]){const c=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>c.setAttribute(k,v));if(t!==undefined)c.textContent=t;g.append(c)}return g}
+let mathQueue=Promise.resolve(),mathRevision=0;
+function math(){const revision=++mathRevision;if(!window.MathJax?.typesetPromise)return;mathQueue=mathQueue.catch(()=>{}).then(async()=>{if(revision!==mathRevision)return;await MathJax.startup.promise;const nodes=[$('statement'),$('solution'),$('measure')];MathJax.typesetClear(nodes);await MathJax.typesetPromise(nodes);if(revision!==mathRevision)return;for(const label of $('plot').querySelectorAll('[data-math-label]')){if(revision!==mathRevision||!label.isConnected)return;const result=await MathJax.tex2svgPromise(label.getAttribute('data-math-label'),{display:false}),svg=result.querySelector('svg'),box=svg.getAttribute('viewBox').split(/\s+/).map(Number),scale=Number(label.getAttribute('data-size'))/1000;if(revision!==mathRevision||!label.isConnected)return;svg.setAttribute('x',label.getAttribute('data-x'));svg.setAttribute('y',Number(label.getAttribute('data-y'))+box[1]*scale);svg.setAttribute('width',box[2]*scale);svg.setAttribute('height',box[3]*scale);svg.style.maxWidth='none';svg.style.overflow='visible';label.replaceChildren(svg)} }).catch(console.error)}
+function mathCaption(x,y,tex,color='#253341',size=16){return el('g',{'data-math-label':tex,'data-x':x,'data-y':y,'data-size':size,style:'color:'+color,role:'img','aria-label':tex})}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;draw();math()}
+function start(){tasks.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.n;b.onclick=()=>{part=i;step=0;initPart();render()};$('parts').append(b)});$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[part].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;initPart();render()};$('overview').onclick=()=>{const v=$('figureScroll').classList.toggle('overview');$('overview').setAttribute('aria-pressed',String(v));$('overview').textContent=v?'Zum Lesemodus wechseln':'Gesamte Zeichnung anzeigen';$('figureScroll').scrollLeft=0};initPart();render();window.addEventListener('load',math)}
+
+
+
+
+const tasks=[
+ {
+  "n": "B 3.1",
+  "p": "3 P",
+  "q": "Geben Sie die Definitionsmenge der Funktion \\(f_1\\) sowie die Gleichung der Asymptote \\(h\\) an und zeichnen Sie den Graphen zu \\(f_1\\) für \\(x\\in[-0{,}5;9]\\) in ein Koordinatensystem.<p>Für die Zeichnung: Längeneinheit \\(1\\,\\mathrm{cm}\\); \\(-3\\leq x\\leq9\\); \\(-4\\leq y\\leq7\\).</p>",
+  "steps": [
+   [
+    "Logarithmusargument untersuchen",
+    "Ein Logarithmus ist nur für ein positives Argument definiert. Deshalb muss gelten:\\[x+1>0\\quad\\Longleftrightarrow\\quad x>-1.\\]"
+   ],
+   [
+    "Definitionsmenge angeben",
+    "Damit lautet die Definitionsmenge:\\[\\boxed{\\mathbb D_{f_1}=\\{x\\in\\mathbb R\\mid x>-1\\}}.\\]Die Funktion ist für alle reellen Zahlen rechts von \\(-1\\) definiert. Das Zeichenintervall ist nur ein Ausschnitt davon."
+   ],
+   [
+    "Senkrechte Asymptote bestimmen",
+    "Für \\(x\\to-1\\) von rechts nähert sich \\(x+1\\) der Null; die Funktionswerte fallen unbegrenzt. Die senkrechte Asymptote lautet:\\[\\boxed{h:\\ x=-1}.\\]Die Gerade gehört nicht zum Graphen."
+   ],
+   [
+    "Geeignete Stützpunkte berechnen",
+    "Wähle Argumente, deren Logarithmus zur Basis 3 einfach ist:\\[\\begin{array}{c|rrrr}x&-\\frac23&0&2&8\\\\\\hline x+1&\\frac13&1&3&9\\\\\\hline f_1(x)&-4&-2&0&2\\end{array}\\]Der erste Punkt liegt außerhalb des verlangten Zeichenintervalls und dient nur zur Orientierung. Innerhalb beginnt die Kurve bei \\(x=-0{,}5\\) mit \\(f_1(-0{,}5)\\approx-3{,}26\\)."
+   ],
+   [
+    "Graphen im verlangten Ausschnitt zeichnen",
+    "Zeichne die steigende Logarithmuskurve durch die passenden Stützpunkte. Hier wird genau der verlangte Ausschnitt \\(-0{,}5\\leq x\\leq9\\) dargestellt. Beide Achsen besitzen dieselbe Längeneinheit. Eine physische Zentimetergröße hängt am Bildschirm vom Gerät ab."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.2",
+  "p": "4 P",
+  "q": "Der Graph der Funktion \\(f_1\\) wird durch Parallelverschiebung mit dem Vektor \\(\\vec v=\\begin{pmatrix}a\\\\4\\end{pmatrix}\\) mit \\(a\\in\\mathbb R\\) auf den Graphen der Funktion \\(f_2\\) abgebildet. Der Punkt \\(P(0\\mid4)\\) liegt auf dem Graphen zu \\(f_2\\).<p>Berechnen Sie den Wert von \\(a\\) und zeigen Sie rechnerisch, dass für die Gleichung der Funktion \\(f_2\\) gilt: \\(y=2\\cdot\\log_3(x+3)+2\\).</p><p>Zeichnen Sie sodann den Graphen zu \\(f_2\\) für \\(x\\in[-2{,}5;9]\\) in das Koordinatensystem zu B 3.1 ein.</p>",
+  "steps": [
+   [
+    "Urbild des vorgegebenen Punktes suchen",
+    "Der Verschiebungsvektor erhöht jede Ordinate um 4. Das Urbild \\(U\\) von \\(P(0\\mid4)\\) muss auf \\(f_1\\) deshalb die Ordinate \\(4-4=0\\) besitzen."
+   ],
+   [
+    "Abszisse des Urbildes berechnen",
+    "Setze \\(y=0\\) in \\(f_1\\) ein:\\[\\begin{aligned}2\\cdot\\log_3(x+1)-2&=0\\\\\\log_3(x+1)&=1\\\\x+1&=3\\\\x&=2.\\end{aligned}\\]Also ist \\(U(2\\mid0)\\)."
+   ],
+   [
+    "Verschiebungsvektor bestimmen",
+    "Die Abszisse wird von 2 auf 0 verschoben:\\[a=0-2=-2.\\]Somit:\\[\\boxed{\\vec v=\\begin{pmatrix}-2\\\\4\\end{pmatrix}}.\\]Der Graph wird um 2 LE nach links und 4 LE nach oben verschoben."
+   ],
+   [
+    "Koordinaten der Verschiebung verwenden",
+    "Für Urbild und Bild gilt:\\[x^{\\prime}=x-2,\\qquad y^{\\prime}=y+4.\\]Daraus folgt \\(x=x^{\\prime}+2\\). Ersetze \\(x\\) in der ursprünglichen Funktionsgleichung."
+   ],
+   [
+    "Bildfunktion herleiten",
+    "\\[\\begin{aligned}y^{\\prime}&=2\\cdot\\log_3(x^{\\prime}+2+1)-2+4\\\\&=2\\cdot\\log_3(x^{\\prime}+3)+2.\\end{aligned}\\]Nach Umbenennung der Bildkoordinaten erhält man:\\[\\boxed{f_2:\\ y=2\\cdot\\log_3(x+3)+2}.\\]Ihr Definitionsbereich ist \\(x>-3\\); ihre Asymptote lautet \\(x=-3\\)."
+   ],
+   [
+    "Bildgraph und Punktprobe einzeichnen",
+    "Prüfe \\(P\\):\\[f_2(0)=2\\cdot\\log_3 3+2=4.\\]Die Kurve ist die verschobene Kurve von \\(f_1\\); dargestellt wird der geforderte Ausschnitt \\(-2{,}5\\leq x\\leq9\\). Der Pfeil verbindet \\(U(2\\mid0)\\) mit \\(P(0\\mid4)\\)."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.3",
+  "p": "2 P",
+  "q": "Punkte \\(A_n\\bigl(x\\mid2\\cdot\\log_3(x+1)-2\\bigr)\\) auf dem Graphen zu \\(f_1\\) und Punkte \\(C_n\\bigl(x\\mid2\\cdot\\log_3(x+3)+2\\bigr)\\) auf dem Graphen zu \\(f_2\\) haben dieselbe Abszisse \\(x\\) und sind für \\(x>-1\\) zusammen mit Punkten \\(B_n\\) und \\(D_n\\) die Eckpunkte von Rauten \\(A_nB_nC_nD_n\\).<p>Es gilt: \\(|\\overline{B_nD_n}|=3\\,\\mathrm{LE}\\).</p><p>Zeichnen Sie die Rauten \\(A_1B_1C_1D_1\\) für \\(x=0\\) und \\(A_2B_2C_2D_2\\) für \\(x=5\\) in das Koordinatensystem zu B 3.1 ein.</p>",
+  "steps": [
+   [
+    "Senkrechte Diagonale festlegen",
+    "Die Punkte \\(A_n\\) und \\(C_n\\) besitzen dieselbe Abszisse. Die Diagonale \\(\\overline{A_nC_n}\\) verläuft daher senkrecht. Die Diagonalen einer Raute halbieren einander und stehen senkrecht aufeinander."
+   ],
+   [
+    "Waagrechte Diagonale konstruieren",
+    "Bestimme den Mittelpunkt \\(M_n\\) zwischen \\(A_n\\) und \\(C_n\\). Von dort liegt \\(B_n\\) um \\(1{,}5\\) LE rechts und \\(D_n\\) um \\(1{,}5\\) LE links. Beide besitzen die Ordinate von \\(M_n\\). Damit ist \\(|\\overline{B_nD_n}|=3\\,\\mathrm{LE}\\)."
+   ],
+   [
+    "Erste Raute bei x = 0 zeichnen",
+    "\\[A_1(0\\mid-2),\\quad C_1(0\\mid4),\\quad M_1(0\\mid1).\\]\\[B_1(1{,}5\\mid1),\\quad D_1(-1{,}5\\mid1).\\]Verbinde \\(A_1,B_1,C_1,D_1\\) in dieser Reihenfolge."
+   ],
+   [
+    "Zweite Raute bei x = 5 zeichnen",
+    "\\[\\begin{aligned}f_1(5)&\\approx1{,}26,\\\\f_2(5)&\\approx5{,}79,\\\\y_{M_2}&=\\frac{f_1(5)+f_2(5)}2\\approx3{,}52.\\end{aligned}\\]\\[B_2(6{,}5\\mid3{,}52),\\quad D_2(3{,}5\\mid3{,}52).\\]Die Zeichnung verwendet ungerundete Werte. Die beiden verlangten Rauten sind jetzt gemeinsam eingezeichnet."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.4",
+  "p": "2 P",
+  "q": "Zeigen Sie rechnerisch, dass für die Koordinaten der Diagonalenschnittpunkte \\(M_n\\) der Rauten \\(A_nB_nC_nD_n\\) in Abhängigkeit von der Abszisse \\(x\\) der Punkte \\(A_n\\) und \\(C_n\\) gilt:\\[M_n\\bigl(x\\mid\\log_3(x^2+4x+3)\\bigr).\\]",
+  "steps": [
+   [
+    "Mittelpunktformel anwenden",
+    "Die Diagonalen einer Raute halbieren einander. Daher ist \\(M_n\\) der Mittelpunkt von \\(A_n\\) und \\(C_n\\):\\[x_{M_n}=\\frac{x+x}{2}=x,\\qquad y_{M_n}=\\frac{f_1(x)+f_2(x)}2.\\]"
+   ],
+   [
+    "Funktionswerte einsetzen",
+    "\\[\\begin{aligned}y_{M_n}&=\\frac{2\\log_3(x+1)-2}{2}\\\\&\\quad+\\frac{2\\log_3(x+3)+2}{2}\\\\&=\\log_3(x+1)+\\log_3(x+3).\\end{aligned}\\]Die konstanten Summanden \\(-2\\) und \\(+2\\) heben sich auf."
+   ],
+   [
+    "Logarithmengesetz nutzen",
+    "Für \\(x>-1\\) sind \\(x+1\\) und \\(x+3\\) positiv. Das Produktgesetz ist deshalb anwendbar:\\[\\begin{aligned}y_{M_n}&=\\log_3\\bigl((x+1)(x+3)\\bigr)\\\\&=\\log_3(x^2+4x+3).\\end{aligned}\\]"
+   ],
+   [
+    "Mittelpunktfamilie angeben",
+    "Damit gilt wie verlangt:\\[\\boxed{M_n\\bigl(x\\mid\\log_3(x^2+4x+3)\\bigr)},\\quad x>-1.\\]Die gestrichelte Kurve zeigt die Ortslinie der Mittelpunkte. Die Raute kann nun innerhalb des sichtbaren Ausschnitts verschoben werden; die mathematische Familie ist für alle \\(x>-1\\) definiert."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.5",
+  "p": "4 P",
+  "q": "Der Diagonalenschnittpunkt \\(M_3\\) der Raute \\(A_3B_3C_3D_3\\) liegt auf der x-Achse.<p>Berechnen Sie die Koordinaten der Punkte \\(B_3\\) und \\(C_3\\). Runden Sie auf zwei Stellen nach dem Komma.</p>",
+  "steps": [
+   [
+    "Bedingung auf der x-Achse übersetzen",
+    "Jeder Punkt der x-Achse besitzt die Ordinate 0. Mit B 3.4 muss gelten:\\[\\log_3(x^2+4x+3)=0,\\qquad x>-1.\\]"
+   ],
+   [
+    "Logarithmusgleichung umformen",
+    "Die Gleichung \\(\\log_3 u=0\\) ist gleichbedeutend mit \\(u=3^0=1\\):\\[\\begin{aligned}x^2+4x+3&=1\\\\x^2+4x+2&=0\\\\(x+2)^2&=2.\\end{aligned}\\]"
+   ],
+   [
+    "Beide Lösungen bestimmen und prüfen",
+    "\\[x=-2\\pm\\sqrt2.\\]Die Lösung \\(-2-\\sqrt2\\approx-3{,}41\\) verletzt \\(x>-1\\). Es bleibt:\\[\\boxed{L=\\{-2+\\sqrt2\\}}.\\]Somit liegt \\(M_3(-2+\\sqrt2\\mid0)\\) auf der x-Achse."
+   ],
+   [
+    "Punkt B₃ berechnen",
+    "Von \\(M_3\\) aus liegt \\(B_3\\) um \\(1{,}5\\) LE rechts:\\[x_{B_3}=-2+\\sqrt2+1{,}5=-0{,}5+\\sqrt2.\\]\\[\\boxed{B_3(0{,}91\\mid0{,}00)}.\\]"
+   ],
+   [
+    "Punkt C₃ berechnen",
+    "Berechne die Ordinate mit dem ungerundeten \\(x=-2+\\sqrt2\\):\\[y_{C_3}=2\\cdot\\log_3(1+\\sqrt2)+2.\\]\\[\\boxed{C_3(-0{,}59\\mid3{,}60)}.\\]Erst die endgültigen Koordinaten werden gerundet."
+   ],
+   [
+    "Ergebnis geometrisch kontrollieren",
+    "Es gilt \\(y_{A_3}=-y_{C_3}\\). Der Mittelpunkt von \\(\\overline{A_3C_3}\\) hat also wirklich die Ordinate 0; auch \\(\\overline{B_3D_3}\\) liegt auf der x-Achse. Die Zeichnung verwendet den exakten Wert \\(-2+\\sqrt2\\), nicht den gerundeten Wert \\(-0{,}59\\)."
+   ]
+  ]
+ }
+];
+function arrow(a,b,color='#a32b4d',w=2.6){line(a,b,color,w);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]),p=t=>[b[0]-11*Math.cos(ang+t),b[1]-11*Math.sin(ang+t)];el('polygon',{points:[b,p(.4),p(-.4)].map(v=>v.join(',')).join(' '),fill:color})}
+function axes(X,Y,xmin,xmax,ymin,ymax,dx=1,dy=1){for(let x=Math.ceil(xmin/dx)*dx;x<=xmax+1e-8;x+=dx)line([X(x),Y(ymin)],[X(x),Y(ymax)],'#e7ecf0',1);for(let y=Math.ceil(ymin/dy)*dy;y<=ymax+1e-8;y+=dy)line([X(xmin),Y(y)],[X(xmax),Y(y)],'#e7ecf0',1);arrow([X(xmin),Y(0)],[X(xmax)+12,Y(0)],'#60758b',1.7);arrow([X(0),Y(ymin)],[X(0),Y(ymax)-12],'#60758b',1.7);caption(X(xmax)+12,Y(0)+20,'x');caption(X(0)-21,Y(ymax)-5,'y');caption(X(0)-23,Y(0)+23,'O','#637384',14)}
+function right(p,u,v){const r=20;el('path',{d:`M${p[0]+r*u[0]} ${p[1]+r*u[1]} A${r} ${r} 0 0 ${u[0]*v[1]-u[1]*v[0]>0?1:0} ${p[0]+r*v[0]} ${p[1]+r*v[1]}`,stroke:'#198576','stroke-width':1.7,fill:'none','data-right-angle':'quarter-arc'});el('circle',{cx:p[0]+r*(u[0]+v[0])/(2*Math.sqrt(2)),cy:p[1]+r*(u[1]+v[1])/(2*Math.sqrt(2)),r:2.1,fill:'#198576','data-right-angle':'center-dot'})}
+
+
+
+
+
+
+
+
+
+const f1=x=>2*Math.log(x+1)/Math.log(3)-2,f2=x=>2*Math.log(x+3)/Math.log(3)+2,root=-2+Math.SQRT2;
+function geometry(x){const ya=f1(x),yc=f2(x),m=(ya+yc)/2;return {x,ya,yc,m,A:[x,ya],B:[x+1.5,m],C:[x,yc],D:[x-1.5,m],M:[x,m]}}
+let preciseX=null;
+function initPart(){preciseX=part===4?root:null;$('xval').value=part===2?5:0}
+function state(){return {part,step,x:preciseX??Number($('xval').value)}}
+const num=(x,n=2)=>x.toFixed(n).replace('.','{,}'),inline=s=>'\\('+s+'\\)';
+function draw(){
+ const st=state(),X=x=>177+39*x,Y=y=>353-39*y;$('plot').replaceChildren();axes(X,Y,-3,9,-4,7);
+ for(let x=-3;x<=9;x++)if(x)caption(X(x)-5,Y(0)+20,String(x),'#637384',12);
+ for(let y=-4;y<=7;y++)if(y)caption(X(0)-23,Y(y)+4,String(y),'#637384',12);
+ const curve=(fn,min,max,col,dash='',key='')=>{let points=[];for(let i=0;i<=400;i++){let x=min+(max-min)*i/400;points.push(X(x)+','+Y(fn(x)))}return el('polyline',{points:points.join(' '),fill:'none',stroke:col,'stroke-width':2.4,'stroke-dasharray':dash,'data-curve':key})};
+ if(part>0||step>=2){line([X(-1),Y(-4)],[X(-1),Y(7)],'#d17720',1.8,'6 5');mathCaption(X(-1)+6,60,'h:\\ x=-1','#b36a1d',15)}
+ if(part>0||step>=3){curve(f1,-.5,9,'#2478a4','','f1');mathCaption(370,300,'f_1','#2478a4',18)}
+ if(part===0&&step>=3)for(const x of [0,2,8])mark([X(x),Y(f1(x))],'','#2478a4');
+ if(part===1&&step>=1){mark([X(2),Y(0)],'U','#2478a4');if(step>=2){arrow([X(2),Y(0)],[X(0),Y(4)]);mark([X(0),Y(4)],'P');mathCaption(265,190,'\\vec v=\\begin{pmatrix}-2\\\\4\\end{pmatrix}','#a32b4d',17)}}
+ if(part>1||part===1&&step>=4){curve(f2,-2.5,9,'#198576','','f2');mathCaption(475,115,'f_2','#198576',18)}
+ function rhombus(x,index,phase=3){
+  const g=geometry(x),q=Object.fromEntries(['A','B','C','D','M'].map(k=>[k,[X(g[k][0]),Y(g[k][1])]]));
+  if(phase>=2)el('polygon',{points:['A','B','C','D'].map(k=>q[k].join(',')).join(' '),fill:'#a32b4d','fill-opacity':.055,stroke:'#a32b4d','stroke-width':2,'data-rhombus':index});
+  line(q.A,q.C,'#a32b4d',1.5,'4 3');if(phase>=1){line(q.B,q.D,'#198576',1.5,'4 3');right(q.M,[1,0],[0,-1])}
+  for(const k of phase>=1?['A','B','C','D','M']:['A','C']){const dx=k==='D'?-30:k==='M'?7:5,dy=k==='A'?21:k==='M'?20:-8;el('circle',{cx:q[k][0],cy:q[k][1],r:3,fill:'#a32b4d'});mathCaption(q[k][0]+dx,q[k][1]+dy,k+'_'+index,k==='M'?'#198576':'#253341',16)}
+ }
+ if(part===2){if(step<2)rhombus(0,'1',step);else{rhombus(0,'1');if(step>=3)rhombus(5,'2')}}
+ if(part===3){rhombus(st.x,'n');if(step>=2)curve(x=>geometry(x).m,-.6,9,'#d17720','5 4','midpoint')}
+ if(part===4&&step>=2){rhombus(root,'3');line([X(-2.2),Y(0)],[X(1.1),Y(0)],'#a32b4d',2)}
+ $('explore').hidden=!(part===3&&step===tasks[part].steps.length-1);
+ $('xdisplay').textContent=(st.x).toFixed(2).replace('.',',');
+ let m='';if(part===3){const g=geometry(st.x);m=inline('M_n\\bigl('+num(st.x)+'\\mid'+num(g.m)+'\\bigr)')+'. '+inline('|\\overline{B_nD_n}|=3\\,\\mathrm{LE}')+'.';}
+ if(part===2&&step>=2)m=inline('M_1(0\\mid1)')+(step>=3?'; '+inline('M_2(5\\mid'+num(geometry(5).m)+')'):'')+'.';
+ if(part===4&&step>=2)m=inline('x=-2+\\sqrt2\\approx'+num(root))+(step>=3?'; '+inline('B_3(0{,}91\\mid0{,}00)'):'')+(step>=4?'; '+inline('C_3(-0{,}59\\mid3{,}60)'):'')+'. Gerundete Koordinaten; Konstruktion mit exakten Werten.';
+ $('measure').innerHTML=m;
+}
+$('xval').oninput=()=>{preciseX=null;draw();math()};
+for(const[id,x]of[['x0',0],['x5',5],['xroot',root]])$(id).onclick=()=>{preciseX=x;$('xval').value=x;draw();math()};
+start();</script></body></html>

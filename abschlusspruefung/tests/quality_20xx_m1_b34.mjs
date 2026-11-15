@@ -1,0 +1,7 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
+const near=(a,b,e=1e-9)=>assert.ok(Math.abs(a-b)<e,JSON.stringify({a,b}));
+for(const n of [3,4]){const path='abschlusspruefung/20xx/muster1/b'+n+'.html';if(!fs.existsSync(path))continue;const html=fs.readFileSync(path,'utf8');for(const s of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)){if(s[0].includes('importmap')||s[0].includes('type="module"'))continue;new vm.Script(s[1])}assert.ok(!/href=["'][^"']*\.pdf/i.test(html));const tasks=JSON.parse(html.match(/const tasks=([\s\S]*?);\nfunction arrow/)[1]);assert.equal(tasks.length,5);assert.equal(tasks.reduce((a,t)=>a+parseInt(t.p),0),n===3?15:16);assert.ok(tasks.every(t=>t.steps.length>=4));assert.ok(html.includes("fontCache:'none'"));console.log('Struktur B'+n+': '+tasks.reduce((a,t)=>a+t.steps.length,0)+' Schritte')}
+const f=x=>2*Math.log(x+1)/Math.log(3)-2,g=x=>2*Math.log(x+3)/Math.log(3)+2;
+near(f(2),0);near(g(0),4);for(let x=-.99;x<30;x+=.031){near(g(x),f(x+2)+4);const m=(f(x)+g(x))/2;near(m,Math.log(x*x+4*x+3)/Math.log(3));const A=[x,f(x)],B=[x+1.5,m],C=[x,g(x)],D=[x-1.5,m],dist=(p,q)=>Math.hypot(p[0]-q[0],p[1]-q[1]);near(dist(A,B),dist(B,C));near(dist(B,C),dist(C,D));near(dist(C,D),dist(D,A));near(dist(B,D),3)}
+const root=-2+Math.SQRT2;near((f(root)+g(root))/2,0);near(root+1.5,.9142135623730951);assert.equal(g(root).toFixed(2),'3.60');
+console.log('B3: Verschiebung, vollständige Rautenfamilie, Mittelpunkte, Wurzelauswahl und Endkoordinaten korrekt.');
