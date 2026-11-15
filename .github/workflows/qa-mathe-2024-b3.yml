@@ -1,0 +1,42 @@
+name: Mathematik I 2024 – B3
+on:
+  push:
+    paths:
+      - 'abschlusspruefung/2024/haupttermin/**'
+      - 'abschlusspruefung/tests/*2024_b3.mjs'
+      - '.github/workflows/qa-mathe-2024-b3.yml'
+  workflow_dispatch:
+jobs:
+  qualitaet:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fachliche und strukturelle Prüfungen
+        run: |
+          for pass in 1 2 3; do
+            node abschlusspruefung/tests/quality_2024_b3.mjs
+          done
+          node abschlusspruefung/tests/quality_2024_a.mjs
+          node abschlusspruefung/tests/quality_2025.mjs
+          node abschlusspruefung/tests/source_2025.mjs
+      - name: Browser bereitstellen
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: HTTP-Server
+        run: |
+          nohup python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/2024-b3-server.log 2>&1 &
+          sleep 2
+      - name: Drei Browserdurchläufe auf Desktop und Mobil
+        env:
+          QA_OUT: /tmp/2024-b3-qa
+        run: node abschlusspruefung/tests/browser_2024_b3.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mathematik-2024-b3-browserkontrolle
+          path: /tmp/2024-b3-qa/
