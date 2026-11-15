@@ -106,7 +106,7 @@ const tasks=[
    ],
    [
     "Ergebnis und geometrischer Vergleich",
-    "\\[\\boxed{u(2{,}65)\\approx17{,}87\\,\\mathrm{LE}}.\\]Ohne Zwischenrundung lautet die Achsenbedingung \\(1{,}125x-3=0\\), also \\(x=\\frac83\\). Über die zwei Voreinstellungen lassen sich der amtliche Rechenwert und die exakt auf der y-Achse liegende Lage vergleichen."
+    "\\[\\boxed{u(2{,}65)\\approx17{,}87\\,\\mathrm{LE}}.\\]Ohne Zwischenrundung lautet die Achsenbedingung \\(1{,}125x-3=0\\), also \\(x=\\frac83\\). Über die zwei Voreinstellungen lassen sich der amtliche Rechenwert und die exakt auf der y-Achse liegende Lage vergleichen.<p class=\"small\">Vollständig ohne Zwischenrundung erhält man für die exakte Achsenlage \\(u=\\sqrt{320}\\,\\mathrm{LE}\\approx17{,}89\\,\\mathrm{LE}\\). Die 17,87 LE stammen aus dem vorgegebenen gerundeten Rechenmodell.</p>"
    ]
   ]
  },
@@ -150,6 +150,7 @@ function draw(){
  const x=preciseX??Number($('x').value);if(part===0&&!live){if(selected!=='2')poly(-1,'₁','#617aa4',step);if(selected!=='1')poly(7,'₂','#986c92',step)}else poly(x,kind==='free'?'ₙ':part===3?'₃':'₄','#a32b4d',part===1?Math.min(3,step+1):3);
  mark([X(0),Y(0)],'A = O');for(const id of ['p1','p2','both'])$(id).hidden=part!==0;$('x').disabled=part===0&&step===0;$('rounded').hidden=!final;$('exact').hidden=!final;$('xval').textContent=preciseX===null?x.toFixed(2).replace('.',','):x.toFixed(6).replace('.',',');
  $('measure').textContent=kind==='rounded'?(part===3?'Amtlicher Rechenwert x = 2,65. Die ungerundete Rechteckgeometrie liegt damit nur näherungsweise auf der Achsenbedingung.':'Amtlicher Rechenwert x = 1,42. Die exakt kürzeste Lage wird über die zweite Taste erreicht.'):kind==='exact'?(part===3?'Ohne Zwischenrundung: C₃ liegt exakt auf der y-Achse.':'Ohne Zwischenrundung: AB₄ steht senkrecht auf g; C₄ liegt auf g.'):part===0?'Die Originalrechtecke werden passend zu den Konstruktionsschritten ergänzt.':'Freie Erkundung: Das Rechteck bleibt geometrisch exakt.';
+ if(part===2&&step>=4||part===3&&step>=3||part===4&&step>=4)$('measure').textContent+=' Geometrischer Umfang der Zeichnung: '+geom(x).u.toFixed(2).replace('.',',')+' LE.';
 }
 for(const[id,s]of[['p1','1'],['p2','2'],['both','both']])$(id).onclick=()=>{selected=s;live=false;draw()};$('x').oninput=()=>{live=true;preciseX=null;kind='free';draw()};$('rounded').onclick=()=>{preciseX=null;kind='rounded';live=true;$('x').value=part===3?2.65:1.42;draw()};$('exact').onclick=()=>{preciseX=part===3?8/3:24/17;kind='exact';live=true;$('x').value=preciseX;draw()};
 
