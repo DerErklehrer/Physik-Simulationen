@@ -64,7 +64,7 @@ function draw(){
   shape('text',{x:(A[0]+selected.C[0])/2-30,y:(A[1]+selected.C[1])/2+28,'font-size':19,fill:'#a32b4d'},'4 cm');
  }
  $('phival').textContent=phi+'°';
- $('measure').textContent='Abstand a = '+(4*Math.sin(rad)).toFixed(2).replace('.',',')+' cm'+((part===2&&step>=3)||(part===3&&step>=2)?' · Oberfläche O = '+(32*Math.PI*Math.sin(rad)).toFixed(2).replace('.',',')+' cm²':'');
+ $('measure').textContent='Abstand a ≈ '+(4*Math.sin(rad)).toFixed(2).replace('.',',')+' cm'+((part===2&&step>=3)||(part===3&&step>=2)?' · Oberfläche O ≈ '+(32*Math.PI*Math.sin(rad)).toFixed(2).replace('.',',')+' cm²':'');
  if(show3d)window.exam2025Three?.update('A 2',phi,part===2?Math.min(3,step+1):3,part===0?'₂':part===3?'₃':'ₙ');
 }
 function sync3d(){ $('figureScroll').hidden=show3d;$('figureHint').hidden=show3d;$('figure').style.display=show3d?'none':'block';$('view3d2025').style.display=show3d?'block':'none';$('twoD2025').classList.toggle('active',!show3d);$('threeD2025').classList.toggle('active',show3d);$('twoD2025').setAttribute('aria-pressed',String(!show3d));$('threeD2025').setAttribute('aria-pressed',String(show3d));$('top2025').style.display=show3d?'inline-block':'none';$('resetcamera2025').style.display=show3d?'inline-block':'none';if(show3d)window.exam2025Three?.show('A 2',Number($('phi').value),part===2?Math.min(3,step+1):3,part===0?'₂':part===3?'₃':'ₙ');else window.exam2025Three?.hide()}
