@@ -11,3 +11,7 @@ Musterprüfung 1: A1–A3 (11 P), B1 (5 P), B2 (5 P), B3 (15 P), B4 (16 P), zusa
 Musterprüfung 2: A1–A4 (10 P), B1 (6 P), B2 (4 P), B3 (17 P), B4 (16 P), zusammen 53 P. Themen: Logarithmusparameter, Kartenreihenfolgen, Drachenviereck, Pyramidenverpackung, Exponentialfunktion mit Dreiecken, Lastwagenkontrolle, Spiegelung von Drachenvierecken, quadratisches Prisma mit Pyramiden.
 
 Die amtlichen Lösungen wurden mit eingelesen, aber nicht eigenständig nachgerechnet oder didaktisch erweitert. Die weitere Bearbeitung erfolgt später auf ausdrücklichen Wunsch, in der üblichen Aufgabenreihenfolge und nach `../QUALITAETSSTANDARD.md`.
+
+## Layoutnachweis
+
+[Layoutlauf 43738630772](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43738630772) erfolgreich, Artefakt `14171621055`. Zentrale Übersicht und 20XX-Seite auf Desktop (1366×900) und Mobil (390×844) aufgenommen und visuell geprüft. 20XX-Kachel erreichbar, beide Musterprüfungen mit insgesamt 15 Aufgabenbereichen vorhanden, Sprunglink funktioniert, keine horizontale Seitenüberbreite oder JavaScript-Laufzeitfehler. Pages-Veröffentlichung erfolgreich. Dies ist eine Layout-/Navigationsprüfung, keine fachliche Aufgabenfreigabe.
