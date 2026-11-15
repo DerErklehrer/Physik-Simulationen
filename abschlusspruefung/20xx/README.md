@@ -1,6 +1,6 @@
 # 20XX · Musterprüfungen Mathematik I
 
-Aktueller Stand 15.11.2026: Musterprüfung 1, A1–A3 sind mit sechs Teilaufgaben und 29 Lösungsschritten ausgearbeitet. A2 besitzt zusätzlich eine drehbare 3D-Rotation. Die B-Aufgaben und Musterprüfung 2 bleiben vorerst Aufgabenübersichten. Details: [Prüfprotokoll A1–A3](PRUEFPROTOKOLL_M1_A.md).
+Aktueller Stand 15.11.2026: Musterprüfung 1, A1–A3 sind mit sechs Teilaufgaben und 29 Lösungsschritten ausgearbeitet. A2 besitzt zusätzlich eine drehbare 3D-Rotation. B1 und B2 sind mit sieben Teilaufgaben und 30 weiteren Lösungsschritten ausgearbeitet. B3/B4 und Musterprüfung 2 bleiben vorerst Aufgabenübersichten. Details: [Prüfprotokoll A1–A3](PRUEFPROTOKOLL_M1_A.md) und [Prüfprotokoll B1/B2](PRUEFPROTOKOLL_M1_B1_B2.md).
 
 Das ISB führt zwei Muster-Abschlussprüfungen für Mathematik I. Beide tragen im Dokument den Titel „Abschlussprüfung 20XX“ und „Muster 20XX“. Die technischen Dateinamen enthalten 2021 bzw. 2022; diese Zahlen sind keine Prüfungsjahrgänge auf der öffentlichen Übersicht. Zuordnung: Musterprüfung 1 = mi_muster2021_*, Musterprüfung 2 = mi_muster2022_*.
 
@@ -10,7 +10,7 @@ Musterprüfung 1: A1–A3 (11 P), B1 (5 P), B2 (5 P), B3 (15 P), B4 (16 P), zusa
 
 Musterprüfung 2: A1–A4 (10 P), B1 (6 P), B2 (4 P), B3 (17 P), B4 (16 P), zusammen 53 P. Themen: Logarithmusparameter, Kartenreihenfolgen, Drachenviereck, Pyramidenverpackung, Exponentialfunktion mit Dreiecken, Lastwagenkontrolle, Spiegelung von Drachenvierecken, quadratisches Prisma mit Pyramiden.
 
-Die amtlichen Lösungen zu A1–A3 der Musterprüfung 1 wurden nachgerechnet und didaktisch erweitert. Die übrigen Lösungen sind bislang nur eingelesen. Die weitere Bearbeitung erfolgt später auf ausdrücklichen Wunsch, in der üblichen Aufgabenreihenfolge und nach `../QUALITAETSSTANDARD.md`.
+Die amtlichen Lösungen zu A1–A3 sowie B1/B2 der Musterprüfung 1 wurden nachgerechnet und didaktisch erweitert. Die übrigen Lösungen sind bislang nur eingelesen. Die weitere Bearbeitung erfolgt später auf ausdrücklichen Wunsch, in der üblichen Aufgabenreihenfolge und nach `../QUALITAETSSTANDARD.md`.
 
 ## Layoutnachweis
 
