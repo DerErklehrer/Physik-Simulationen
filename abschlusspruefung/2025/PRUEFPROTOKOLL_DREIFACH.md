@@ -341,3 +341,60 @@ Mathematische Inhalte, Operatoren und Punktzahlen blieben bei diesen Lesbarkeits
 - Die zuvor gesichteten neunzehn Fach-/Lösungsschritte und A3-Umbrüche sind inhaltlich unverändert; der finale Lauf sichert sie erneut vollständig als Screenshots. Nach dem A3-Umbruch wurden beide kritischen mobilen Rechnungen tatsächlich geöffnet und vollständig gelesen.
 - **Status:** A2 und A3 in diesem Arbeitsschritt fachlich abgeglichen, sichtbare Mängel korrigiert und technisch regressionsgeprüft. Die bereits bestehenden Nutzer-Einzelfreigaben bleiben erhalten. Dies ist **keine Gesamtfreigabe und keine Behauptung dreier vollständiger unabhängiger Neun-Kategorien-Durchgänge**.
 - **Nächste Aufgaben:** B1 und B2.
+
+## Fortsetzung Gesamtqualitätskontrolle – gemeinsamer Block B1/B2 (15.11.2026)
+
+**Umfang:** B1.0–B1.3 und B2.0–B2.4, sieben Teilaufgaben mit zehn B1- und vierzehn B2-Lösungsschritten. Ausgangsstand `bc9de61b5f87f69fbe74594eb4b861c51993cbb9`. Erneuter fachlicher Originalabgleich und technische Regression werden getrennt dokumentiert; keine vorzeitige Jahrgangs-Gesamtfreigabe.
+
+### Amtliche Vergleichsbasis und Einzelbefunde
+
+**Originalprüfung:** ISB `2025_mi_ht.pdf`, PDF-Seiten 6–7 (B1/B2). **Amtliches Lösungsmuster:** `2025_mi_ht_l.pdf`, Seiten 2–3. Alle vier Seiten erneut als gerenderte PDF-Seiten gelesen. B2 zusätzlich mit 170 dpi gerendert und die Quaderzeichnung vergrößert visuell geprüft.
+
+| Teilaufgabe | Originalangaben, Operatoren, Punkte | Fachlicher Eigenabgleich |
+|---|---|---|
+| B1.1 | Vier Farben r/b/g/w; 40 %, 30 %, p %, weiß zunächst unbeschriftet. Vier originale Termoptionen; weißen Anteil ankreuzen; 1 P. | Weiß: (30−p) %. Wahrscheinlichkeit 1−(70+p)/100, drittes Kästchen. Prozentanteil und Wahrscheinlichkeit zwischen 0 und 1 sauber unterschieden. |
+| B1.2 | Erste zufällig ausgegebene Schachtel grün und Apfel mit 10 %; Anteil p % berechnen; 1,5 P. | p/100 · 50/100 = 10/100; p = 20, also 20 %. Pfadregel und drei Umformungsschritte mit ISB abgeglichen. |
+| B1.3 | Rote oder blaue Schachtel mit einer Süßigkeit, die nicht Birne ist; Vermutung „mehr als 50 %“ beurteilen; 2,5 P. | Vier disjunkte Pfade rA/rM/bA/bM: 20 % + 12 % + 15 % + 9 % = 56 %. 56 % > 50 %, Vermutung trifft zu. Ergebnis unabhängig von p. |
+| B2.1 | Quader: AB = 4 cm, AD = 10 cm, AE = 3 cm, q = 1/2, ω = 45°; AB auf Schrägbildachse. Pₙ ∈ AD, Qₙ ∈ BC, PₙQₙ ∥ AB. Prisma AP₁EBQ₁F für AP₁ = 4 cm einzeichnen; 1 P. | Schrägbildlänge von AP₁: 4 cm · 1/2 = 2 cm. P₁ auf AD, Parallele zu AB trifft BC in Q₁, zwei parallele Dreiecke A–P₁–E und B–Q₁–F zu Prisma verbinden. |
+| B2.2 | Winkel ∢AEPₙ = φ, 0° < φ ≤ ∢AED; Volumenformel 18·tanφ cm³ zeigen; 2 P. | G = 1/2·APₙ·AE, tanφ = APₙ/(3 cm), APₙ = 3·tanφ cm. Prismenhöhe AB = 4 cm, somit V = 18·tanφ cm³. Alle vier Lösungsschritte und Einheiten geprüft. |
+| B2.3 | Volumen 50 cm³; zugehöriges Winkelmaß berechnen; 1,5 P. | tanφ = 50/18 = 25/9; φ = arctan(25/9) ≈ 70,20°. Zulässig, denn ∢AED ≈ 73,30°. Exakte Grafiklage AP₂ = 25/3 cm; 6·(25/3) = 50 cm³. |
+| B2.4 | Existenz eines Prismas mit **mehr als** halbem Quadervolumen begründet entscheiden; 2 P. | Quader 120 cm³. Da APₙ ≤ 10 cm gilt V ≤ 1/2·10·3·4 cm³ = 60 cm³. Gleichheit bei P₀ = D und Q₀ = C. Kein Prisma mit mehr als der Hälfte. |
+
+**Punkte:** B1 = 5 P, B2 = 6,5 P; mit amtlichen Einzelwerten abgeglichen. Originalformulierungen und Aufgabenreihenfolge blieben erhalten. Zusätzliche Zwischenrechnungen und Lernzeichnungen sind keine Änderungen der Prüfungsaufgabe.
+
+### Prüfung und Korrekturen nach den neun Kategorien
+
+| Kategorie | B1 | B2 |
+|---|---|---|
+| 1 – Originaltreue | B1.0 und alle drei Fragen einschließlich vier Antwortmöglichkeiten, zwölf Baumenden, Prozentzahlen, Namen und Punkte gegen Original verglichen. | B2.0–B2.4 samt Zahlen, Rundungsvorgabe, Schrägbildparametern, Winkelintervall und Punkten verglichen. **Originalzeichnung korrigiert:** Die zuvor ergänzte Raumdiagonale AG gehört **nicht** zum ISB-Original und wurde entfernt. Die vergrößerte Originalansicht zeigt zwölf Quaderkanten, keine Raumdiagonale. Frühere gegenteilige Protokoll-/Testangaben sind damit ausdrücklich überholt; die falsche statische Assertion wurde berichtigt. |
+| 2 – Fachlichkeit | Zehn Erklärungsschritte nachgerechnet. Für p = 0,01; 0,5; 15; 20; 29,99; 30 summieren sich zwölf nichtnegative Pfadwahrscheinlichkeiten zu 1. Die vier Wunschpfade ergeben stets 0,56. | Vierzehn Erklärungsschritte mit ISB und eigener Rechnung abgeglichen. Geometrie, Volumen und Winkel zusätzlich für AP = 0,1; 4; 25/3; 10 cm geprüft. V = 6·AP in cm³; Maximum 60 cm³. |
+| 3 – Schreibweisen | Vertikale Brüche, Prozentwerte und Malpunkte kontrolliert. Längere Restanteils- und Wahrscheinlichkeitsrechnung mehrzeilig gesetzt. | Längen mit Betragsstrichen/Überstrichen, Winkel ∢AEPₙ, Einheiten, Brüche und Dezimalkomma kontrolliert. Gerundete Längen-, Winkel- und Volumenanzeigen verwenden **≈**. Quadervolumen und Maximalvolumen in zwei echten Rechenzeilen dargestellt. |
+| 4 – Grafik | Astzahlen größer und mit weißen Hintergründen frei von Linien gesetzt; Kreisbezeichnungen vergrößert. Grüne Apfel- und rote/blaue Nicht-Birnen-Pfade werden einschließlich erster Baumstufe hervorgehoben. | Quadermaßstab 40 px/cm, verkürzte AD-Projektion 200 px bei 45°, unverzerrte AB-/AE-Projektionen 160/120 px. Zusätzliche AG-Diagonale entfernt. Punktbezeichnungen von Kanten abgerückt; P/Q mit Punktmarkern. **Zusätzliche unverzerrte Dreiecksgrundfläche** im Maßstab 20 px/cm ergänzt, damit φ und der rechte Winkel fachlich unverzerrt nachvollziehbar sind; Viertelkreisbogen mit Punkt statt Winkelquadrat. |
+| 5 – 3D | Nicht anwendbar: Baumdiagramm ohne Raumobjekt. | Prisma mathematisch als Extrusion von APE um 4 cm nach BQF; sämtliche fünf Flächen und neun Kanten geprüft. Mobile Kamera umfasst Quader samt Beschriftungen und ist um die tatsächliche Mitte zentriert. Beschriftungen dunkel im korrekten sRGB-Farbraum. Draufsicht zeigt gemeinsame Projektionsnamen A/E, B/F, D/H, C/G statt überdruckter Einzelnamen; P/Q in eigenen beschrifteten Reihen mit Bezugslinien. Gleichheits-/Projektionsnamen in Grenzlage eindeutig. Drehung, Pinch-Zoom, Draufsicht und Reset werden im Browser geprüft. |
+| 6 – Abhängigkeiten | Weißer Restanteil erscheint mit seinem Rechenschritt; vier Einzelpfadwerte mit den Produkten, Summe 56 % erst mit der Addition. Regler nun bis **p = 30**: aus Nichtnegativität folgt 0 < p ≤ 30; p=30 lässt den weißen Anteil 0 zu. Die Reglerstufen sind Beispielwerte, kein Ersatz für den mathematischen Definitionsbereich. | Maximalprisma schon beim Schritt „P₀ = D“ in Geometrie sichtbar, Volumen erst beim zugehörigen Rechenschritt. Vorwärts/Zurück/Reset stellen passende vorherige Lage wieder her. Freie Erkundung bekommt Index n statt fester Lösungsindizes 1/2/0; exakter 50-cm³-Hinweis nur in der tatsächlich exakten Lage. Grenzgleichheiten D=P₀/C=Q₀ nur bei **exakt** AP=10; AP=9,99999999 wird gesondert regressionsgeprüft. |
+| 7 – Didaktik | Farbpfade und Produkte mit Erklärung synchronisiert; keine vorweggenommene Summe. Prozent und Wahrscheinlichkeit verständlich getrennt. | Konstruktion weiterhin in drei Phasen. Grundfläche und rechter Winkel mit G-Erklärung, φ-Bogen mit Tangensschritt gekoppelt. Hinweis unterscheidet verzerrte Schrägbildwinkel von der unverzerrten Zusatzfigur. |
+| 8 – Technik/Mobil | Lesbarer horizontal verschiebbarer Baum und Gesamtübersicht erhalten; alle zehn Schritte als Prüf-Screenshots. Lösungen auf seitliches Abschneiden geprüft. | Schrägbild mit Zusatzgrundfläche mobil in mindestens 560 px Breite scrollbar; 3D bleibt separat bedienbar. Alle vierzehn Schritte als Screenshots; Navigation, Sonderlagen, Grenzwerte, Ein-Finger-Drehen und Zwei-Finger-Zoom in Emulation Bestandteil der Tests. |
+| 9 – Konsistenz | Verweise A3/B2, Jahrgang, Punkte und Aufgabenkennzeichnungen geprüft; keine öffentlichen PDF-Direktlinks. | Verweise B1/B3 ergänzt/geprüft; keine PDF-Direktlinks. Das gemeinsame 3D-Modul wird zusammen mit A2 und dem gesamten Jahrgang regressionsgeprüft. |
+
+**Abgrenzung:** Dieser Block umfasst einen erneuten fachlichen/gedruckten Originalabgleich aller sieben Teilaufgaben und technische Wiederholungsprüfungen. Echte physische Mobilgeräte und tatsächliche Bildschirmleser wurden nicht verwendet. Die drei vollständigen unabhängigen Neun-Kategorien-Durchgänge des gesamten Jahrgangs bleiben gesondert offen.
+
+### Tatsächlich ausgeführte Sichtprüfung
+
+Aus dem erfolgreichen Browserlauf [43699815456](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43699815456) auf `5e89a1f688118050842d6bfadf874da992370cc0` wurden **alle 24 Lösungsschritte** als Desktop-Kontaktbögen geöffnet und inhaltlich gelesen. Zusätzlich gesichtet: vollständiger B1-Baum mit vier Wunschpfaden, B2-Quader mit unverzerrter Dreiecksgrundfläche, mobile 3D-Normalansichten bei AP=0,1 und 25/3 cm sowie Draufsichten bei AP=0,1 und 10 cm.
+
+- Alle Brüche, Prozentwerte, Umformungen, Einheiten und Ergebnisse sind im gesichteten Formelbild korrekt.
+- Die zusätzliche falsche AG-Diagonale ist verschwunden; die Grundfläche zeigt einen echten rechten Winkel bei A und den Winkel φ bei E.
+- B2-Draufsicht umfasst jetzt den ganzen Quader, mit getrennten Reihen für P/Q und gemeinsamen Projektionsbezeichnungen der vertikal übereinanderliegenden Punkte.
+- **Weitere Sichtkorrektur:** Die Bezeichnung F wurde noch von der Kante DC geschnitten. Sie ist nun links unterhalb des Punktes F kantenfrei gesetzt. Die Streckenbenennung AD in einem Erklärungsschritt wurde mit Überstrich vervollständigt.
+- Separat abgesicherte Nachbesserungen: feste Lösungsindizes nur in den zugehörigen Sonderlagen, kein irreführender exakter 50-cm³-Hinweis bei manueller Abweichung, und Grenzgleichheiten ausschließlich bei genau 10 cm. Diese Änderungen werden auf dem finalen Code erneut technisch geprüft.
+
+### Abschließender Nachweis des gemeinsamen Blocks
+
+- Endgültiger Code: `7c2cc04150efc9353fc814f6fc0127f34fb586fe`.
+- [Abschließender GitHub-Actions-Lauf 43700849077](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43700849077): **success**. Job-Log tatsächlich ausgelesen: **42/42 erfolgreiche Browserfälle** (7 Seiten × 2 Viewports × 3 technische Wiederholungen), dreimal **439 statische/mathematische Prüfungen** und **287 Quellen-/Strukturprüfungen**. Keine gemeldeten Browser-Laufzeitfehler; Formeln gesetzt, B1/B2-Rechnungen ohne seitliches Abschneiden.
+- Erfolgreich getestet wurden insbesondere p=30, exakte 50-cm³-Lage, freie Änderung danach, Grenzwert 10 cm und 9,99999999 cm unmittelbar davor, Vorwärts/Zurück/Reset, 3D-Drehen und Zwei-Finger-Zoom in Touch-Emulation. A2 und die übrigen Seiten wurden wegen des gemeinsamen 3D-Moduls mitgeprüft.
+- Finales Actions-Artefakt **14156890701**. Daraus tatsächlich geöffnet: B2-Quader/Grundfläche mit φ und abgerücktem F, mobile 3D-Draufsicht bei 10 cm, mobile B1.1-Schlussrechnung, sämtliche vier Produkte in B1.3 sowie mobile B2.4-Maximalvolumenrechnung. Die geänderten Punktbezeichnungen bleiben sichtbar, die Draufsicht vollständig im Ausschnitt, die Formeln vollständig im Lösungsfeld.
+- Zusätzlich wurden die B2-SVG-Zustände bei AP=4 und AP=7 cm direkt aus dem aktuellen Zeichencode erzeugt und gerendert: weiße Hintergründe halten Punktbezeichnungen auch bei vorbeilaufenden veränderlichen Kanten lesbar. Diese ergänzende SVG-Prüfung ist kein Ersatz für den ebenfalls erfolgreichen Browserlauf.
+- **Blockstatus:** B1 und B2 fachlich mit den Originalen abgeglichen, alle 24 Lösungsschritte gesichtet, Korrekturen gespeichert und final technisch regressionsgeprüft. Bestehende Nutzer-Einzelfreigaben bleiben erhalten.
+- **Keine Gesamtfreigabe 2025:** Die vollständige dreifache unabhängige Prüfung aller neun Kategorien für den gesamten Jahrgang bleibt offen; technische Wiederholungen werden dafür nicht als Ersatz gewertet.
+- **Nächster Block:** B3 und B4.
