@@ -434,3 +434,42 @@ Aus dem erfolgreichen Browserlauf [43699815456](https://github.com/DerErklehrer/
 
 
 **Abschließende Browserbelege:** Code `b1c318ae69081dcb801577b2acbf535c61ce530c`; [Actions-Lauf 43702609173](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43702609173) erfolgreich. Je drei Wiederholungen mit 449 mathematischen/statischen und 287 Quellen-/Strukturprüfungen; 42 Browserfälle für alle sieben Aufgaben auf Desktop und Mobil. Artefakt `14156743208`. Alle 22 B3-Desktop-Schrittaufnahmen sowie die mobilen Schlussrechnungen B3.4–B3.6 visuell gelesen; Formeln vollständig und ohne seitliches Abschneiden. Konstruktion/Lot zusätzlich als gerenderte Original-SVG kontrolliert. B3-Arbeitsschritt abgeschlossen; keine Freigabe der gesamten Dreifachkontrolle 2025.
+
+
+## Fortsetzung Gesamtqualitätskontrolle – B4 nach B3 (15.11.2026)
+
+**Umfang:** fünf Teilaufgaben, 19 Erklärungsschritte, 14,5 P. B3 wurde zuvor separat abgeschlossen und protokolliert. Ausgangspunkt `e7287c70a38ae00fea6e050c8b4121d8b61afe5d`.
+
+**Originalquellen erneut visuell gelesen:** ISB `2025_mi_ht.pdf`, PDF-Seite 10 (B4.0–B4.5), und `2025_mi_ht_l.pdf`, Seiten 5–6 (Konstruktion, Pfeilkoordinaten, Sonderfall, Abstand und Fläche). Die gedruckten Seiten wurden lokal gerendert und vollständig gelesen.
+
+| Aufgabe | Original-/Punkteabgleich | Fachliche Kontrolle |
+|---|---|---|
+| B4.1 | g:y=0,5x+5, A(−3|−2), D auf g, Winkel 40°, AB=0,5AD; x=−4,5 und x=2; Zeichenfenster x∈[−6;7], y∈[−2;9], 1 cm/LE; 3 P. | D₁(−4,5|2,75), D₂(2|6). AB entsteht durch Drehung von AD um −40° und Halbierung, C=B+D−A. Beide Parallelogramme stimmen mit der Orientierung des Originals überein. |
+| B4.2 | Gesucht sind die Koordinaten der Pfeile AB in Abhängigkeit von x; vorgegebener Ergebnisvektor (0,55x+3,40; −0,13x+1,74); 4 P. | AD=(x+3;0,5x+7). Drehmatrix und beide Komponenten separat kontrolliert. Mit cos40°≈0,77 und sin40°≈0,64 ergeben sich die amtlichen gedrehten Komponenten (1,09x+6,79; −0,26x+3,47); erst dann halbieren und erneut runden. Die Lernlösung erklärt diese Zwischenstufe nun ausdrücklich und markiert gerundete Ausdrücke mit ≈. |
+| B4.3 | D₃C₃ liegt auf g; Koordinaten D₃ berechnen; 3 P. | Aus dem gerundeten Vektor: (−0,13x+1,74)/(0,55x+3,40)=0,5; 0,04=0,405x; x≈0,10, y≈5,05. Der Nenner ist bei der Lösung ungleich null. Ohne Zwischenrundung gilt geometrisch x≈0,0437158074 und y≈5,0218579037. Beide Wege sind getrennt bezeichnet und anwählbar; der amtliche Ergebniswert bleibt unverändert. |
+| B4.4 | AD₀ besitzt minimale Länge; x-Koordinate D₀ bestimmen; 2,5 P. | AD₀⊥g, Skalarprodukt mit (1;0,5) ergibt 1,25x+6,5=0; x=−5,2 und D₀(−5,2|2,4). Unabhängiger globaler Nachweis: AD²=1,25(x+5,2)²+24,2. |
+| B4.5 | Minimalen Flächeninhalt bei AB₀C₀D₀ begründen; 2 P. | F=AB·AD·sin40°=0,5·AD²·sin40°. Positiver konstanter Faktor, daher genau dasselbe eindeutige Minimum. Unabhängige Kontrollfläche F_min=12,1·sin40°≈7,7777300772 FE (zusätzlicher Prüfwert, nicht vorzeitig in der Seite eingeblendet). |
+
+### Neun-Kategorien-Prüfung dieses Arbeitsschritts
+
+1. **Originaltreue:** Ausgangsangaben und alle fünf Fragen, Operatoren, Punkte, Zeichenfenster, Teil-/Endergebnisse und Reihenfolge mit dem gedruckten Original abgeglichen. Originalfragen bleiben erhalten.
+2. **Fachliche Richtigkeit:** Alle 19 Lösungsschritte einschließlich Drehorientierung, Halbierung, Steigungsquotient, zulässiger Lösung, Senkrechtbedingung und Flächenargument nachvollzogen. Der amtliche Rundungsweg wird nicht mit der trigonometrisch exakten Geometrie gleichgesetzt.
+3. **Schreibweisen:** Vektorpfeile gegenüber Längenbeträgen unterschieden, Dezimalkomma, ∢, Gradzeichen, echte Brüche und gerundete Näherungsausdrücke kontrolliert. Matrixprodukt in Drehmatrix und Vektoranwendung geteilt; Komponenten, Gleichungsumformungen und Flächenformel mehrzeilig für schmale Displays gesetzt.
+4. **Grafik:** Beide Originalkonstruktionen stimmen in Lage und Orientierung. Beide erhalten 40°-Bögen. Achsenpfeile und abgerücktes O ergänzt; Zeichenfenster rechts erweitert, damit das x-Achsenlabel vollständig bleibt. Punkt-/Winkeltexte mit weißem Hintergrund verhindern überlagernde Kanten. Der rechte Winkel bei D₀ bleibt Viertelkreisbogen mit Punkt auf halbem Radius der Winkelhalbierenden. Originalkonstruktion, Minimum und exakte Sonderlage zusätzlich direkt aus der tatsächlichen draw()-Funktion als SVG gerendert und visuell kontrolliert.
+5. **3D:** Nicht anwendbar; ausschließlich ebene Geometrie.
+6. **Abhängigkeiten:** Vier Konstruktionsstufen bleiben erhalten. Sonderlagen erscheinen erst nach dem zugehörigen Lösungsweg. Zusätzliche Taste setzt die ungerundete D₃-Lage mit voller Genauigkeit; freie Reglerbewegung entfernt deren Sonderfallbezeichnung. Amtliche Zwischenrundung und exakte Parallelität werden in der Messanzeige verschieden erläutert. Direktes Aktivieren des Minimum-Kontrollkästchens synchronisiert Regler und Messwerte; der Minimum-Messwert trägt Index 0. Reset/Zurückblättern stellen Ausgangslagen wieder her.
+7. **Didaktik:** Erst Punkte, dann Winkel und halbe Seite, danach Parallelogramm. Die Drehmatrix wird in lesbaren Teilschritten verwendet. Der Rundungseffekt ist anhand zweier ausdrücklich bezeichneter Voreinstellungen sichtbar. Kein zusätzlicher Endergebniswert vor dem zugehörigen Schritt.
+8. **Technik/Mobil:** Alle 19 Rechnungsschritte werden im Browser auf gesetztes MathJax und seitliches Abschneiden geprüft; vollständige Screenshots beider Formate im dritten Durchlauf. Neue Regression prüft die ungerundete Sonderlage direkt am tatsächlichen Koordinatenmodell und die Rückkehr zur freien Erkundung. Bestehende Wischansicht, Gesamtübersicht, Einzelauswahl, Reset und Viertelkreis-Markierung werden erneut geprüft.
+9. **Veröffentlichung/Konsistenz:** Navigation zu B3/Jahrgang/Übersicht, 14,5 P, gleiche Zahlen-/Farblogik und keine öffentlichen PDF-Direktlinks. Regression umfasst den gesamten Haupttermin mit sieben Aufgaben.
+
+**Automatische Eigenchecks:** 469 mathematische/statische Prüfungen und 287 Quellen-/Strukturprüfungen lokal bestanden. Neu sind 20 Kontrollen zu amtlichen gedrehten Komponenten, quadratischer Ergänzung bei x=−100,−6,−5,2,0,0,1,2,100, globalem Minimum, exakter Parallelität und minimaler Fläche.
+
+**Prüfgrenze:** Ein erneuter vollständiger Fach-/Originalabgleich für B4 in diesem Arbeitsschritt. Technische Wiederholungen sind keine drei unabhängigen vollständigen Neun-Kategorien-Durchgänge; die Gesamtfreigabe der Dreifachkontrolle 2025 bleibt offen.
+
+**Abschließender Browsernachweis:** Seitenänderung `d89d9ece209041e86678c47d25d445ed2933068f`; abschließender Teststand `61f61fc9912d9bbcad528a10d29d50f3cf1e859f`. [Actions-Lauf 43704483401](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43704483401) erfolgreich: 469 mathematische/statische und 287 Quellen-/Strukturchecks je dreimal, 42 erfolgreiche Browserfälle (sieben Aufgaben × Desktop/Mobil × drei Wiederholungen), keine offenen Browserfehler. Prüfartefakt `14158256948`. Veröffentlichung des Seitenstands erfolgreich.
+
+**Sichtprüfung:** Alle 19 B4-Lösungsschritte auf Desktop und Mobil anhand der Bildschirmaufnahmen gelesen (38 Ansichten); vollständig gesetzte, lesbare Formeln ohne horizontales Abschneiden. Die Lösungsausschnitte im finalen erfolgreichen Artefakt sind pixelgleich mit den zuvor gelesenen Aufnahmen. Die finalen Diagramme für Originalkonstruktion, Minimum und geometrisch exakte Sonderlage zusätzlich visuell geprüft; mobile Vektor-Endrechnung und mobile Sonderlagen-Bedienung einzeln in voller Auflösung gelesen.
+
+**Behobener Testfehler:** Der erste Gesamtlauf 43703722817 meldete sechs Fehler ausschließlich deshalb, weil die neue B4-Prüfung eines Bedienelements versehentlich zusätzlich im B3-Testblock stand. B4 selbst bestand bereits alle sechs Browserfälle. Die doppelte Zuordnung wurde im Testskript entfernt; der vollständige neue Lauf besteht mit 42/42 Fällen. Keine Abschwächung einer Prüfung und keine Änderung der bereits geprüften B3-Seite.
+
+**Ergebnis:** B3 und anschließend B4 als angeforderte Einzelarbeitsschritte abgeschlossen und veröffentlicht. Die darüber hinausgehende vollständige Dreifachfreigabe des Jahrgangs 2025 wird hiermit nicht behauptet.
