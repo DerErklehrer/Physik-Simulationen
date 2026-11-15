@@ -1,0 +1,92 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B 2 · Mathematik I 2024 – Der ErkLehrer</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style> :root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:white;padding:17px 4%;font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted,.small{color:#637384}.small{font-size:.87rem;line-height:1.5}.grid{display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(300px,1fr);gap:16px}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}button{font:inherit;cursor:pointer;background:white;border:1px solid #b9c4d1;border-radius:8px;padding:8px 11px;color:#253341}button.active{background:#8e2948;color:white}button:disabled{opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e68b3c;outline-offset:2px}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.original,.step{background:#f6f8fb;padding:12px;border-radius:8px;line-height:1.75}.step{border-left:4px solid #a32b4d;min-height:140px}.tag{display:inline-block;background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:7px;margin:7px}.plot{display:block;width:100%;height:auto}.figure-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}.three{height:440px;position:relative;touch-action:none;background:#f8fafc;border-radius:8px;overflow:hidden}.three canvas{display:block;width:100%;height:100%}.threehelp{position:absolute;bottom:7px;left:9px;font-size:12px;pointer-events:none;color:#637384}input[type=range]{width:100%;accent-color:#9a2848}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.choices label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #dce1e8;border-radius:8px}.mobile-controls{display:none}[hidden]{display:none!important}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}.panel{padding:12px}.plot{width:620px;max-width:none}.figure-scroll.overview .plot{width:100%}.mobile-controls{display:block}.three{height:420px}}</style></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><nav class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2024</a><a href="b1.html">← B 1</a><a href="b-vorlaeufig.html#b3">B 3 →</a></nav><p class="muted">Realschule Bayern · Mathematik I · Haupttermin · Aufgabengruppe B</p><h1>Abschlussprüfung 2024 · B 2</h1><div class="grid"><section class="panel"><h2>Trapez und Dreiecke</h2><div id="figureScroll" class="figure-scroll" tabindex="0" role="region" aria-label="Zeichnung, auf schmalen Bildschirmen seitlich verschiebbar"><svg id="plot" class="plot" viewBox="0 0 640 540" role="img" aria-label="Trapez und Dreiecke; Zeichnung passend zu den Lösungsschritten"></svg></div><div class="mobile-controls"><button id="overview" aria-pressed="false">Gesamte Zeichnung anzeigen</button><p class="small">Lesemodus: Zeichnung seitlich wischen.</p></div><label for="phi">Winkel φ: <strong id="phival">20,00°</strong></label><input id="phi" type="range" min=".1" max="51.34" step=".01" value="20"><div class="buttons"><button id="p1">Originaldreieck: φ = 20°</button><button id="endPoint">Endpunkt P = B</button><button id="p2" hidden>Gleichschenkliges Dreieck P₂</button></div><p class="small">Der Regler beginnt aus Darstellungsgründen bei 0,1°. Mathematisch ist 0° ausgeschlossen. Die gedruckte Obergrenze 51,34° ist gerundet; die Endpunkttaste setzt exakt P = B.</p><p id="measure" class="small" aria-live="polite"></p></section><section class="panel"><h2>Originalaufgabe und Musterlösung</h2><div class="original"><strong>B 2.0 – Ausgangsangaben</strong><div><p>Gegeben sind das Trapez \(ABCD\) und Punkte \(P_n\) auf der Diagonalen \(\overline{BD}\) (siehe Zeichnung). Die Punkte \(C\), \(D\) und \(P_n\) legen Dreiecke \(CDP_n\) fest. Die Winkel \(DCP_n\) haben das Maß \(\varphi\) mit \(\varphi\in\left]0^\circ;51{,}34^\circ\right]\).</p><p>Es gilt: \(|\overline{AB}|=7\,\mathrm{cm}\); \(|\overline{CD}|=11\,\mathrm{cm}\); \(|\overline{AD}|=5\,\mathrm{cm}\); \(\sphericalangle ADC=90^\circ\); \(\overline{AB}\parallel\overline{CD}\).</p><p>Die Zeichnung zeigt das Dreieck \(CDP_1\) für \(\varphi=20^\circ\).</p></div></div><div id="parts" class="buttons"></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong><span id="count" class="tag"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Ausführliche eigenständige Lernlösung nach dem amtlichen ISB-Lösungsmuster. Keine amtliche Lösung.</p></section></div></main><script>const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';let part=0,step=0;
+function el(t,a={},text){let e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('plot').append(e);return e}
+function line(a,b,color='#60758b',w=2,dash=''){return el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':dash})}
+function caption(x,y,t,color='#253341',size=16){return el('text',{x,y,fill:color,'font-size':size,stroke:'#fff','stroke-width':4,'paint-order':'stroke','stroke-linejoin':'round'},t)}
+function mark(p,t,color='#253341'){el('circle',{cx:p[0],cy:p[1],r:3.5,fill:color});caption(p[0]+7,p[1]-8,t,color)}
+function fraction(x,y,n,d,visible=true,color='#253341'){let g=el('g',{'data-probability':n+'/'+d,visibility:visible?'visible':'hidden'});for(const[tag,a,t]of [['rect',{x:x-23,y:y-24,width:46,height:53,rx:9,fill:'#fff',stroke:'#b9c4d1'}],['text',{x,y:y-5,'text-anchor':'middle','font-size':17,fill:color},n],['line',{x1:x-14,x2:x+14,y1:y,y2:y,stroke:color,'stroke-width':1.4}],['text',{x,y:y+21,'text-anchor':'middle','font-size':17,fill:color},d]]){const c=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>c.setAttribute(k,v));if(t!==undefined)c.textContent=t;g.append(c)}return g}
+function math(){if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution')]);MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)}}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;draw();math()}
+function start(){tasks.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.n;b.onclick=()=>{part=i;step=0;initPart();render()};$('parts').append(b)});$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[part].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;initPart();render()};$('overview').onclick=()=>{const v=$('figureScroll').classList.toggle('overview');$('overview').setAttribute('aria-pressed',String(v));$('overview').textContent=v?'Zum Lesemodus wechseln':'Gesamte Zeichnung anzeigen';$('figureScroll').scrollLeft=0};initPart();render();window.addEventListener('load',math)}
+
+
+const tasks=[
+ {
+  "n": "B 2.1",
+  "p": "4 P",
+  "q": "Zeigen Sie rechnerisch, dass für die Länge der Strecken \\(\\overline{DP_n}\\) in Abhängigkeit von \\(\\varphi\\) gilt:\\[\\begin{gathered}|\\overline{DP_n}|(\\varphi)\\\\=\\frac{11\\cdot\\sin\\varphi}{\\sin(35{,}54^\\circ+\\varphi)}\\,\\mathrm{cm}.\\end{gathered}\\]Berechnen Sie sodann die Länge der Strecke \\(\\overline{DP_1}\\).<br>Runden Sie auf zwei Stellen nach dem Komma.",
+  "steps": [
+   [
+    "Winkel ADB berechnen",
+    "Im rechtwinkligen Dreieck \\(ADB\\) gilt:\\[\\tan(\\sphericalangle ADB)=\\frac{|\\overline{AB}|}{|\\overline{AD}|}=\\frac75.\\]Daher\\[\\sphericalangle ADB=\\arctan\\!\\left(\\frac75\\right)\\approx54{,}46^\\circ.\\]"
+   ],
+   [
+    "Winkel bei D im Dreieck CDPₙ",
+    "Da \\(\\overline{AD}\\perp\\overline{DC}\\) ist und \\(P_n\\) auf \\(\\overline{DB}\\) liegt:\\[\\begin{aligned}\\delta=\\sphericalangle P_nDC&=90^\\circ-\\sphericalangle ADB\\\\&\\approx35{,}54^\\circ.\\end{aligned}\\]Dieser Winkel ist für alle Punkte \\(P_n\\) gleich groß."
+   ],
+   [
+    "Dritten Winkel bestimmen",
+    "Mit \\(\\varphi=\\sphericalangle DCP_n\\) und \\(\\gamma=\\sphericalangle DP_nC\\) liefert die Winkelsumme:\\[\\gamma=180^\\circ-(\\delta+\\varphi).\\]"
+   ],
+   [
+    "Sinussatz zuordnen",
+    "Der Seite \\(\\overline{DP_n}\\) liegt der Winkel \\(\\varphi\\) gegenüber; der Seite \\(\\overline{CD}\\) der Winkel \\(\\gamma\\). Somit gilt:\\[\\frac{|\\overline{DP_n}|}{\\sin\\varphi}=\\frac{11\\,\\mathrm{cm}}{\\sin\\gamma}.\\]"
+   ],
+   [
+    "Längenfunktion herleiten",
+    "Wegen \\(\\sin(180^\\circ-\\alpha)=\\sin\\alpha\\) folgt zunächst exakt\\[|\\overline{DP_n}|(\\varphi)=\\frac{11\\cdot\\sin\\varphi}{\\sin(\\delta+\\varphi)}\\,\\mathrm{cm}.\\]Mit dem auf zwei Dezimalstellen gerundeten Winkel \\(\\delta\\approx35{,}54^\\circ\\) erhält man die verlangte Darstellung:\\[\\boxed{\\begin{gathered}|\\overline{DP_n}|(\\varphi)\\\\\\approx\\frac{11\\cdot\\sin\\varphi}{\\sin(35{,}54^\\circ+\\varphi)}\\,\\mathrm{cm}\\end{gathered}}.\\]<p class=\"small\">Das Näherungszeichen macht die Zwischenrundung ausdrücklich sichtbar. Die Originalangabe verwendet dafür ein Gleichheitszeichen.</p>"
+   ],
+   [
+    "Länge DP₁ berechnen",
+    "Setze \\(\\varphi=20^\\circ\\) ein:\\[\\begin{aligned}|\\overline{DP_1}|&\\approx\\frac{11\\cdot\\sin20^\\circ}{\\sin(35{,}54^\\circ+20^\\circ)}\\,\\mathrm{cm}\\\\&\\approx\\boxed{4{,}56\\,\\mathrm{cm}}.\\end{aligned}\\]Die dynamische Zeichnung verwendet ungerundete Winkel und liegt exakt im gegebenen Trapez."
+   ]
+  ]
+ },
+ {
+  "n": "B 2.2",
+  "p": "1 P",
+  "q": "Das Dreieck \\(CDP_2\\) ist gleichschenklig mit der Basis \\(\\overline{CD}\\).<br>Ergänzen Sie das Dreieck \\(CDP_2\\) in der Zeichnung zu B 2.0.",
+  "steps": [
+   [
+    "Gleiche Schenkel erkennen",
+    "Für die Spitze des gesuchten Dreiecks muss \\(|\\overline{P_2C}|=|\\overline{P_2D}|\\) gelten. Alle Punkte mit gleichem Abstand zu \\(C\\) und \\(D\\) liegen auf der Mittelsenkrechten der Strecke \\(\\overline{CD}\\)."
+   ],
+   [
+    "Mittelpunkt der Basis markieren",
+    "Markiere den Mittelpunkt \\(M\\) von \\(\\overline{CD}\\). Weil die Basis \\(11\\,\\mathrm{cm}\\) lang ist, liegt \\(M\\) von beiden Endpunkten \\(5{,}5\\,\\mathrm{cm}\\) entfernt."
+   ],
+   [
+    "Schnittpunkt P₂ konstruieren",
+    "Errichte in \\(M\\) die Senkrechte zur Basis \\(\\overline{CD}\\). Ihr Schnittpunkt mit der vorgegebenen Diagonalen \\(\\overline{BD}\\) ist \\(P_2\\)."
+   ],
+   [
+    "Dreieck vervollständigen",
+    "Verbinde \\(P_2\\) mit \\(C\\) und \\(D\\). Damit ist das gesuchte Dreieck \\(CDP_2\\) eingezeichnet. Die Markierungen an den Schenkeln zeigen \\(|\\overline{P_2C}|=|\\overline{P_2D}|\\). Die Originalzeichnung für \\(P_1\\) bleibt dünn sichtbar."
+   ]
+  ]
+ }
+];
+
+const rad=a=>a*Math.PI/180,deg=a=>a*180/Math.PI,delta=deg(Math.atan(5/7)),phiMax=deg(Math.atan(5/4)),X=x=>50+48*x,Y=y=>350-48*y;let precisePhi=null,preset='1',previousStep=0;
+function geometry(phi){const u=Math.tan(rad(phi)),t=11*u/(5+7*u);return {t,x:7*t,y:5-5*t,length:Math.sqrt(74)*t}}
+function initPart(){precisePhi=null;preset='1';previousStep=0;$('phi').value=20}
+function angle(p,u,v,label,r=34){const a=Math.atan2(u[1],u[0]),b=Math.atan2(v[1],v[0]);let d=(b-a+Math.PI*3)%(Math.PI*2)-Math.PI;el('path',{d:`M${p[0]+r*Math.cos(a)} ${p[1]+r*Math.sin(a)} A${r} ${r} 0 0 ${d>0?1:0} ${p[0]+r*Math.cos(b)} ${p[1]+r*Math.sin(b)}`,stroke:'#a32b4d','stroke-width':1.8,fill:'none'});const m=a+d/2;caption(p[0]+(r+17)*Math.cos(m)-5,p[1]+(r+17)*Math.sin(m)+5,label,'#a32b4d',15)}
+function right(p,u,v,r=18){const cross=u[0]*v[1]-u[1]*v[0];el('path',{d:`M${p[0]+r*u[0]} ${p[1]+r*u[1]} A${r} ${r} 0 0 ${cross>0?1:0} ${p[0]+r*v[0]} ${p[1]+r*v[1]}`,stroke:'#198576','stroke-width':1.8,fill:'none','data-right-angle':'quarter-arc'});el('circle',{cx:p[0]+r*(u[0]+v[0])/(2*Math.sqrt(2)),cy:p[1]+r*(u[1]+v[1])/(2*Math.sqrt(2)),r:2.2,fill:'#198576','data-right-angle':'center-dot'})}
+function draw(){
+ $('plot').replaceChildren();if(part===1&&step>=2&&previousStep<step){precisePhi=delta;preset='2';$('phi').value=delta}if(part===1&&step<2&&previousStep>=2){precisePhi=null;preset='1';$('phi').value=20}previousStep=step;
+ const phi=precisePhi??Number($('phi').value),g=geometry(phi),A=[X(0),Y(0)],B=[X(7),Y(0)],C=[X(11),Y(5)],D=[X(0),Y(5)],P=[X(g.x),Y(g.y)],M=[X(5.5),Y(5)],g1=geometry(20),P1=[X(g1.x),Y(g1.y)];
+ el('path',{d:`M${A} L${B} L${C} L${D} Z`,stroke:'#60758b','stroke-width':2.3,fill:'#f8fafc'});line(D,B,'#95a4b1',1.5);right(D,[1,0],[0,1]);
+ const showP2=part===1&&step>=2&&preset==='2',index=showP2?'₂':preset==='1'?'₁':'ₙ';
+ if(part===1){line(C,P1,'#b6a1ac',1.4);caption(P1[0]-30,P1[1]+22,'P₁','#927d87',14)}
+ if(part===0||step>=2){el('path',{d:`M${D} L${C} L${P} Z`,fill:showP2?'#198576':'#a32b4d','fill-opacity':.07,stroke:showP2?'#198576':'#a32b4d','stroke-width':2.5});mark(P,preset==='B'?'P = B':'P'+index,showP2?'#198576':'#a32b4d');angle(C,[-1,0],[P[0]-C[0],P[1]-C[1]],'φ',52)}
+ if(part===0&&step>=1)angle(D,[1,0],[B[0]-D[0],B[1]-D[1]],'δ',38);
+ if(part===0&&step===2)angle(P,[D[0]-P[0],D[1]-P[1]],[C[0]-P[0],C[1]-P[1]],'γ',28);
+ if(part===1&&step>=1){mark(M,'M','#198576')}
+ if(part===1&&step>=2){line(M,[M[0],Y(-.5)],'#198576',1.7,'5 4');right(M,[-1,0],[0,1],16)}
+ if(showP2&&step>=3){for(const U of [C,D]){const m=[(U[0]+P[0])/2,(U[1]+P[1])/2],dx=P[0]-U[0],dy=P[1]-U[1],len=Math.hypot(dx,dy);line([m[0]-dy/len*6,m[1]+dx/len*6],[m[0]+dy/len*6,m[1]-dx/len*6],'#198576',2.2)}}
+ caption(A[0]-20,A[1]+6,'A');caption(B[0]+5,B[1]+22,'B');caption(C[0]+8,C[1]-8,'C');caption(D[0]-20,D[1]-8,'D');caption(X(3.5)-20,Y(0)+38,'7 cm','#637384');caption(X(5.5)-20,Y(5)-20,'11 cm','#637384');caption(2,Y(2.5),'5 cm','#637384');
+ $('phival').textContent=(precisePhi===null?phi.toFixed(2):phi.toFixed(5)).replace('.',',')+'°';$('p2').hidden=!(part===1&&step>=3);$('p1').hidden=part===1&&step<2;$('endPoint').hidden=part===1&&step<2;$('phi').disabled=part===1&&step<2;
+ $('measure').textContent=showP2?(step>=3?'P₂ ist der Schnittpunkt der Mittelsenkrechten von CD mit BD. Beide Schenkel sind gleich lang.':'Die Mittelsenkrechte schneidet die Diagonale in P₂.'):preset==='B'?'Exakter Endpunkt: P = B. Der angezeigte Winkel ist auf fünf Dezimalstellen gerundet.':part===0&&step>=5?'Geometrisch berechnete Streckenlänge: '+g.length.toFixed(2).replace('.',',')+' cm. Die Zeichnung rechnet ohne Zwischenrundung.':'P liegt auf der Diagonalen BD; φ ist der Winkel bei C.';
+}
+$('phi').oninput=()=>{precisePhi=null;preset='n';draw()};$('p1').onclick=()=>{precisePhi=null;preset='1';$('phi').value=20;draw()};$('endPoint').onclick=()=>{precisePhi=phiMax;preset='B';$('phi').value=51.34;draw()};$('p2').onclick=()=>{precisePhi=delta;preset='2';$('phi').value=delta;draw()};
+
+start();</script></body></html>
