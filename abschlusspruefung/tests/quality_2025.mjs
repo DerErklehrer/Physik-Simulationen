@@ -111,7 +111,7 @@ for(const p of [0.5,5,10,15,20,29.5]){
  test('B1: weiße Schachteln haben positiven Anteil p='+p,30-p>0);
 }
 test('B1: ursprüngliche vier Antwortmöglichkeiten', [...contents.b1.matchAll(/name="white" value="/g)].length===4);
-test('B1: verdeckter weißer Anteil',contents.b1.includes('revealWhite=part===0&&step>=2'));
+test('B1: verdeckter weißer Anteil',contents.b1.includes('revealWhite=part===0&&step>=1'));
 test('B1: Pfadergebnisse nicht vor der Addition',contents.b1.includes('showPaths=part===2&&step>=2'));
 test('B1: p=20 nicht vor Rechenende',contents.b1.includes("revealGreenResult=part===1&&step>=2"));
 close('B1: Sebastian',(.4+.3)*(.5+.3),.56);
@@ -122,13 +122,13 @@ close('A3: rechter Winkel-Median',Math.atan(Math.sqrt(3))*180/Math.PI,60);
 close('B2: exakte Schrägbildverkürzung 10cm zu 5cm',Math.hypot(200/Math.sqrt(2),200/Math.sqrt(2)),200,1e-9);
 close('B2: exakter Schrägbildwinkel',Math.atan2(200/Math.sqrt(2),200/Math.sqrt(2))*180/Math.PI,45,1e-9);
 for(const t of [0.1,1,4,50/6,9.9,10]){
- const vectorAD=[140,-140],base=[120,390],P=[base[0]+vectorAD[0]*t/10,base[1]+vectorAD[1]*t/10];
+ const vectorAD=[200/Math.sqrt(2),-200/Math.sqrt(2)],base=[120,390],P=[base[0]+vectorAD[0]*t/10,base[1]+vectorAD[1]*t/10];
  close('B2: Schrägbildlage P(t) bei t='+t,Math.hypot(P[0]-base[0],P[1]-base[1]),Math.hypot(...vectorAD)*t/10,1e-9);
  close('B2: Prismenvolumen bei AP='+t,0.5*t*3*4,6*t,1e-9);
  close('B2: Winkel/Volumen bei AP='+t,18*Math.tan(Math.atan(t/3)),6*t,1e-9);
  test('B2: Winkelbereich für AP='+t,Math.atan(t/3)>0&&Math.atan(t/3)<=Math.atan(10/3)+1e-10);
 }
-test('B2: Raumdiagonale AG in Originalgrafik',contents.b2.includes("line(A,G,'#778d9c'"));
+test('B2: amtliche Figur ohne zusätzliche Raumdiagonale AG',!contents.b2.includes('line(A,G,'));
 test('B2: Phasenweise Konstruktion',contents.b2.includes('phase=construction?step+1:3')&&contents.b2.includes('if(phase>=3)'));
 test('B2: 50 cm³ nicht vor Rechnung',contents.b2.includes("part===2&&step>=2"));
 test('B2: ungerundete 50-cm³-Geometrie nach Rechnung aktivieren',contents.b2.includes('previousLength=Number($(\'length\').value);exact50=true')&&contents.b2.includes('const n=exact50?50/6:'));
@@ -209,3 +209,18 @@ const marker=contents.a3.match(/data-right-angle="quarter-arc"/g)||[];
 test('A3: rechter Winkel als Viertelkreis',marker.length===1&&contents.a3.includes('data-right-angle="center-dot"'));
 close('A3: Punkt auf Winkelhalbierender in halbem Bogenradius',Math.hypot(585-578.636,98.364-92),9,.001);
 console.log('Zusätzliche A2/A3-Geometrieprüfung erfolgreich; insgesamt '+checked+' statische/fachliche Prüfungen.');
+
+for(const p of [.01,.5,15,20,29.99,30]){
+ const colors=[.4,.3,p/100,(30-p)/100],tastes=[.5,.2,.3],leaves=colors.flatMap(c=>tastes.map(t=>c*t));
+ close('B1: vollständiger Baum summiert sich zu 1 bei p='+p,leaves.reduce((a,b)=>a+b,0),1);
+ test('B1: alle zwölf Pfade nichtnegativ bei p='+p,leaves.every(v=>v>=0));
+ close('B1: rote/blaue Nicht-Birnen-Pfade bei p='+p,leaves[0]+leaves[2]+leaves[3]+leaves[5],.56);
+}
+close('B1: weißer Randanteil bei p=30',1-(70+30)/100,0);
+for(const t of [.1,4,25/3,10]){
+ close('B2: tatsächliche projizierte AP-Länge bei '+t,Math.hypot(20*t/Math.sqrt(2),20*t/Math.sqrt(2)),20*t);
+ close('B2: wahre Dreiecksgrundfläche bei '+t,.5*t*3,1.5*t);
+ close('B2: Prismenhöhe bei '+t,(6*t)/(1.5*t),4);
+ test('B2: höchstens halbes Quadervolumen bei '+t,6*t<=60);
+}
+console.log('B1/B2-Blockprüfung bestanden; insgesamt '+checked+' statische/fachliche Prüfungen.');

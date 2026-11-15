@@ -36,28 +36,28 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
       const nodes=[document.getElementById('statement'),document.getElementById('solution')];
       return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
     },null,{timeout:9000});
-    if(name==='a3'&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error('A3: Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
+    if(['a3','b1','b2'].includes(name)&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error(name+': Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
     const statement=(await page.locator('#statement').innerText()).trim();
     const solution=(await page.locator('#solution').innerText()).trim();
     if(statement.length<15||solution.length<10)throw Error('Leerer Aufgabentext/Lösung, Teil '+(i+1));
     const countLabel=await page.locator('#count').innerText();
     const stepCount=Number(countLabel.match(/von\s+(\d+)/)?.[1]||0);
     if(stepCount<2)throw Error('Lösung hat weniger als zwei Schritte, Teil '+(i+1));
-    if(['a1','a2','a3'].includes(name))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt1.png',fullPage:true,animations:'disabled'});
+    if(['a1','a2','a3'].includes(name)||(round===3&&['b1','b2'].includes(name)))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt1.png',fullPage:true,animations:'disabled'});
     for(let currentStep=2;currentStep<=stepCount;currentStep++){
       await page.locator('#next').click();
       await page.waitForFunction(()=>{
         const nodes=[document.getElementById('statement'),document.getElementById('solution')];
         return nodes.every(el=>{if(!el)return false;const slash=String.fromCharCode(92);return !el.innerText.includes(slash+'(')&&!el.innerText.includes(slash+'[');});
       },null,{timeout:9000});
-      if(name==='a3'&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error('A3: Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
+      if(['a3','b1','b2'].includes(name)&&await page.locator('#solution').evaluate(el=>el.scrollWidth>el.clientWidth+2))throw Error(name+': Rechnung wird seitlich abgeschnitten statt mehrzeilig angezeigt');
       const after=(await page.locator('#solution').innerText()).trim();
-      if(['a1','a2','a3'].includes(name))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+currentStep+'.png',fullPage:true,animations:'disabled'});
+      if(['a1','a2','a3'].includes(name)||(round===3&&['b1','b2'].includes(name)))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+currentStep+'.png',fullPage:true,animations:'disabled'});
       if(after.length<10)throw Error('Leerer Lösungsschritt '+currentStep+', Teil '+(i+1));
       const displayed=await page.locator('#count').innerText();
       if(!displayed.includes('Schritt '+currentStep+' von '+stepCount))throw Error('Schrittanzeige falsch in Teil '+(i+1));
     }
-    if(['a1','a2','a3'].includes(name))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+stepCount+'.png',fullPage:true,animations:'disabled'});
+    if(['a1','a2','a3'].includes(name)||(round===3&&['b1','b2'].includes(name)))await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-teil'+(i+1)+'-schritt'+stepCount+'.png',fullPage:true,animations:'disabled'});
     if(!(await page.locator('#next').isDisabled()))throw Error('Vorwärtsbutton nach letztem Schritt nicht gesperrt, Teil '+(i+1));
     await page.locator('#reset').click();
     if(!(await page.locator('#prev').isDisabled()))throw Error('Reset hat nicht auf ersten Lösungsschritt zurückgesetzt, Teil '+(i+1));
@@ -84,7 +84,9 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if((await current()).includes('30 − p'))throw Error('B1.1: Anteil weiß zu früh sichtbar');
     await page.locator('#choices input[value="2"]').check();
     if((await page.locator('#choicefeedback').innerText()).includes('Richtig'))throw Error('B1.1: Ergebnis vorzeitig bestätigt');
-    await page.locator('#next').click();await page.locator('#next').click();
+    await page.locator('#next').click();
+    if(!(await current()).includes('30 − p'))throw Error('B1.1: Restanteil nicht mit seinem Rechenschritt synchronisiert');
+    await page.locator('#next').click();
     if(!(await page.locator('#choicefeedback').innerText()).includes('Richtig'))throw Error('B1.1: korrekte Auswahl wird nicht bestätigt');
     if(!(await current()).includes('30 − p'))throw Error('B1.1: Restanteil nach Rechnung fehlt');
     await partButtons.nth(1).click();
@@ -108,10 +110,11 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     await page.locator('#reset').click();
     if((await current()).includes('56 %'))throw Error('B1.3: Ergebnis trotz Reset sichtbar');
     const slider=page.locator('#p');
-    for(const v of ['0.5','10','29.5']){
+    for(const v of ['0.5','10','29.5','30']){
       await slider.evaluate((e,val)=>{e.value=val;e.dispatchEvent(new Event('input',{bubbles:true}))},v);
       if((await current()).includes('NaN'))throw Error('B1: unzulässige numerische Ausgabe bei p='+v);
     }
+    if(await page.locator('#p').getAttribute('max')!=='30')throw Error('B1: zulässiger Randwert p=30 fehlt');
     await page.locator('#resetp').click();
    }
    if(name==='a1'){
@@ -270,6 +273,10 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     await page.locator('#next').click();
     if(await figures.count()!==2)throw Error('B2.1: Prismengrundflächen nach Schritt 3 fehlen');
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b2-konstruktion.png',fullPage:true,animations:'disabled'});
+    await partButtons.nth(1).click();
+    if(await page.locator('[data-helper="true-base"]').count()!==1||await page.locator('[data-helper="phi-arc"]').count())throw Error('B2.2: wahre Grundfläche bzw. Winkelstufung falsch');
+    await page.locator('#next').click();
+    if(await page.locator('[data-helper="phi-arc"]').count()!==1)throw Error('B2.2: Winkelbogen zur Tangens-Erklärung fehlt');
     await partButtons.nth(2).click();
     if(await page.locator('#volume50').isVisible())throw Error('B2.3: 50-cm3-Knopf verrät die Lösung');
     if((await page.locator('#measure').innerText()).includes('50,00 cm³'))throw Error('B2.3: Lösungsvolumen vorzeitig sichtbar');
@@ -290,10 +297,14 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     if(await page.locator('#length').inputValue()!=='10')throw Error('B2.4: Endprisma nicht auf 10 cm gesetzt');
     if(!(await page.locator('#measure').innerText()).includes('60,00 cm³'))throw Error('B2.4: Maximalvolumen nicht 60 cm3');
     await page.locator('#prev').click();
-    if(Math.abs(Number(await page.locator('#length').inputValue())-4)>1e-8)throw Error('B2.4: Grenzlage beim Rückwärtsblättern nicht rückgängig');
+    if(await page.locator('#length').inputValue()!=='10')throw Error('B2.4: Maximalprisma im Volumenschritt nicht erhalten');
+    await page.locator('#prev').click();
+    if(await page.locator('#length').inputValue()!=='10')throw Error('B2.4: Geometrie bei P0=D nicht auf Grenzlage');
+    await page.locator('#prev').click();
+    if(Math.abs(Number(await page.locator('#length').inputValue())-4)>1e-8)throw Error('B2.4: vorige Lage beim Verlassen der Grenzlagenbegründung nicht wiederhergestellt');
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-b2-vorbereitung.png',fullPage:true,animations:'disabled'});
    }
-   if(['a2','a3'].includes(name)&&mode.isMobile){
+   if(['a2','a3','b2'].includes(name)&&mode.isMobile){
     const scroll=page.locator('.figure-scroll');
     const sizes=await scroll.evaluate(el=>({visible:el.clientWidth,content:el.scrollWidth}));
     if(sizes.content<=sizes.visible+100)throw Error(name+': mobile Zeichnung zu klein statt scrollbar');
@@ -416,6 +427,17 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
      }
      await page.locator('#phi').evaluate(el=>{el.value=40;el.dispatchEvent(new Event('input',{bubbles:true}))});
     }
+    if(name==='b2'){
+     for(const value of [.1,25/3,10]){
+      await page.locator('#length').evaluate((el,v)=>{el.value=v;el.dispatchEvent(new Event('input',{bubbles:true}))},value);
+      await page.waitForTimeout(200);
+      if(round===3)await page.screenshot({path:OUT+'/r3-'+mode.label+'-b2-3d-ap'+value.toFixed(2)+'.png',fullPage:true,animations:'disabled'});
+      await page.locator('#top2025').click();await page.waitForTimeout(200);
+      if(round===3)await page.screenshot({path:OUT+'/r3-'+mode.label+'-b2-top-ap'+value.toFixed(2)+'.png',fullPage:true,animations:'disabled'});
+      await page.locator('#resetcamera2025').click();
+     }
+     await page.locator('#original').click();
+    }
     // Echter OrbitControls-Bewegungstest – Mausschleppung bzw. Touchgeste.
     const canvas=page.locator('#view3d2025 canvas');
     const box=await canvas.boundingBox();
@@ -442,7 +464,7 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
     const afterOrbit=await canvas.screenshot({animations:'disabled'});
     if(beforeOrbit.equals(afterOrbit))throw Error(name+': 3D-Körper reagiert nicht auf '+(mode.isMobile?'Touchgeste':'Mausdrehen'));
     await page.screenshot({path:OUT+'/r'+round+'-'+mode.label+'-'+name+'-orbit.png',fullPage:true,animations:'disabled'});
-    if(name==='a2'&&mode.isMobile){
+    if(['a2','b2'].includes(name)&&mode.isMobile){
      const cdp=await context.newCDPSession(page),cx=box.x+box.width*.5,cy=box.y+box.height*.4;
      const beforePinch=await canvas.screenshot({animations:'disabled'});
      const points=d=>[{x:cx-d,y:cy,id:1},{x:cx+d,y:cy,id:2}];
@@ -451,7 +473,7 @@ for(let round=1;round<=3;round++)for(const mode of [{label:'desktop',width:1366,
      await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await cdp.detach();await page.waitForTimeout(300);
      if(beforePinch.equals(await canvas.screenshot({animations:'disabled'})))throw Error('A2: Doppelkegel reagiert nicht auf Zwei-Finger-Zoom');
      await page.locator('#resetcamera2025').click();
-     await page.screenshot({path:OUT+'/r'+round+'-mobile-a2-pinch-reset.png',fullPage:true,animations:'disabled'});
+     await page.screenshot({path:OUT+'/r'+round+'-mobile-'+name+'-pinch-reset.png',fullPage:true,animations:'disabled'});
     }
     await page.locator('#top2025').click();
     await page.waitForTimeout(300);
