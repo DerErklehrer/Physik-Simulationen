@@ -35,7 +35,7 @@ jobs:
               await page.screenshot({path:'/tmp/20xx-layout/overview-'+mode+'.png',fullPage:true});
               await page.locator('a.card[href="20xx/"]').click();
               await page.screenshot({path:'/tmp/20xx-layout/20xx-'+mode+'.png',fullPage:true});
-              if(await page.locator('article').count()!==15)throw Error('Aufgabenübersicht unvollständig');
+              if(await page.locator('.cards > .panel').count()!==15)throw Error('Aufgabenübersicht unvollständig');
               if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2))throw Error('Seite zu breit');
               await page.getByRole('link',{name:'Musterprüfung 2',exact:true}).click();
               if(!page.url().endsWith('#muster2'))throw Error('Sprunglink');
