@@ -398,3 +398,39 @@ Aus dem erfolgreichen Browserlauf [43699815456](https://github.com/DerErklehrer/
 - **Blockstatus:** B1 und B2 fachlich mit den Originalen abgeglichen, alle 24 Lösungsschritte gesichtet, Korrekturen gespeichert und final technisch regressionsgeprüft. Bestehende Nutzer-Einzelfreigaben bleiben erhalten.
 - **Keine Gesamtfreigabe 2025:** Die vollständige dreifache unabhängige Prüfung aller neun Kategorien für den gesamten Jahrgang bleibt offen; technische Wiederholungen werden dafür nicht als Ersatz gewertet.
 - **Nächster Block:** B3 und B4.
+
+
+
+## Fortsetzung Gesamtqualitätskontrolle – B3 vor B4 (15.11.2026)
+
+**Umfang B3:** sechs Teilaufgaben, 22 Erklärungsschritte, 16 P. Reihenfolge des Nutzers: B3 zuerst vollständig als Arbeitsschritt bearbeiten, B4 anschließend. Ausgangspunkt `eaebede725b4b0b956af68d886328d84f2939e76`.
+
+**Originalquellen erneut visuell gelesen:** ISB `2025_mi_ht.pdf`, PDF-Seiten 8–9 (B3.0–B3.6); `2025_mi_ht_l.pdf`, Seiten 3–4 (Graphen, Konstruktionen und alle B3-Lösungen).
+
+| Aufgabe | Original-/Punkteabgleich | Unabhängig nachvollzogenes Ergebnis |
+|---|---|---|
+| B3.1 | Beide Funktionsgleichungen, x/y ∈ ℝ, Rundung auf zwei Dezimalstellen, Asymptote f₁, beide Graphen für x ∈ [−5;4], Zeichenfenster y ∈ [−6;4], 1 cm/LE; 4 P. | f₁ = −3·0,5^(x+4)+3 nähert sich 3 von unten, Asymptote y=3. f₂ fällt gegen −4. Wertetabellen und Schnittpunkt (−4|0) stimmen. Alle angegebenen Tabellenwerte erneut nachgerechnet. |
+| B3.2 | Punkte auf f₁/f₂ mit gleicher Abszisse x > −4, Winkel 110°, AD=2 LE, CD=8 LE und AB ∥ CD; beide Trapeze für x=−3 und x=1 zeichnen; 2 P. | AD bildet 20° zur positiven x-Richtung. D=(x+2·cos20°|f₁(x)+2·sin20°), C=(D_x|D_y−8). Für x=−3: A_y=1,5, B_y=−2; für x=1: A_y=2,90625, B_y=−3,875. Beide Schenkel-/Basisrichtungen und 110° mit Skalarprodukt/Konstruktion geprüft. |
+| B3.3 | Lotfußpunkte Fₙ auf CD, A₁F₁ zeichnen, Länge gerundet 1,88 LE zeigen; 2 P. | AF = 2·cos20° LE ≈ 1,87938524 LE, auf zwei Dezimalstellen 1,88 LE. F hat D-Abszisse und A-Ordinate; AF horizontal, CD vertikal. Rechter Winkel bei F, 20° bei A. |
+| B3.4 | Längenfunktion AB(x)=(−3,5·0,5^(x+3)+7) LE bestätigen; 2 P. | Für x>−4 ist f₁>f₂; f₁−f₂=−3·0,5^(x+4)−2·0,5^(x+3)+7. Mit 0,5^(x+4)=0,5·0,5^(x+3) folgt der Koeffizient −1,5−2=−3,5. Jede Vorzeichenumformung kontrolliert. |
+| B3.5 | Gleichschenkliges Trapez A₃B₃C₃D₃; Länge AB und zugehöriges x; vorgegebenes gerundetes Teilergebnis 6,64 LE; 4 P. | Amtlicher Zwischenrundungsweg: DF≈0,68 LE, AB≈8−2·0,68=6,64 LE. Die Gleichung mit 6,64 liefert x≈0,28128611, also 0,28. Ohne Zwischenrundung: AB=8−4·sin20°≈6,63191943 LE und x≈0,2492614083. Beide Wege ausdrücklich getrennt; x>−4 gilt jeweils. |
+| B3.6 | Begründung A(x)<14,1 FE für alle Trapeze; 2 P. | Exakte Höhe h=2·cos20° LE<1,88 LE. Zudem 0<AB(x)<7 LE für x>−4. Daher A=(AB+8 LE)·h/2 < (7+8)/2·1,88 FE =14,1 FE. Die exakte asymptotische Flächengrenze ist 15·cos20°≈14,09538931 FE; somit liegt auch sie strikt unter 14,1 FE. |
+
+### Neun-Kategorien-Prüfung dieses Arbeitsschritts
+
+1. **Originaltreue:** Sämtliche B3-Fragen/Angaben, Operatoren, Reihenfolge, Zahlen, Intervalle, Teilergebnis und Punktwerte gegen den gedruckten Bogen geprüft. Originaltext bleibt erhalten; die lange B3.4-Aufgabenformel erhält lediglich einen mathematisch äquivalenten Zeilenumbruch.
+2. **Fachliche Richtigkeit:** Alle 22 Erklärungsschritte nachvollzogen und mit ISB verglichen. **Korrektur B3.6:** Die bisherige Musterlösung setzte die gerundete Höhe 1,88 LE in eine exakte Flächen-Gleichung ein. Nun bleibt die Höhe zunächst exakt; 1,88 wird erst als echte obere Schranke verwendet. Das amtlich verlangte Ergebnis 14,1 FE bleibt unverändert.
+3. **Schreibweisen:** Längenbeträge, Einheiten LE/FE, Gradzeichen, Winkel ∢, Wurzeln/Potenzen, echte Brüche und Dezimalkomma kontrolliert. Rechnungen B3.3–B3.6 mehrzeilig gesetzt, statt lange Umformungen als unteilbare Inline-Formeln auszugeben. Gerundete Werte und gerundete Lösungsmenge werden ausdrücklich als solche bezeichnet.
+4. **Grafik:** Zeichenfenster und gleiche x/y-Skalierung kontrolliert. A/B-Verbindung erscheint bereits beim Festlegen der Punkte, danach AD, CD, abschließend BC. 110°-Bögen nun an beiden Originaltrapezen; beim Lot zusätzlich der 20°-Winkel für den Kosinusschritt. Rechte-Winkel-Markierung bleibt Viertelkreis mit Punkt auf halbem Radius. Achsenpfeile ergänzt und Ursprung O von der y-Achse abgerückt. Punkt-/Winkelbeschriftungen erhalten weiße Hintergründe; A-/B-Labels schneiden ihre Punktmarker nicht.
+5. **3D:** Nicht anwendbar; B3 behandelt Funktionsgraphen und ebene Trapeze, keine räumlichen Objekte.
+6. **Abhängigkeiten:** Die zwei Vorwahltasten von B3.2 schalten nun tatsächlich auf die jeweilige Originalkonstruktion. Reset stellt beide Originaltrapeze bzw. die zum aktuellen Aufgabenteil gehörenden Anfangseinstellungen wieder her. B3.5-Anzeigen unterscheiden amtliche Zwischenrundung, geometrische Sonderlage und freie Erkundung. Ein frei verändertes Beispiel trägt Index n statt des festen Lösungsindex 3. Reglerbereich [−3;2,1] ist nur das vollständig sichtbare Darstellungsfenster; mathematisch bleibt x>−4.
+7. **Didaktik:** Tabellen, Konstruktionsphasen, Lot, Winkel und Rechnung aufeinander abgestimmt. Die Zwischenrundung ist kein versteckter Wechsel des geometrischen Modells: Referenzwerte und geometrisch berechnete Koordinaten werden verständlich unterschieden. Keine vorzeitige Einblendung der B3.5-Endergebnisse oder Flächenschranke.
+8. **Technik/Mobil:** Alle 22 Lösungsschritte werden im Browser auf gesetzte Formeln, Bedienbarkeit und seitliches Abschneiden geprüft und als Screenshots gesichert. Mobile Wischansicht und Gesamtübersicht bleiben erhalten. Neue Regressionen kontrollieren Einzelauswahl der Trapeze, Reset, 20°-Bogen und korrekte Erkundungsanzeige nach Wahl der geometrischen Sonderlage.
+9. **Veröffentlichung/Konsistenz:** Verweise B2/B4, Jahrgang, Aufgabennummern und 16 P geprüft; keine öffentlichen PDF-Direktlinks. Der gesamte Jahrgang wird technisch mitgeprüft.
+
+**Fachlicher Eigencheck zusätzlich:** 449 statische/mathematische Prüfungen auf dem lokalen Code bestanden, ferner 287 Quellen-/Strukturchecks. Die Flächenschranke wurde für x nahe −4, −3, 0,28, 2,1, 10 und 100 sowie über die exakte asymptotische Grenze abgesichert. Tabellen, Gleichschenkligkeitsbedingung und beide Rundungswege sind geprüft.
+
+**Prüfgrenze:** Ein erneuter vollständiger Fach-/Originalabgleich für B3 in diesem Arbeitsschritt; technische Wiederholungen ersetzen keine drei unabhängigen vollständigen Neun-Kategorien-Durchgänge. B4 wird erst anschließend bearbeitet.
+
+
+**Abschließende Browserbelege:** Code `b1c318ae69081dcb801577b2acbf535c61ce530c`; [Actions-Lauf 43702609173](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43702609173) erfolgreich. Je drei Wiederholungen mit 449 mathematischen/statischen und 287 Quellen-/Strukturprüfungen; 42 Browserfälle für alle sieben Aufgaben auf Desktop und Mobil. Artefakt `14156743208`. Alle 22 B3-Desktop-Schrittaufnahmen sowie die mobilen Schlussrechnungen B3.4–B3.6 visuell gelesen; Formeln vollständig und ohne seitliches Abschneiden. Konstruktion/Lot zusätzlich als gerenderte Original-SVG kontrolliert. B3-Arbeitsschritt abgeschlossen; keine Freigabe der gesamten Dreifachkontrolle 2025.
