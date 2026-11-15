@@ -1,0 +1,139 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B 1 · Musterprüfung 1 · 20XX – Der ErkLehrer</title><script>window.MathJax={svg:{fontCache:'none'},tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><style> :root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:white;padding:17px 4%;font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted,.small{color:#637384}.small{font-size:.87rem;line-height:1.5}.grid{display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(300px,1fr);gap:16px}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}button{font:inherit;cursor:pointer;background:white;border:1px solid #b9c4d1;border-radius:8px;padding:8px 11px;color:#253341}button.active{background:#8e2948;color:white}button:disabled{opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e68b3c;outline-offset:2px}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.original,.step{background:#f6f8fb;padding:12px;border-radius:8px;line-height:1.75}.step{border-left:4px solid #a32b4d;min-height:140px}.tag{display:inline-block;background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:7px;margin:7px}.plot{display:block;width:100%;height:auto}.figure-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}.three{height:440px;position:relative;touch-action:none;background:#f8fafc;border-radius:8px;overflow:hidden}.three canvas{display:block;width:100%;height:100%}.threehelp{position:absolute;bottom:7px;left:9px;font-size:12px;pointer-events:none;color:#637384}input[type=range]{width:100%;accent-color:#9a2848}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.choices label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #dce1e8;border-radius:8px}.mobile-controls{display:none}[hidden]{display:none!important}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}.panel{padding:12px}.plot{width:620px;max-width:none}.figure-scroll.overview .plot{width:100%}.mobile-controls{display:block}.three{height:420px}}table{border-collapse:collapse;width:100%;font-size:.9rem;margin:14px 0}td,th{padding:4px;border:1px solid #dce1e8;text-align:center}.legend{display:flex;flex-wrap:wrap;gap:12px}.key{padding:3px 7px;border-radius:5px;background:#f4e7eb}.key.cone{background:#fff0d9}.key.cylinder{background:#dcefe8}</style></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><nav class="buttons"><a href="../../../">← Abschlussprüfungen</a><a href="../#muster1">Musterprüfung 1 · Übersicht</a><a href="a3.html">← A 3</a><a href="b1.html" aria-current="page">B 1</a><a href="b2.html">B 2</a></nav><p class="muted">Realschule Bayern · Mathematik I · Musterprüfung 1 · Aufgabengruppe B</p><h1>Abschlussprüfung 20XX · B 1</h1><div class="grid"><section class="panel"><h2>Vitamin D: exponentielle Abnahme</h2><div id="figureScroll" class="figure-scroll" tabindex="0" role="region" aria-label="Zeichnung, auf schmalen Bildschirmen seitlich verschiebbar"><svg id="plot" class="plot" viewBox="0 0 640 540" role="img" aria-label="Vitamin D: exponentielle Abnahme passend zum Lösungsschritt"></svg></div><div class="mobile-controls"><button id="overview" aria-pressed="false">Gesamte Zeichnung anzeigen</button><p class="small">Lesemodus: Zeichnung seitlich wischen.</p></div><div id="explore" hidden><label for="week">Zeit in Wochen: <strong id="weekval"></strong></label><input id="week" type="range" min="0" max="30" step=".01" value="1"><div class="buttons"><button id="originalWeek">Eine Woche</button></div><div id="neighborWeeks" class="buttons" hidden><button id="week9">Nach 9 Wochen</button><button id="week10">Nach 10 Wochen</button></div></div><p class="small">Das Zeichenfenster und der Regler zeigen die ersten 30 Wochen. Der vorgegebene Definitionsbereich umfasst alle nicht negativen reellen Wochenwerte.</p><p id="measure" class="small" aria-live="polite"></p></section><section class="panel"><h2>Originalaufgabe und Musterlösung</h2><div id="intro" class="original"><strong>B 1.0 – Ausgangsangaben</strong><p>Vitamin D kann im menschlichen Körper produziert werden, wenn Sonnenstrahlung unter bestimmten Bedingungen auf die Haut trifft. Im Winterhalbjahr nimmt daher die Konzentration von Vitamin D im Körper normalerweise ab.</p><p>Bei Andreas wurde Ende September eine Anfangskonzentration von 55 Nanogramm Vitamin D pro Milliliter Blut \(\left(55\,\frac{\mathrm{ng}}{\mathrm{ml}}\right)\) gemessen. Der Zusammenhang zwischen der Anzahl \(x\) der Wochen und der verbleibenden Konzentration \(y\,\frac{\mathrm{ng}}{\mathrm{ml}}\) an Vitamin D lässt sich bei Andreas näherungsweise durch die Funktion \(f_1\) mit der Gleichung \(y=55\cdot0{,}93^x\) \((x\in\mathbb R_0^+,y\in\mathbb R^+)\) beschreiben.</p></div><div id="parts" class="buttons"></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong><span id="count" class="tag"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Ausführliche eigenständige Lernlösung nach dem amtlichen ISB-Lösungsmuster. Keine amtliche Lösung.</p></section></div></main><script>const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';let part=0,step=0;
+function el(t,a={},text){let e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('plot').append(e);return e}
+function line(a,b,color='#60758b',w=2,dash=''){return el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':dash})}
+function caption(x,y,t,color='#253341',size=16){return el('text',{x,y,fill:color,'font-size':size,stroke:'#fff','stroke-width':4,'paint-order':'stroke','stroke-linejoin':'round'},t)}
+function mark(p,t,color='#253341'){el('circle',{cx:p[0],cy:p[1],r:3.5,fill:color});caption(p[0]+7,p[1]-8,t,color)}
+function fraction(x,y,n,d,visible=true,color='#253341'){let g=el('g',{'data-probability':n+'/'+d,visibility:visible?'visible':'hidden'});for(const[tag,a,t]of [['rect',{x:x-23,y:y-24,width:46,height:53,rx:9,fill:'#fff',stroke:'#b9c4d1'}],['text',{x,y:y-5,'text-anchor':'middle','font-size':17,fill:color},n],['line',{x1:x-14,x2:x+14,y1:y,y2:y,stroke:color,'stroke-width':1.4}],['text',{x,y:y+21,'text-anchor':'middle','font-size':17,fill:color},d]]){const c=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>c.setAttribute(k,v));if(t!==undefined)c.textContent=t;g.append(c)}return g}
+let mathQueue=Promise.resolve(),mathRevision=0;
+function math(){const revision=++mathRevision;if(!window.MathJax?.typesetPromise)return;mathQueue=mathQueue.catch(()=>{}).then(async()=>{if(revision!==mathRevision)return;await MathJax.startup.promise;const nodes=[$('statement'),$('solution'),$('measure')];MathJax.typesetClear(nodes);await MathJax.typesetPromise(nodes);if(revision!==mathRevision)return;for(const label of $('plot').querySelectorAll('[data-math-label]')){if(revision!==mathRevision||!label.isConnected)return;const result=await MathJax.tex2svgPromise(label.getAttribute('data-math-label'),{display:false}),svg=result.querySelector('svg'),box=svg.getAttribute('viewBox').split(/\s+/).map(Number),scale=Number(label.getAttribute('data-size'))/1000;if(revision!==mathRevision||!label.isConnected)return;svg.setAttribute('x',label.getAttribute('data-x'));svg.setAttribute('y',Number(label.getAttribute('data-y'))+box[1]*scale);svg.setAttribute('width',box[2]*scale);svg.setAttribute('height',box[3]*scale);svg.style.maxWidth='none';svg.style.overflow='visible';label.replaceChildren(svg)} }).catch(console.error)}
+function mathCaption(x,y,tex,color='#253341',size=16){return el('g',{'data-math-label':tex,'data-x':x,'data-y':y,'data-size':size,style:'color:'+color,role:'img','aria-label':tex})}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;draw();math()}
+function start(){tasks.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.n;b.onclick=()=>{part=i;step=0;initPart();render()};$('parts').append(b)});$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[part].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;initPart();render()};$('overview').onclick=()=>{const v=$('figureScroll').classList.toggle('overview');$('overview').setAttribute('aria-pressed',String(v));$('overview').textContent=v?'Zum Lesemodus wechseln':'Gesamte Zeichnung anzeigen';$('figureScroll').scrollLeft=0};initPart();render();window.addEventListener('load',math)}
+
+
+
+
+const tasks=[
+ {
+  "n": "B 1.1",
+  "p": "1 P",
+  "q": "Um wie viel Prozent reduziert sich folglich bei Andreas die Konzentration an Vitamin D in einer Woche? Ergänzen Sie.<br>Die Konzentration reduziert sich in einer Woche um <span aria-label=\"Lücke\">_____</span> %.",
+  "steps": [
+   [
+    "Abnahmefaktor lesen",
+    "In der Gleichung \\(y=55\\cdot0{,}93^x\\) gibt der Faktor \\(0{,}93\\) an, welcher Anteil nach jeder weiteren Woche übrig bleibt. Das sind \\(93\\,\\%\\) der vorherigen Konzentration."
+   ],
+   [
+    "Fehlenden Anteil zu 100 % bestimmen",
+    "Wenn \\(93\\,\\%\\) übrig bleiben, beträgt die Abnahme:\\[100\\,\\%-93\\,\\%=7\\,\\%.\\]Der Faktor beschreibt den verbleibenden Anteil, nicht unmittelbar den Abnahmeanteil."
+   ],
+   [
+    "Lückensatz ergänzen",
+    "Die Konzentration reduziert sich in einer Woche um \\(\\boxed{7\\,\\%}\\). Bei diesem Modell beziehen sich die \\(7\\,\\%\\) stets auf die Konzentration zu Beginn der jeweiligen Woche. Der absolute Rückgang ist deshalb nicht jede Woche gleich groß."
+   ]
+  ]
+ },
+ {
+  "n": "B 1.2",
+  "p": "1 P",
+  "q": "Berechnen Sie mithilfe der Funktion \\(f_1\\) die Konzentration an Vitamin D bei Andreas nach 21 Tagen.<br>Runden Sie auf zwei Nachkommastellen.",
+  "steps": [
+   [
+    "Tage in Wochen umrechnen",
+    "Die Variable \\(x\\) zählt Wochen. Deshalb entsprechen 21 Tage:\\[x=\\frac{21}{7}=3.\\]In die Funktion wird \\(x=3\\) eingesetzt, nicht \\(x=21\\)."
+   ],
+   [
+    "In die Funktion einsetzen",
+    "Setze den Wochenwert in \\(f_1(x)=55\\cdot0{,}93^x\\) ein:\\[f_1(3)=55\\cdot0{,}93^3.\\]Die Konzentration wird in \\(\\frac{\\mathrm{ng}}{\\mathrm{ml}}\\) angegeben."
+   ],
+   [
+    "Ausrechnen und runden",
+    "Berechne zuerst die Potenz und anschließend das Produkt:\\[\\begin{aligned}0{,}93^3&=0{,}804357,\\\\f_1(3)&=55\\cdot0{,}804357\\\\&=44{,}239635\\\\&\\approx44{,}24.\\end{aligned}\\]Erst das Endergebnis wird auf zwei Nachkommastellen gerundet."
+   ],
+   [
+    "Antwort mit Einheit formulieren",
+    "Nach 21 Tagen beträgt die Konzentration an Vitamin D bei Andreas ungefähr\\[\\boxed{44{,}24\\,\\frac{\\mathrm{ng}}{\\mathrm{ml}}}.\\]Der markierte Punkt des Graphen gehört zu \\(x=3\\) Wochen."
+   ]
+  ]
+ },
+ {
+  "n": "B 1.3",
+  "p": "2 P",
+  "q": "Berechnen Sie, in welcher Woche sich die Anfangskonzentration an Vitamin D bei Andreas entsprechend der Funktion \\(f_1\\) halbiert.",
+  "steps": [
+   [
+    "Halbe Anfangskonzentration bestimmen",
+    "Die Hälfte der Anfangskonzentration ist:\\[\\frac{55}{2}=27{,}5.\\]Gesucht ist der Zeitpunkt, zu dem \\(f_1(x)=27{,}5\\) gilt."
+   ],
+   [
+    "Exponentialgleichung aufstellen",
+    "Mit dem gegebenen Modell erhältst du:\\[55\\cdot0{,}93^x=27{,}5.\\]Dividiere beide Seiten durch 55:\\[0{,}93^x=\\frac{27{,}5}{55}=0{,}5.\\]Es gilt \\(x\\geq0\\)."
+   ],
+   [
+    "Den Exponenten durch Logarithmieren bestimmen",
+    "Wende auf beide Seiten den Logarithmus an:\\[\\begin{aligned}\\ln(0{,}93^x)&=\\ln0{,}5,\\\\x\\cdot\\ln0{,}93&=\\ln0{,}5,\\\\x&=\\frac{\\ln0{,}5}{\\ln0{,}93}\\\\&\\approx9{,}55134.\\end{aligned}\\]Die Halbierung findet also nach etwa \\(9{,}55\\) Wochen statt. Das amtliche Lösungsmuster rundet diesen Zwischenwert auf \\(9{,}6\\) Wochen."
+   ],
+   [
+    "Zeitpunkt einer Woche zuordnen",
+    "Der Zeitpunkt liegt zwischen dem Ende der 9. und dem Ende der 10. Woche:\\[9<9{,}55134<10.\\]Daher halbiert sich die Anfangskonzentration\\[\\boxed{\\text{in der 10. Woche}}.\\]„Nach ungefähr 9,55 Wochen“ bezeichnet den Zeitpunkt; „in der 10. Woche“ beantwortet die Frage."
+   ],
+   [
+    "Durch benachbarte Wochen kontrollieren",
+    "Am Ende der 9. Woche gilt:\\[f_1(9)\\approx28{,}62>27{,}5.\\]Am Ende der 10. Woche gilt:\\[f_1(10)\\approx26{,}62<27{,}5.\\]Der Graph fällt zwischen diesen beiden Zeitpunkten unter die halbe Anfangskonzentration. Die Taste für den Halbwertszeitpunkt verwendet den ungerundeten Wert."
+   ]
+  ]
+ },
+ {
+  "n": "B 1.4",
+  "p": "1 P",
+  "q": "Bei Stephan wurde gleichzeitig mit Andreas eine Messung begonnen. Bei Stephan lässt sich der Zusammenhang zwischen der Anzahl \\(x\\) der Wochen und der verbleibenden Konzentration \\(y\\,\\frac{\\mathrm{ng}}{\\mathrm{ml}}\\) an Vitamin D annähernd durch die Funktion \\(f_2\\) mit der Gleichung \\(y=51\\cdot0{,}91^x\\) \\((x\\in\\mathbb R_0^+,y\\in\\mathbb R^+)\\) beschreiben.<br>Ist es unter diesen Voraussetzungen möglich, dass die Konzentrationen an Vitamin D zu einem Zeitpunkt bei Stephan und Andreas den gleichen Wert erreichen?<br>Begründen Sie Ihre Entscheidung ohne Rechnung.",
+  "steps": [
+   [
+    "Anfangswerte vergleichen",
+    "Andreas beginnt mit \\(55\\,\\frac{\\mathrm{ng}}{\\mathrm{ml}}\\), Stephan nur mit \\(51\\,\\frac{\\mathrm{ng}}{\\mathrm{ml}}\\). Andreas hat damit bereits am gemeinsamen Messbeginn die höhere Konzentration."
+   ],
+   [
+    "Verbleibende Anteile vergleichen",
+    "Bei Andreas bleiben jede Woche \\(93\\,\\%\\) der vorherigen Konzentration erhalten, bei Stephan nur \\(91\\,\\%\\). Andreas startet höher und verliert außerdem relativ langsamer Vitamin D. Stephan kann ihn unter diesen Modellannahmen nicht einholen."
+   ],
+   [
+    "Den Vergleich allgemein formulieren",
+    "Für jede zulässige Anzahl \\(x\\geq0\\) bleibt der Wert bei Andreas größer. Als Vergleich der gegebenen Terme lässt sich dies auch so ausdrücken:\\[55\\cdot0{,}93^x>51\\cdot0{,}91^x.\\]Es wurde keine Gleichung gelöst und kein Schnittpunkt berechnet. Entscheidend sind der größere Anfangswert und der größere verbleibende Wochenanteil."
+   ],
+   [
+    "Entscheidung begründen",
+    "\\[\\boxed{\\begin{gathered}\\text{Nein, die Konzentrationen}\\\\\\text{werden nicht gleich.}\\end{gathered}}\\]Die Aussage gilt für den vorgegebenen Bereich \\(x\\geq0\\). Beide Modellwerte nähern sich langfristig null, erreichen null aber nach keiner endlichen Zeit. Daraus entsteht also ebenfalls kein gemeinsamer Messwert."
+   ]
+  ]
+ }
+];
+function arrow(a,b,color='#a32b4d',w=2.6){line(a,b,color,w);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]),p=t=>[b[0]-11*Math.cos(ang+t),b[1]-11*Math.sin(ang+t)];el('polygon',{points:[b,p(.4),p(-.4)].map(v=>v.join(',')).join(' '),fill:color})}
+function axes(X,Y,xmin,xmax,ymin,ymax,dx=1,dy=1){for(let x=Math.ceil(xmin/dx)*dx;x<=xmax+1e-8;x+=dx)line([X(x),Y(ymin)],[X(x),Y(ymax)],'#e7ecf0',1);for(let y=Math.ceil(ymin/dy)*dy;y<=ymax+1e-8;y+=dy)line([X(xmin),Y(y)],[X(xmax),Y(y)],'#e7ecf0',1);arrow([X(xmin),Y(0)],[X(xmax)+12,Y(0)],'#60758b',1.7);arrow([X(0),Y(ymin)],[X(0),Y(ymax)-12],'#60758b',1.7);caption(X(xmax)+12,Y(0)+20,'x');caption(X(0)-21,Y(ymax)-5,'y');caption(X(0)-23,Y(0)+23,'O','#637384',14)}
+function right(p,u,v){const r=20;el('path',{d:`M${p[0]+r*u[0]} ${p[1]+r*u[1]} A${r} ${r} 0 0 ${u[0]*v[1]-u[1]*v[0]>0?1:0} ${p[0]+r*v[0]} ${p[1]+r*v[1]}`,stroke:'#198576','stroke-width':1.7,fill:'none','data-right-angle':'quarter-arc'});el('circle',{cx:p[0]+r*(u[0]+v[0])/(2*Math.sqrt(2)),cy:p[1]+r*(u[1]+v[1])/(2*Math.sqrt(2)),r:2.1,fill:'#198576','data-right-angle':'center-dot'})}
+
+
+
+
+
+
+
+
+const f1=x=>55*.93**x,f2=x=>51*.91**x,halfTime=Math.log(.5)/Math.log(.93),X=x=>70+17*x,Y=y=>465-6.5*y;
+let preciseWeek=null,lastStage='';
+function initPart(){preciseWeek=null;lastStage='';$('week').value=part===0?1:part===1?3:0}
+function state(){return {x:preciseWeek??Number($('week').value),part,step}}
+function draw(){const stage=part+':'+step;if(stage!==lastStage){preciseWeek=part===2&&step>=2?halfTime:null;$('week').value=part===0?1:part===1?3:part===2&&step>=2?halfTime:0;lastStage=stage}const {x}=state(),fmt=(v,n=2)=>v.toFixed(n).replace('.',','),num=(v,n=2)=>fmt(v,n).replace(',','{,}'),tex=t=>'\\('+t+'\\)';$('plot').replaceChildren();
+ for(let xx=0;xx<=30;xx+=5){line([X(xx),Y(0)],[X(xx),Y(60)],'#e7ecf0',1);caption(X(xx)-6,Y(0)+22,String(xx),'#637384',13)}for(let yy=10;yy<=60;yy+=10){line([X(0),Y(yy)],[X(30),Y(yy)],'#e7ecf0',1);caption(X(0)-27,Y(yy)+5,String(yy),'#637384',13)}arrow([X(0),Y(0)],[X(30)+13,Y(0)],'#60758b',1.7);arrow([X(0),Y(0)],[X(0),Y(60)-16],'#60758b',1.7);mathCaption(15,34,String.raw`y\text{ in }\frac{\mathrm{ng}}{\mathrm{ml}}`,'#637384',16);mathCaption(435,520,String.raw`x\text{ in Wochen}`,'#637384',16);
+ if(part===2&&step>=3)el('rect',{x:X(9),y:Y(60),width:X(10)-X(9),height:Y(0)-Y(60),fill:'#e6aa47','fill-opacity':.14});
+ const curve=(fn,color)=>{let path='';for(let j=0;j<=600;j++){const xx=j/20;path+=(j?'L':'M')+X(xx)+' '+Y(fn(xx))}el('path',{d:path,fill:'none',stroke:color,'stroke-width':2.7,'data-curve':fn===f1?'f1':'f2'})};curve(f1,'#2478a4');mathCaption(285,73,String.raw`f_1(x)=55\cdot0{,}93^x`,'#2478a4',18);
+ if(part===3){curve(f2,'#198576');mathCaption(285,105,String.raw`f_2(x)=51\cdot0{,}91^x`,'#198576',18)}
+ if(part===0){el('rect',{x:X(0),y:Y(60),width:X(1)-X(0),height:Y(0)-Y(60),fill:'#a32b4d','fill-opacity':.08});if(step>=1)mathCaption(310,160,String.raw`\text{Abnahme: }7\,\%`,'#a32b4d',18)}
+ if(part===2&&step>=0){line([X(0),Y(27.5)],[X(30),Y(27.5)],'#d17720',2,'6 4');mathCaption(90,Y(27.5)-14,String.raw`y=27{,}5`,'#bd6f12',17)}
+ if(part!==2||step>=2){const P=[X(x),Y(f1(x))];line([P[0],Y(0)],P,'#a32b4d',1.5,'5 4');line([X(0),P[1]],P,'#a32b4d',1.5,'5 4');el('circle',{cx:P[0],cy:P[1],r:5,fill:'#a32b4d','data-current-point':x});if(part===3)el('circle',{cx:X(x),cy:Y(f2(x)),r:5,fill:'#198576'});if(part===2&&Math.abs(x-halfTime)<1e-10)mathCaption(310,225,String.raw`x\approx9{,}55`,'#a32b4d',18)}
+ if(part===2&&step>=3)caption(310,255,'Halbierung in der 10. Woche','#a32b4d',16);
+ const end=step===tasks[part].steps.length-1;$('explore').hidden=!end;$('neighborWeeks').hidden=!(end&&part===2);$('weekval').textContent=fmt(x,preciseWeek===null?2:5);$('originalWeek').textContent=['Eine Woche','21 Tage = 3 Wochen','Exakter Halbwertszeitpunkt','Messbeginn x = 0'][part];if(preciseWeek!==null)$('week').value=preciseWeek;
+ let message='Dargestellt ist das Modell für '+tex('x\\geq0')+'.';if(part!==2||step>=2)message+=' Aktueller Zeitpunkt: '+tex('x='+num(x,preciseWeek===null?2:5))+' Wochen.';
+ if(part===0&&step>=2||part===1&&step>=2||part===2&&step>=2||part===3)message+=' Andreas: '+tex('f_1(x)='+num(f1(x))+'\\,\\frac{\\mathrm{ng}}{\\mathrm{ml}}')+'.';if(part===3)message+=' Stephan: '+tex('f_2(x)='+num(f2(x))+'\\,\\frac{\\mathrm{ng}}{\\mathrm{ml}}')+'.';$('measure').innerHTML=message;math()}
+$('week').oninput=()=>{preciseWeek=null;draw()};$('originalWeek').onclick=()=>{preciseWeek=part===2?halfTime:null;$('week').value=part===0?1:part===1?3:part===2?halfTime:0;draw()};for(const [id,value]of[['week9',9],['week10',10]])$(id).onclick=()=>{preciseWeek=null;$('week').value=value;draw()};
+
+start();</script></body></html>
