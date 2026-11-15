@@ -244,3 +244,38 @@ Der Nutzer hat mit **„B4 passt“** die interaktive Lernseite **2025 B4** ausd
 6. **Danach** je Kategorie **1–9**, je Teilaufgabe **A 1.1–B 4.5**, die drei vollständigen fachlichen und visuellen Kontrollrunden auf dem finalen Code protokollieren; jede anschließende Änderung löst die relevanten erneuten Prüfungen aus.
 
 **Freigabeentscheidung: NOCH NICHT PRÄSENTATIONSREIF gemäß vereinbartem Goldstandard.** Die technischen Regressionstests sind erfolgreich und reproduzierbar; die ausstehenden Original-/Didaktik-/Grafiknachweise verhindern die Gesamtfreigabe.
+
+## Fortsetzung Gesamtqualitätskontrolle – Arbeitsschritt A1 (15.11.2026)
+
+**Prüfumfang:** A1.0, A1.1 und A1.2; Beginn der erneuten systematischen Gesamtprüfung. Ausgangscommit `b362ec8730203c71316c624213bd470fc7982604`, Korrekturcommits `13b55d0341064f8f84be553eb34dfc34c5acfc4c` (zugängliche Beschreibung), `48d9085db74cd62955d1ec9ce497017b6e0807c1` (Diagrammlayout) und `2ace7d9ffa5d91ae2841059f4ddb20c5cfec0e89` (Screenshotnachweise). Die sieben bereits erteilten Einzelfreigaben bleiben dokumentiert. Dieser Arbeitsschritt ersetzt keine vollständige Prüfung des Jahrgangs.
+
+| Kategorie | Tatsächlich ausgeführte Prüfung und Befund |
+|---|---|
+| 1 – Originaltreue | Originalprüfung, PDF-Seite 1, erneut als gerenderte Seite gelesen. Beide Absätze der Ausgangssituation, Namen Martina/Stephan, fünf Nachbarn, zehn Schlüssel, zufällige getrennte Auswahl, beide Fragen und 1 P/1,5 P stimmen mit der Seite überein. Gedruckt steht „Wohnungs- und … Briefkastenschlüssel“. Bekannte, vom Nutzer akzeptierte Abweichung: Gebäudefotografie fehlt; Druckraster ist auf der Lernseite nicht nachgebildet. |
+| 2 – Fachliche Lösungen | Amtliches Lösungsmuster, PDF-Seite 1, erneut visuell gelesen. Eigene Rechnung: 25 gleichwahrscheinliche Schlüsselpaare; genau ein Paar passt beidseitig, acht Paare passen genau einseitig. Daher A1.1 = 1/25 = 4 %, A1.2 = 8/25 = 32 %. Alle sechs Erklärungsschritte gelesen: Unabhängigkeit, Produktregel, Gegenereignisse und Addition disjunkter Fälle korrekt. Vier Endpfade summieren sich zu 25/25. |
+| 3 – Schreibweisen | Sämtliche A1-Lösungsstrings und zehn SVG-Brüche geprüft: vertikale Brüche, Malpunkt, Dezimalkomma bei Punkten, Prozentangaben korrekt. Strecken/Vektoren/Winkel/physikalische Einheiten nicht anwendbar. Die tatsächliche Formelanzeige ist gesondert durch den Browserlauf zu belegen. |
+| 4 – Grafik | Baumstruktur aus zwei unabhängigen Auswahlen: sechs Äste mit 1/5 bzw. 4/5 und vier Endpfade korrekt zugeordnet. Eigenes ergänzendes Lerndiagramm; die amtliche Aufgabe enthält an dieser Stelle ein Gebäudefoto, kein Baumdiagramm. Visuelle Browserabnahme separat dokumentieren. |
+| 5 – 3D | Nicht anwendbar: reines Zufallsexperiment ohne Raumobjekt. |
+| 6 – Abhängigkeiten | Alle sechs Lösungsschritte und Sichtbarkeitsbedingungen im Quelltext nachvollzogen: A1.1 zeigt 1/25 erst bei Produktregel; A1.2 zeigt 4/25 je Pfad ab dem zugehörigen Rechenschritt. Wechsel und Reset setzen Schritt 0. Keine Parameterregler und keine geometrischen Grenzwerte. |
+| 7 – Didaktik | Lösung unterscheidet zwei disjunkte Fälle und erläutert die Rechenregeln. **Fehler gefunden und behoben:** Der statische zugängliche SVG-Name verriet bislang sämtliche Endwahrscheinlichkeiten bereits am Anfang. Durch eine Beschreibung ohne Lösungswerte ersetzt; Browser-Regression um den Schutz vor dieser Vorwegnahme ergänzt. Sichtbare Rechnungen bleiben schrittweise. |
+| 8 – Technik | Lokal 377 statische/mathematische Assertions sowie 287 Quellen-/Strukturchecks für alle 26 Teilaufgaben bestanden; Syntaxprüfung des geänderten Browsertests und Whitespaceprüfung bestanden. Lokaler Chromium-Start durch Prozess-/Socket-Beschränkung verhindert, daher ausdrücklich kein lokaler Browsererfolg. Browserregression läuft stattdessen in GitHub Actions. |
+| 9 – Konsistenz | Jahrgang, Aufgabennummern, taschenrechnerfreier Teil und Übersicht-/A2-Verweise stimmen. Keine PDF-Direktlinks in A1. Korrektur betrifft nur zugängliche Diagrammbeschreibung und Regressionstest. |
+
+**Amtliche Vergleichsquellen:** ISB Mathematik I Haupttermin 2025, `2025_mi_ht.pdf` Seite 1 sowie `2025_mi_ht_l.pdf` Seite 1; unter `https://www.isb.bayern.de/fileadmin/user_upload/Realschule/Leistungserhebungen/Abschlusspruefung/Mathematik/2025/`. Diese Quellenangabe ist Prüfmaterial im Repository, kein zusätzlicher Dokumentlink auf der öffentlichen Lernseite.
+
+**Kontrollgrenze:** Fach-/Textprüfung A1 in diesem Arbeitsschritt einmal neu ausgeführt. Drei Wiederholungen der automatisierten Browsermatrix sind keine drei unabhängigen fachlichen Vollprüfungen. Weitere vollständige Fach-/Sichtrunden und die übrigen 24 Teilaufgaben bleiben offen. Nächster Arbeitsschritt: A2.
+
+### Sichtprüfung und anschließende Korrekturen
+
+Beim tatsächlichen Öffnen der Desktop- und Mobil-Screenshots aus Lauf [43694552904](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43694552904) wurden trotz erfolgreicher technischer Tests zwei Mängel erkannt: Astlinien verliefen durch Bruchbeschriftungen bzw. Knotenbezeichnungen; in der mobilen Gesamtverkleinerung war das Diagramm zu klein. Die betroffenen Texte wurden abgerückt. Mobil bleibt das SVG mindestens 560 CSS-Pixel breit und kann innerhalb seines eigenen, per Tastatur erreichbaren Bereichs seitlich verschoben werden; ein sichtbarer Hinweis erklärt die Bedienung. Der Regressionstest kontrolliert die Erreichbarkeit der rechten Baumhälfte und sichert sie als Screenshot.
+
+Jeder der sechs A1-Lösungsschritte wird im finalen Browserlauf in beiden Geräteansichten und drei technischen Wiederholungen als Screenshot gesichert. Die Screenshots dienen der Sichtprüfung gerenderter Formeln und ersetzen nicht die eigene Rechnung.
+
+### Abschließender technischer Nachweis und Sichtbefund dieses Arbeitsschritts
+
+- Final geprüfter Code: `5ad5884e32b2f652c7a067ef7c5cd0edde55192a` (zusätzlich oberer SVG-Randabstand korrigiert).
+- [GitHub-Actions-Lauf 43695283572](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43695283572): **success**. Drei statische/mathematische Durchläufe sowie **42/42 Browserfälle** (7 Seiten × 2 Viewports × 3 technische Wiederholungen) auf dem finalen Code erfolgreich. Kein neuer Browserfehler gemeldet.
+- Die sechs A1-Lösungsschritte wurden aus den Desktop-Screenshots des vorausgehenden erfolgreichen Laufs `43695032179` tatsächlich geöffnet und visuell gelesen; zusätzlich mobile Schlussrechnung und rechte Baumhälfte. Echte vertikale Brüche, Gegenereignisbalken, Malpunkte, Prozentwerte und schrittweise Endwahrscheinlichkeiten sind korrekt gesetzt. Keine neue Überlagerung in den gesichteten Zuständen.
+- Auf dem **finalen** Code nochmals `r3-desktop-a1-teil2-schritt4.png` und `r3-mobile-a1-rechts.png` geöffnet: oberer Bruch vollständig innerhalb der Zeichenfläche, Astzahlen frei von Linien; rechte Diagrammhälfte lesbar und erreichbar. Der finale Lauf sichert sämtliche A1-Schritte erneut; Artefakt **14154262576**.
+- Kein physisches Mobilgerät und kein tatsächlicher Bildschirmleser verwendet. Der Nachweis zur zugänglichen Beschreibung beruht auf DOM-/Browserprüfung; Touchgerät ist Chromium-Emulation. Nicht ausgeführte Prüfungen bleiben ausdrücklich offen.
+- **Ergebnis A1:** Original-/Fachabgleich einmal erneut ausgeführt; die gefundenen Beschriftungs-, Mobil- und Vorwegnahmefehler sind korrigiert und regressionsgeprüft. Kein Anspruch auf drei vollständige unabhängige Fach-/Sichtdurchgänge. Die Gesamtfreigabe 2025 bleibt offen. **Weiter mit A2.**
