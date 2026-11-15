@@ -19,7 +19,7 @@ function doubleCone(degrees,phase=3,suffix='ₙ'){
  const down=up.clone();down.rotation.z=Math.PI;down.position.y=-h/2;model.add(down);
  model.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(Array.from({length:segs},(_,i)=>V(r*Math.cos(i*2*Math.PI/segs),0,r*Math.sin(i*2*Math.PI/segs)))),new THREE.LineBasicMaterial({color:0x9a2848})));
  model.add(edge(V(0,-h,0),V(0,h,0),0x788a98));
- function helper(a,b){const line=edge(a,b,0xa32b4d);line.material.depthTest=false;line.renderOrder=5;model.add(line);}
+ function helper(a,b){const line=edge(a,b,0xa32b4d);line.material.depthTest=false;line.material.transparent=true;line.renderOrder=5;model.add(line);}
  function text(pos,t,kind){const sprite=label(pos,t);sprite.scale.multiplyScalar(1.25);sprite.renderOrder=10;sprite.material.depthWrite=false;sprite.userData.coneLabel=kind;model.add(sprite);}
  text(V(r+.7,0,0),'C'+suffix,'rim');text(V(0,h+.65,0),'B'+suffix,'apex');text(V(0,-h-.65,0),'A','apex');
  text(V(-1.5,0,-.3),'A / B'+suffix,'axis-top');
