@@ -19,11 +19,12 @@ function doubleCone(degrees,phase=3,suffix='ₙ'){
  const down=up.clone();down.rotation.z=Math.PI;down.position.y=-h/2;model.add(down);
  model.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(Array.from({length:segs},(_,i)=>V(r*Math.cos(i*2*Math.PI/segs),0,r*Math.sin(i*2*Math.PI/segs)))),new THREE.LineBasicMaterial({color:0x9a2848})));
  model.add(edge(V(0,-h,0),V(0,h,0),0x788a98));
- function text(pos,t,kind){const sprite=label(pos,t);sprite.scale.multiplyScalar(1.25);sprite.userData.coneLabel=kind;model.add(sprite);}
+ function helper(a,b){const line=edge(a,b,0xa32b4d);line.material.depthTest=false;line.renderOrder=5;model.add(line);}
+ function text(pos,t,kind){const sprite=label(pos,t);sprite.scale.multiplyScalar(1.25);sprite.renderOrder=10;sprite.material.depthWrite=false;sprite.userData.coneLabel=kind;model.add(sprite);}
  text(V(r+.7,0,0),'C'+suffix,'rim');text(V(0,h+.65,0),'B'+suffix,'apex');text(V(0,-h-.65,0),'A','apex');
  text(V(-1.5,0,-.3),'A / B'+suffix,'axis-top');
- if(phase>=2){model.add(edge(V(0,0,0),V(r,0,0),0xa32b4d));text(V(r*.5,0,.55),'a','radius');}
- if(phase>=3){model.add(edge(V(0,-h,0),V(r,0,0),0xa32b4d));text(V(r*.5+.5,-h*.5,0),'4 cm','mantle');}
+ if(phase>=2){helper(V(0,0,0),V(r,0,0));text(V(r*.5,0,.55),'a','radius');}
+ if(phase>=3){helper(V(0,-h,0),V(r,0,0));text(V(r*.5+.5,-h*.5,0),'4 cm','mantle');}
  controls.target.set(0,0,0);syncConeLabels();
 }
 function prism(t,phase=3,suffix='ₙ'){const x=Math.max(.1,Math.min(10,Number(t)));const A=V(0,0,0),P=V(x,0,0),E=V(0,3,0),B=V(0,0,4),Q=V(x,0,4),F=V(0,3,4);const D=V(10,0,0),C=V(10,0,4),H=V(10,3,0),G=V(10,3,4);for(const [u,v] of [[A,D],[D,C],[C,B],[B,A],[E,H],[H,G],[G,F],[F,E],[A,E],[B,F],[C,G],[D,H]])model.add(edge(u,v,0xa5b1bf));for(const [pt,t] of [[D,Math.abs(x-10)<1e-7?'D = P'+suffix:'D'],[C,Math.abs(x-10)<1e-7?'C = Q'+suffix:'C'],[H,'H'],[G,'G']])model.add(label(pt.clone().add(V(0,.3,0)),t));if(phase>=3){const p=[[A,P,E],[B,Q,F],[A,E,F,B],[A,P,Q,B],[P,E,F,Q]];p.forEach((q,i)=>model.add(face(q,[0x88c5dc,0x88c5dc,0x9cb8cf,0xd7adc0,0xb7d5bb][i],i<2?.65:.27)));for(const [u,v] of [[A,P],[P,E],[E,A],[B,Q],[Q,F],[F,B],[A,B],[P,Q],[E,F]])model.add(edge(u,v));}else{if(phase>=1)model.add(edge(A,P,0xa32b4d));if(phase>=2)model.add(edge(P,Q,0xa32b4d));}for(const [pt,t] of [[A,'A'],[E,'E'],[B,'B'],[F,'F']])model.add(label(pt.clone().add(V(0,.35,0)),t));if(phase>=1&&Math.abs(x-10)>=1e-7)model.add(label(P.clone().add(V(0,.35,0)),'P'+suffix));if(phase>=2&&Math.abs(x-10)>=1e-7)model.add(label(Q.clone().add(V(0,.35,0)),'Q'+suffix));controls.target.set(4,1.5,2);}

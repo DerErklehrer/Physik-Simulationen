@@ -43,7 +43,7 @@ function draw(){
   const edgeColor='#a32b4d',canShowArm=!construction||step>=1,canShowBody=!construction||step>=2;
   if(construction)shape('line',{x1:A[0],y1:A[1],x2:selected.C[0],y2:selected.C[1],stroke:edgeColor,'stroke-width':2,'stroke-dasharray':step===0?'6 5':''});
   shape('path',{d:'M'+A[0]+' '+(A[1]-rr-12)+' A'+(rr+12)+' '+(rr+12)+' 0 0 0 '+(A[0]-(rr+12)*Math.sin(rad))+' '+(A[1]-(rr+12)*Math.cos(rad)),stroke:edgeColor,'stroke-width':2,fill:'none'});
-  shape('text',{x:A[0]-82*Math.sin(rad/2)-20,y:A[1]-82*Math.cos(rad/2)-4,'font-size':18,fill:edgeColor},phi+'°');
+  shape('text',{x:A[0]+52,y:A[1]-55,'font-size':18,fill:edgeColor},phi+'°');
   if(canShowArm)dot(...selected.C,construction?'C₂':part===3?'C₃':'Cₙ',edgeColor,-40,20);
   if(canShowBody){
    shape('line',{x1:selected.C[0],y1:selected.C[1],x2:selected.B[0],y2:selected.B[1],stroke:edgeColor,'stroke-width':3});
@@ -55,7 +55,7 @@ function draw(){
  if(showRadius){
   const H=[A[0],selected.C[1]],rmark=Math.min(12,(A[1]-H[1])*.45);
   shape('line',{x1:selected.C[0],y1:H[1],x2:H[0],y2:H[1],stroke:'#a32b4d','stroke-width':2,'stroke-dasharray':'5 4','data-helper':'radius'});
-  shape('text',{x:(selected.C[0]+H[0])/2-5,y:H[1]-14,'font-size':20,fill:'#a32b4d'},'a');
+  shape('text',{x:Math.min((selected.C[0]+H[0])/2-5,A[0]-32),y:H[1]+20,'font-size':20,fill:'#a32b4d'},'a');
   shape('path',{d:'M'+(H[0]-rmark)+' '+H[1]+' A'+rmark+' '+rmark+' 0 0 0 '+H[0]+' '+(H[1]+rmark),stroke:'#60758b','stroke-width':1.6,fill:'none','data-right-angle':'quarter-arc'});
   shape('circle',{cx:H[0]-rmark/(2*Math.sqrt(2)),cy:H[1]+rmark/(2*Math.sqrt(2)),r:Math.min(2,rmark/7),fill:'#60758b','data-right-angle':'center-dot'});
  }
