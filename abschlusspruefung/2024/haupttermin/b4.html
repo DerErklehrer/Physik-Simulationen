@@ -154,20 +154,23 @@ function initPart(){precisePhi=null;pointName=part===1||part===3?'₁':'ₙ';man
 function state(){const phase=part===0?(step===0?0:step===1?1:step<4?2:3):3,showP=part===1?step>=1:part>=2,connect=part===1?step>=2:part>=2,split=part===4&&step>=2;return {phase,showP,connect,split,phi:precisePhi??Number($('phi').value),pointName,part,step}}
 window.exam2024B4State=state;
 function angle(p,u,v,label,r=38){let a=Math.atan2(u[1]-p[1],u[0]-p[0]),b=Math.atan2(v[1]-p[1],v[0]-p[0]),d=(b-a+Math.PI*3)%(2*Math.PI)-Math.PI;el('path',{d:`M${p[0]+r*Math.cos(a)} ${p[1]+r*Math.sin(a)} A${r} ${r} 0 0 ${d>0?1:0} ${p[0]+r*Math.cos(b)} ${p[1]+r*Math.sin(b)}`,fill:'none',stroke:'#a32b4d','stroke-width':1.8});caption(p[0]+(r+16)*Math.cos(a+d/2)-4,p[1]+(r+16)*Math.sin(a+d/2)+4,label,'#a32b4d',15)}
+function lengthLabel(x,y,name,value){const e=caption(x,y,'','#60758b',15);for(const[text,over]of[['|',false],[name,true],['| = '+value,false]]){const t=document.createElementNS(ns,'tspan');if(over)t.setAttribute('text-decoration','overline');t.textContent=text;e.append(t)}}
 function right(p,u,v){const r=18;el('path',{d:`M${p[0]+r*u[0]} ${p[1]+r*u[1]} A${r} ${r} 0 0 ${u[0]*v[1]-u[1]*v[0]>0?1:0} ${p[0]+r*v[0]} ${p[1]+r*v[1]}`,fill:'none',stroke:'#198576','stroke-width':1.5,'data-right-angle':'quarter-arc'});el('circle',{cx:p[0]+r*(u[0]+v[0])/(2*Math.sqrt(2)),cy:p[1]+r*(u[1]+v[1])/(2*Math.sqrt(2)),r:2.1,fill:'#198576','data-right-angle':'center-dot'})}
 function draw(){
  const stage=part+':'+step;if(stage!==lastStage){manual=false;precisePhi=null;pointName=part===1||part===3?'₁':'ₙ';$('phi').value=35;if(part===2&&step>=5){$('phi').value=17.60;pointName='₂'}if(part===4&&step>=2){precisePhi=deg(Math.atan(H/18));pointName='₃'}lastStage=stage}
  const st=state(),g=geometry(st.phi),A=[X(-6),Y(0)],C=[X(6),Y(0)],M=[X(0),Y(0)],B=[X(-Math.SQRT2),Y(-Math.SQRT2)],D=[X(Math.SQRT2),Y(Math.SQRT2)],S=[X(0),Y(H)],P=[X(g.x),Y(g.y)];$('plot').replaceChildren();
  const polygon=(points,color,kind)=>el('polygon',{points:points.map(p=>p.join(',')).join(' '),fill:color,'fill-opacity':.16,stroke:'none','data-face':kind});
- if(st.phase>=1){polygon([A,B,C,D],'#b6cbd6','raute');for(const[a,b]of[[A,B],[B,C],[C,D],[D,A],[B,D]])line(a,b,'#60758b',1.7)}line(A,C,'#60758b',2);mark(A,'A');mark(C,'C');mark(M,'M','#60758b');caption(280,487,'AC = 12 cm','#60758b',15);
- if(st.phase>=1){mark(B,'B');mark(D,'D');caption(350,463,'BD = 8 cm (verkürzt)','#60758b',14)}
- if(st.phase>=2){line(M,S,'#198576',2,'5 4');line(C,S,'#60758b',2);mark(S,'S');right(M,[1,0],[0,-1]);angle(C,A,S,'α');caption(420,245,'CS = 9,5 cm','#60758b',15)}
+ if(st.phase>=1){polygon([A,B,C,D],'#b6cbd6','raute');for(const[a,b]of[[A,B],[B,C],[C,D],[D,A],[B,D]])line(a,b,'#60758b',1.7)}line(A,C,'#60758b',2);mark(A,'A');mark(C,'C');mark(M,'M','#60758b');lengthLabel(260,490,'AC','12 cm');
+ if(st.phase>=1){mark(B,'B');mark(D,'D');lengthLabel(340,470,'BD','8 cm (verkürzt)')}
+ if(st.phase>=2){line(M,S,'#198576',2,'5 4');line(C,S,'#60758b',2);mark(S,'S');right(M,[1,0],[0,-1]);angle(C,A,S,'α');lengthLabel(424,240,'CS','9,5 cm')}
  if(st.phase>=3){line(A,S,'#60758b',2);line(B,S,'#60758b',1.7);line(D,S,'#60758b',1.7)}
  if(part===1&&step===0)angle(A,C,[X(-6+8*Math.cos(rad(35))),Y(8*Math.sin(rad(35)))],'35°',57);
  if(st.showP){polygon([A,C,P],'#a32b4d','ACP');line(A,P,'#a32b4d',2.8);line(P,C,'#a32b4d',2.8);line(A,C,'#a32b4d',2.5);if(st.connect){line(B,P,'#a32b4d',2.6);line(A,B,'#a32b4d',2.3);line(C,B,'#a32b4d',2.3)}mark(P,'P'+st.pointName,'#a32b4d');angle(A,C,P,'φ',54)}
  if(st.split){polygon([A,P,S],'#198576','APS');line(A,S,'#198576',2.8);line(P,S,'#198576',2.8);line(S,B,'#198576',2.6);caption(92,75,Math.abs(g.t-.5)<1e-10?'Gleiche Teilvolumina: je ¼ der Ausgangspyramide':'Rote und grüne Teilpyramide ergeben zusammen ½','#253341',16)}
  $('explore').hidden=!(part===1&&step>=2||part>=2);$('p2').hidden=!(part===2&&step>=5);$('p3').hidden=!st.split;$('phival').textContent=st.phi.toFixed(precisePhi===null?2:5).replace('.',',')+'°';
- const fmt=x=>x.toFixed(2).replace('.',',');$('measure').textContent=st.showP?`Exakte Originalgeometrie: AP${st.pointName} = ${fmt(g.ap)} cm; V(ACP${st.pointName}B) = ${fmt(g.volume)} cm³; Anteil an ABCDS: ${fmt(100*g.volume/g.total)} %.${st.split?' Grüne Teilpyramide: '+fmt(50-100*g.volume/g.total)+' %.':''}`:'Schrägbild: AC in wahrer Länge; BD unter 45° und auf die Hälfte verkürzt. Die 3D-Ansicht zeigt die unverzerrte Raumgeometrie.';
+ const fmt=x=>x.toFixed(2).replace('.',',');let meter='Schrägbild: AC in wahrer Länge; BD unter 45° und auf die Hälfte verkürzt. Die 3D-Ansicht zeigt die unverzerrte Raumgeometrie.';
+ if(st.showP){meter='Exakte Originalgeometrie: P'+st.pointName+' liegt auf der Strecke CS.';if(part===2&&step>=2||part>=3)meter+=' |A̅P̅'+st.pointName+'| = '+fmt(g.ap)+' cm.';if(part===3&&step>=4||part===4&&step>=2)meter+=' V(ACP'+st.pointName+'B) = '+fmt(g.volume)+' cm³; Anteil an ABCDS: '+fmt(100*g.volume/g.total)+' %.';if(st.split)meter+=' Grüne Teilpyramide: '+fmt(50-100*g.volume/g.total)+' %.';}
+ $('measure').textContent=meter;
  window.dispatchEvent(new Event('pyramid2024B4Change'));
 }
 $('phi').oninput=()=>{precisePhi=null;pointName='ₙ';manual=true;draw()};$('p1').onclick=()=>{precisePhi=null;pointName='₁';$('phi').value=35;draw()};$('endPoint').onclick=()=>{precisePhi=alpha;pointName=' = S';draw()};$('p2').onclick=()=>{precisePhi=phi10;pointName='₂';draw()};$('p3').onclick=()=>{precisePhi=deg(Math.atan(H/18));pointName='₃';draw()};
