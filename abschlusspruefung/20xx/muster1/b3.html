@@ -114,7 +114,7 @@ const tasks=[
    ],
    [
     "Mittelpunktfamilie angeben",
-    "Damit gilt wie verlangt:\\[\\boxed{M_n\\bigl(x\\mid\\log_3(x^2+4x+3)\\bigr)}.\\]Dabei gilt \\(x>-1\\).Die gestrichelte Kurve zeigt die Ortslinie der Mittelpunkte. Die Raute kann nun innerhalb des sichtbaren Ausschnitts verschoben werden; die mathematische Familie ist für alle \\(x>-1\\) definiert."
+    "Damit gilt wie verlangt:\\[\\boxed{M_n\\bigl(x\\mid\\log_3(x^2+4x+3)\\bigr)}.\\]Dabei gilt \\(x>-1\\). Die gestrichelte Kurve zeigt die Ortslinie der Mittelpunkte. Die Raute kann nun innerhalb des sichtbaren Ausschnitts verschoben werden; die mathematische Familie ist für alle \\(x>-1\\) definiert."
    ]
   ]
  },
@@ -182,7 +182,7 @@ function draw(){
   if(x<-.5)curve(f1,x,-.5,'#2478a4','4 3','f1-extension');const g=geometry(x),q=Object.fromEntries(['A','B','C','D','M'].map(k=>[k,[X(g[k][0]),Y(g[k][1])]]));
   if(phase>=2)el('polygon',{points:['A','B','C','D'].map(k=>q[k].join(',')).join(' '),fill:'#a32b4d','fill-opacity':.055,stroke:'#a32b4d','stroke-width':2,'data-rhombus':index});
   line(q.A,q.C,'#a32b4d',1.5,'4 3');if(phase>=1){line(q.B,q.D,'#198576',1.5,'4 3');right(q.M,[1,0],[0,-1])}
-  for(const k of phase>=1?['A','B','C','D','M']:['A','C']){const nearAxis=k==='M'&&Math.abs(g.m)<.4,dx=k==='D'?-30:nearAxis?25:k==='M'?7:5,dy=k==='A'?21:nearAxis?-20:k==='M'?20:-8;el('circle',{cx:q[k][0],cy:q[k][1],r:3,fill:'#a32b4d'});mathCaption(q[k][0]+dx,q[k][1]+dy,k+'_'+index,k==='M'?'#198576':'#253341',16)}
+  for(const k of phase>=1?['A','B','C','D','M']:['A','C']){const nearAxis=k==='M'&&Math.abs(g.m)<.4,lowA=k==='A'&&x<-.45,dx=lowA?-45:k==='D'?-30:nearAxis?25:k==='M'?7:5,dy=lowA?10:k==='A'?21:nearAxis?-20:k==='M'?20:-8;el('circle',{cx:q[k][0],cy:q[k][1],r:3,fill:'#a32b4d'});mathCaption(q[k][0]+dx,q[k][1]+dy,k+'_'+index,k==='M'?'#198576':'#253341',16).setAttribute('data-point-label',k+index)}
  }
  if(part===2){if(step<2)rhombus(0,'1',step);else{rhombus(0,'1');if(step>=3)rhombus(5,'2')}}
  if(part===3){rhombus(st.x,'n');if(step>=2)curve(x=>geometry(x).m,-.6,9,'#d17720','5 4','midpoint')}
