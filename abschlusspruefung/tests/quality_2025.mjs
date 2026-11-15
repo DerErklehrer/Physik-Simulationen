@@ -235,3 +235,17 @@ for(const x of [-3.999,-3,0.28,2.1,10,100]){
 close('B3: Gleichung mit amtlichem Teilergebnis',Math.log((7-6.64)/3.5)/Math.log(.5)-3,.2812861103900155,1e-12);
 close('B3: geometrisch gleichschenklige Lösung unabhängig',Math.log((4*Math.sin(Math.PI/9)-1)/3.5)/Math.log(.5)-3,.24926140832455124,1e-12);
 console.log('B3-Endkontrolle bestanden; insgesamt '+checked+' statische/fachliche Prüfungen.');
+
+// B4: amtlicher zweistufiger Rundungsweg und globale Minimierung.
+const rotated=[.77+.5*.64,3*.77+7*.64,-.64+.5*.77,-3*.64+7*.77];
+for(const [i,target] of [1.09,6.79,-.26,3.47].entries())close('B4: gedrehte Komponente '+i,rotated[i],target,.00501);
+const minLengthSquared=24.2;
+for(const x of [-100,-6,-5.2,0,.1,2,100]){
+ const lengthSquared=(x+3)**2+(.5*x+7)**2;
+ close('B4: quadratische Ergänzung bei '+x,lengthSquared,1.25*(x+5.2)**2+minLengthSquared,1e-8);
+ test('B4: globales Längen-/Flächenminimum bei '+x,lengthSquared>=minLengthSquared-1e-10);
+}
+const exactShape=b4Shape(exactRoot);
+close('B4: exakte Seite DC liegt auf g',exactShape.C.y,.5*exactShape.C.x+5,1e-10);
+close('B4: exakte minimale Fläche',.5*minLengthSquared*s40,7.777730077207125,1e-10);
+console.log('B4-Endkontrolle bestanden; insgesamt '+checked+' statische/fachliche Prüfungen.');
