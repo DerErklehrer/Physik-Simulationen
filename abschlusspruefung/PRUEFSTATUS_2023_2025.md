@@ -1,5 +1,7 @@
 # Prüfstatus Mathematik I — Haupttermine 2023, 2024, 2025
 
+**Aktueller Arbeitsstand 2023 B1/B2 (15.11.2026):** Beide Aufgaben sind jetzt als eigene interaktive Lernseiten ausgearbeitet: vier Teilaufgaben, 21 Lösungsschritte, 9,5 Punkte. Amtliche Originale und Lösungen abgeglichen; 151 fachliche/strukturelle Checks und 12/12 Desktop-/Mobilfälle bestanden. [Prüfprotokoll B1/B2](2023/PRUEFPROTOKOLL_B1_B2.md). Damit sind A1–A4 und B1/B2 ausgearbeitet; B3/B4 bleiben vorläufig. Dies ist keine jahrgangsweite Dreifachfreigabe. Ältere Bestandsaufnahmen weiter unten sind hinsichtlich der B1/B2-Umsetzung durch diesen Eintrag ersetzt.
+
 **Aktueller Arbeitsstand 2023 A (15.11.2026):** A1–A4 sind jetzt als vier eigene interaktive Seiten mit sieben vollständigen Teilaufgaben und 29 Lösungsschritten ausgearbeitet. Originale und amtliche Lösungen visuell abgeglichen, 146 fachliche/strukturelle Checks bestanden. Browser- und Sichtnachweise sowie Korrekturen: [Prüfprotokoll A 2023](2023/PRUEFPROTOKOLL_A.md). B1–B4 bleiben im ausdrücklich vorläufigen Altstand. Dies ist keine jahrgangsweite Dreifachfreigabe; ältere Bestandsaufnahmen weiter unten sind hinsichtlich der A-Umsetzung durch diesen Eintrag ersetzt.
 
 **Status: NICHT ZUR ENDGÜLTIGEN FREIGABE GEEIGNET.**
