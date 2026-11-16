@@ -33,6 +33,27 @@ function initTraining(config,data){
   // Keep the given points available as supplied data; the learner need not compute a function family.
   for(const input of main.querySelectorAll('input[type=range]')){const host=input.closest('#explore');if(host)host.hidden=true;else{input.hidden=true;const lab=main.querySelector('label[for="'+input.id+'"]');if(lab)lab.hidden=true}}
  }
+
+ if(config.freeze){
+  const cleanFigure=()=>{
+   const figure=main.querySelector('svg');
+   if(config.id!=='muster2-b1'&&figure){
+    for(const path of figure.querySelectorAll('path'))if((path.getAttribute('d')||'').length>600&&!path.closest('[data-math-label]')&&!path.closest('mjx-container'))path.remove();
+    for(const e of figure.querySelectorAll('text,[data-math-label]'))if(/Graph zu|Asymptot|^f_[12]$|^f[₁₂]$|^y = 3$/.test(e.getAttribute('data-math-label')||e.textContent))e.remove();
+   }
+   if(figure){figure.setAttribute('aria-label',config.title+' – vorgegebene geometrische Figur');if(config.id==='2025-b3'&&selected===4)for(const t of figure.querySelectorAll('text'))t.textContent=t.textContent.replaceAll('ₙ','₃')}
+   const heading=main.querySelector('h2');if(heading)heading.textContent=config.title;
+   for(const p of main.querySelectorAll('p'))if(!p.closest('#intro,#statement,#solution,#trainingGiven,.training-notice,.training-reference')&&/Regler|Asymptot|Graph zu|Blau: Graph|Funktionswert|Wertemenge|mathematische Bedingung/.test(p.textContent))p.hidden=true;
+   for(const id of ['asym','fixed1','fixed2']){const input=get(id);if(input){input.hidden=true;input.closest('label')?.setAttribute('hidden','')}}
+   for(const id of ['specialControls','shiftControls'])get(id)?.setAttribute('hidden','');
+   if(get('measure'))get('measure').textContent=config.id==='2025-b3'&&selected===4?'Vorgegebene gleichschenklige Lage. Die Zeichnung verwendet ungerundete Maße; für die Rechnung wird wie angegeben zwischengerundet.':'Zeichnung zu den vorgegebenen geometrischen Angaben.';
+  };
+  if(typeof draw==='function'){const originalDraw=draw;draw=function(){
+   if(config.id==='2025-b3'&&selected===4){preciseX=Math.log((7-(8-4*Math.sin(20*Math.PI/180)))/3.5)/Math.log(.5)-3;if(get('x'))get('x').value=preciseX}
+   if(get('asym')?.type==='checkbox')get('asym').checked=false;
+   originalDraw();cleanFigure();
+  }}
+ }
  const rawRender=typeof render==='function'?render:null;
  function after(){
   if(override.q&&get('statement'))get('statement').innerHTML='<strong>'+label+'</strong><p>'+override.q+'</p>';
