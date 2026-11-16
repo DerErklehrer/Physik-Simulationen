@@ -1,0 +1,272 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2025 · Trapezhöhe und gleichschenkliges Trapez · Trigonometrie üben</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style>:root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:white;padding:16px 4%;font-weight:750;font-size:22px}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted{color:#64748b}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}.grid{display:grid;grid-template-columns:minmax(300px,1.2fr) minmax(300px,1fr);gap:16px;margin-top:16px}button{font:inherit;border:1px solid #b9c4d1;border-radius:8px;padding:9px 12px;background:white;color:#253341;cursor:pointer}button.active{background:#8e2948;color:white;border-color:#8e2948}button:disabled{opacity:.45}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0}.original{padding:12px;border-radius:8px;background:#f6f8fb;line-height:1.65}.step{background:#f6f8fb;border-left:4px solid #a32b4d;padding:13px;border-radius:7px;line-height:1.7;min-height:150px;overflow-x:auto}.plot{display:block;width:100%;height:auto}.plot-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}.mobile-controls{display:none}.original{overflow-x:auto}@media(max-width:850px){#plot{width:620px;max-width:none}.plot-scroll.overview #plot{width:100%;max-width:100%}.mobile-controls{display:block;margin:8px 0}}.small{font-size:.86rem;color:#64748b}.tag{display:inline-block;margin-left:8px;background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:6px}.flex{display:flex;flex-wrap:wrap;gap:10px}.flex label{font-size:.87rem}input[type=range]{width:100%;accent-color:#a32b4d}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}}</style><link rel="stylesheet" href="../training.css"></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><div class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2025</a><a href="b2.html">← B 2</a><a href="b4.html">B 4 →</a></div><div class="muted">Mathematik I · Realschule Bayern · Haupttermin</div><h1>Abschlussprüfung 2025 · B 3</h1><div class="grid"><section class="panel"><h2>Exponentialgraphen und Trapeze</h2><div id="plotScroll" class="plot-scroll" role="region" tabindex="0" aria-label="Koordinatensystem, auf Mobilgeräten horizontal verschiebbar"><svg id="plot" class="plot" viewBox="0 0 660 680" role="img" aria-label="Exponentialgraphen f1 und f2 mit dynamischem Trapez und festen Prüfungszeichnungen"></svg></div><div class="mobile-controls"><button id="plotOverview" type="button" aria-pressed="false">Gesamtes Koordinatensystem anzeigen</button><p id="plotHint" class="small">Lesemodus: Zeichnung nach links oder rechts verschieben.</p></div><p class="small">Blau: Graph zu f₁ · Orange: Graph zu f₂ · Magenta: veränderbares Trapez · Grün: Asymptote. Die Konstruktionen werden passend zum Lösungsschritt ergänzt.</p><label for="x"><strong>Abszisse x: <span id="xval">−3,00</span></strong></label><input id="x" type="range" min="-3" max="2.1" step=".01" value="-3"><div class="buttons"><button id="p1">Nur Trapez 1: x = −3</button><button id="p2">Nur Trapez 2: x = 1</button><button id="p3" style="display:none">Lösung mit Zwischenrundung: x ≈ 0,28</button><button id="pexact" style="display:none">Geometrisch exakt: x ≈ 0,25</button></div><div class="flex"><label><input type="checkbox" id="live" checked> Veränderbares Trapez</label><label><input type="checkbox" id="lot" checked> Lot AₙFₙ</label><label><input type="checkbox" id="fixed1"> Trapez 1 (Originalkonstruktion)</label><label><input type="checkbox" id="fixed2"> Trapez 2 (Originalkonstruktion)</label><label><input type="checkbox" id="asym" checked> Asymptote</label></div><p id="measure" class="small" aria-live="polite"></p><p class="small">Der Regler ist auf den Bereich begrenzt, in dem das ganze Trapez im fest vorgegebenen Koordinatenfenster sichtbar bleibt. Die mathematische Bedingung bleibt x &gt; −4.</p><p id="roundingNote" class="small" style="display:none"><strong>Rundungshinweis B 3.5:</strong> Aus dem gerundeten Überstand 0,68 LE folgen 6,64 LE und x ≈ 0,28. Ohne Zwischenrundung gilt \(|\overline{A_3B_3}|\approx6{,}6319\,\mathrm{LE}\) und x ≈ 0,2493. Die Zeichnung verwendet die geometrisch exakten Koordinaten; daher sind die beiden markierten Lagen geringfügig verschieden.</p></section><section class="panel"><h2>Aufgabenstellung und Musterlösung</h2><div class="original"><strong>B 3.0 – Originalangaben</strong><p>Gegeben sind die Funktionen \(f_1\) mit der Gleichung \(y=-3\cdot0{,}5^{x+4}+3\) und \(f_2\) mit der Gleichung \(y=2\cdot0{,}5^{x+3}-4\) \((x,y\in\mathbb R)\).</p><p>Runden Sie im Folgenden auf zwei Stellen nach dem Komma.</p></div><div class="buttons" id="parts"></div><div class="original" id="statement"></div><hr><strong id="steptitle"></strong> <span class="tag" id="count"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Ausführliche Lernlösung nach dem amtlichen ISB-Lösungsmuster, keine amtliche Lösung.</p></section></div></main>
+<script>
+const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg',fmt=z=>Number(z).toFixed(2).replace('.',','),f=x=>-3*Math.pow(.5,x+4)+3,g=x=>2*Math.pow(.5,x+3)-4;
+const tasks=[
+ {
+  "n": "B 3.1",
+  "p": "4 P",
+  "q": "Geben Sie die Gleichung der Asymptote des Graphen zu \\(f_1\\) an. Zeichnen Sie zudem die Graphen zu \\(f_1\\) und \\(f_2\\) für \\(x\\in[-5;4]\\) in ein Koordinatensystem. Für die Zeichnung: Längeneinheit 1 cm; \\(-5\\leq x\\leq4\\); \\(-6\\leq y\\leq4\\).",
+  "s": [
+   [
+    "Asymptote",
+    "Da für wachsende x der Ausdruck \\(0{,}5^{x+4}\\) gegen null strebt, nähert sich \\(f_1(x)\\) der Zahl 3 von unten. Die Asymptote ist \\(\\boxed{y=3}\\)."
+   ],
+   [
+    "Wertetabelle für f₁",
+    "Für x = −5; −4; −3; −2; 0; 4 erhält man die Funktionswerte −3; 0; 1,5; 2,25; 2,81; 2,99. Diese Punkte in das vorgegebene Koordinatensystem eintragen und glatt verbinden."
+   ],
+   [
+    "Wertetabelle für f₂",
+    "Für x = −5; −4; −3; −2; 0; 4 erhält man die Funktionswerte 4; 0; −2; −3; −3,75; −3,98. Der Graph fällt und nähert sich y = −4."
+   ],
+   [
+    "Kontrollpunkte",
+    "Beide Graphen schneiden sich in (−4 | 0). Die Kurven links sind im Original-Koordinatenfenster von x = −5 bis 4 und y = −6 bis 4 dargestellt."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.2",
+  "p": "2 P",
+  "q": "Punkte \\(A_n(x\\mid-3\\cdot0{,}5^{x+4}+3)\\) auf dem Graphen zu \\(f_1\\) haben dieselbe Abszisse \\(x\\) wie Punkte \\(B_n(x\\mid2\\cdot0{,}5^{x+3}-4)\\) auf dem Graphen zu \\(f_2\\). Für \\(x>-4\\) sind sie zusammen mit Punkten \\(C_n\\) und \\(D_n\\) die Eckpunkte von Trapezen \\(A_nB_nC_nD_n\\). Es gilt: ∢BₙAₙDₙ = 110°; \\(|\\overline{A_nD_n}|=2\\,\\mathrm{LE}\\); \\(|\\overline{C_nD_n}|=8\\,\\mathrm{LE}\\); \\(\\overline{A_nB_n}\\parallel\\overline{C_nD_n}\\). Zeichnen Sie die Trapeze \\(A_1B_1C_1D_1\\) für \\(x=-3\\) und \\(A_2B_2C_2D_2\\) für \\(x=1\\) in das Koordinatensystem zu B 3.1 ein.",
+  "s": [
+   [
+    "Punkte festlegen",
+    "Die Punkte Aₙ und Bₙ besitzen dieselbe Abszisse x. Für x = −3 gilt A₁(−3 | 1,50), B₁(−3 | −2,00). Für x = 1 gilt A₂(1 | 2,91), B₂(1 | −3,88)."
+   ],
+   [
+    "Winkel ∢BₙAₙDₙ",
+    "AₙBₙ verläuft senkrecht abwärts. Daher bildet AₙDₙ mit der positiven x-Richtung den Winkel \\(110^\\circ-90^\\circ=20^\\circ\\)."
+   ],
+   [
+    "Punkt Dₙ ermitteln",
+    "Die Strecke \\(\\overline{A_nD_n}\\) ist 2 LE lang. Für \\(D_n(x_D\\mid y_D)\\) gilt daher: \\[\\begin{aligned}x_D&=x+2\\cdot\\cos20^\\circ,\\\\y_D&=f_1(x)+2\\cdot\\sin20^\\circ.\\end{aligned}\\]"
+   ],
+   [
+    "Punkt Cₙ ergänzen",
+    "Von Dₙ aus 8 LE senkrecht nach unten ergibt Cₙ, da CₙDₙ parallel zu AₙBₙ liegt. Damit sind beide Trapeze A₁B₁C₁D₁ und A₂B₂C₂D₂ in der Zeichnung vollständig konstruiert."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.3",
+  "p": "2 P",
+  "q": "Punkte \\(F_n\\) sind die Fußpunkte der Lote von den Punkten \\(A_n\\) auf die Strecken \\(\\overline{C_nD_n}\\). Zeichnen Sie die Strecke \\(\\overline{A_1F_1}\\) in das Koordinatensystem zu B 3.1 ein. Zeigen Sie sodann, dass für die Länge aller Strecken \\(\\overline{A_nF_n}\\) gilt: \\(|\\overline{A_nF_n}|=1{,}88\\,\\mathrm{LE}\\).",
+  "s": [
+   [
+    "Lot erkennen",
+    "Weil CₙDₙ senkrecht verläuft, liegt die Lotstrecke AₙFₙ waagerecht. Fₙ hat dieselbe Höhe wie Aₙ."
+   ],
+   [
+    "Dreieck AₙDₙFₙ",
+    "AₙDₙ ist die Hypotenuse der Länge 2 LE. Der Winkel bei Aₙ beträgt \\(20^\\circ\\)."
+   ],
+   [
+    "Kosinus anwenden",
+    "Im rechtwinkligen Dreieck gilt \\[\\cos20^\\circ=\\frac{|\\overline{A_nF_n}|}{2\\,\\mathrm{LE}}.\\] Also \\[\\begin{aligned}|\\overline{A_nF_n}|&=2\\cdot\\cos20^\\circ\\,\\mathrm{LE}\\\\&\\approx\\boxed{1{,}88\\,\\mathrm{LE}}.\\end{aligned}\\] Die Länge ist von x unabhängig."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.4",
+  "p": "2 P",
+  "q": "Bestätigen Sie rechnerisch, dass für die Länge der Strecken \\(\\overline{A_nB_n}\\) in Abhängigkeit von der Abszisse \\(x\\) der Punkte \\(A_n\\) gilt: \\[\\begin{aligned}|\\overline{A_nB_n}|(x)&=(-3{,}5\\cdot0{,}5^{x+3}\\\\&\\quad+7)\\,\\mathrm{LE}.\\end{aligned}\\]",
+  "s": [
+   [
+    "Differenz der Funktionswerte",
+    "Für x > −4 liegt Aₙ über Bₙ. Da beide Punkte dieselbe Abszisse haben, gilt: \\[|\\overline{A_nB_n}|(x)=[f_1(x)-f_2(x)]\\,\\mathrm{LE}.\\]"
+   ],
+   [
+    "Funktionen einsetzen",
+    "Beim Subtrahieren der zweiten Funktion ändern sich beide Vorzeichen in ihrer Klammer: \\[\\begin{aligned}f_1(x)-f_2(x)&=-3\\cdot0{,}5^{x+4}+3\\\\&\\quad-2\\cdot0{,}5^{x+3}+4.\\end{aligned}\\]"
+   ],
+   [
+    "Zusammenfassen",
+    "Mit \\(0{,}5^{x+4}=0{,}5\\cdot0{,}5^{x+3}\\) wird der erste Koeffizient −1,5. Dann gilt −1,5−2=−3,5 und 3+4=7. Damit folgt \\[\\boxed{\\begin{aligned}|\\overline{A_nB_n}|(x)&=(-3{,}5\\cdot0{,}5^{x+3}\\\\&\\quad+7)\\,\\mathrm{LE}.\\end{aligned}}\\]"
+   ]
+  ]
+ },
+ {
+  "n": "B 3.5",
+  "p": "4 P",
+  "q": "Das Trapez \\(A_3B_3C_3D_3\\) ist gleichschenklig. Berechnen Sie die Länge der Strecke \\(\\overline{A_3B_3}\\) sowie die zugehörige Belegung von \\(x\\). [Teilergebnis: \\(|\\overline{A_3B_3}|=6{,}64\\,\\mathrm{LE}\\)]",
+  "s": [
+   [
+    "Gleichschenklige Form",
+    "Die beiden nichtparallelen Seiten A₃D₃ und B₃C₃ sind gleich lang (jeweils 2 LE). Ihre vertikalen Überstände sind daher gleich groß."
+   ],
+   [
+    "Überstand berechnen",
+    "\\[\\begin{aligned}|\\overline{D_3F_3}|&=2\\cdot\\sin20^\\circ\\,\\mathrm{LE}\\\\&\\approx0{,}68\\,\\mathrm{LE}.\\end{aligned}\\]"
+   ],
+   [
+    "Länge A₃B₃",
+    "Mit dem auf zwei Dezimalstellen gerundeten Überstand erhält man gemäß dem amtlichen Rechenweg: \\[\\begin{aligned}|\\overline{A_3B_3}|&\\approx(8-2\\cdot0{,}68)\\,\\mathrm{LE}\\\\&=\\boxed{6{,}64\\,\\mathrm{LE}}.\\end{aligned}\\]"
+   ],
+   [
+    "Gleichung nach x lösen",
+    "Das gerundete Teilergebnis wird in B 3.4 eingesetzt: \\[6{,}64=-3{,}5\\cdot0{,}5^{x+3}+7.\\] Umstellen ergibt \\[0{,}5^{x+3}=\\frac{7-6{,}64}{3{,}5}.\\]"
+   ],
+   [
+    "Logarithmieren",
+    "\\[\\begin{aligned}x&=\\frac{\\ln(\\frac{7-6{,}64}{3{,}5})}{\\ln0{,}5}-3\\\\&\\approx\\boxed{0{,}28}.\\end{aligned}\\] Die Nebenbedingung x > −4 ist erfüllt. Somit lautet die gerundete Lösungsmenge \\(L=\\{0{,}28\\}\\)."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.6",
+  "p": "2 P",
+  "q": "Begründen Sie, dass der Flächeninhalt der Trapeze \\(A_nB_nC_nD_n\\) stets kleiner als \\(14{,}1\\,\\mathrm{FE}\\) ist.",
+  "s": [
+   [
+    "Flächenformel",
+    "Die parallelen Seiten haben die Längen \\(|\\overline{A_nB_n}|(x)\\) und \\(8\\,\\mathrm{LE}\\). Die exakte Höhe ist \\(h=|\\overline{A_nF_n}|=2\\cdot\\cos20^\\circ\\,\\mathrm{LE}\\). Daher gilt: \\[A(x)=\\frac{|\\overline{A_nB_n}|(x)+8\\,\\mathrm{LE}}2\\cdot h.\\]"
+   ],
+   [
+    "Obere Schranke",
+    "Für jedes x > −4 ist \\(0{,}5^{x+3}>0\\). Somit gilt \\[|\\overline{A_nB_n}|(x)<7\\,\\mathrm{LE}.\\] Außerdem ist die exakte Höhe \\[h=2\\cdot\\cos20^\\circ\\,\\mathrm{LE}<1{,}88\\,\\mathrm{LE}.\\]"
+   ],
+   [
+    "Abschätzen",
+    "Beide Faktoren der Flächenformel sind positiv. Mit den beiden oberen Schranken folgt: \\[\\begin{aligned}A(x)&<\\frac{7+8}{2}\\cdot1{,}88\\,\\mathrm{FE}\\\\&=\\boxed{14{,}1\\,\\mathrm{FE}}.\\end{aligned}\\] Die obere Schranke wird nicht erreicht."
+   ]
+  ]
+ }
+];
+let part=0,step=0;const X=x=>78+(x+5)*56,Y=y=>275-y*56;
+function el(t,a={},txt){let e=document.createElementNS(ns,t);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));if(txt!==undefined)e.textContent=txt;$('plot').append(e);return e}
+function caption(x,y,txt,attrs={}){const size=Number(attrs['font-size']||15);el('rect',{x:x-3,y:y-size*.9,width:[...String(txt)].length*size*.61+6,height:size*1.2,fill:'#fff',rx:2});return el('text',{x,y,'font-size':size,...attrs},txt)}
+function seg(a,b,color='#9ba9b8',w=1.5,d=''){el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':d})}
+function point(p,n,color){el('circle',{cx:X(p.x),cy:Y(p.y),r:3.5,fill:color});el('text',{x:X(p.x)+6,y:Y(p.y)-7,'font-size':15,fill:color},n)}
+function trapez(x,{index='ₙ',fixed=false,stage=4,showLot=false,angle=false}={}){
+ const a={x,y:f(x)},b={x,y:g(x)},d={x:x+2*Math.cos(Math.PI/9),y:a.y+2*Math.sin(Math.PI/9)},c={x:d.x,y:d.y-8},F={x:d.x,y:a.y};
+ const color=fixed?'#596b8a':'#a32b4d',dash='';
+ const line=(v,w)=>seg([X(v.x),Y(v.y)],[X(w.x),Y(w.y)],color,fixed?2.2:2.8,dash);
+ if(stage>=1&&stage<4)line(a,b);
+ if(stage>=4){
+  el('path',{d:[a,b,c,d].map((z,i)=>(i?'L':'M')+X(z.x)+' '+Y(z.y)).join(' ')+' Z',stroke:color,'stroke-width':fixed?2.2:3,'stroke-dasharray':fixed?'':'',fill:fixed?'#7284ae':'#a32b4d','fill-opacity':fixed?.055:.08});
+ }else{
+  if(stage>=2)line(a,d);
+  if(stage>=3)line(d,c);
+ }
+ const label=(pt,t,dx=6,dy=-8)=>{el('circle',{cx:X(pt.x),cy:Y(pt.y),r:3.5,fill:color});caption(X(pt.x)+dx,Y(pt.y)+dy,t+index,{'font-size':15,fill:color})};
+ label(a,'A',-26,-8);label(b,'B',-26,15);
+ if(stage>=2)label(d,'D',6,-10);
+ if(stage>=3)label(c,'C',8,17);
+ if(stage>=2&&angle){
+  const px=X(a.x),py=Y(a.y),rr=28;
+  el('path',{d:'M'+(px+rr*Math.cos(-Math.PI/9))+' '+(py+rr*Math.sin(-Math.PI/9))+' A28 28 0 0 1 '+px+' '+(py+rr),stroke:'#b27928','stroke-width':2,fill:'none'});
+  caption(px+32,py+31,'110°',{'font-size':15,fill:'#9b6120'});
+ }
+ if(stage>=4&&showLot){
+  seg([X(a.x),Y(a.y)],[X(F.x),Y(F.y)],'#198576',2.5,'5 3');
+  el('circle',{cx:X(F.x),cy:Y(F.y),r:3,fill:'#198576'});
+  caption(X(F.x)+7,Y(F.y)+15,'F'+index,{'font-size':15,fill:'#198576'});
+  if(part===2&&step>=1){
+   const ax=X(a.x),ay=Y(a.y),r=26;
+   el('path',{d:'M'+(ax+r)+' '+ay+' A26 26 0 0 0 '+(ax+r*Math.cos(Math.PI/9))+' '+(ay-r*Math.sin(Math.PI/9)),stroke:'#198576','stroke-width':2,fill:'none','data-angle':'20'});
+   caption(ax+32,ay-18,'20°',{'font-size':15,fill:'#198576'});
+  }
+  // Rechtwinkelsymbol: Viertelkreisbogen im Winkel zwischen F_nA_n (links) und F_nD_n (oben).
+  // Punkt mittig auf der Winkelhalbierenden in halbem Bogenradius.
+  const fx=X(F.x),fy=Y(F.y),radius=16;
+  el('path',{d:'M'+(fx-radius)+' '+fy+' A'+radius+' '+radius+' 0 0 1 '+fx+' '+(fy-radius),stroke:'#198576','stroke-width':2,fill:'none','data-right-angle':'quarter-arc'});
+  el('circle',{cx:fx-radius/(2*Math.sqrt(2)),cy:fy-radius/(2*Math.sqrt(2)),r:2.5,fill:'#198576','data-right-angle':'center-dot'});
+ }
+}
+let preciseX=null,previousX=-3;
+function configureForPart(){
+ $('live').checked=part>=3;
+ $('fixed1').checked=part===1||part===2;
+ $('fixed2').checked=part===1;
+ $('lot').checked=part>=2;
+ $('asym').checked=true;
+ preciseX=null;$('x').value=-3;
+}
+function draw(){
+ const x=preciseX===null?Number($('x').value):preciseX;
+ const showF1=part!==0||step>=1,showF2=part!==0||step>=2;
+ const graph=$('plot');graph.replaceChildren();
+ el('rect',{x:0,y:0,width:660,height:680,fill:'#fff'});
+ const defs=el('defs');
+ defs.innerHTML='<clipPath id="clip25"><rect x="'+X(-5)+'" y="'+Y(4)+'" width="504" height="560"/></clipPath>';
+ for(let i=-5;i<=4;i++){
+  seg([X(i),Y(4)],[X(i),Y(-6)],'#e2e9ef',1);
+  el('text',{x:X(i)-(i===0?18:7),y:Y(0)+18,fill:'#506777','font-size':14},i===0?'O':String(i));
+ }
+ for(let j=-6;j<=4;j++){
+  seg([X(-5),Y(j)],[X(4),Y(j)],'#e2e9ef',1);
+  if(j!==0)el('text',{x:X(0)+7,y:Y(j)-4,fill:'#506777','font-size':14},String(j));
+ }
+ seg([X(-5),Y(0)],[X(4)+20,Y(0)],'#536b7e',2);
+ seg([X(0),Y(-6)],[X(0),Y(4)-14],'#536b7e',2);
+ el('polygon',{points:[[X(4)+20,Y(0)],[X(4)+12,Y(0)-4],[X(4)+12,Y(0)+4]].map(p=>p.join(',')).join(' '),fill:'#536b7e'});
+ el('polygon',{points:[[X(0),Y(4)-14],[X(0)-4,Y(4)-6],[X(0)+4,Y(4)-6]].map(p=>p.join(',')).join(' '),fill:'#536b7e'});
+ el('text',{x:X(4)+24,y:Y(0)+5,'font-size':17},'x');
+ el('text',{x:X(0)-5,y:Y(4)-20,'font-size':17},'y');
+ if($('asym').checked){
+  seg([X(-5),Y(3)],[X(4),Y(3)],'#288a77',2,'7 5');
+  el('text',{x:X(2.2),y:Y(3)-9,'font-size':15,fill:'#288a77'},part!==0||step>=0?'y = 3':'Asymptote');
+ }
+ for(const [fn,color,visible] of [[f,'#276da7',showF1],[g,'#d17b19',showF2]]){
+  if(!visible)continue;
+  let path='';
+  for(let z=-5;z<=4.001;z+=.02)path+=(path?' L':'M')+X(z).toFixed(2)+' '+Y(fn(z)).toFixed(2);
+  el('path',{d:path,fill:'none',stroke:color,'stroke-width':3,'clip-path':'url(#clip25)'});
+ }
+ if(part===1){
+  const stage=Math.min(4,step+1);
+  if($('fixed1').checked)trapez(-3,{index:'₁',fixed:true,stage,angle:stage>=2});
+  if($('fixed2').checked)trapez(1,{index:'₂',fixed:true,stage,angle:stage>=2});
+ }else if(part===2){
+  if($('fixed1').checked)trapez(-3,{index:'₁',fixed:true,showLot:$('lot').checked&&step>=1});
+  if($('fixed2').checked)trapez(1,{index:'₂',fixed:true});
+ }else if(part>=3&&$('live').checked){
+  trapez(x,{showLot:$('lot').checked,index:part===4&&step>=4&&preciseX!==null?'₃':'ₙ'});
+ }
+ const measure=part===0?'Wähle einen Lösungsschritt zum schrittweisen Zeichnen der Funktionsgraphen.':
+ part===1?'Die Konstruktionsschritte ergänzen die Punkte und Kanten der beiden Originaltrapeze.':
+ part===2?(step>=2?'Lotlänge ≈ '+fmt(2*Math.cos(Math.PI/9))+' LE':'Zeichne zuerst das Lot von A₁ auf C₁D₁.'):
+ part===3?(step>=2?'Streckenlänge ≈ '+fmt(f(x)-g(x))+' LE':'Die Länge AₙBₙ ergibt sich aus der Differenz der Funktionswerte.'):
+ part===4?(step<4?'Gezeigt ist ein Beispieltrapez. Gesucht wird die gleichschenklige Sonderlage.':preciseX===.28?'Amtliche Zwischenrundung: x ≈ 0,28 · gerechnete Länge ≈ 6,64 LE.':preciseX!==null?'Ohne Zwischenrundung: x ≈ 0,2493 · Streckenlänge ≈ 6,6319 LE.':'Erkundung: Streckenlänge ≈ '+fmt(f(x)-g(x))+' LE. Die Tasten stellen die beiden berechneten Sonderlagen wieder her.'):
+ step>=2?'Für x > −4 bleibt der Flächeninhalt unter 14,1 FE.':'Vergleiche die beiden parallelen Seiten und die konstante Trapezhöhe.';
+ $('xval').textContent=fmt(x);
+ $('measure').textContent=measure;
+ const reveal=part===4&&step>=4;
+ $('p3').style.display=reveal?'inline-block':'none';
+ $('pexact').style.display=reveal?'inline-block':'none';
+ $('roundingNote').style.display=reveal?'block':'none';
+ $('p1').style.display=part===1?'inline-block':'none';
+ $('p2').style.display=part===1?'inline-block':'none';
+ $('x').disabled=part===0||part===1||part===2;
+ $('live').disabled=part<3;
+ $('lot').disabled=part<2;
+ $('fixed1').disabled=part!==1&&part!==2;
+ $('fixed2').disabled=part!==1&&part!==2;
+}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.s[step][0];$('solution').innerHTML=t.s[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.s.length;$('prev').disabled=step===0;$('next').disabled=step===t.s.length-1;draw();if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution'),$('roundingNote')]);MathJax.typesetPromise([$('statement'),$('solution'),$('roundingNote')]).catch(console.error)}}
+tasks.forEach((t,i)=>{
+ const b=document.createElement('button');b.textContent=t.n;
+ b.onclick=()=>{part=i;step=0;configureForPart();render()};
+ $('parts').append(b);
+});
+$('x').oninput=()=>{preciseX=null;draw()};
+$('plotOverview').onclick=()=>{
+ const overview=$('plotScroll').classList.toggle('overview');
+ $('plotOverview').textContent=overview?'Zum Lesemodus wechseln':'Gesamtes Koordinatensystem anzeigen';
+ $('plotOverview').setAttribute('aria-pressed',String(overview));
+ $('plotHint').textContent=overview?'Gesamtübersicht: Zum Vergrößern den Lesemodus wählen.':'Lesemodus: Zeichnung nach links oder rechts verschieben.';
+ if(overview)$('plotScroll').scrollLeft=0;
+};
+['live','lot','fixed1','fixed2','asym'].forEach(id=>$(id).onchange=draw);
+for(const [id,value] of [['p1',-3],['p2',1],['p3',.28],['pexact',.24926140832455124]]){
+ $(id).onclick=()=>{preciseX=value;$('x').value=value;if(id==='p1'||id==='p2'){$('fixed1').checked=id==='p1';$('fixed2').checked=id==='p2'}draw()};
+}
+$('prev').onclick=()=>{const old=step;step=Math.max(0,step-1);if(part===4&&old===4&&step===3){preciseX=null;$('x').value=previousX}render()};
+$('next').onclick=()=>{const old=step;step=Math.min(tasks[part].s.length-1,step+1);if(part===4&&old===3&&step===4){previousX=Number($('x').value);preciseX=.28;$('x').value=.28}render()};
+$('reset').onclick=()=>{step=0;configureForPart();render()};
+configureForPart();render();
+window.addEventListener('load',()=>{if(window.MathJax?.typesetPromise)window.MathJax.typesetPromise([$('statement'),$('solution'),$('roundingNote')]).catch(console.error)});
+</script>
+<script src="../training.js"></script><script>initTraining({"id": "2025-b3", "year": "2025", "label": "2025", "file": "b3", "source": "abschlusspruefung/2025/haupttermin/b3.html", "url": "2025/b3.html", "picks": [2, 4], "title": "Trapezhöhe und gleichschenkliges Trapez", "tags": ["Dreiecke", "Grundlagen"], "var": "tasks", "selector": "parts", "given": "Gegeben sind Trapeze ABCD mit \\(\\overline{AB}\\parallel\\overline{CD}\\), \\(\\lvert\\overline{AD}\\rvert=2\\,\\mathrm{LE}\\), \\(\\lvert\\overline{CD}\\rvert=8\\,\\mathrm{LE}\\) und \\(\\sphericalangle BAD=110^\\circ\\). F ist der Lotfuß von A auf CD. Die Zeichnung zeigt die dazugehörige Lage.", "freeze": true, "overrides": {"4": {"q": "Das dargestellte Trapez ist gleichschenklig; die Basis AB ist kürzer als CD. Berechnen Sie die Länge von AB. Runden Sie den Überstand wie im amtlichen Muster zunächst auf zwei Dezimalstellen.", "takeSteps": [0, 1, 2], "label": "B 3.5 · Streckenanteil"}}},tasks);</script>
+</body></html>

@@ -1,0 +1,941 @@
+[
+  {
+    "id": "2023-a1",
+    "year": "2023",
+    "label": "2023",
+    "file": "a1",
+    "source": "abschlusspruefung/2023/haupttermin/a1.html",
+    "url": "2023/a1.html",
+    "picks": [
+      0
+    ],
+    "title": "Parallelogramm auf rechten Winkel prüfen",
+    "tags": [
+      "Grundlagen",
+      "Koordinaten"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "overrides": {
+      "0": {
+        "steps": [
+          [
+            "Seitenrichtungen bestimmen",
+            "Für x = 1,5 gilt \\(\\overrightarrow{AB_1}=\\begin{pmatrix}1{,}5\\\\3\\end{pmatrix}\\), während \\(\\overrightarrow{AD}=\\begin{pmatrix}-6\\\\2\\end{pmatrix}\\)."
+          ],
+          [
+            "Steigungen berechnen",
+            "\\[m_{AB_1}=\\frac3{1{,}5}=2,\\qquad m_{AD}=\\frac2{-6}=-\\frac13.\\]"
+          ],
+          [
+            "Rechteckbedingung prüfen",
+            "Zwei nicht achsenparallele Geraden sind senkrecht, wenn das Produkt ihrer Steigungen −1 beträgt. Hier ist \\(2\\cdot(-\\frac13)=-\\frac23\\ne-1\\)."
+          ],
+          [
+            "Entscheidung begründen",
+            "Die benachbarten Seiten stehen nicht senkrecht aufeinander. Das Parallelogramm \\(AB_1C_1D\\) ist deshalb kein Rechteck."
+          ]
+        ]
+      }
+    },
+    "wholeLabel": "A 1"
+  },
+  {
+    "id": "2023-a4",
+    "year": "2023",
+    "label": "2023",
+    "file": "a4",
+    "source": "abschlusspruefung/2023/haupttermin/a4.html",
+    "url": "2023/a4.html",
+    "picks": [
+      0,
+      1
+    ],
+    "title": "Sinuswerte und Pfeile",
+    "tags": [
+      "Einheitskreis",
+      "Koordinaten"
+    ],
+    "var": "tasks",
+    "selector": "parts"
+  },
+  {
+    "id": "2023-b1",
+    "year": "2023",
+    "label": "2023",
+    "file": "b1",
+    "source": "abschlusspruefung/2023/haupttermin/b1.html",
+    "url": "2023/b1.html",
+    "picks": [
+      0
+    ],
+    "title": "Gleichschenkliges Dreieck konstruieren",
+    "tags": [
+      "Grundlagen",
+      "Koordinaten"
+    ],
+    "var": "tasks",
+    "selector": "parts"
+  },
+  {
+    "id": "2023-b3",
+    "year": "2023",
+    "label": "2023",
+    "file": "b3",
+    "source": "abschlusspruefung/2023/haupttermin/b3.html",
+    "url": "2023/b3.html",
+    "picks": [
+      2,
+      3,
+      5
+    ],
+    "title": "Dreiecke: Konstruktion, Fläche und Winkel",
+    "tags": [
+      "Dreiecke",
+      "Fläche"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "given": "Gegeben sind \\(A_1(-2\\mid6{,}6187)\\), \\(B_1(-2\\mid0{,}1605)\\), \\(A_2(3{,}5\\mid2{,}1547)\\) und \\(B_2(3{,}5\\mid-2{,}3505)\\). Für beide Dreiecke gilt \\(\\lvert\\overline{A_nC_n}\\rvert=5\\,\\mathrm{LE}\\) und \\(\\sphericalangle B_nA_nC_n=60^\\circ\\). C liegt rechts von der senkrechten Seite AB. Die Koordinaten sind gerundet; die Zeichnung verwendet die ungerundete Originalgeometrie.",
+    "freeze": true,
+    "overrides": {
+      "2": {
+        "q": "Zeichnen Sie die beiden Dreiecke mit den vorgegebenen Punkten in das dargestellte Koordinatensystem. Berechnen Sie danach die x-Koordinate von \\(C_1\\).",
+        "replaceSteps": {
+          "0": [
+            "Erste Seite aus den Angaben",
+            "Trage die gegebenen Punkte \\(A_1(-2\\mid6{,}6187)\\) und \\(B_1(-2\\mid0{,}1605)\\) ein. Ihre Verbindung ist senkrecht."
+          ],
+          "2": [
+            "Zweites Dreieck vorbereiten",
+            "Verbinde A₁, B₁ und C₁. Trage anschließend die vorgegebenen Punkte A₂ und B₂ ein und verbinde sie."
+          ]
+        }
+      },
+      "3": {
+        "q": "Für das Dreieck \\(A_1B_1C_1\\) werden die gerundeten Maße \\(\\lvert\\overline{A_1B_1}\\rvert=6{,}47\\,\\mathrm{LE}\\), \\(\\lvert\\overline{A_1C_1}\\rvert=5\\,\\mathrm{LE}\\) und \\(\\sphericalangle B_1A_1C_1=60^\\circ\\) vorgegeben. Berechnen Sie seinen Flächeninhalt.",
+        "takeSteps": [
+          4,
+          5,
+          6
+        ],
+        "label": "B 3.4 · Flächenanteil"
+      },
+      "5": {
+        "q": "Das Dreieck \\(A_3B_3C_3\\) ist gleichschenklig mit der Basis \\(\\overline{B_3C_3}\\). Sein Winkel bei A₃ beträgt 60°. Begründen Sie, dass es gleichseitig ist."
+      }
+    },
+    "extras": {
+      "5": "Für diese Begründung sind keine Koordinaten und keine Berechnungen an Funktionsgraphen erforderlich."
+    }
+  },
+  {
+    "id": "2023-b4",
+    "year": "2023",
+    "label": "2023",
+    "file": "b4",
+    "source": "abschlusspruefung/2023/haupttermin/b4.html",
+    "url": "2023/b4.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Prisma und Pyramiden",
+    "tags": [
+      "Dreiecke",
+      "Sinussatz",
+      "Volumen"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "extras": {
+      "1": "Es gilt: \\(S_n\\in\\overline{AF}\\), \\(T_n\\in\\overline{AB}\\), \\(\\overline{S_nT_n}\\perp\\overline{AB}\\) und \\(\\sphericalangle AES_n=\\varphi\\). Die Pyramide ist \\(ABCDS_n\\). Für das dargestellte Prisma ist bereits bekannt: \\(\\sphericalangle FAE\\approx31{,}43^\\circ\\).",
+      "2": "Es gilt: \\(S_n\\in\\overline{AF}\\), \\(T_n\\in\\overline{AB}\\), \\(\\overline{S_nT_n}\\perp\\overline{AB}\\) und \\(\\sphericalangle AES_n=\\varphi\\). Die Pyramide ist \\(ABCDS_n\\). Für das dargestellte Prisma ist bereits bekannt: \\(\\sphericalangle FAE\\approx31{,}43^\\circ\\).",
+      "3": "Es gilt: \\(S_n\\in\\overline{AF}\\), \\(T_n\\in\\overline{AB}\\), \\(\\overline{S_nT_n}\\perp\\overline{AB}\\) und \\(\\sphericalangle AES_n=\\varphi\\). Die Pyramide ist \\(ABCDS_n\\). Gegebenes Zwischenergebnis: \\(\\lvert\\overline{AS_n}\\rvert(\\varphi)\\approx\\frac{9\\sin\\varphi}{\\sin(\\varphi+31{,}43^\\circ)}\\,\\mathrm{cm}\\); \\(\\sphericalangle FAE\\approx31{,}43^\\circ\\).",
+      "4": "Es gilt: \\(S_n\\in\\overline{AF}\\), \\(T_n\\in\\overline{AB}\\), \\(\\overline{S_nT_n}\\perp\\overline{AB}\\) und \\(\\sphericalangle AES_n=\\varphi\\). Die Pyramide ist \\(ABCDS_n\\). Für die dargestellten Pyramiden darf verwendet werden: \\(V(\\varphi)\\approx\\frac{98{,}56\\sin\\varphi}{\\sin(\\varphi+31{,}43^\\circ)}\\,\\mathrm{cm}^3\\). Ferner gilt \\(\\sphericalangle FAE\\approx31{,}43^\\circ\\)."
+    },
+    "overrides": {
+      "2": {
+        "steps": [
+          [
+            "Bekannte Richtung nutzen",
+            "\\(\\overline{AS_2}\\) liegt auf der Raumdiagonalen AF. Im rechtwinkligen Dreieck \\(AS_2T_2\\) gilt daher \\(\\sphericalangle S_2AT_2=90^\\circ-31{,}43^\\circ\\approx58{,}57^\\circ\\)."
+          ],
+          [
+            "Strecke AS₂ berechnen",
+            "\\[\\lvert\\overline{AS_2}\\rvert=\\frac{3{,}5}{\\cos58{,}57^\\circ}\\,\\mathrm{cm}\\approx6{,}71\\,\\mathrm{cm}.\\]"
+          ],
+          [
+            "Höhe über ähnliche Dreiecke",
+            "Da \\(\\lvert\\overline{AT_2}\\rvert=3{,}5\\,\\mathrm{cm}\\) und \\(\\lvert\\overline{AB}\\rvert=5{,}5\\,\\mathrm{cm}\\), liegt \\(S_2\\) beim Anteil \\(\\frac7{11}\\) auf AF. Somit \\(\\lvert\\overline{S_2T_2}\\rvert=9\\cdot\\frac7{11}\\,\\mathrm{cm}\\)."
+          ],
+          [
+            "Winkel bei E mit Tangens",
+            "Im senkrechten Schnittdreieck gilt: \\[\\tan\\varphi=\\frac{3{,}5}{9-9\\cdot\\frac7{11}}.\\]\\[\\boxed{\\varphi\\approx46{,}92^\\circ}.\\]"
+          ],
+          [
+            "Zwischenrundung beachten",
+            "Der geometrische Weg rechnet ungerundet. Das amtliche Muster verwendet die gerundete Längenfunktion und erhält 46,90°. Die kleine Abweichung entsteht durch Zwischenrundungen. Es wird kein Additionstheorem benötigt."
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "id": "2024-a1",
+    "year": "2024",
+    "label": "2024",
+    "file": "a1",
+    "source": "abschlusspruefung/2024/haupttermin/a1.html",
+    "url": "2024/a1.html",
+    "picks": [
+      0,
+      1
+    ],
+    "title": "Schrägbild einer Pyramide",
+    "tags": [
+      "Grundlagen",
+      "Volumen"
+    ],
+    "var": "tasks",
+    "selector": "parts"
+  },
+  {
+    "id": "2024-b2",
+    "year": "2024",
+    "label": "2024",
+    "file": "b2",
+    "source": "abschlusspruefung/2024/haupttermin/b2.html",
+    "url": "2024/b2.html",
+    "picks": [
+      0,
+      1
+    ],
+    "title": "Dreiecke im Rechteck",
+    "tags": [
+      "Dreiecke",
+      "Sinussatz"
+    ],
+    "var": "tasks",
+    "selector": "parts"
+  },
+  {
+    "id": "2024-b3",
+    "year": "2024",
+    "label": "2024",
+    "file": "b3",
+    "source": "abschlusspruefung/2024/haupttermin/b3.html",
+    "url": "2024/b3.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Rechtecke und minimaler Umfang",
+    "tags": [
+      "Koordinaten",
+      "Grundlagen"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "extras": {
+      "3": "Verwendbare Zwischenergebnisse: \\(C_n(1{,}13x-3\\mid0{,}25x+6)\\) und \\(u(x)\\approx\\sqrt{9{,}54x^2-27x+324}\\,\\mathrm{LE}\\). Die Koeffizienten sind wie im Prüfungsbogen gerundet.",
+      "4": "Verwendbare Zwischenergebnisse: \\(C_n(1{,}13x-3\\mid0{,}25x+6)\\) und \\(u(x)\\approx\\sqrt{9{,}54x^2-27x+324}\\,\\mathrm{LE}\\). Die Koeffizienten sind wie im Prüfungsbogen gerundet."
+    }
+  },
+  {
+    "id": "2024-b4",
+    "year": "2024",
+    "label": "2024",
+    "file": "b4",
+    "source": "abschlusspruefung/2024/haupttermin/b4.html",
+    "url": "2024/b4.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Pyramiden: Strecken und Volumen",
+    "tags": [
+      "Dreiecke",
+      "Sinussatz",
+      "Volumen"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "extras": {
+      "1": "\\(P_n\\) liegt auf CS. Es ist \\(\\sphericalangle CAP_n=\\varphi\\). Die Pyramiden \\(ACP_nB\\) haben die Grundflächen \\(ACP_n\\) und die Spitze B. Bereits gegebene Maße der Ausgangspyramide: \\(\\sphericalangle SCA\\approx50{,}83^\\circ\\), \\(\\lvert\\overline{MS}\\rvert\\approx7{,}37\\,\\mathrm{cm}\\).",
+      "2": "\\(P_n\\) liegt auf CS. Es ist \\(\\sphericalangle CAP_n=\\varphi\\). Die Pyramiden \\(ACP_nB\\) haben die Grundflächen \\(ACP_n\\) und die Spitze B. Bereits gegebene Maße der Ausgangspyramide: \\(\\sphericalangle SCA\\approx50{,}83^\\circ\\), \\(\\lvert\\overline{MS}\\rvert\\approx7{,}37\\,\\mathrm{cm}\\).",
+      "3": "\\(P_n\\) liegt auf CS. Es ist \\(\\sphericalangle CAP_n=\\varphi\\). Die Pyramiden \\(ACP_nB\\) haben die Grundflächen \\(ACP_n\\) und die Spitze B. Gegeben sind \\(\\lvert\\overline{AP_n}\\rvert(\\varphi)\\approx\\frac{9{,}30}{\\sin(\\varphi+50{,}83^\\circ)}\\,\\mathrm{cm}\\), \\(\\lvert\\overline{MS}\\rvert\\approx7{,}37\\,\\mathrm{cm}\\) und \\(\\sphericalangle SCA\\approx50{,}83^\\circ\\).",
+      "4": "\\(P_n\\) liegt auf CS. Es ist \\(\\sphericalangle CAP_n=\\varphi\\). Die Pyramiden \\(ACP_nB\\) haben die Grundflächen \\(ACP_n\\) und die Spitze B. Bereits gegebene Maße der Ausgangspyramide: \\(\\sphericalangle SCA\\approx50{,}83^\\circ\\), \\(\\lvert\\overline{MS}\\rvert\\approx7{,}37\\,\\mathrm{cm}\\)."
+    }
+  },
+  {
+    "id": "2025-a2",
+    "year": "2025",
+    "label": "2025",
+    "file": "a2",
+    "source": "abschlusspruefung/2025/haupttermin/a2.html",
+    "url": "2025/a2.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "title": "Dreiecke und Rotationskörper",
+    "tags": [
+      "Dreiecke",
+      "Einheitskreis",
+      "Fläche"
+    ],
+    "var": "T",
+    "selector": "parts",
+    "extras": {
+      "3": "Der Oberflächeninhalt des Rotationskörpers ist bereits vorgegeben: \\(O(\\varphi)=32\\pi\\sin\\varphi\\,\\mathrm{cm}^2\\)."
+    }
+  },
+  {
+    "id": "2025-a3",
+    "year": "2025",
+    "label": "2025",
+    "file": "a3",
+    "source": "abschlusspruefung/2025/haupttermin/a3.html",
+    "url": "2025/a3.html",
+    "picks": [
+      0,
+      1
+    ],
+    "title": "Schwerpunkt und Winkel",
+    "tags": [
+      "Grundlagen",
+      "Dreiecke"
+    ],
+    "var": "T",
+    "selector": "parts"
+  },
+  {
+    "id": "2025-b2",
+    "year": "2025",
+    "label": "2025",
+    "file": "b2",
+    "source": "abschlusspruefung/2025/haupttermin/b2.html",
+    "url": "2025/b2.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "title": "Prisma im Quader",
+    "tags": [
+      "Dreiecke",
+      "Volumen"
+    ],
+    "var": "T",
+    "selector": "parts",
+    "extras": {
+      "1": "Pₙ liegt auf AD und Qₙ auf BC, wobei PₙQₙ parallel zu AB ist. APₙE und BQₙF sind die beiden Dreiecksgrundflächen des Prismas. ",
+      "2": "Pₙ liegt auf AD und Qₙ auf BC, wobei PₙQₙ parallel zu AB ist. APₙE und BQₙF sind die beiden Dreiecksgrundflächen des Prismas.  Gegeben ist \\(V(\\varphi)=18\\tan\\varphi\\,\\mathrm{cm}^3\\).",
+      "3": "Pₙ liegt auf AD und Qₙ auf BC, wobei PₙQₙ parallel zu AB ist. APₙE und BQₙF sind die beiden Dreiecksgrundflächen des Prismas. "
+    }
+  },
+  {
+    "id": "2025-b3",
+    "year": "2025",
+    "label": "2025",
+    "file": "b3",
+    "source": "abschlusspruefung/2025/haupttermin/b3.html",
+    "url": "2025/b3.html",
+    "picks": [
+      2,
+      4
+    ],
+    "title": "Trapezhöhe und gleichschenkliges Trapez",
+    "tags": [
+      "Dreiecke",
+      "Grundlagen"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "given": "Gegeben sind Trapeze ABCD mit \\(\\overline{AB}\\parallel\\overline{CD}\\), \\(\\lvert\\overline{AD}\\rvert=2\\,\\mathrm{LE}\\), \\(\\lvert\\overline{CD}\\rvert=8\\,\\mathrm{LE}\\) und \\(\\sphericalangle BAD=110^\\circ\\). F ist der Lotfuß von A auf CD. Die Zeichnung zeigt die dazugehörige Lage.",
+    "freeze": true,
+    "overrides": {
+      "4": {
+        "q": "Das dargestellte Trapez ist gleichschenklig; die Basis AB ist kürzer als CD. Berechnen Sie die Länge von AB. Runden Sie den Überstand wie im amtlichen Muster zunächst auf zwei Dezimalstellen.",
+        "takeSteps": [
+          0,
+          1,
+          2
+        ],
+        "label": "B 3.5 · Streckenanteil"
+      }
+    }
+  },
+  {
+    "id": "2025-b4",
+    "year": "2025",
+    "label": "2025",
+    "file": "b4",
+    "source": "abschlusspruefung/2025/haupttermin/b4.html",
+    "url": "2025/b4.html",
+    "picks": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "title": "Parallelogramme: Lage, Minimum und Fläche",
+    "tags": [
+      "Koordinaten",
+      "Fläche",
+      "Grundlagen"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "extras": {
+      "2": "Der benötigte Seitenvektor ist bereits vorgegeben: \\(\\overrightarrow{AB_n}(x)\\approx\\begin{pmatrix}0{,}55x+3{,}40\\\\-0{,}13x+1{,}74\\end{pmatrix}\\).",
+      "4": "Der Punkt \\(D_0\\) ist der Lotfuß von A auf g. Es ist bereits bekannt, dass \\(\\overline{AD_0}\\) unter allen Strecken \\(\\overline{AD_n}\\) die kürzeste ist."
+    },
+    "overrides": {
+      "3": {
+        "steps": [
+          [
+            "Abstand mit Pythagoras ausdrücken",
+            "Für \\(A(-3\\mid-2)\\) und \\(D_n(x\\mid0{,}5x+5)\\) gilt: \\[\\lvert\\overline{AD_n}\\rvert^2=\\bigl((x+3)^2+(0{,}5x+7)^2\\bigr)\\,\\mathrm{LE}^2.\\]"
+          ],
+          [
+            "Quadratischen Term vereinfachen",
+            "\\[\\lvert\\overline{AD_n}\\rvert^2=(1{,}25x^2+13x+58)\\,\\mathrm{LE}^2.\\]"
+          ],
+          [
+            "Quadratisch ergänzen",
+            "\\[1{,}25x^2+13x+58=1{,}25(x+5{,}2)^2+24{,}2.\\]"
+          ],
+          [
+            "Minimum bestimmen",
+            "Das Quadrat ist mindestens null. Für x = −5,2 ist die quadrierte Streckenlänge minimal. Weil die Quadratwurzel streng wächst, gilt dasselbe für die Länge: \\[\\boxed{x_{D_0}=-5{,}2}.\\] Das Skalarprodukt wird nicht benötigt."
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "id": "2026-a1",
+    "year": "2026",
+    "label": "2026",
+    "file": "a1",
+    "source": "abschlusspruefung/2026/haupttermin/a1.html",
+    "url": "2026/a1.html",
+    "picks": [
+      0
+    ],
+    "title": "Dreiecksfläche mit Pythagoras",
+    "tags": [
+      "Grundlagen"
+    ],
+    "var": null,
+    "selector": null,
+    "wholeLabel": "A 1"
+  },
+  {
+    "id": "2026-a4",
+    "year": "2026",
+    "label": "2026",
+    "file": "a4",
+    "source": "abschlusspruefung/2026/haupttermin/a4.html",
+    "url": "2026/a4.html",
+    "picks": [
+      0
+    ],
+    "title": "Pyramiden: Sinussatz und Volumen",
+    "tags": [
+      "Dreiecke",
+      "Sinussatz",
+      "Volumen"
+    ],
+    "var": null,
+    "selector": null,
+    "wholeLabel": "A 4.1–A 4.2"
+  },
+  {
+    "id": "2026-b1",
+    "year": "2026",
+    "label": "2026",
+    "file": "b1",
+    "source": "abschlusspruefung/2026/haupttermin/b1.html",
+    "url": "2026/b1.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "title": "Bruchfunktion und Parallelogramme",
+    "tags": [
+      "Koordinaten",
+      "Grundlagen"
+    ],
+    "var": "steps",
+    "selector": "parts",
+    "extras": {
+      "3": "Für die Flächenbegründung sind die festen Punkte \\(A(1{,}5\\mid0)\\) und \\(D(3{,}5\\mid0)\\) sowie \\(C_n(x\\mid-3)\\) gegeben."
+    }
+  },
+  {
+    "id": "2026-b2",
+    "year": "2026",
+    "label": "2026",
+    "file": "b2",
+    "source": "abschlusspruefung/2026/haupttermin/b2.html",
+    "url": "2026/b2.html",
+    "picks": [
+      0,
+      1,
+      2
+    ],
+    "title": "Rotationskörper mit Aussparung",
+    "tags": [
+      "Dreiecke",
+      "Volumen"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "extras": {
+      "2": "Der Volumenterm ist bereits vorgegeben: \\(V(\\varphi)\\approx(232{,}28-67{,}02\\tan^2\\varphi)\\,\\mathrm{cm}^3\\)."
+    }
+  },
+  {
+    "id": "2026-b3",
+    "year": "2026",
+    "label": "2026",
+    "file": "b3",
+    "source": "abschlusspruefung/2026/haupttermin/b3.html",
+    "url": "2026/b3.html",
+    "picks": [
+      1,
+      3,
+      4,
+      5
+    ],
+    "title": "Quadrate und Kreise",
+    "tags": [
+      "Grundlagen",
+      "Koordinaten"
+    ],
+    "var": "tasks",
+    "selector": "tasks",
+    "given": "Für die Konstruktionen sind die folgenden Punkte beziehungsweise Maße bereits vorgegeben. Die gezeichneten Hilfsgraphen dienen nur der Orientierung; es müssen keine Exponentialfunktionen untersucht werden.",
+    "freeze": true,
+    "extras": {
+      "1": "Für die beiden Quadrate sind die senkrechten Diagonalendpunkte gegeben: \\(A_1(-7\\mid-0{,}8187), C_1(-7\\mid2{,}8753)\\) sowie \\(A_2(-1\\mid-2{,}0385), C_2(-1\\mid6{,}2250)\\). Die Koordinaten sind gerundet.",
+      "3": "Gegeben sind die Endpunkte des Kreisdurchmessers \\(A_2(-1\\mid-2{,}0385)\\) und \\(C_2(-1\\mid6{,}2250)\\)."
+    },
+    "overrides": {
+      "4": {
+        "q": "Ein Kreis hat den vorgegebenen Durchmesser \\(d_3=9{,}99\\,\\mathrm{LE}\\). Berechnen Sie seinen Umfang.",
+        "steps": [
+          [
+            "Umfangsformel",
+            "Für den Kreis gilt \\(u=\\pi\\cdot d\\)."
+          ],
+          [
+            "Durchmesser einsetzen",
+            "\\[u_3=9{,}99\\pi\\,\\mathrm{LE}\\approx31{,}38\\,\\mathrm{LE}.\\]"
+          ]
+        ],
+        "label": "B 3.5 · Kreisumfang"
+      },
+      "5": {
+        "q": "Ein Kreis hat den Flächeninhalt \\(40\\,\\mathrm{FE}\\). Berechnen Sie seinen Durchmesser.",
+        "takeSteps": [
+          0,
+          1
+        ],
+        "label": "B 3.6 · Durchmesseranteil"
+      }
+    }
+  },
+  {
+    "id": "2026-b4",
+    "year": "2026",
+    "label": "2026",
+    "file": "b4",
+    "source": "abschlusspruefung/2026/haupttermin/index.html",
+    "url": "2026/b4.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Dreiecke mit Kosinusparameter",
+    "tags": [
+      "Einheitskreis",
+      "Koordinaten",
+      "Fläche"
+    ],
+    "var": "sections",
+    "selector": "parts",
+    "overrides": {
+      "1": {
+        "steps": [
+          [
+            "Rechten Winkel bei A erkennen",
+            "Die Hypotenuse ist BC₃. Also müssen AB und AC₃ senkrecht aufeinander stehen."
+          ],
+          [
+            "Steigung von AB",
+            "\\(\\overrightarrow{AB}=\\begin{pmatrix}5\\\\-1\\end{pmatrix}\\), also \\(m_{AB}=-\\frac15\\). Eine senkrechte Gerade hat die Steigung 5."
+          ],
+          [
+            "Steigung von AC₃ einsetzen",
+            "\\[\\frac{7-\\cos\\varphi}{2+4\\cos\\varphi}=5.\\]Ein senkrechter Vektor zur schrägen Geraden AB kann hier nicht vertikal sein; der Nenner ist in der gesuchten Lage nicht null."
+          ],
+          [
+            "Gleichung lösen",
+            "\\[7-\\cos\\varphi=10+20\\cos\\varphi\\]\\[\\cos\\varphi=-\\frac17.\\]"
+          ],
+          [
+            "Winkel bestimmen",
+            "\\[\\boxed{\\varphi=\\arccos(-\\tfrac17)\\approx98{,}21^\\circ}.\\] Der Winkel liegt im vorgegebenen Intervall. Das Skalarprodukt ist nicht erforderlich."
+          ]
+        ]
+      },
+      "2": {
+        "q": "Der Punkt \\(A(-2\\mid-1)\\) und der Vektor \\(\\overrightarrow{AC_n}=\\begin{pmatrix}2+4\\cos\\varphi\\\\7-\\cos\\varphi\\end{pmatrix}\\) sind gegeben. Bestimmen Sie die Koordinaten von \\(C_n\\) in Abhängigkeit von \\(\\varphi\\).",
+        "takeSteps": [
+          0,
+          1,
+          2
+        ],
+        "label": "B 4.3 · Koordinatenanteil"
+      }
+    }
+  },
+  {
+    "id": "muster1-a2",
+    "year": "muster1",
+    "label": "20XX · Musterprüfung 1",
+    "file": "a2",
+    "source": "abschlusspruefung/20xx/muster1/a2.html",
+    "url": "muster1/a2.html",
+    "picks": [
+      0,
+      1
+    ],
+    "title": "Rotationskörper aus Fünfecken",
+    "tags": [
+      "Dreiecke",
+      "Volumen"
+    ],
+    "var": "tasks",
+    "selector": "parts"
+  },
+  {
+    "id": "muster1-a3",
+    "year": "muster1",
+    "label": "20XX · Musterprüfung 1",
+    "file": "a3",
+    "source": "abschlusspruefung/20xx/muster1/a3.html",
+    "url": "muster1/a3.html",
+    "picks": [
+      0
+    ],
+    "title": "Entfernung Würzburg–Rosenheim",
+    "tags": [
+      "Dreiecke"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "wholeLabel": "A 3"
+  },
+  {
+    "id": "muster1-b2",
+    "year": "muster1",
+    "label": "20XX · Musterprüfung 1",
+    "file": "b2",
+    "source": "abschlusspruefung/20xx/muster1/b2.html",
+    "url": "muster1/b2.html",
+    "picks": [
+      0,
+      1,
+      2
+    ],
+    "title": "Rechtwinklige Dreiecke im Rechteck",
+    "tags": [
+      "Dreiecke"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "extras": {
+      "2": "Für das dargestellte Rechteck mit φ = 50° darf direkt verwendet werden: \\(\\lvert\\overline{CF_n}\\rvert(\\varphi)=\\left(8-\\frac3{\\sin\\varphi\\cos\\varphi}\\right)\\,\\mathrm{cm}\\)."
+    }
+  },
+  {
+    "id": "muster1-b3",
+    "year": "muster1",
+    "label": "20XX · Musterprüfung 1",
+    "file": "b3",
+    "source": "abschlusspruefung/20xx/muster1/b3.html",
+    "url": "muster1/b3.html",
+    "picks": [
+      2
+    ],
+    "title": "Rauten aus gegebenen Punkten zeichnen",
+    "tags": [
+      "Grundlagen",
+      "Koordinaten"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "given": "Gegeben sind \\(A_1(0\\mid-2)\\), \\(C_1(0\\mid4)\\), \\(A_2(5\\mid1{,}2619)\\) und \\(C_2(5\\mid5{,}7856)\\). A und C sind jeweils gegenüberliegende Eckpunkte einer Raute. Ihre zweite Diagonale hat die Länge 3 LE. Die Koordinaten des zweiten Punktepaares sind gerundet.",
+    "freeze": true,
+    "overrides": {
+      "2": {
+        "q": "Zeichnen Sie die Rauten A₁B₁C₁D₁ und A₂B₂C₂D₂ aus den gegebenen Diagonalendpunkten. Die Diagonale BD ist jeweils 3 LE lang.",
+        "replaceSteps": {
+          "3": [
+            "Zweite Raute aus vorgegebenen Punkten",
+            "Für das zweite Punktepaar gilt \\(y_{M_2}\\approx\\frac{1{,}2619+5{,}7856}{2}\\approx3{,}52\\). Daher \\(B_2(6{,}5\\mid3{,}52)\\) und \\(D_2(3{,}5\\mid3{,}52)\\). Verbinde die vier Eckpunkte."
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "muster1-b4",
+    "year": "muster1",
+    "label": "20XX · Musterprüfung 1",
+    "file": "b4",
+    "source": "abschlusspruefung/20xx/muster1/b4.html",
+    "url": "muster1/b4.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Prisma: minimale Strecke und Pyramiden",
+    "tags": [
+      "Dreiecke",
+      "Sinussatz",
+      "Volumen"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "extras": {
+      "1": "\\(P_n\\) liegt auf MB; \\(\\sphericalangle P_nEB=\\varphi\\). Qₙ ist der Schnittpunkt von BN und EPₙ. Die Pyramiden \\(Q_nBEA\\) haben die Spitze A. Für das dargestellte Prisma ist bereits bekannt: \\(\\sphericalangle NBM\\approx32{,}01^\\circ\\); der ergänzende Winkel beträgt etwa \\(57{,}99^\\circ\\).",
+      "2": "\\(P_n\\) liegt auf MB; \\(\\sphericalangle P_nEB=\\varphi\\). Qₙ ist der Schnittpunkt von BN und EPₙ. Die Pyramiden \\(Q_nBEA\\) haben die Spitze A. Für das dargestellte Prisma ist bereits bekannt: \\(\\sphericalangle NBM\\approx32{,}01^\\circ\\); der ergänzende Winkel beträgt etwa \\(57{,}99^\\circ\\).",
+      "3": "\\(P_n\\) liegt auf MB; \\(\\sphericalangle P_nEB=\\varphi\\). Qₙ ist der Schnittpunkt von BN und EPₙ. Die Pyramiden \\(Q_nBEA\\) haben die Spitze A. Gegebenes Zwischenergebnis: \\(\\lvert\\overline{EQ_n}\\rvert(\\varphi)\\approx\\frac{4{,}24}{\\sin(\\varphi+57{,}99^\\circ)}\\,\\mathrm{cm}\\).",
+      "4": "\\(P_n\\) liegt auf MB; \\(\\sphericalangle P_nEB=\\varphi\\). Qₙ ist der Schnittpunkt von BN und EPₙ. Die Pyramiden \\(Q_nBEA\\) haben die Spitze A. Für das dargestellte Prisma ist bereits bekannt: \\(\\sphericalangle NBM\\approx32{,}01^\\circ\\); der ergänzende Winkel beträgt etwa \\(57{,}99^\\circ\\)."
+    },
+    "overrides": {
+      "4": {
+        "steps": [
+          [
+            "Zielvolumen ausrechnen",
+            "Die Dreiecksgrundfläche des Prismas ist \\(\\frac12\\cdot12\\cdot8=48\\,\\mathrm{cm}^2\\). Also ist \\(V_P=240\\,\\mathrm{cm}^3\\). 95 % kleiner bedeutet 5 % davon: \\(V_{\\mathrm{Pyr}}=12\\,\\mathrm{cm}^3\\)."
+          ],
+          [
+            "Rechtwinklige Schnittebene wählen",
+            "Betrachte die Ebene MBE mit MB = 8 cm und BE = 5 cm. Nutze darin Hilfskoordinaten \\(M(0\\mid0),B(8\\mid0),N(0\\mid5),E(8\\mid5)\\). Die senkrechte Entfernung von A zu dieser Ebene beträgt 6 cm."
+          ],
+          [
+            "Abstand von Q zu BE bestimmen",
+            "Sei z der waagrechte Abstand von Q zur Geraden BE. Die Dreiecksfläche QBE ist \\(\\frac12\\cdot5z\\). Für die Pyramide gilt deshalb \\[12=\\frac13\\cdot\\frac12\\cdot5z\\cdot6,\\qquad z=2{,}4.\\] Somit hat Q die Abszisse 8 − 2,4 = 5,6."
+          ],
+          [
+            "Q auf NB bestimmen",
+            "Die Gerade NB hat in diesen Hilfskoordinaten die Gleichung \\(y=5-\\frac58x\\). Bei x = 5,6 folgt y = 1,5. Von E nach Q beträgt der Höhenunterschied daher 5 − 1,5 = 3,5 cm."
+          ],
+          [
+            "Tangens verwenden",
+            "φ liegt zwischen der Senkrechten EB und EQ. Daher \\[\\tan\\varphi=\\frac{2{,}4}{3{,}5}=\\frac{24}{35}.\\]\\[\\boxed{\\varphi\\approx34{,}44^\\circ}.\\] Die Hilfskoordinaten dienen nur der Rechnung. Der Weg verwendet kein Additionstheorem."
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "id": "muster2-a3",
+    "year": "muster2",
+    "label": "20XX · Musterprüfung 2",
+    "file": "a3",
+    "source": "abschlusspruefung/20xx/muster2/a3.html",
+    "url": "muster2/a3.html",
+    "picks": [
+      0
+    ],
+    "title": "Drachenviereck und halber Winkel",
+    "tags": [
+      "Dreiecke"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "wholeLabel": "A 3"
+  },
+  {
+    "id": "muster2-a4",
+    "year": "muster2",
+    "label": "20XX · Musterprüfung 2",
+    "file": "a4",
+    "source": "abschlusspruefung/20xx/muster2/a4.html",
+    "url": "muster2/a4.html",
+    "picks": [
+      0
+    ],
+    "title": "Pyramidenverpackung und Füllvolumen",
+    "tags": [
+      "Grundlagen",
+      "Volumen"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "wholeLabel": "A 4"
+  },
+  {
+    "id": "muster2-b1",
+    "year": "muster2",
+    "label": "20XX · Musterprüfung 2",
+    "file": "b1",
+    "source": "abschlusspruefung/20xx/muster2/b1.html",
+    "url": "muster2/b1.html",
+    "picks": [
+      0
+    ],
+    "title": "Dreieck am gegebenen Graphen zeichnen",
+    "tags": [
+      "Grundlagen",
+      "Koordinaten"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "given": "Die Gerade \\(g:y=-1{,}5\\) und der vorgegebene Funktionsgraph dienen hier als Zeichenunterlage. Der feste Punkt ist \\(A(0\\mid0)\\). Für die gesuchte Zeichnung haben B₁ und C₁ jeweils die Abszisse 6. Es genügt, den Punkt am vorhandenen Graphen abzulesen.",
+    "freeze": true
+  },
+  {
+    "id": "muster2-b3",
+    "year": "muster2",
+    "label": "20XX · Musterprüfung 2",
+    "file": "b3",
+    "source": "abschlusspruefung/20xx/muster2/b3.html",
+    "url": "muster2/b3.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "title": "Drachenvierecke und Spiegelung",
+    "tags": [
+      "Koordinaten",
+      "Dreiecke",
+      "Fläche"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "overrides": {
+      "1": {
+        "steps": [
+          [
+            "Lot statt Spiegelmatrix",
+            "Der Diagonalenschnittpunkt \\(M_n\\) ist der Lotfuß von \\(B_n(x\\mid-x+4{,}5)\\) auf s und zugleich Mittelpunkt von \\(\\overline{B_nD_n}\\). Bezeichne seine Koordinaten zunächst mit \\((u\\mid v)\\)."
+          ],
+          [
+            "Lotgerade aufstellen",
+            "s hat die Steigung 2. Die Lotgerade hat daher die Steigung \\(-\\frac12\\): \\[v=-\\frac12(u-x)-x+4{,}5.\\]"
+          ],
+          [
+            "Schnitt mit s bestimmen",
+            "M liegt zugleich auf s: \\[2u=-\\frac12u-\\frac12x+4{,}5.\\]\\[u=\\frac{9-x}{5},\\qquad v=\\frac{18-2x}{5}.\\]"
+          ],
+          [
+            "Mittelpunktbeziehung verwenden",
+            "Weil M die Strecke BD halbiert, gilt komponentenweise: \\[x_D=2u-x,\\quad y_D=2v-(-x+4{,}5).\\]"
+          ],
+          [
+            "Koordinaten vereinfachen",
+            "\\[\\boxed{D_n(-1{,}40x+3{,}60\\mid0{,}20x+2{,}70)}.\\] Lotgeraden und die Mittelpunktformel ersetzen hier die Spiegelmatrix."
+          ]
+        ]
+      }
+    },
+    "extras": {
+      "2": "Bereits vorgegeben sind die Koordinaten \\(D_n(-1{,}40x+3{,}60\\mid0{,}20x+2{,}70)\\). x bezeichnet die Abszisse von Bₙ.",
+      "3": "Bereits vorgegeben sind die Koordinaten \\(D_n(-1{,}40x+3{,}60\\mid0{,}20x+2{,}70)\\). x bezeichnet die Abszisse von Bₙ."
+    }
+  },
+  {
+    "id": "muster2-b4",
+    "year": "muster2",
+    "label": "20XX · Musterprüfung 2",
+    "file": "b4",
+    "source": "abschlusspruefung/20xx/muster2/b4.html",
+    "url": "muster2/b4.html",
+    "picks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "title": "Prisma und zwei Pyramiden",
+    "tags": [
+      "Dreiecke",
+      "Sinussatz",
+      "Volumen"
+    ],
+    "var": "tasks",
+    "selector": "parts",
+    "extras": {
+      "1": "Gegebene Zwischenergebnisse: \\(\\lvert\\overline{AC}\\rvert\\approx9{,}90\\,\\mathrm{cm}\\), \\(\\lvert\\overline{CN}\\rvert\\approx10{,}27\\,\\mathrm{cm}\\) und \\(\\sphericalangle CNG\\approx61{,}19^\\circ\\).",
+      "2": "\\(P_n\\) liegt auf CN und \\(\\sphericalangle P_nEN=\\varphi\\). Tₙ ist der Lotfuß von Pₙ in der Deckflächenebene und liegt auf EG. Gegebene Zwischenergebnisse: \\(\\lvert\\overline{AC}\\rvert\\approx9{,}90\\,\\mathrm{cm}\\), \\(\\lvert\\overline{CN}\\rvert\\approx10{,}27\\,\\mathrm{cm}\\) und \\(\\sphericalangle CNG\\approx61{,}19^\\circ\\).",
+      "3": "\\(P_n\\) liegt auf CN und \\(\\sphericalangle P_nEN=\\varphi\\). Tₙ ist der Lotfuß von Pₙ in der Deckflächenebene und liegt auf EG. Gegebene Zwischenergebnisse: \\(\\lvert\\overline{AC}\\rvert\\approx9{,}90\\,\\mathrm{cm}\\), \\(\\lvert\\overline{CN}\\rvert\\approx10{,}27\\,\\mathrm{cm}\\) und \\(\\sphericalangle CNG\\approx61{,}19^\\circ\\).",
+      "4": "\\(P_n\\) liegt auf CN und \\(\\sphericalangle P_nEN=\\varphi\\). Tₙ ist der Lotfuß von Pₙ in der Deckflächenebene und liegt auf EG. Verwende das vorgegebene Zwischenergebnis \\(\\lvert\\overline{NP_n}\\rvert(\\varphi)\\approx\\frac{4{,}95\\sin\\varphi}{\\sin(\\varphi+118{,}81^\\circ)}\\,\\mathrm{cm}\\) und \\(\\sphericalangle CNG\\approx61{,}19^\\circ\\).",
+      "5": "\\(P_n\\) liegt auf CN und \\(\\sphericalangle P_nEN=\\varphi\\). Tₙ ist der Lotfuß von Pₙ in der Deckflächenebene und liegt auf EG. Gegebene Zwischenergebnisse: \\(\\lvert\\overline{AC}\\rvert\\approx9{,}90\\,\\mathrm{cm}\\), \\(\\lvert\\overline{CN}\\rvert\\approx10{,}27\\,\\mathrm{cm}\\) und \\(\\sphericalangle CNG\\approx61{,}19^\\circ\\)."
+    },
+    "overrides": {
+      "5": {
+        "steps": [
+          [
+            "Grundflächen vergleichen",
+            "Oben ist die Grundfläche das Dreieck EFH mit \\(24{,}5\\,\\mathrm{cm}^2\\), unten das Quadrat ABCD mit \\(49\\,\\mathrm{cm}^2\\)."
+          ],
+          [
+            "Gleiche Volumina bedeuten unterschiedliche Höhen",
+            "Aus \\(\\frac13\\cdot24{,}5h_o=\\frac13\\cdot49h_u\\) folgt \\(h_o=2h_u\\). Zusammen mit \\(h_o+h_u=9\\,\\mathrm{cm}\\) erhält man \\(h_o=6\\,\\mathrm{cm}\\) und \\(h_u=3\\,\\mathrm{cm}\\)."
+          ],
+          [
+            "Waagrechte Strecke NT bestimmen",
+            "In den ähnlichen rechtwinkligen Dreiecken NPT und NCG gilt \\[\\frac{\\lvert\\overline{NT}\\rvert}{\\lvert\\overline{NG}\\rvert}=\\frac69=\\frac23.\\]Mit \\(\\lvert\\overline{NG}\\rvert=3{,}5\\sqrt2\\,\\mathrm{cm}\\) folgt \\(\\lvert\\overline{NT}\\rvert=\\frac23\\cdot3{,}5\\sqrt2\\,\\mathrm{cm}\\)."
+          ],
+          [
+            "Tangens im Dreieck EPT",
+            "Es ist \\(\\lvert\\overline{ET}\\rvert=\\lvert\\overline{EN}\\rvert+\\lvert\\overline{NT}\\rvert=\\frac53\\cdot3{,}5\\sqrt2\\,\\mathrm{cm}\\). Daher \\[\\tan\\varphi=\\frac6{\\frac53\\cdot3{,}5\\sqrt2}.\\]"
+          ],
+          [
+            "Winkel berechnen",
+            "\\[\\boxed{\\varphi\\approx36{,}03^\\circ}.\\] Die Rechnung verwendet ungerundete Maße. Das amtliche Muster erhält mit gerundeten Zwischenwerten 36,02°. Die Abweichung ist eine Rundungsfolge; ein Additionstheorem ist hier nicht erforderlich."
+          ],
+          [
+            "Volumina prüfen",
+            "\\[V_o=\\frac13\\cdot24{,}5\\cdot6\\,\\mathrm{cm}^3=49\\,\\mathrm{cm}^3,\\]\\[V_u=\\frac13\\cdot49\\cdot3\\,\\mathrm{cm}^3=49\\,\\mathrm{cm}^3.\\] Die Taste „Volumina exakt gleich“ stellt diese geometrische Lage ein."
+          ]
+        ]
+      }
+    }
+  }
+]

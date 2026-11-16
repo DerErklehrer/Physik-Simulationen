@@ -1,0 +1,208 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2023 · Dreiecke: Konstruktion, Fläche und Winkel · Trigonometrie üben</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style> :root{font-family:system-ui,Arial,sans-serif;color:#253341;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}header{background:#202630;color:white;padding:17px 4%;font-size:22px;font-weight:750}header b{color:#ed6b77}main{max-width:1200px;margin:auto;padding:16px}a{color:#9a2848}.muted,.small{color:#637384}.small{font-size:.87rem;line-height:1.5}.grid{display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(300px,1fr);gap:16px}.panel{background:white;border:1px solid #dce1e8;border-radius:13px;padding:16px;min-width:0}button{font:inherit;cursor:pointer;background:white;border:1px solid #b9c4d1;border-radius:8px;padding:8px 11px;color:#253341}button.active{background:#8e2948;color:white}button:disabled{opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e68b3c;outline-offset:2px}.buttons{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.original,.step{background:#f6f8fb;padding:12px;border-radius:8px;line-height:1.75}.step{border-left:4px solid #a32b4d;min-height:140px}.tag{display:inline-block;background:#f4e7eb;color:#80203e;padding:4px 8px;border-radius:7px;margin:7px}.plot{display:block;width:100%;height:auto}.figure-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}.three{height:440px;position:relative;touch-action:none;background:#f8fafc;border-radius:8px;overflow:hidden}.three canvas{display:block;width:100%;height:100%}.threehelp{position:absolute;bottom:7px;left:9px;font-size:12px;pointer-events:none;color:#637384}input[type=range]{width:100%;accent-color:#9a2848}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.choices label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #dce1e8;border-radius:8px}.mobile-controls{display:none}[hidden]{display:none!important}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:12px}.panel{padding:12px}.plot{width:620px;max-width:none}.figure-scroll.overview .plot{width:100%}.mobile-controls{display:block}.three{height:420px}}table{border-collapse:collapse;width:100%;font-size:.9rem;margin:14px 0}td,th{padding:4px;border:1px solid #dce1e8;text-align:center}</style><link rel="stylesheet" href="../training.css"></head><body><header>Der <b>Erk</b>Lehrer<span style="color:#ffb45d">.</span></header><main><nav class="buttons"><a href="../../">← Abschlussprüfungen</a><a href="./">Alle Aufgaben 2023</a><a href="b2.html">← B 2</a><a href="b4.html">B 4 →</a></nav><p class="muted">Realschule Bayern · Mathematik I · Haupttermin · Aufgabengruppe B</p><h1>Abschlussprüfung 2023 · B 3</h1><div class="grid"><section class="panel"><h2>Exponentialfunktionen und Dreiecke</h2><div id="figureScroll" class="figure-scroll" tabindex="0" role="region" aria-label="Zeichnung, auf schmalen Bildschirmen seitlich verschiebbar"><svg id="plot" class="plot" viewBox="0 0 640 540" role="img" aria-label="Graphen und Dreiecke passend zu den Lösungsschritten"></svg></div><div class="mobile-controls"><button id="overview" aria-pressed="false">Gesamte Zeichnung anzeigen</button><p class="small">Lesemodus: Zeichnung seitlich wischen.</p></div><div id="shiftControls" hidden><label for="h">Horizontale Verschiebung: <strong id="hval"></strong></label><input id="h" type="range" min="-4" max="2" step=".1" value="-2"><label for="v">Vertikale Verschiebung: <strong id="vval"></strong></label><input id="v" type="range" min="-6" max="2" step=".1" value="-4"><button id="restoreShift">Gesuchte Verschiebung wiederherstellen</button></div><div id="triangleControls" hidden><div id="originalControls" class="buttons"><button id="both">Beide Originaldreiecke</button><button id="first">Nur Dreieck 1</button><button id="second">Nur Dreieck 2</button></div><label for="x">Abszisse von Aₙ und Bₙ: <strong id="xval"></strong></label><input id="x" type="range" min="-3" max="3.65" step=".01" value="-2"><p class="small">Der Regler begrenzt nur den sichtbaren Ausschnitt. Mathematisch gilt x ∈ ℝ; freie Erkundung verwendet den Index n.</p></div><div id="specialControls" class="buttons" hidden><button id="exact">Exakt gleichschenklig</button><button id="official">Amtlicher Rechenwert x = 1,14</button></div><p class="small">Beide Achsen sind gleich skaliert. Zeichenfenster: −3 ≤ x ≤ 8 und −4 ≤ y ≤ 9. Die digitale Ansicht ist vergrößerbar; die Maßstabsangabe 1 LE = 1 cm gehört zur Originalzeichnung auf Papier.</p><p id="measure" class="small" aria-live="polite"></p></section><section class="panel"><h2>Originalaufgabe und Musterlösung</h2><div class="original"><strong>B 3.0 – Ausgangsangaben</strong><p>Gegeben ist die Funktion \(f_1\) mit der Gleichung \(y=0{,}75^{x-4}+1\) \((x,y\in\mathbb R)\) und die Funktion \(f_2\) mit der Gleichung \(y=0{,}75^{x-2}-3\) \((x,y\in\mathbb R)\).</p><p>Runden Sie im Folgenden auf zwei Stellen nach dem Komma.</p></div><div id="parts" class="buttons"></div><div id="statement" class="original"></div><hr><strong id="steptitle"></strong><span id="count" class="tag"></span><div id="solution" class="step"></div><div class="buttons"><button id="prev">← Vorheriger Schritt</button><button id="next">Nächster Schritt →</button><button id="reset">Zurücksetzen</button></div><p class="small">Ausführliche eigenständige Lernlösung nach dem amtlichen ISB-Lösungsmuster. Keine amtliche Lösung.</p></section></div></main><script>const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';let part=0,step=0;
+function el(t,a={},text){let e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;$('plot').append(e);return e}
+function line(a,b,color='#60758b',w=2,dash=''){return el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:color,'stroke-width':w,'stroke-dasharray':dash})}
+function caption(x,y,t,color='#253341',size=16){return el('text',{x,y,fill:color,'font-size':size,stroke:'#fff','stroke-width':4,'paint-order':'stroke','stroke-linejoin':'round'},t)}
+function mark(p,t,color='#253341'){el('circle',{cx:p[0],cy:p[1],r:3.5,fill:color});caption(p[0]+7,p[1]-8,t,color)}
+function fraction(x,y,n,d,visible=true,color='#253341'){let g=el('g',{'data-probability':n+'/'+d,visibility:visible?'visible':'hidden'});for(const[tag,a,t]of [['rect',{x:x-23,y:y-24,width:46,height:53,rx:9,fill:'#fff',stroke:'#b9c4d1'}],['text',{x,y:y-5,'text-anchor':'middle','font-size':17,fill:color},n],['line',{x1:x-14,x2:x+14,y1:y,y2:y,stroke:color,'stroke-width':1.4}],['text',{x,y:y+21,'text-anchor':'middle','font-size':17,fill:color},d]]){const c=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>c.setAttribute(k,v));if(t!==undefined)c.textContent=t;g.append(c)}return g}
+function math(){if(window.MathJax?.typesetPromise){MathJax.typesetClear([$('statement'),$('solution')]);MathJax.typesetPromise([$('statement'),$('solution')]).catch(console.error)}}
+function render(){const t=tasks[part];document.querySelectorAll('#parts button').forEach((b,i)=>{b.classList.toggle('active',i===part);b.setAttribute('aria-pressed',String(i===part))});$('statement').innerHTML='<strong>'+t.n+' · '+t.p+'</strong><p>'+t.q+'</p>';$('steptitle').textContent=t.steps[step][0];$('solution').innerHTML=t.steps[step][1];$('count').textContent='Schritt '+(step+1)+' von '+t.steps.length;$('prev').disabled=step===0;$('next').disabled=step===t.steps.length-1;draw();math()}
+function start(){tasks.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.n;b.onclick=()=>{part=i;step=0;initPart();render()};$('parts').append(b)});$('prev').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(tasks[part].steps.length-1,step+1);render()};$('reset').onclick=()=>{step=0;initPart();render()};$('overview').onclick=()=>{const v=$('figureScroll').classList.toggle('overview');$('overview').setAttribute('aria-pressed',String(v));$('overview').textContent=v?'Zum Lesemodus wechseln':'Gesamte Zeichnung anzeigen';$('figureScroll').scrollLeft=0};initPart();render();window.addEventListener('load',math)}
+
+
+
+
+const tasks=[
+ {
+  "n": "B 3.1",
+  "p": "4 P",
+  "q": "Geben Sie die Wertemenge von \\(f_1\\) an und zeichnen Sie die Graphen zu \\(f_1\\) und \\(f_2\\) für \\(x\\in[-3;8]\\) in ein Koordinatensystem.<br>Für die Zeichnung: Längeneinheit \\(1\\,\\mathrm{cm}\\); \\(-3\\leq x\\leq8\\); \\(-4\\leq y\\leq9\\).",
+  "steps": [
+   [
+    "Positive Potenz und Verschiebung",
+    "Für alle reellen \\(x\\) ist \\(0{,}75^{x-4}>0\\). Deshalb gilt:\\[f_1(x)=0{,}75^{x-4}+1>1.\\]Für immer größere \\(x\\) nähert sich der Potenzterm null. Der Graph nähert sich der waagrechten Geraden \\(y=1\\) von oben, erreicht sie aber nicht."
+   ],
+   [
+    "Wertemenge angeben",
+    "Für immer kleinere \\(x\\) wird der Potenzterm beliebig groß. Alle Werte oberhalb von 1 werden angenommen:\\[\\boxed{W=\\{y\\in\\mathbb R\\mid y>1\\}}.\\]In Intervallschreibweise: \\(W=]1;+\\infty[\\). Die Wertemenge bezieht sich auf alle reellen \\(x\\). Die Zeichenangabe \\([-3;8]\\) begrenzt nur den darzustellenden Graphenausschnitt."
+   ],
+   [
+    "Wertetabelle für beide Graphen",
+    "Berechne einige Stützpunkte und runde die Tabellenwerte auf zwei Dezimalstellen:<table><tr><th>\\(x\\)</th><th>−3</th><th>0</th><th>4</th><th>8</th></tr><tr><th>\\(f_1(x)\\)</th><td>8,49</td><td>4,16</td><td>2,00</td><td>1,32</td></tr><tr><th>\\(f_2(x)\\)</th><td>1,21</td><td>−1,22</td><td>−2,44</td><td>−2,82</td></tr></table>Beispielsweise ist \\(f_1(4)=0{,}75^0+1=2\\). Trage die Punkte in das vorgegebene Zeichenfenster ein."
+   ],
+   [
+    "Graphen glatt verbinden",
+    "Verbinde die Stützpunkte jeweils durch eine glatte, fallende Kurve. Beide Graphen sind Exponentialgraphen zur Basis \\(0{,}75\\). Beschrifte den oberen Graphen mit \\(f_1\\), den unteren mit \\(f_2\\). Der obere nähert sich \\(y=1\\), der untere \\(y=-3\\). Die digitale Zeichnung verwendet ungerundete Funktionswerte und gleich skalierte Achsen."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.2",
+  "p": "1 P",
+  "q": "Der Graph der Funktion \\(f_1\\) kann durch Parallelverschiebung mit dem Vektor \\(\\vec v=\\begin{pmatrix}x_v\\\\y_v\\end{pmatrix}\\) auf den Graphen der Funktion \\(f_2\\) abgebildet werden \\((x_v,y_v\\in\\mathbb R)\\).<br>Geben Sie die Koordinaten des Vektors \\(\\vec v\\) an.",
+  "steps": [
+   [
+    "Verschiebung in x-Richtung",
+    "Im Exponenten wird aus \\(x-4\\) der Ausdruck \\(x-2=(x+2)-4\\). Dafür muss in \\(f_1\\) das Argument \\(x\\) durch \\(x+2\\) ersetzt werden. Das bedeutet eine Verschiebung des Graphen um zwei Einheiten nach links, also \\(x_v=-2\\)."
+   ],
+   [
+    "Verschiebung in y-Richtung",
+    "Nach der horizontalen Verschiebung lautet die Gleichung \\(y=0{,}75^{x-2}+1\\). Für \\(f_2\\) muss der Summand \\(+1\\) zu \\(-3\\) werden. Der Graph wird daher zusätzlich um vier Einheiten nach unten verschoben: \\(y_v=-4\\)."
+   ],
+   [
+    "Verschiebungsvektor angeben",
+    "Die beiden Verschiebungen ergeben zusammen:\\[\\boxed{\\vec v=\\begin{pmatrix}-2\\\\-4\\end{pmatrix}}.\\]Ein Punkt des oberen Graphen wird zwei Einheiten nach links und vier Einheiten nach unten auf den unteren Graphen abgebildet."
+   ],
+   [
+    "Durch Einsetzen kontrollieren",
+    "Die Gleichung bestätigt die Verschiebung:\\[\\begin{aligned}f_1(x+2)-4&=0{,}75^{(x+2)-4}+1-4\\\\&=0{,}75^{x-2}-3\\\\&=f_2(x).\\end{aligned}\\]Nach der Lösung kannst du beide Verschiebungskomponenten mit den Reglern erkunden. Der grüne Zielgraph bleibt zum Vergleichen sichtbar."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.3",
+  "p": "4 P",
+  "q": "Punkte \\(A_n(x\\mid0{,}75^{x-4}+1)\\) auf dem Graphen zu \\(f_1\\) und Punkte \\(B_n(x\\mid0{,}75^{x-2}-3)\\) auf dem Graphen zu \\(f_2\\) haben dieselbe Abszisse \\(x\\). Sie sind zusammen mit Punkten \\(C_n\\) Eckpunkte von Dreiecken \\(A_nB_nC_n\\).<br>Es gilt: \\(|\\overline{A_nC_n}|=5\\,\\mathrm{LE}\\); \\(\\sphericalangle B_nA_nC_n=60^\\circ\\).<br>Zeichnen Sie das Dreieck \\(A_1B_1C_1\\) für \\(x=-2\\) und das Dreieck \\(A_2B_2C_2\\) für \\(x=3{,}5\\) in das Koordinatensystem zu B 3.1 ein.<br>Berechnen Sie sodann die x-Koordinate des Punktes \\(C_1\\).",
+  "steps": [
+   [
+    "Erste senkrechte Seite eintragen",
+    "Für \\(x=-2\\) gilt:\\[\\begin{aligned}y_{A_1}&=0{,}75^{-6}+1\\approx6{,}62,\\\\y_{B_1}&=0{,}75^{-4}-3\\approx0{,}16.\\end{aligned}\\]Trage \\(A_1(-2\\mid6{,}62)\\) und \\(B_1(-2\\mid0{,}16)\\) ein und verbinde sie. Die Strecke ist senkrecht, weil beide Punkte dieselbe Abszisse haben."
+   ],
+   [
+    "Seite A₁C₁ konstruieren",
+    "Trage bei \\(A_1\\), ausgehend vom nach unten gerichteten Schenkel \\(\\overline{A_1B_1}\\), einen Winkel von \\(60^\\circ\\) nach rechts ab. Markiere auf dem neuen Strahl den Punkt \\(C_1\\) im Abstand \\(5\\,\\mathrm{LE}\\) von \\(A_1\\). Diese Orientierung entspricht der amtlichen Zeichnung."
+   ],
+   [
+    "Erstes Dreieck schließen, zweite Seite ergänzen",
+    "Verbinde \\(B_1\\) mit \\(C_1\\). Für das zweite Dreieck setzt du \\(x=3{,}5\\) ein:\\[\\begin{aligned}y_{A_2}&=0{,}75^{-0{,}5}+1\\approx2{,}15,\\\\y_{B_2}&=0{,}75^{1{,}5}-3\\approx-2{,}35.\\end{aligned}\\]Trage die beiden Punkte auf der gemeinsamen Senkrechten \\(x=3{,}5\\) ein."
+   ],
+   [
+    "Zweites Dreieck vervollständigen",
+    "Gehe bei \\(A_2\\) genauso vor: Vom nach unten gerichteten Schenkel aus \\(60^\\circ\\) nach rechts abtragen, die Strecke \\(|\\overline{A_2C_2}|=5\\,\\mathrm{LE}\\) abmessen und \\(B_2\\) mit \\(C_2\\) verbinden. Beide Dreiecke besitzen dieselbe Seitenlänge \\(|\\overline{A_nC_n}|\\) und denselben Winkel bei \\(A_n\\)."
+   ],
+   [
+    "Waagrechten Abstand mit Sinus berechnen",
+    "Der waagrechte Abstand zwischen \\(A_1\\) und \\(C_1\\) ist die Gegenkathete zum Winkel \\(60^\\circ\\). Die Hypotenuse ist \\(5\\,\\mathrm{LE}\\). Daher:\\[\\sin60^\\circ=\\frac{x_{C_1}-x_{A_1}}5.\\]Also gilt:\\[x_{C_1}=x_{A_1}+5\\cdot\\sin60^\\circ.\\]"
+   ],
+   [
+    "Abszisse von C₁ angeben",
+    "Mit \\(x_{A_1}=-2\\) folgt:\\[\\begin{aligned}x_{C_1}&=-2+5\\cdot\\sin60^\\circ\\\\&\\approx\\boxed{2{,}33}.\\end{aligned}\\]Die Zeichnung verwendet den ungerundeten waagrechten Abstand \\(5\\cdot\\sin60^\\circ\\). Nach der Lösung kannst du beide Originaldreiecke einzeln betrachten oder weitere Punkte der Dreiecksfamilie erkunden."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.4",
+  "p": "4 P",
+  "q": "Zeigen Sie rechnerisch, dass für die Länge der Strecken \\(\\overline{A_nB_n}\\) in Abhängigkeit von der Abszisse \\(x\\) der Punkte \\(A_n\\) gilt:\\[|\\overline{A_nB_n}|(x)=\\bigl(0{,}78\\cdot0{,}75^{x-2}+4\\bigr)\\,\\mathrm{LE}.\\]Berechnen Sie sodann den Flächeninhalt des Dreiecks \\(A_1B_1C_1\\).",
+  "steps": [
+   [
+    "Senkrechte Strecke als Ordinatendifferenz",
+    "Weil \\(A_n\\) und \\(B_n\\) dieselbe Abszisse haben und \\(A_n\\) oberhalb von \\(B_n\\) liegt, ergibt sich die Länge aus der oberen minus der unteren Ordinate:\\[\\begin{aligned}|\\overline{A_nB_n}|(x)&=\\bigl[f_1(x)-f_2(x)\\bigr]\\,\\mathrm{LE}\\\\&=\\bigl[0{,}75^{x-4}+1\\\\&\\qquad-(0{,}75^{x-2}-3)\\bigr]\\,\\mathrm{LE}.\\end{aligned}\\]"
+   ],
+   [
+    "Gemeinsamen Potenzterm ausklammern",
+    "Da \\(x-4=(x-2)-2\\) ist, gilt:\\[0{,}75^{x-4}=\\frac{0{,}75^{x-2}}{0{,}75^2}.\\]Damit folgt:\\[\\begin{aligned}|\\overline{A_nB_n}|(x)&=\\left[\\left(\\frac1{0{,}75^2}-1\\right)\\right.\\\\&\\qquad\\left.\\cdot0{,}75^{x-2}+4\\right]\\,\\mathrm{LE}.\\end{aligned}\\]"
+   ],
+   [
+    "Exakten und gerundeten Faktor unterscheiden",
+    "Der konstante Faktor ist:\\[\\frac1{0{,}75^2}-1=\\frac{16}9-1=\\frac79\\approx0{,}78.\\]Somit gilt exakt:\\[|\\overline{A_nB_n}|(x)=\\left(\\frac79\\cdot0{,}75^{x-2}+4\\right)\\,\\mathrm{LE}.\\]Die verlangte Darstellung mit \\(0{,}78\\) ist eine Zwischenrundung dieser Längenfunktion. Die Originalangabe schreibt ein Gleichheitszeichen; für die gerundete Funktion ist mathematisch ein Näherungszeichen angebracht."
+   ],
+   [
+    "Amtlichen Längenwert für x = −2 berechnen",
+    "Setze \\(x=-2\\) in die verlangte gerundete Darstellung ein:\\[\\begin{aligned}|\\overline{A_1B_1}|&\\approx\\bigl(0{,}78\\cdot0{,}75^{-4}+4\\bigr)\\,\\mathrm{LE}\\\\&\\approx\\boxed{6{,}47\\,\\mathrm{LE}}.\\end{aligned}\\]Das ist der im amtlichen Lösungsmuster verwendete Zwischenwert."
+   ],
+   [
+    "Flächenformel mit eingeschlossenem Winkel",
+    "Für ein Dreieck mit zwei bekannten Seiten und ihrem eingeschlossenen Winkel gilt:\\[\\begin{aligned}A_{A_1B_1C_1}&=\\frac12\\cdot|\\overline{A_1B_1}|\\\\&\\quad\\cdot|\\overline{A_1C_1}|\\cdot\\sin60^\\circ.\\end{aligned}\\]Dabei ist \\(|\\overline{A_1C_1}|=5\\,\\mathrm{LE}\\). Die waagrechte Hilfsstrecke ist die Höhe zur senkrechten Grundseite \\(\\overline{A_1B_1}\\)."
+   ],
+   [
+    "Flächeninhalt nach dem amtlichen Rechenweg",
+    "Mit dem amtlichen Zwischenwert \\(6{,}47\\,\\mathrm{LE}\\) erhält man:\\[\\begin{aligned}A_{A_1B_1C_1}&\\approx\\frac12\\cdot6{,}47\\cdot5\\\\&\\quad\\cdot\\sin60^\\circ\\;\\mathrm{FE}\\\\&\\approx\\boxed{14{,}01\\,\\mathrm{FE}}.\\end{aligned}\\]Dies stimmt mit dem amtlichen Lösungsmuster überein."
+   ],
+   [
+    "Rundungseffekt zur Zeichnung erklären",
+    "Ohne Zwischenrundungen ist die tatsächliche Ordinatendifferenz etwa \\(6{,}45816\\,\\mathrm{LE}\\). Daraus folgt für das geometrisch exakte Dreieck ein Flächeninhalt von etwa \\(13{,}98\\,\\mathrm{FE}\\). Das amtliche Ergebnis \\(14{,}01\\,\\mathrm{FE}\\) entsteht durch die gerundete Längenfunktion und den anschließend gerundeten Zwischenwert \\(6{,}47\\,\\mathrm{LE}\\). Die Messanzeige nennt die Werte der Originalgeometrie ausdrücklich getrennt."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.5",
+  "p": "2 P",
+  "q": "Das Dreieck \\(A_3B_3C_3\\) ist gleichschenklig mit der Basis \\(\\overline{B_3C_3}\\).<br>Berechnen Sie die zugehörige x-Koordinate des Punktes \\(A_3\\).",
+  "steps": [
+   [
+    "Gleiche Schenkel festlegen",
+    "Bei einem gleichschenkligen Dreieck mit der Basis \\(\\overline{B_3C_3}\\) sind \\(\\overline{A_3B_3}\\) und \\(\\overline{A_3C_3}\\) die Schenkel. Also muss gelten:\\[|\\overline{A_3B_3}|=|\\overline{A_3C_3}|=5\\,\\mathrm{LE}.\\]Setze die Längenfunktion aus B 3.4 gleich 5."
+   ],
+   [
+    "Gleichung mit der amtlichen Darstellung",
+    "Entsprechend dem amtlichen Rechenweg wird die gerundete Längenfunktion verwendet:\\[0{,}78\\cdot0{,}75^{x-2}+4=5.\\]Subtrahiere 4 und dividiere durch \\(0{,}78\\):\\[0{,}75^{x-2}=\\frac1{0{,}78}.\\]"
+   ],
+   [
+    "Exponent durch Logarithmieren bestimmen",
+    "Durch Logarithmieren folgt:\\[\\begin{aligned}x-2&=\\frac{\\log\\left(\\frac1{0{,}78}\\right)}{\\log0{,}75},\\\\x&\\approx1{,}13633.\\end{aligned}\\]Hier bezeichnet \\(\\log\\) den Zehnerlogarithmus. Die Basis \\(0{,}75\\) liegt zwischen 0 und 1; die Exponentialfunktion ist streng fallend, daher gibt es genau eine Lösung."
+   ],
+   [
+    "Amtlichen Ergebniswert angeben",
+    "Auf zwei Dezimalstellen gerundet erhält man:\\[\\boxed{x_{A_3}\\approx1{,}14}.\\]Dieser Wert entspricht dem amtlichen Lösungsmuster. Er wurde mit der gerundeten Längenfunktion ermittelt; in der Originalgeometrie sind die Schenkel bei diesem gerundeten Wert nur annähernd gleich lang."
+   ],
+   [
+    "Geometrisch exakte Sonderlage vergleichen",
+    "Für die ungerundete Originalgeometrie gilt stattdessen:\\[\\begin{aligned}\\frac79\\cdot0{,}75^{x-2}+4&=5,\\\\0{,}75^{x-2}&=\\frac97,\\\\x&=2+\\frac{\\log\\frac97}{\\log0{,}75}\\\\&\\approx1{,}12642.\\end{aligned}\\]Die Taste „Exakt gleichschenklig“ setzt diesen ungerundeten Parameter. Die andere Taste zeigt den amtlichen Rechenwert \\(1{,}14\\). So bleibt die exakte Schenkelgleichheit von der Zwischenrundung unterscheidbar."
+   ]
+  ]
+ },
+ {
+  "n": "B 3.6",
+  "p": "1,5 P",
+  "q": "Begründen Sie, weshalb das Dreieck \\(A_3B_3C_3\\) gleichseitig ist.",
+  "steps": [
+   [
+    "Gleiche Schenkel und Spitzenwinkel nutzen",
+    "Aus B 3.5 ist bekannt, dass \\(|\\overline{A_3B_3}|=|\\overline{A_3C_3}|\\) gilt. Deshalb sind die beiden Basiswinkel bei \\(B_3\\) und \\(C_3\\) gleich groß. Der Winkel bei \\(A_3\\) ist nach Voraussetzung \\(\\sphericalangle B_3A_3C_3=60^\\circ\\). Die Grafik zeigt die geometrisch exakte Sonderlage."
+   ],
+   [
+    "Beide Basiswinkel berechnen",
+    "Zusammen ergeben die beiden Basiswinkel \\(180^\\circ-60^\\circ=120^\\circ\\). Wegen ihrer Gleichheit ist jeder halb so groß:\\[\\begin{aligned}\\sphericalangle C_3B_3A_3&=\\sphericalangle A_3C_3B_3\\\\&=\\frac{180^\\circ-60^\\circ}{2}\\\\&=60^\\circ.\\end{aligned}\\]"
+   ],
+   [
+    "Gleichseitigkeit folgern",
+    "Alle drei Innenwinkel betragen \\(60^\\circ\\). Gleichen Winkeln liegen gleich lange Seiten gegenüber. Somit sind alle drei Seiten gleich lang:\\[\\boxed{A_3B_3C_3\\text{ ist gleichseitig.}}\\]In der exakten Sonderlage beträgt jede Seitenlänge \\(5\\,\\mathrm{LE}\\). Bei freier Erkundung oder beim amtlich gerundeten Parameter zeigt die Grafik die tatsächlich entstehenden Längen und Winkel."
+   ]
+  ]
+ }
+];
+function arrow(a,b,color='#a32b4d',w=2.6){line(a,b,color,w);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]),p=t=>[b[0]-11*Math.cos(ang+t),b[1]-11*Math.sin(ang+t)];el('polygon',{points:[b,p(.4),p(-.4)].map(v=>v.join(',')).join(' '),fill:color})}
+function axes(X,Y,xmin,xmax,ymin,ymax,dx=1,dy=1){for(let x=Math.ceil(xmin/dx)*dx;x<=xmax+1e-8;x+=dx)line([X(x),Y(ymin)],[X(x),Y(ymax)],'#e7ecf0',1);for(let y=Math.ceil(ymin/dy)*dy;y<=ymax+1e-8;y+=dy)line([X(xmin),Y(y)],[X(xmax),Y(y)],'#e7ecf0',1);arrow([X(xmin),Y(0)],[X(xmax)+12,Y(0)],'#60758b',1.7);arrow([X(0),Y(ymin)],[X(0),Y(ymax)-12],'#60758b',1.7);caption(X(xmax)+12,Y(0)+20,'x');caption(X(0)-21,Y(ymax)-5,'y');caption(X(0)-23,Y(0)+23,'O','#637384',14)}
+function right(p,u,v){const r=20;el('path',{d:`M${p[0]+r*u[0]} ${p[1]+r*u[1]} A${r} ${r} 0 0 ${u[0]*v[1]-u[1]*v[0]>0?1:0} ${p[0]+r*v[0]} ${p[1]+r*v[1]}`,stroke:'#198576','stroke-width':1.7,fill:'none','data-right-angle':'quarter-arc'});el('circle',{cx:p[0]+r*(u[0]+v[0])/(2*Math.sqrt(2)),cy:p[1]+r*(u[1]+v[1])/(2*Math.sqrt(2)),r:2.1,fill:'#198576','data-right-angle':'center-dot'})}
+
+
+
+
+
+const f1=x=>.75**(x-4)+1,f2=x=>.75**(x-2)-3,exactX=2+Math.log(9/7)/Math.log(.75),roundedRoot=2+Math.log(1/.78)/Math.log(.75),X=x=>232+35*x,Y=y=>365-35*y;
+let preciseX=null,kind='original',selected='both',lastStage='';
+function geometry(x){const A={x,y:f1(x)},B={x,y:f2(x)},C={x:x+5*Math.sin(Math.PI/3),y:A.y-2.5},length=A.y-B.y,bc=Math.hypot(C.x-B.x,C.y-B.y),beta=Math.acos(Math.max(-1,Math.min(1,(C.y-B.y)/bc)))*180/Math.PI;return {A,B,C,length,bc,area:.5*length*5*Math.sin(Math.PI/3),beta,gamma:120-beta}}
+function initPart(){preciseX=null;kind='original';selected='both';lastStage='';$('x').value=-2;$('h').value=-2;$('v').value=-4}
+function arc(p,u,v,label,r=24,color='#a32b4d'){let a=Math.atan2(u[1]-p[1],u[0]-p[0]),b=Math.atan2(v[1]-p[1],v[0]-p[0]),d=(b-a+Math.PI*3)%(2*Math.PI)-Math.PI;el('path',{d:`M${p[0]+r*Math.cos(a)} ${p[1]+r*Math.sin(a)} A${r} ${r} 0 0 ${d>0?1:0} ${p[0]+r*Math.cos(b)} ${p[1]+r*Math.sin(b)}`,fill:'none',stroke:color,'stroke-width':1.6});caption(p[0]+(r+16)*Math.cos(a+d/2)-12,p[1]+(r+16)*Math.sin(a+d/2)+4,label,color,14)}
+function tick(a,b){const dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy),m=[(a[0]+b[0])/2,(a[1]+b[1])/2];line([m[0]-5*dy/l,m[1]+5*dx/l],[m[0]+5*dy/l,m[1]-5*dx/l],'#198576',2)}
+function draw(){const stage=part+':'+step;if(stage!==lastStage){preciseX=null;selected='both';kind='original';$('x').value=-2;if(part===1){$('h').value=-2;$('v').value=step===0?0:-4}if(part===4){preciseX=step>=3&&step<4?1.14:exactX;kind=step>=3&&step<4?'official':'exact';selected='live'}if(part===5){preciseX=exactX;kind='exact';selected='live'}lastStage=stage}
+ const x=preciseX??Number($('x').value),g=geometry(x),fmt=(n,d=2)=>(Math.abs(n)<.5*10**(-d)?0:n).toFixed(d).replace('.',',');$('plot').replaceChildren();axes(X,Y,-3,8,-4,9,1,1);for(const n of [-3,-2,-1,1,3,5,8])caption(X(n)-5,Y(0)+22,String(n),'#637384',13);for(const n of [-4,-2,1,3,5,7,9])caption(X(0)-23,Y(n)+5,String(n),'#637384',13);el('defs').innerHTML='<clipPath id="frame"><rect x="127" y="50" width="385" height="455"/></clipPath>';
+ const curve=(f,color,dash='')=>{let d='';for(let i=0;i<=1000;i++){const a=-3+11*i/1000;d+=(i?'L':'M')+X(a)+' '+Y(f(a))}el('path',{d,fill:'none',stroke:color,'stroke-width':2.3,'stroke-dasharray':dash,'clip-path':'url(#frame)','data-curve':color})};
+ if(part===0){line([X(-3),Y(1)],[X(8),Y(1)],'#95a4b1',1.5,'5 4');caption(X(.4),Y(1)-12,'Asymptote f₁: y = 1','#637384',14);if(step===2)for(const xx of [-3,0,4,8]){mark([X(xx),Y(f1(xx))],'','#2478a4');mark([X(xx),Y(f2(xx))],'','#198576')}}
+ if(part>0||step>=3){curve(f1,'#2478a4');curve(f2,'#198576');caption(X(4.8),Y(f1(4.8)+.6),'Graph zu f₁','#2478a4',14);caption(X(4.8),Y(f2(4.8)-.55),'Graph zu f₂','#198576',14)}
+ if(part===1){const h=Number($('h').value),v=Number($('v').value),P=[X(2),Y(f1(2))],Q=[X(2+h),Y(f1(2)+v)];curve(xx=>f1(xx-h)+v,'#a32b4d','5 4');arrow(P,Q);mark(P,'P','#2478a4');mark(Q,'Q','#a32b4d');$('hval').textContent=fmt(h);$('vval').textContent=fmt(v)}
+ function triangle(xx,index,phase=3,color='#a32b4d',fill=false){const z=geometry(xx),A=[X(z.A.x),Y(z.A.y)],B=[X(z.B.x),Y(z.B.y)],C=[X(z.C.x),Y(z.C.y)];line(A,B,color,2.6);mark(A,'A'+index,color);el('circle',{cx:B[0],cy:B[1],r:3.5,fill:color});caption(B[0]-16,B[1]+20,'B'+index,color);if(phase>=1){line(A,C,color,2.5);mark(C,'C'+index,color);arc(A,B,C,'60°',22,color)}if(phase>=2){el('polygon',{points:[A,B,C].map(p=>p.join(',')).join(' '),fill:color,'fill-opacity':fill?.15:.035,stroke:color,'stroke-width':2.1,'data-triangle':index})}if(part===2&&step>=4&&index==='₁'||part===3&&step>=4){const K=[A[0],C[1]];line(K,C,'#198576',2,'5 4');right(K,[0,-1],[1,0]);caption((K[0]+C[0])/2-12,K[1]-10,'h','#198576',15)}if(part>=4&&Math.abs(z.length-5)<1e-9){tick(A,B);tick(A,C);if(part===5&&step>=2)tick(B,C)}if(part===5&&step>=1){arc(B,C,A,Math.abs(z.length-5)<1e-9?'60°':fmt(z.beta)+'°',23);arc(C,A,B,Math.abs(z.length-5)<1e-9?'60°':fmt(z.gamma)+'°',23)}return z}
+ if(part===2){if(selected==='live')triangle(x,'ₙ');else{if(selected!=='2')triangle(-2,'₁',Math.min(step,2));if(step>=2&&selected!=='1')triangle(3.5,'₂',step===2?0:3,'#86649a')}}
+ if(part===3){if(selected==='live')triangle(x,'ₙ',3,'#a32b4d',step>=4);else{if(selected!=='2')triangle(-2,'₁',3,'#a32b4d',step>=4);if(selected!=='1')triangle(3.5,'₂',3,'#86649a',selected==='2'&&step>=4)}}
+ if(part>=4){if(selected==='live')triangle(x,kind==='exact'||kind==='official'?'₃':'ₙ',3,'#a32b4d',part===5&&step>=2);else{if(selected!=='2')triangle(-2,'₁');if(selected!=='1')triangle(3.5,'₂',3,'#86649a')}}
+ const explore=part===2&&step>=5||part===3&&step>=6||part===4&&step>=4||part===5&&step>=2;$('triangleControls').hidden=!explore;$('originalControls').hidden=part>=4;$('specialControls').hidden=!(part===4&&step>=4||part===5&&step>=2);$('shiftControls').hidden=!(part===1&&step>=3);$('xval').textContent=fmt(x,preciseX===null?2:5);if(preciseX!==null)$('x').value=String(x);
+ let text='Zeichenfenster der Originalaufgabe; gleiche Skalierung beider Achsen. Die Wertemenge von f₁ gilt auf der ganzen Definitionsmenge ℝ.';if(part===1)text='Aktuelle Verschiebung: horizontal '+fmt(Number($('h').value))+'; vertikal '+fmt(Number($('v').value))+'. Magenta: verschobener Graph. Grün: Zielgraph f₂.';
+ if(part===2)text=step>=5?'Originaldreiecke mit ungerundeten Funktionswerten. '+(selected==='live'?'Erkundung: x = '+fmt(x)+'; Abszisse von Cₙ: '+fmt(g.C.x)+'.':'Abszisse von C₁: 2,33. Seitenlänge |A̅ₙC̅ₙ| = 5 LE, Winkel bei Aₙ = 60°.'): 'Die Originaldreiecke werden entsprechend den Lösungsschritten ergänzt.';
+ if(part===3)text=step>=3?'Originalgeometrie: |A̅ₙB̅ₙ| = '+fmt(g.length)+' LE.'+(step>=5?' Flächeninhalt = '+fmt(g.area)+' FE. Für das Originaldreieck 1 nennt der amtliche gerundete Rechenweg 14,01 FE.':''):'Die senkrechte Länge ergibt sich aus der Differenz der beiden Funktionswerte.';
+ if(part>=4)text=(kind==='official'?'Amtlicher gerundeter Parameter: Die Schenkel sind in der Originalgeometrie nur annähernd gleich lang. ':kind==='exact'?'Geometrisch exakte Sonderlage: gleich lange Schenkel. ':'Freie Erkundung der Dreiecksfamilie. ')+(part===4&&step<4?'':('x = '+fmt(x,5)+'; |A̅ₙB̅ₙ| = '+fmt(g.length,5)+' LE; |A̅ₙC̅ₙ| = 5 LE.'))+(part===5&&step>=1?' Basiswinkel der aktuellen Geometrie: '+fmt(g.beta)+'° und '+fmt(g.gamma)+'°.':'')+(part===5&&step>=2?' Dritte Seitenlänge: '+fmt(g.bc,5)+' LE.':'');$('measure').textContent=text;
+}
+$('h').oninput=$('v').oninput=draw;$('restoreShift').onclick=()=>{$('h').value=-2;$('v').value=-4;draw()};$('x').oninput=()=>{preciseX=null;kind='free';selected='live';draw()};for(const[id,s]of[['both','both'],['first','1'],['second','2']])$(id).onclick=()=>{selected=s;kind='original';preciseX=null;$('x').value=s==='2'?3.5:-2;draw()};$('exact').onclick=()=>{preciseX=exactX;selected='live';kind='exact';draw()};$('official').onclick=()=>{preciseX=1.14;selected='live';kind='official';draw()};
+
+start();</script>
+<script src="../training.js"></script><script>initTraining({"id": "2023-b3", "year": "2023", "label": "2023", "file": "b3", "source": "abschlusspruefung/2023/haupttermin/b3.html", "url": "2023/b3.html", "picks": [2, 3, 5], "title": "Dreiecke: Konstruktion, Fläche und Winkel", "tags": ["Dreiecke", "Fläche"], "var": "tasks", "selector": "parts", "given": "Gegeben sind \\(A_1(-2\\mid6{,}6187)\\), \\(B_1(-2\\mid0{,}1605)\\), \\(A_2(3{,}5\\mid2{,}1547)\\) und \\(B_2(3{,}5\\mid-2{,}3505)\\). Für beide Dreiecke gilt \\(\\lvert\\overline{A_nC_n}\\rvert=5\\,\\mathrm{LE}\\) und \\(\\sphericalangle B_nA_nC_n=60^\\circ\\). C liegt rechts von der senkrechten Seite AB. Die Koordinaten sind gerundet; die Zeichnung verwendet die ungerundete Originalgeometrie.", "freeze": true, "overrides": {"2": {"q": "Zeichnen Sie die beiden Dreiecke mit den vorgegebenen Punkten in das dargestellte Koordinatensystem. Berechnen Sie danach die x-Koordinate von \\(C_1\\).", "replaceSteps": {"0": ["Erste Seite aus den Angaben", "Trage die gegebenen Punkte \\(A_1(-2\\mid6{,}6187)\\) und \\(B_1(-2\\mid0{,}1605)\\) ein. Ihre Verbindung ist senkrecht."], "2": ["Zweites Dreieck vorbereiten", "Verbinde A₁, B₁ und C₁. Trage anschließend die vorgegebenen Punkte A₂ und B₂ ein und verbinde sie."]}}, "3": {"q": "Für das Dreieck \\(A_1B_1C_1\\) werden die gerundeten Maße \\(\\lvert\\overline{A_1B_1}\\rvert=6{,}47\\,\\mathrm{LE}\\), \\(\\lvert\\overline{A_1C_1}\\rvert=5\\,\\mathrm{LE}\\) und \\(\\sphericalangle B_1A_1C_1=60^\\circ\\) vorgegeben. Berechnen Sie seinen Flächeninhalt.", "takeSteps": [4, 5, 6], "label": "B 3.4 · Flächenanteil"}, "5": {"q": "Das Dreieck \\(A_3B_3C_3\\) ist gleichschenklig mit der Basis \\(\\overline{B_3C_3}\\). Sein Winkel bei A₃ beträgt 60°. Begründen Sie, dass es gleichseitig ist."}}, "extras": {"5": "Für diese Begründung sind keine Koordinaten und keine Berechnungen an Funktionsgraphen erforderlich."}},tasks);</script>
+</body></html>
