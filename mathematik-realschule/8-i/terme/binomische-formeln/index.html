@@ -16,7 +16,41 @@ const backwards=[
 function renderFormula(){const f=formulas[form];$('introtitle').textContent=tab===1?'Binomische Formeln rückwärts erkennen':f.title;$('identity').innerHTML=tab===1?f.identity.replace(' = ',' ⇔ '):f.identity;$('formulaExplain').textContent=tab===1?'Lies die Gleichheit von rechts nach links: Erkenne zuerst die Quadrate und prüfe das mittlere Glied.':'Leite die Formel zunächst durch Ausmultiplizieren her. Die Umkehrung wird in 4.10 verwendet.';const parts=tab===1?backwards[form]:f.parts;const s=parts[step];$('derivationTitle').textContent=tab===1?'Binomische Formel rückwärts erkennen':'Algebraische Herleitung';$('derivation').innerHTML='<div>Schritt '+(step+1)+' von '+parts.length+'</div><div>'+s[0]+'</div>';$('explanation').textContent=s[1];$('back').disabled=step===0;$('forward').disabled=step===parts.length-1;document.querySelectorAll('[data-f]').forEach(b=>b.classList.toggle('active',+b.dataset.f===form));draw()}
 $('back').onclick=()=>{step--;renderFormula()};$('forward').onclick=()=>{step++;renderFormula()};document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{form=+b.dataset.f;step=0;renderFormula()});
 $('visualToggle').onclick=()=>{let hide=$('visual').classList.toggle('hidden');$('visualToggle').textContent=hide?'Flächenmodell einblenden':'Flächenmodell ausblenden';$('visualToggle').setAttribute('aria-expanded',String(!hide))};
-function draw(){let a=+$('a').value,b=+$('b').value;if(form===1&&b>=a){b=a-1;$('b').value=b}$('av').textContent=a;$('bv').textContent=b;let svg='',r=(x,y,w,h,color,label)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+color+'" stroke="#fff" stroke-width="2"/><text x="'+(x+w/2)+'" y="'+(y+h/2)+'" fill="#233344" text-anchor="middle" dominant-baseline="middle" font-size="16">'+label+'</text>';if(form===0){let k=290/(a+b),A=a*k,B=b*k;svg=r(18,18,A,A,'#9dc5dd','a²')+r(18+A,18,B,A,'#f4c17e','ab')+r(18,18+A,A,B,'#f4c17e','ab')+r(18+A,18+A,B,B,'#e4a5ad','b²');$('visualCaption').textContent='Ein großes Quadrat mit Seitenlänge a + b besteht aus vier Teilflächen.'}else if(form===1){let k=290/a,A=a*k,B=b*k;svg=r(18,18,A,A,'#9dc5dd','a²')+r(18+A-B,18,B,A,'#f4c17e','ab')+r(18,18+A-B,A,B,'#f4c17e','ab')+r(18+A-B,18+A-B,B,B,'#e4a5ad','b²');svg+='<rect x="18" y="18" width="'+(A-B)+'" height="'+(A-B)+'" fill="none" stroke="#146b4b" stroke-width="4"/>';$('visualCaption').textContent='Aus dem Quadrat a² werden zwei Randstreifen ab entfernt. Die Ecke b² wurde dabei doppelt entfernt und muss einmal wieder hinzugefügt werden. Der grüne Rahmen zeigt (a − b)².'}else{let k=290/a,A=a*k,B=b*k;svg=r(18,18,A,A,'#9dc5dd','a²')+r(18+A-B,18+A-B,B,B,'#e4a5ad','b²');svg+='<rect x="18" y="18" width="'+A+'" height="'+A+'" fill="none" stroke="#536b83" stroke-width="2"/><rect x="'+(18+A-B)+'" y="'+(18+A-B)+'" width="'+B+'" height="'+B+'" fill="none" stroke="#9e3549" stroke-width="3"/>';$('visualCaption').textContent='Flächenvergleich: Vom Quadrat a² wird das kleine Quadrat b² abgezogen. Die verbleibende Fläche lässt sich zu einem Rechteck mit Seiten a + b und a − b umlegen.'} $('figure').innerHTML=svg}['a','b'].forEach(id=>$(id).addEventListener('input',draw));
+function draw(){
+let a=+$('a').value,b=+$('b').value;
+if(form!==0&&b>=a){b=a-1;$('b').value=b}
+$('av').textContent=a;$('bv').textContent=b;
+const rect=(x,y,w,h,color,label)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+color+'" stroke="#fff" stroke-width="1.6"/>'+(label?'<text x="'+(x+w/2)+'" y="'+(y+h/2)+'" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#263544">'+label+'</text>':'');
+const line=(x1,y1,x2,y2)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="#263544" stroke-width="1.4"/>';
+const txt=(x,y,t,size=16)=>'<text x="'+x+'" y="'+y+'" text-anchor="middle" fill="#263544" font-size="'+size+'">'+t+'</text>';
+let svg='';
+if(form===0){
+let k=245/(a+b),A=a*k,B=b*k,x=43,y=47;
+svg=rect(x,y,A,A,'#9dc5dd','a²')+rect(x+A,y,B,A,'#f4c17e','ab')+rect(x,y+A,A,B,'#f4c17e','ab')+rect(x+A,y+A,B,B,'#e4a5ad','b²');
+svg+=txt(x+A/2,y-13,'a')+txt(x+A+B/2,y-13,'b')+txt(x-14,y+A/2,'a')+txt(x-14,y+A+B/2,'b');
+svg+=txt(x+(A+B)/2,328,'Seitenlänge: a + b',15);
+$('visualCaption').textContent='Links und oben sind die Seiten in a und b unterteilt. Das ganze Quadrat hat die Seitenlänge a + b; seine vier Teilflächen ergeben die rechte Seite der Formel.';
+}else if(form===1){
+let k=245/a,A=a*k,B=b*k,C=A-B,x=43,y=47;
+svg=rect(x,y,C,C,'#9dc5dd','(a−b)²')+rect(x+C,y,B,C,'#f4c17e','')+rect(x,y+C,C,B,'#f4c17e','')+rect(x+C,y+C,B,B,'#e4a5ad','b²');
+svg+='<rect x="'+x+'" y="'+y+'" width="'+C+'" height="'+C+'" fill="none" stroke="#146b4b" stroke-width="3"/>';
+svg+=txt(x+C/2,y-13,'a − b',15)+txt(x+C+B/2,y-13,'b')+txt(x-21,y+C/2,'a − b',14)+txt(x-14,y+C+B/2,'b');
+svg+=txt(x+A/2,328,'Gesamtlänge: a = (a − b) + b',13);
+$('visualCaption').textContent='Der grüne Rahmen zeigt das Quadrat mit Seitenlänge a − b (linke Seite). Das große Quadrat a² verliert rechts und unten jeweils einen Streifen der Breite b; die gemeinsame Ecke b² wurde dabei zweimal abgezogen und wird einmal hinzugefügt: (a − b)² = a² − 2 · a · b + b².';
+}else{
+let k=125/a,A=a*k,B=b*k,C=A-B,x=16,y=72,x2=190,y2=72,scale=125/(a+b),w=(a+b)*scale,h=(a-b)*scale,w1=a*scale,w2=b*scale;
+svg+=txt(78,25,'a² − b²',16)+rect(x,y,A,A,'#9dc5dd','')+rect(x+A-B,y+A-B,B,B,'#e4a5ad','b²');
+svg+='<rect x="'+(x+A-B)+'" y="'+(y+A-B)+'" width="'+B+'" height="'+B+'" fill="none" stroke="#9e3549" stroke-width="2"/>';
+svg+=txt(x+A/2,y-10,'a',15)+txt(x-10,y+A/2,'a',15);
+svg+=txt(165,148,'=',22);
+svg+=txt(258,25,'(a + b) · (a − b)',14);
+svg+=rect(x2,y2,w1,h,'#9dc5dd','a(a−b)')+rect(x2+w1,y2,w2,h,'#f4c17e','b(a−b)');
+svg+=txt(x2+w1/2,y2-10,'a',15)+txt(x2+w1+w2/2,y2-10,'b',15)+txt(x2+w/2,y2+h+25,'a + b',15)+txt(x2-22,y2+h/2,'a − b',13);
+$('visualCaption').textContent='Links: Aus dem Quadrat a² wird das rote Quadrat b² entfernt. Die verbleibende L-förmige Fläche lässt sich ohne Überlappung in zwei Rechtecke zerlegen und rechts zu einem Rechteck mit Breite a + b und Höhe a − b zusammensetzen. Beide Flächen sind gleich groß.';
+}
+$('figure').innerHTML=svg;
+}
+['a','b'].forEach(id=>$(id).addEventListener('input',draw));
 const data=[
 [
 [{q:'(x + 3)²',rule:1,c:[1,6,9],hint:'Verwende (a + b)² = a² + 2 · a · b + b².',work:'(x + 3) · (x + 3) = x² + 3x + 3x + 9 = x² + 6x + 9'},
