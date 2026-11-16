@@ -1,3 +1,4 @@
+import {checkRangeControls} from './controls_20xx_m1.mjs';
 import {chromium} from 'playwright';import {mkdir} from 'node:fs/promises';
 const out=process.env.QA_OUT||'/tmp/20xx-m1-b34-qa',base=process.env.QA_BASE||'http://127.0.0.1:8765',numbers=(process.env.QA_TASKS||'3').split(',').map(Number);await mkdir(out,{recursive:true});const browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});const failures=[];let passed=0;
 for(let round=1;round<=3;round++)for(const mode of ['desktop','mobile'])for(const n of numbers){const mobile=mode==='mobile',ctx=await browser.newContext({viewport:{width:mobile?390:1366,height:mobile?844:900},isMobile:mobile,hasTouch:mobile}),p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});try{
@@ -41,6 +42,6 @@ if(n===4){
  await parts.nth(0).click();if(await p.evaluate(()=>state().showQ))throw Error('Frühe Figur zeigt Q');
 }
 if(mobile){await p.locator('#figureScroll').evaluate(e=>e.scrollLeft=e.scrollWidth);if(await p.locator('#figureScroll').evaluate(e=>e.scrollLeft)<100)throw Error('Wischen');await p.locator('#overview').click();await shot('gesamt');await p.locator('#overview').click()}
-if(errors.length)throw Error(errors.join(';'));console.log('OK '+round+' '+mode+' B'+n);passed++;
+await checkRangeControls(p,{task:'b'+n,ready,shot});if(errors.length)throw Error(errors.join(';'));console.log('OK '+round+' '+mode+' B'+n);passed++;
 }catch(e){failures.push(round+' '+mode+' B'+n+': '+e.message);await p.screenshot({path:out+'/r'+round+'-'+mode+'-b'+n+'-fehler.png',fullPage:true}).catch(()=>{})}await ctx.close()}
 await browser.close();if(failures.length){console.error(failures.join('\n'));process.exitCode=1}else console.log(passed+'/'+(numbers.length*6)+' Browserfälle bestanden.');
