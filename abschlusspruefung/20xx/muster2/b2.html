@@ -34,7 +34,7 @@ function probabilities(p,miss,clean){return {me:p*(1-miss),mne:p*miss,ome:(1-p)*
 function draw(){
  const s=state(),r=probabilities(s.p,s.miss,s.clean);$('plot').replaceChildren();const R=[320,60],M=[170,220],O=[470,220],ends=[[65,390],[250,390],[390,390],[575,390]];
  const full=part===1||exploring,showM=full||step>=1,showO=full||step>=2,showProducts=part===1||exploring;
- const pct=v=>num(v*100,Number.isInteger(v*100)?0:1)+'\\,\\%',branch=(a,b,value,x,y,good=false)=>{line(a,b,good?'#198576':'#60758b',good?3:2);mathCaption(x,y,pct(value),good?'#198576':'#253341',19)};
+ const pct=v=>(v*100).toFixed(2).replace(/\.?0+$/,'').replace('.','{,}')+'\\,\\%',branch=(a,b,value,x,y,good=false)=>{line(a,b,good?'#198576':'#60758b',good?3:2);mathCaption(x,y,pct(value),good?'#198576':'#253341',19)};
  branch(R,M,s.p,202,132,part===1);branch(R,O,1-s.p,398,132,part===1);
  const node=(p,label,color='#253341')=>{el('circle',{cx:p[0],cy:p[1],r:label==='Start'?30:21,fill:'#fff',stroke:color,'stroke-width':1.8});caption(p[0],p[1]+6,label,color,18).setAttribute('text-anchor','middle')};
  node(R,'Start');node(M,'M');node(O,'oM');
@@ -42,7 +42,7 @@ function draw(){
  if(showO){branch(O,ends[2],s.clean,366,302,part===1);branch(O,ends[3],1-s.clean,526,302);node(ends[2],'e','#198576');node(ends[3],'ne','#a32b4d')}
  if(showProducts){const vals=[r.me,r.mne,r.ome,r.omne];ends.forEach((p,i)=>{if(exploring||step>=([1,5,2,5][i]))mathCaption(p[0]-25,447,pct(vals[i]),i%2===0?'#198576':'#a32b4d',18)});caption(40,493,'Grün: richtig beurteilt · Rot: falsch beurteilt','#637384',16)}
  for(const [id,key]of [['defectDisplay','p'],['missDisplay','miss'],['cleanDisplay','clean']])$(id).textContent=Math.round(s[key]*100)+' %';
- $('measure').innerHTML=(part===1&&step>=3)||exploring?'Aktuelles Modell: '+inline('P(e)='+num(r.correct*100)+'\\,\\%')+'. Die beiden grün markierten Pfade ergeben zusammen die richtige Beurteilung.':'Die Prozentangaben an den Zweigen beziehen sich jeweils auf die vorherige Verzweigung. Die Musterlösung baut den Baum schrittweise auf.';
+ $('measure').innerHTML=(part===1&&step>=3)||exploring?'Aktuelles Modell: '+inline('P(e)='+num(r.correct*100,2)+'\\,\\%')+'. Die beiden grün markierten Pfade ergeben zusammen die richtige Beurteilung.':'Die Prozentangaben an den Zweigen beziehen sich jeweils auf die vorherige Verzweigung. Die Musterlösung baut den Baum schrittweise auf.';
 }
 for(const id of ['defect','miss','clean'])$(id).oninput=()=>{exploring=true;draw();math()};$('originalRates').onclick=()=>{const currentPart=part;initPart();exploring=true;draw();math()};
 

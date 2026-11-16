@@ -52,7 +52,7 @@ function draw(){
  if(part===1&&step>=1){line(P(-.5,0),P(8.5,0),'#198576',2,'6 4');if(Math.abs(g.midY)<1e-8){const tick=(p,q)=>{const m=[(p[0]+q[0])/2,(p[1]+q[1])/2],d=[q[0]-p[0],q[1]-p[1]],z=Math.hypot(...d),v=[-d[1]/z*6,d[0]/z*6];line([m[0]-v[0],m[1]-v[1]],[m[0]+v[0],m[1]+v[1]],'#198576',2)};tick(A,B);tick(A,C)}}
  if(part===1&&step>=7){line(A,H,'#d17720',3);if(st.x>.7){right(H,[-1,0],[0,-1]);mathCaption(H[0]+10,H[1]+27,'H','#d17720',16)}mathCaption(150,470,'h='+num(g.height)+'\\,\\mathrm{LE}','#bd6f12',18)}
  $('xdisplay').textContent=st.x.toFixed(1).replace('.',',');
- $('measure').innerHTML=inline('x='+num(st.x))+': '+inline('B_n('+num(st.x)+'\\mid-1{,}5)')+', '+inline('C_n('+num(st.x)+'\\mid'+num(g.y,4)+')')+'.'+(part===1&&step>=8?' Aktuelles Modell: '+inline('A_{AB_nC_n}\\approx'+num(g.area)+'\\,\\mathrm{FE}')+'.':'');
+ $('measure').innerHTML=inline('x='+num(st.x))+': '+inline('B_n('+num(st.x)+'\\mid-1{,}5)')+', '+inline('y_{C_n}\\approx'+num(g.y,4))+'.'+(part===1&&step>=8?' Aktuelles Modell: '+inline('A_{AB_nC_n}\\approx'+num(g.area)+'\\,\\mathrm{FE}')+'.':'');
  $('isosceles').hidden=!(part===1&&step>=5);
 }
 $('xval').oninput=()=>{exploring=true;draw();math()};$('originalX').onclick=()=>{exploring=true;$('xval').value=6;draw();math()};$('isosceles').onclick=()=>{exploring=true;$('xval').value=3;draw();math()};
