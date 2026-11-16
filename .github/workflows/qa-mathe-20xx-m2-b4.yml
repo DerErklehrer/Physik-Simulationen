@@ -21,7 +21,7 @@ jobs:
           node abschlusspruefung/tests/quality_20xx_m2_b4.mjs
           node abschlusspruefung/tests/quality_20xx_m2_b3.mjs
           node abschlusspruefung/tests/quality_20xx_m2_a.mjs
-          node abschlusspruefung/tests/quality_20xx_m1_b44.mjs
+          node abschlusspruefung/tests/quality_20xx_m1_b34.mjs
       - name: Browser bereitstellen
         run: |
           npm install --no-save playwright@1.56.1
