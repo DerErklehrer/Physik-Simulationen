@@ -33,3 +33,8 @@ Der angeforderte A-Block der Musterprüfung 1 ist ausgearbeitet. Die Gesamtprüf
 15.11.2026, Seitenstand 6f4e33a7de423a302985736cd5dc94b7b23ccda0: Schreibweisen in Lernlösung, SVG-Zeichnung und dynamischer Messanzeige vereinheitlicht. Körperindizes K/Z bei Radius, Höhe und Volumen sind tiefgestellt und aufrecht gesetzt. Streckenlängen erhalten durchgehende Überstriche einschließlich Indizes sowie Betragsstriche. Echte vertikale Brüche ersetzen das einzelne Halbzeichen in der Zeichnung. Tangens, Multiplikationspunkte, Dezimalkomma und Einheiten werden einheitlich mathematisch gesetzt; die beiden Höhenangaben sind durch ein Semikolon getrennt. Die Rechenwerte und die Körpergeometrie bleiben unverändert.
 
 [Prüflauf 43742270278](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43742270278) erfolgreich: bestehende statische Prüfungen und 18/18 Desktop-/Mobilfälle. Die Prüfung wartet ausdrücklich auf die gesetzten Formeln in der Zeichnung und kontrolliert auch die mathematisch gerenderten Messwerte und Teilvolumina. Artefakt 14172931320. Radienbeschriftung mit Bruch und Überstrich, Lösungstexte, Volumenfunktion sowie Messwerte bei einer 90°-Teilrotation auf Desktop und Mobil visuell nachgeprüft. [Pages-Veröffentlichung](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43742269535) erfolgreich. Keine neue fachliche Gesamtfreigabe beansprucht.
+
+
+## Ergänzung 16.11.2026
+
+Die Zugänglichkeit der Parameterregler und das Beibehalten eigener Werte über Lösungsschritte wurden nachgebessert. Aktueller Nachweis: [Reglerprüfung](PRUEFPROTOKOLL_M1_REGLER.md). Frühere Angaben zur erst späteren Freigabe der Regler beschreiben den ursprünglichen Stand.

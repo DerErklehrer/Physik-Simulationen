@@ -49,3 +49,8 @@ Bei der Sichtprüfung behoben: lange mobile Koordinaten-/Formelzeilen, Überlage
 [A-Regression 43764433060](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43764433060), [B1/B2-Regression 43764433026](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43764433026) und [Pages-Veröffentlichung 43764432767](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43764432767) ebenfalls erfolgreich.
 
  Technische Wiederholungen sind keine drei unabhängigen vollständigen fachlich-visuellen Gesamtprüfungen. Dieses Protokoll betrifft die neue Ausarbeitung B3/B4; es beansprucht keine dreifache Gesamtfreigabe der gesamten Musterprüfung.
+
+
+## Ergänzung 16.11.2026
+
+Die Zugänglichkeit der Parameterregler und das Beibehalten eigener Werte über Lösungsschritte wurden nachgebessert. Aktueller Nachweis: [Reglerprüfung](PRUEFPROTOKOLL_M1_REGLER.md). Frühere Angaben zur erst späteren Freigabe der Regler beschreiben den ursprünglichen Stand.

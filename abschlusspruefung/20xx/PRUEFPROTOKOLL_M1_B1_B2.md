@@ -29,3 +29,8 @@ Code-Stand: 34174800be06807b1ffab405fbad1b5f640986a4.
 - [Pages-Veröffentlichung 43744126318](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/43744126318): erfolgreich.
 
  Drei technische Wiederholungen ersetzen keine drei unabhängigen vollständigen fachlich-visuellen Gesamtprüfungen. Dieses Protokoll betrifft den B1/B2-Block und beansprucht keine Gesamtfreigabe der Musterprüfung.
+
+
+## Ergänzung 16.11.2026
+
+Die Zugänglichkeit der Parameterregler und das Beibehalten eigener Werte über Lösungsschritte wurden nachgebessert. Aktueller Nachweis: [Reglerprüfung](PRUEFPROTOKOLL_M1_REGLER.md). Frühere Angaben zur erst späteren Freigabe der Regler beschreiben den ursprünglichen Stand.

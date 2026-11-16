@@ -1,6 +1,8 @@
 # 20XX · Musterprüfungen Mathematik I
 
-Aktueller Stand 15.11.2026: Musterprüfung 1 ist in allen sieben Aufgabenbereichen A1–A3 und B1–B4 ausgearbeitet: 23 Teilaufgaben und 109 Lösungsschritte. Räumliche Aufgaben A2/B4 besitzen zusätzlich drehbare 3D-Ansichten. Musterprüfung 2 bleibt vorerst eine Aufgabenübersicht. Details: [Prüfprotokoll A1–A3](PRUEFPROTOKOLL_M1_A.md), [B1/B2](PRUEFPROTOKOLL_M1_B1_B2.md) und [B3/B4](PRUEFPROTOKOLL_M1_B3_B4.md).
+Aktueller Stand 16.11.2026: Musterprüfung 1 ist in allen sieben Aufgabenbereichen A1–A3 und B1–B4 ausgearbeitet: 23 Teilaufgaben und 109 Lösungsschritte. Räumliche Aufgaben A2/B4 besitzen zusätzlich drehbare 3D-Ansichten. Musterprüfung 2 bleibt vorerst eine Aufgabenübersicht. Details: [Prüfprotokoll A1–A3](PRUEFPROTOKOLL_M1_A.md), [B1/B2](PRUEFPROTOKOLL_M1_B1_B2.md) und [B3/B4](PRUEFPROTOKOLL_M1_B3_B4.md).
+
+Die Parameterregler in A2 und B1–B4 sind in den jeweiligen variablen Teilaufgaben direkt zugänglich. Eigene Werte bleiben beim Wechsel der Lösungsschritte erhalten. Nachweis: [Reglerprüfung](PRUEFPROTOKOLL_M1_REGLER.md).
 
 Das ISB führt zwei Muster-Abschlussprüfungen für Mathematik I. Beide tragen im Dokument den Titel „Abschlussprüfung 20XX“ und „Muster 20XX“. Die technischen Dateinamen enthalten 2021 bzw. 2022; diese Zahlen sind keine Prüfungsjahrgänge auf der öffentlichen Übersicht. Zuordnung: Musterprüfung 1 = mi_muster2021_*, Musterprüfung 2 = mi_muster2022_*.
 
