@@ -195,7 +195,7 @@ function draw(){
  let m='';if(part===3){const g=geometry(st.x);m=inline('M_n\\bigl('+num(st.x)+'\\mid'+num(g.m)+'\\bigr)')+'. '+inline('|\\overline{B_nD_n}|=3\\,\\mathrm{LE}')+'.';}
  if(part===2&&step>=2)m=inline('M_1(0\\mid1)')+(step>=3?'; '+inline('M_2(5\\mid'+num(geometry(5).m)+')'):'')+'.';
  if(part===4&&step>=2)m=inline('x=-2+\\sqrt2\\approx'+num(root))+(step>=3?'; '+inline('B_3(0{,}91\\mid0{,}00)'):'')+(step>=4?'; '+inline('C_3(-0{,}59\\mid3{,}60)'):'')+'. Gerundete Koordinaten; Konstruktion mit exakten Werten.';
- if(freeExplore&&part>=2){const g=geometry(st.x);m='Freie Erkundung, gerundete Koordinaten: '+inline('M_n('+num(st.x)+'\\\\mid'+num(g.m)+')')+'. '+inline('|\\\\overline{B_nD_n}|=3\\\\,\\\\mathrm{LE}')+'.';}
+ if(freeExplore&&part>=2){const g=geometry(st.x);m='Freie Erkundung, gerundete Koordinaten: '+inline('M_n('+num(st.x)+'\\mid'+num(g.m)+')')+'. '+inline('|\\overline{B_nD_n}|=3\\,\\mathrm{LE}')+'.';}
  $('measure').innerHTML=m;
 }
 $('xval').oninput=()=>{freeExplore=true;preciseX=null;draw();math()};
