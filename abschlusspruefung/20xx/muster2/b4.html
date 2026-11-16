@@ -31,6 +31,7 @@ function setPhi(value,exact=false){$('phi').value=value;precisePhi=exact?value:n
 function initPart(){exploring=false;setPhi(part===5?phiEqual:38,part===5)}
 function draw(){const st=state(),g=geometry(st.phi);$('plot').replaceChildren();const P=p=>[320+37*(p[0]-.5*Math.SQRT1_2*p[2]),427-37*(p[1]-.5*Math.SQRT1_2*p[2])],seg=(a,b,c='#81909d',w=1.7,d='')=>line(P(g[a]),P(g[b]),c,w,d),face=(ks,c,o)=>el('polygon',{points:ks.map(k=>P(g[k]).join(',')).join(' '),fill:c,'fill-opacity':o});
 const full=part>0||step>=4;
+if(part===0&&step<2){face(['A','B','C'],'#2478a4',.12);for(const[a,b]of [['A','B'],['B','C'],['A','C']])seg(a,b,'#2478a4',2.3);mathCaption(180,445,'7\\,\\mathrm{cm}','#2478a4',17);mathCaption(385,469,'7\\,\\mathrm{cm}','#2478a4',17)}
 if(part===5){face(['A','B','P'],'#198576',.12);face(['B','C','P'],'#198576',.12);face(['C','D','P'],'#198576',.08);face(['D','A','P'],'#198576',.08)}
 if(part>=4){face(['E','F','H'],'#a32b4d',.1);for(const a of ['E','F','H']){face([a,a==='E'?'F':a==='F'?'H':'E','P'],'#a32b4d',.09);seg(a,'P','#a32b4d',2.4)}seg('F','H','#a32b4d',2.2)}
 if(part>0||step>=3){for(const[a,b]of [['A','B'],['B','C'],['C','D'],['D','A']])seg(a,b,'#60758b',1.8,['D'].includes(a)||b==='D'?'5 4':'')}
@@ -40,7 +41,7 @@ if(part===1){face(['C','N','G'],'#2478a4',.14);seg('C','N','#2478a4',3);seg('N',
 if(part>=2){seg('N','C','#81909d',1.5,'5 4');if(part<4)face(['E','N','P'],'#a32b4d',.13);seg('E','N','#a32b4d',2.5);seg('E','P','#a32b4d',2.5);seg('N','P','#a32b4d',2.5);const e=P(g.E),r=46;el('path',{d:'M'+(e[0]+r)+' '+e[1]+' A'+r+' '+r+' 0 0 1 '+(e[0]+r*Math.cos(rad(st.phi)))+' '+(e[1]+r*Math.sin(rad(st.phi))),fill:'none',stroke:'#a32b4d','stroke-width':1.7});mathCaption(e[0]+54,e[1]+22,'\\varphi','#a32b4d',18)}
 if(part>=4){seg('P','T','#d17720',3,'6 3');if(g.upperHeight>.8&&L*(1-g.t)>.65)right(P(g.T),[1,0],[0,1]);}
 if(part===5){for(const a of ['A','B','C','D'])seg(a,'P','#198576',2.1,a==='D'?'5 4':'');seg('P','U','#198576',3,'6 3')}
-const offsets={A:[-23,18],B:[-20,23],C:[10,18],D:[10,18],E:[-24,-12],F:[-20,23],G:[10,-10],H:[10,-10],M:[5,23],N:[-19,-12],P:[-30,19],T:[8,-12],U:[9,23]};let keys=full?['A','B','C','D','E','F','G','H','M','N']:step>=3?['A','B','C','D','M']:step>=2?['A','C','M']:[];if(part>=2)keys.push('P');if(part>=4)keys.push('T');if(part===5)keys.push('U');
+const offsets={A:[-23,18],B:[-20,23],C:[10,18],D:[10,18],E:[-24,-12],F:[-20,23],G:[10,-10],H:[10,-10],M:[5,23],N:[-19,-12],P:[-30,19],T:[8,-12],U:[9,45]};let keys=full?['A','B','C','D','E','F','G','H','M','N']:step>=3?['A','B','C','D','M']:step>=2?['A','C','M']:['A','B','C'];if(part>=2)keys.push('P');if(part>=4)keys.push('T');if(part===5)keys.push('U');
 if(Math.abs(g.t-1)<1e-8)keys=keys.filter(k=>!['P','T','U'].includes(k));
 for(const k of keys){const pos=P(g[k]),off=offsets[k];el('circle',{cx:pos[0],cy:pos[1],r:2.5,fill:k==='P'?'#a32b4d':'#253341'});let name=k;if(k==='P'||k==='T')name=k+'_'+(Math.abs(st.phi-38)<1e-8?'1':Math.abs(st.phi-phiEqual)<1e-8?'2':'n');if(k==='U')name='U_n';if(Math.abs(g.t-1)<1e-8&&part>=2&&k==='C')name='C=P_n';if(Math.abs(g.t-1)<1e-8&&part>=4&&k==='G')name='G=T_n';mathCaption(pos[0]+off[0],pos[1]+off[1],name,'#253341',16)}
 if(part===0&&step<2)mathCaption(120,260,'\\lvert\\overline{AC}\\rvert=\\sqrt{7^2+7^2}\\,\\mathrm{cm}','#60758b',23);

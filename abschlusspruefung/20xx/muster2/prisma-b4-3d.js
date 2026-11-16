@@ -11,6 +11,7 @@ function loop(){requestAnimationFrame(loop);if(!host.hidden){controls.update();r
 function labels(){group?.traverse(o=>{if(o.userData.kind==='top')o.visible=topMode;if(o.userData.kind==='side')o.visible=!topMode})}
 function build(){if(group){scene.remove(group);group.traverse(o=>{o.geometry?.dispose();o.material?.map?.dispose();o.material?.dispose()})}group=new THREE.Group();scene.add(group);const st=window.muster2B4State(),g=window.muster2B4Geometry(st.phi),p=Object.fromEntries(Object.entries(g).filter(([k,a])=>Array.isArray(a)).map(([k,a])=>[k,v(...a)]));
 const full=st.part>0||st.step>=4;
+if(st.part===0&&st.step<2){face([p.A,p.B,p.C],0x2478a4,.14);edge(p.A,p.B,0x2478a4);edge(p.B,p.C,0x2478a4);edge(p.A,p.C,0x2478a4);right(p.B,p.A.clone().sub(p.B).normalize(),p.C.clone().sub(p.B).normalize())}
 if(st.part>0||st.step>=3){face([p.A,p.B,p.C,p.D],0x60758b,.06);for(const[a,b]of [['A','B'],['B','C'],['C','D'],['D','A']])edge(p[a],p[b])}
 if(st.part>0||st.step>=2){edge(p.A,p.C);edge(p.B,p.D)}
 if(full){for(const[a,b]of [['A','E'],['B','F'],['C','G'],['D','H'],['E','F'],['F','G'],['G','H'],['H','E'],['E','G'],['F','H']])edge(p[a],p[b]);face([p.E,p.F,p.G,p.H],0x60758b,.04)}
@@ -18,7 +19,7 @@ if(st.part===1){face([p.N,p.G,p.C],0x2478a4,.16);edge(p.N,p.C,0x2478a4);edge(p.N
 if(st.part>=2){edge(p.N,p.C);edge(p.E,p.P,0xa32b4d);edge(p.N,p.P,0xa32b4d);edge(p.E,p.N,0xa32b4d);if(st.part<4)face([p.E,p.N,p.P],0xa32b4d,.18)}
 if(st.part>=4){face([p.E,p.F,p.H],0xa32b4d,.2);for(const[a,b]of [['E','F'],['F','H'],['H','E']]){face([p[a],p[b],p.P],0xa32b4d,.1);edge(p[a],p[b],0xa32b4d);edge(p[a],p.P,0xa32b4d)}edge(p.P,p.T,0xd17720);if(g.upperHeight>.8&&g.T[0]<4.3)right(p.T,v(1,0,0),v(0,-1,0))}
 if(st.part===5){face([p.A,p.B,p.C,p.D],0x198576,.12);for(const[a,b]of [['A','B'],['B','C'],['C','D'],['D','A']]){face([p[a],p[b],p.P],0x198576,.1);edge(p[a],p.P,0x198576)}edge(p.P,p.U,0x198576)}
-const keys=full?['A','B','C','D','E','F','G','H','M','N']:st.step>=3?['A','B','C','D','M']:st.step>=2?['A','C','M']:[];if(st.part>=2)keys.push('P');if(st.part>=4)keys.push('T');if(st.part===5)keys.push('U');
+const keys=full?['A','B','C','D','E','F','G','H','M','N']:st.step>=3?['A','B','C','D','M']:st.step>=2?['A','C','M']:['A','B','C'];if(st.part>=2)keys.push('P');if(st.part>=4)keys.push('T');if(st.part===5)keys.push('U');
 for(const k of keys){if(g.t>1-1e-8&&['P','T','U'].includes(k))continue;const off=v(k==='A'||k==='E'?-.38:k==='C'||k==='G'?.38:k==='P'?-.4:.2,k==='T'||k==='N'||k==='E'||k==='G'?.4:k==='P'?-.3:-.28,k==='B'||k==='F'?.4:k==='D'||k==='H'?-.4:.1);let name=k==='P'||k==='T'?k+'ₙ':k;if(g.t>1-1e-8&&st.part>=2&&k==='C')name='C / Pₙ';if(g.t>1-1e-8&&st.part>=4&&k==='G')name='G / Tₙ';text(p[k].clone().add(off),name)}
 if(full){for(const[a,b]of [['A','E'],['B','F'],['C','G'],['D','H']])text(p[a].clone().add(v(a==='A'?-.5:a==='C'?.5:0,0,a==='B'?.4:a==='D'?-.4:0)),a+' / '+b,'top');text(p.N.clone().add(v(-.45,0,-.45)),'M / N','top');if(st.part>=2&&g.t<1-1e-8)text(p.P.clone().add(v(.35,0,.4)),st.part>=4?'Pₙ / Tₙ':'Pₙ','top')}
 labels()}
