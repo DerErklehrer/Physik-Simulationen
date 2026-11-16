@@ -56,8 +56,7 @@ function initTraining(config,data){
  }
  const rawRender=typeof render==='function'?render:null;
  function after(){
-  if(override.q&&get('statement'))get('statement').innerHTML='<strong>'+label+'</strong><p>'+override.q+'</p>';
-  if(get('statement'))get('statement').innerHTML=independent(get('statement').innerHTML);
+  if(config.id==='2026-b4'&&override.q&&get('statement'))get('statement').innerHTML='<strong>'+label+'</strong><p>'+override.q+'</p>';
   buttons.forEach((b,i)=>b.hidden=i!==selected);
   // Suppress excluded-technique/result controls on the derived training pages.
   if(config.id==='2023-a1')get('special')?.setAttribute('hidden','');
