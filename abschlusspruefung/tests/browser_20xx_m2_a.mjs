@@ -14,7 +14,7 @@ for(let round=1;round<=3;round++)for(const mode of ['desktop','mobile'])for(let 
  const shot=async name=>{await ready();await p.screenshot({path:out+'/r'+round+'-'+mode+'-a'+n+'-'+name+'.png',fullPage:true})},parts=p.locator('#parts button');
  for(let i=0;i<await parts.count();i++){await parts.nth(i).click();const count=Number((await p.locator('#count').innerText()).match(/von (\d+)/)[1]);for(let j=0;j<count;j++){if(j)await p.locator('#next').click();await ready();if(round===3)await shot('teil'+(i+1)+'-schritt'+(j+1))}await p.locator('#reset').click();if(!await p.locator('#prev').isDisabled())throw Error('Reset')}
  const config={1:{id:'bval',key:'b',parts:[0,1],values:[-6,2,6,8],chosen:2,reset:i=>i===0?0:6},2:{id:'arrangement',key:'index',parts:[0],values:[1,60,120],chosen:60,reset:()=>0},3:{id:'phi',key:'phi',parts:[0],values:[1,60,90,179],chosen:90,reset:()=>60},4:{id:'fill',key:'fill',parts:[0],values:[0,7.1,7.2,8,9],chosen:7.1,reset:()=>8}}[n];
- for(const i of config.parts){await parts.nth(i).click();if(!await p.locator('#'+config.id).isVisible())throw Error('Regler nicht sofort verfügbar');const original=await p.locator('#solution').innerText();
+ if(n!==2)for(const i of config.parts){await parts.nth(i).click();if(!await p.locator('#'+config.id).isVisible())throw Error('Regler nicht sofort verfügbar');const original=await p.locator('#solution').innerText();
  for(const value of config.values){await p.locator('#'+config.id).evaluate((e,value)=>{e.value=value;e.dispatchEvent(new Event('input',{bubbles:true}))},value);await ready();const current=await p.evaluate(key=>state()[key],config.key);if(Math.abs(current-(n===2?value-1:value))>1e-8)throw Error('Reglerkopplung');if(round===3)await shot('parameter-'+i+'-'+String(value).replace('.','_'))}
  if(await p.locator('#solution').innerText()!==original)throw Error('Originalrechnung überschrieben');
  await p.locator('#'+config.id).evaluate((e,value)=>{e.value=value;e.dispatchEvent(new Event('input',{bubbles:true}))},config.chosen);
@@ -22,7 +22,18 @@ for(let round=1;round<=3;round++)for(const mode of ['desktop','mobile'])for(let 
  await p.locator('#prev').click();await ready();if(Math.abs(await p.evaluate(key=>state()[key],config.key)-(n===2?config.chosen-1:config.chosen))>1e-8)throw Error('Wert beim Zurückblättern verloren');
  await p.locator('#reset').click();await ready();if(Math.abs(await p.evaluate(key=>state()[key],config.key)-config.reset(i))>1e-8)throw Error('Modellreset')}
  if(n===1){await p.locator('#originalB').click();if(Math.abs(await p.evaluate(()=>f(10,state().b))-12)>1e-9)throw Error('Punktbedingung');await parts.nth(1).click();for(let j=0;j<3;j++)await p.locator('#next').click();await shot('wertemenge')}
- if(n===2){await p.locator('#otherOrder').click();if(await p.evaluate(()=>state().index)===0)throw Error('Andere Reihenfolge');await p.locator('#targetOrder').click();if(await p.evaluate(()=>state().index)!==0)throw Error('Zielreihenfolge')}
+ if(n===2){
+  await parts.nth(0).click();
+  for(const value of [3,1,5,2,4]){await p.locator('[data-card="'+value+'"]').click();await ready()}
+  const st=await p.evaluate(()=>state());if(st.chosen.join(',')!=='3,1,5,2,4'||st.remaining!==0||st.total!==120)throw Error('Karten ohne Zurücklegen');
+  if(await p.locator('#cardChoices button:disabled').count()!==5)throw Error('Karte doppelt verfügbar');
+  for(let j=0;j<5;j++){await p.locator('#next').click();await ready();if((await p.evaluate(()=>state().chosen)).join(',')!=='3,1,5,2,4')throw Error('Karten beim Schrittwechsel verloren')}
+  if(await p.locator('[data-choice-count]').count()!==5)throw Error('Zählspalten fehlen');await shot('zaehlprinzip');
+  await p.locator('#undoCard').click();if(await p.locator('[data-card="4"]').isDisabled())throw Error('Rücknahme');
+  await p.locator('#clearCards').click();if(await p.evaluate(()=>state().chosen.length)!==0)throw Error('Leeren');
+  await p.locator('#reset').click();if(await p.evaluate(()=>state().step)!==0)throw Error('Reset');
+  if(await p.locator('#arrangement').count())throw Error('Alter 120-Fälle-Regler');
+ }
  if(n===3){await p.locator('#square90').click();if(Math.abs(await p.evaluate(()=>geometry(state().phi).L)-2.5)>1e-9)throw Error('Sonderfall90');await shot('quadrat90')}
  if(n===4){
  for(let j=0;j<6;j++)await p.locator('#next').click();await p.locator('#minFill').click();await ready();if(Math.abs(await p.evaluate(()=>geometry(state().fill).ratio)-.8)>1e-9)throw Error('80 Prozent');await shot('minimum80');await p.locator('#originalFill').click();await shot('original8');
