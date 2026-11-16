@@ -6,6 +6,8 @@ let count=0;try{for(const [mode,width,height]of [['desktop',1366,900],['mobile',
  const ready=async()=>{if(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2))throw Error('Übersicht zu breit: '+p.url())};
  const shot=async name=>{await ready();await p.screenshot({path:out+'/'+mode+'-'+name+'.png',fullPage:true})};
  await p.goto(base+'/mathematik-realschule/',{waitUntil:'networkidle'});await shot('mathematik-realschule');
+ await p.locator('a.card[href="8-i/"]').click();if(!p.url().endsWith('/mathematik-realschule/8-i/'))throw Error('Mathematik 8 I fehlt');await shot('mathematik-8-i');if(!await p.getByText('Inhalte folgen',{exact:true}).isVisible())throw Error('Leere Übersicht 8 I');await p.getByRole('link',{name:'← Mathematik Realschule',exact:true}).click();
+
  await p.locator('a.card[href="10-i/"]').click();if(!p.url().endsWith('/mathematik-realschule/10-i/'))throw Error('Jahrgangsübersicht');await shot('mathematik-10-i');
  await p.locator('a.card[href="../../mathematik-10/"]').click();if(await p.locator('.grid a.card').count()!==9)throw Error('Trigonometrie unvollständig');await shot('trigonometrie');
  await p.locator('a.card[href="../sinussatz/"]').click();await p.locator('[data-math-navigation] a').click();if(!p.url().endsWith('/mathematik-10/'))throw Error('Rücklink Trigonometrie');
