@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'abschlusspruefung/20xx/muster1/**'
+      - 'abschlusspruefung/tests/controls_20xx_m1.mjs'
       - 'abschlusspruefung/tests/*20xx_m1_b34.mjs'
       - '.github/workflows/qa-mathe-20xx-m1-b34.yml'
   workflow_dispatch:

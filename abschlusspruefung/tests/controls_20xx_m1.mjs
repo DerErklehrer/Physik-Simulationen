@@ -15,6 +15,11 @@ export async function checkRangeControls(p,{task,ready,shot}){
   const chosen=c.values.at(-1);await shot('regler-teil'+(i+1)+'-schritt1');
   await p.locator('#next').click();await ready();if(Math.abs(await p.evaluate(key=>state()[key],c.key)-chosen)>1e-9)throw Error('Reglerwert geht beim Weiterblättern verloren '+task);
   await p.locator('#prev').click();await ready();if(Math.abs(await p.evaluate(key=>state()[key],c.key)-chosen)>1e-9)throw Error('Reglerwert geht beim Zurückblättern verloren '+task);
+  while(!await p.locator('#next').isDisabled()){
+   await p.locator('#next').click();await ready();
+   if(Math.abs(await p.evaluate(key=>state()[key],c.key)-chosen)>1e-9)throw Error('Reglerwert wird durch späteren Lösungsschritt überschrieben '+task);
+  }
+  if(task==='b3'){await p.locator('#originalFigure').click();await ready();if(await p.evaluate(()=>state().freeExplore))throw Error('Originalzeichnung nicht wiederhergestellt')}
   if(task==='b4'){await p.locator('#threeD').click();await p.waitForFunction(()=>window.exam20xxB4Three?.snapshot());const snap=await p.evaluate(()=>window.exam20xxB4Three.snapshot());if(Math.abs(snap.phi-chosen)>1e-9)throw Error('Reglerwert nicht in 3D');await p.locator('#twoD').click()}
   await p.locator('#reset').click();await ready();const reset=typeof c.reset==='function'?c.reset(i):c.reset;
   if(Math.abs(await p.evaluate(key=>state()[key],c.key)-reset)>1e-9)throw Error('Originalreset '+task);
