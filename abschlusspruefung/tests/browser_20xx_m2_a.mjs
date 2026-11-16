@@ -44,7 +44,7 @@ for(let round=1;round<=3;round++)for(const mode of ['desktop','mobile'])for(let 
  for(const fill of [0,7.2,9]){await p.locator('#fill').evaluate((e,value)=>{e.value=value;e.dispatchEvent(new Event('input',{bubbles:true}))},fill);await ready();const s=await p.evaluate(()=>window.muster2A4Three.snapshot());if(Math.abs(s.fill-fill)>1e-9||Math.abs(s.geometry.fill-fill)>1e-9)throw Error('3D Füllkopplung');await shot('3d-fuellung'+fill)}
  await p.locator('#top').click();const top=await p.evaluate(()=>window.muster2A4Three.snapshot());if(!top.top||!top.orthographic||Math.abs(top.position[1]-top.target[1])<10)throw Error('Draufsicht');await shot('draufsicht');await p.locator('#cameraReset').click();if(await p.evaluate(()=>window.muster2A4Three.snapshot().top))throw Error('Kamerareset');await p.locator('#twoD').click();
  }
- if(mobile){await p.locator('#figureScroll').evaluate(e=>e.scrollLeft=e.scrollWidth);if(await p.locator('#figureScroll').evaluate(e=>e.scrollLeft)<100)throw Error('Wischen');await p.locator('#overview').click();await shot('gesamt');await p.locator('#overview').click()}
+ if(mobile){if(n===2)await p.locator('#overview').click();await p.locator('#figureScroll').evaluate(e=>e.scrollLeft=e.scrollWidth);if(await p.locator('#figureScroll').evaluate(e=>e.scrollLeft)<100)throw Error('Wischen');await p.locator('#overview').click();await shot('gesamt');await p.locator('#overview').click()}
  if(errors.length)throw Error(errors.join(';'));passed++;console.log('OK '+round+' '+mode+' A'+n);
  }catch(e){failures.push(round+' '+mode+' A'+n+': '+e.message);await p.screenshot({path:out+'/r'+round+'-'+mode+'-a'+n+'-fehler.png',fullPage:true}).catch(()=>{})}
  await ctx.close();
