@@ -1,0 +1,42 @@
+name: Mathematik – Übersichten und bestehende Direktlinks
+on:
+  push:
+    paths:
+      - 'mathematik-realschule/**'
+      - 'mathematik-10/index.html'
+      - 'abschlusspruefung/index.html'
+      - 'einheitskreis/index.html'
+      - 'welches-verfahren/index.html'
+      - 'pythagoras/index.html'
+      - 'rechtwinkliges-dreieck/index.html'
+      - 'sinussatz/index.html'
+      - 'kosinussatz/index.html'
+      - 'sinusflaeche/index.html'
+      - 'tangens-steigung/index.html'
+      - 'trigonometrische-gleichungen/index.html'
+      - 'trigonometrie/index.html'
+      - 'tests/math-navigation.mjs'
+      - '.github/workflows/qa-math-navigation.yml'
+  workflow_dispatch:
+jobs:
+  navigation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Browser bereitstellen
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Navigation und QR-Ziele prüfen
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/math-navigation-server.log 2>&1 &
+          node tests/math-navigation.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mathematik-navigation
+          path: /tmp/math-navigation/
