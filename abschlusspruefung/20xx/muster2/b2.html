@@ -37,9 +37,10 @@ function draw(){
  const pct=v=>(v*100).toFixed(2).replace(/\.?0+$/,'').replace('.','{,}')+'\\,\\%',branch=(a,b,value,x,y,good=false)=>{line(a,b,good?'#198576':'#60758b',good?3:2);mathCaption(x,y,pct(value),good?'#198576':'#253341',19)};
  branch(R,M,s.p,202,132,part===1);branch(R,O,1-s.p,398,132,part===1);
  const node=(p,label,color='#253341')=>{el('circle',{cx:p[0],cy:p[1],r:label==='Start'?30:21,fill:'#fff',stroke:color,'stroke-width':1.8});caption(p[0],p[1]+6,label,color,18).setAttribute('text-anchor','middle')};
- node(R,'Start');node(M,'M');node(O,'oM');
+
  if(showM){branch(M,ends[0],1-s.miss,62,302,part===1);branch(M,ends[1],s.miss,225,302);node(ends[0],'e','#198576');node(ends[1],'ne','#a32b4d')}
  if(showO){branch(O,ends[2],s.clean,366,302,part===1);branch(O,ends[3],1-s.clean,526,302);node(ends[2],'e','#198576');node(ends[3],'ne','#a32b4d')}
+ node(R,'Start');node(M,'M');node(O,'oM');
  if(showProducts){const vals=[r.me,r.mne,r.ome,r.omne];ends.forEach((p,i)=>{if(exploring||step>=([1,5,2,5][i]))mathCaption(p[0]-25,447,pct(vals[i]),i%2===0?'#198576':'#a32b4d',18)});caption(40,493,'Grün: richtig beurteilt · Rot: falsch beurteilt','#637384',16)}
  for(const [id,key]of [['defectDisplay','p'],['missDisplay','miss'],['cleanDisplay','clean']])$(id).textContent=Math.round(s[key]*100)+' %';
  $('measure').innerHTML=(part===1&&step>=3)||exploring?'Aktuelles Modell: '+inline('P(e)='+num(r.correct*100,2)+'\\,\\%')+'. Die beiden grün markierten Pfade ergeben zusammen die richtige Beurteilung.':'Die Prozentangaben an den Zweigen beziehen sich jeweils auf die vorherige Verzweigung. Die Musterlösung baut den Baum schrittweise auf.';
