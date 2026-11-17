@@ -1,0 +1,27 @@
+name: Mathematik II III – Rotationskörper 2023 2024 2026
+on:
+  push:
+    paths:
+      - 'mathematik-realschule/10-ii-iii/abschlusspruefungen/**'
+      - 'abschlusspruefung/tests/*rotation_ii.mjs'
+      - '.github/workflows/qa-rotation-ii.yml'
+  workflow_dispatch:
+jobs:
+  qualitaet:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node abschlusspruefung/tests/quality_rotation_ii.mjs
+      - run: npm install --no-save playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - run: nohup python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/rotation-server.log 2>&1 &
+      - run: node abschlusspruefung/tests/browser_rotation_ii.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rotationskoerper-II-Pruefbelege
+          path: /tmp/rotation-ii-qa/
