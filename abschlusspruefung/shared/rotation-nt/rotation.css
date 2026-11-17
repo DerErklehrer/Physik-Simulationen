@@ -4,3 +4,5 @@
 #nav button.active:disabled{opacity:1}
 
 #measure{line-height:1.8}#nav button.active:disabled{opacity:1}header span{color:#ffb45d}.card.available:hover{background:#fff5f8}.fixed{color:#64748b}
+
+#plot{touch-action:none;cursor:grab;overflow:hidden}#plot:active{cursor:grabbing}.constant-measures{padding:10px 12px;background:#f9edf2;border-left:3px solid #9c2946;border-radius:6px;line-height:1.7;margin:10px 0}#scaleTools .buttons{gap:6px}#scaleTools .muted{margin:6px 0}
