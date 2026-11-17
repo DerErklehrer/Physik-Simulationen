@@ -128,7 +128,7 @@ export const tasks = {
           },
           {
             "title": "4 · Großer Kegel minus kleiner Kegel",
-            "body": "Der große Kegel hat Höhe \\(3\\,\\mathrm{cm}\\) und Radius \\(2{,}25\\,\\mathrm{cm}\\). Vom kleinen Kegel verwenden wir die Höhe \\(1{,}33\\,\\mathrm{cm}\\) aus dem Zwischenergebnis.\\[V_{\\mathrm{Stumpf}}\\approx\\frac13\\pi\\cdot(2{,}25\\,\\mathrm{cm})^2\\cdot3\\,\\mathrm{cm}-\\frac13\\pi\\cdot(1\\,\\mathrm{cm})^2\\cdot1{,}33\\,\\mathrm{cm}\\]Die Schnittfläche zwischen Kegelstumpf und Halbkugel gehört zum Inneren; ihr Kreisvolumen wird weder addiert noch abgezogen.",
+            "body": "Der große Kegel hat Höhe \\(3\\,\\mathrm{cm}\\) und Radius \\(2{,}25\\,\\mathrm{cm}\\). Vom kleinen Kegel verwenden wir die Höhe \\(1{,}33\\,\\mathrm{cm}\\) aus dem Zwischenergebnis.\\[V_{\\mathrm{Stumpf}}\\approx\\frac13\\pi\\cdot(2{,}25\\,\\mathrm{cm})^2\\cdot3\\,\\mathrm{cm}-\\frac13\\pi\\cdot(1\\,\\mathrm{cm})^2\\cdot1{,}33\\,\\mathrm{cm}\\]Die Schnittfläche zwischen Kegelstumpf und Halbkugel gehört zum Inneren; sie verursacht keinen zusätzlichen Volumenanteil.",
             "focus": "frustum"
           },
           {
