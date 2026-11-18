@@ -11,3 +11,8 @@
 /* Long original intermediate results remain locally scrollable on phones. */
 #statement,.original{max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden}
 
+
+
+.decomposition-note{flex-basis:100%;margin:6px 0 0;font-size:.9rem;line-height:1.55;color:#46596b}.legend{flex-wrap:wrap}.legend span{line-height:1.5}
+
+.rotation-gold{color:#875000}.rotation-blue{color:#195b86}.rotation-teal{color:#116d60}.rotation-pink{color:#8b2857}.rotation-slate{color:#50596c}
