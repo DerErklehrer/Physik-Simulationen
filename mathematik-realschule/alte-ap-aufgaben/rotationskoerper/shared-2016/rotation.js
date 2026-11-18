@@ -38,7 +38,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
   const P=[g.R/Math.sqrt(2),g.height+g.R/Math.sqrt(2)];line(g.points.M2,P,{'stroke-dasharray':'5 4'});label('r₂',[P[0]/2,g.height+(P[1]-g.height)/2],14,-4,'start');
   const Q=[g.r/Math.sqrt(2),-g.r/Math.sqrt(2)];line(g.points.M1,Q,{'stroke-dasharray':'5 4'});label('r₁',[Q[0]/2,Q[1]/2],12,8,'start');
  }else{
-  right(g.points.A,1,1);right(g.points.B,-1,-1);right(g.points.C,1,1);right(g.points.P,1,-1);
+  right(g.points.M,1,-1);right(g.points.A,1,1);right(g.points.B,-1,-1);right(g.points.C,1,1);right(g.points.P,1,-1);
   const t=phi*Math.PI/360;angle(g.points.E,Math.PI/2-t,Math.PI/2+t,29);label('φ',g.points.E,0,49);
   if(focus()==='limit'&&$('auxiliary').checked){line(g.points.D,g.points.B,{'stroke-dasharray':'5 4',stroke:'#4e91b6'});line(g.points.F,g.points.H,{'stroke-dasharray':'5 4',stroke:'#4e91b6'})}
  }
