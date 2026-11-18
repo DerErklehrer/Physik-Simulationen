@@ -58,3 +58,15 @@ Vor Freigabe korrigiert: erwartete Anzahl der Prüfungskarten in der Navigations
 - Browserregression der bisherigen II/III-Rotationskörper: Lauf `44094364348` — erfolgreich.
 - Bestehende Musterprüfungs-Vorschau: Lauf `44094364792` — erfolgreich.
 - Lokale Vorschau: 2D und Lernlösungen im Cloud-Browser geprüft. Dieser Browser stellt kein WebGL bereit; tatsächliche 3D-Drehung, Zoom und Touch wurden im separaten Chromium-Prüflauf mit WebGL/SwiftShader geprüft.
+
+## Nachtrag: konstante Längen und Kopfüberansicht (17./18.11.2026)
+
+Die automatische Skalierung bei jeder Winkeländerung ist ersetzt durch einen festen, gleichmäßigen Maßstab und einen festen Ursprung. Bei 2024 bleiben die beiden Basisdurchmesser 6 cm, bei 2025 bleibt die Kegelhöhe 4 cm. Dies gilt für 2D und für die orthografische 3D-Projektion bei unveränderter Blickrichtung. Eine Drehung kann eine Strecke perspektivisch verkürzt darstellen; eine Winkeländerung skaliert die Figur jedoch nicht mehr automatisch.
+
+Die Schaltfläche Gesamtansicht passt den Maßstab ausschließlich auf ausdrücklichen Klick an. Auch der so gewählte Maßstab bleibt bei weiteren Winkeländerungen fest. Ausgangsmaßstab stellt die Referenzansicht wieder her. In 2D sind zusätzlich Verschieben und Zoom möglich. An großen Reglerwerten können Figuren im festen Ausschnitt außerhalb der Zeichenfläche liegen; Gesamtansicht blendet sie vollständig ein. Die Aussage zur vollständigen Sichtbarkeit der Beschriftungen im ursprünglichen Protokoll gilt deshalb bei solchen Reglerwerten für die manuell angeforderte Gesamtansicht.
+
+Trackball-Steuerung ermöglicht die freie räumliche Drehung einschließlich Kopfüberlage. Zusätzlich stellt Kopfüber die umgedrehte Ausgangsansicht direkt ein. Die ursprünglichen Aufgaben, Rechnungen und Platzhalter sind unverändert.
+
+Zusätzliche technische Kontrollen: projizierte 2D-Längen und 3D-Längen bei mehreren Winkeln einschließlich der Reglergrenzen; exakte 3D-Längen; manueller Zoom und Ausgangsmaßstab; kein automatisches Nachskalieren nach Gesamtansicht; vollständige 2D-Beschriftungen in Gesamtansicht; tatsächliche Maus-/Touchdrehung und Zoom; Kamera-Up-Vektor nach Kopfüber; alle bisherigen Lösungsschritte und Bedienelemente auf Desktop und Mobilgerät in drei Durchgängen.
+
+Ergebnis: Lauf https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/44105858900 — alle 18 Browserfälle bestanden. Artefakt 14339407204 enthält results.json und 150 Bildbelege; ZIP-Digest sha256:99a741457a5e0a1b09e43a49e5cd478b447e35497f0310da822b07724f1ce242. Bildkontrolle der Ausgangsfiguren, konstanten Bemaßungen und Kopfüberansichten abgeschlossen.
