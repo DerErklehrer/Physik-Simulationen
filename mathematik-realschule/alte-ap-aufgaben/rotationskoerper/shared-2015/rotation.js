@@ -39,7 +39,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
   if(focus()==='large'){hi('K','F');hi('M','F')}
   if(focus()==='small'){hi('F','N');hi('F','H');hi('N','H')}
  }else{
-  right(g.points.M,-1,-1);right(g.points.K,-1,-1);right(g.points.I,1,1);right(g.points.H,-1,1);right(g.points.G,1,-1);
+  right(g.points.M,1,-1);right(g.points.K,1,1);right(g.points.N,1,-1);right(g.points.I,1,1);right(g.points.H,-1,1);right(g.points.G,1,-1);
   if(focus()==='height')hi('M','K');
   if(focus()==='large'){hi('A','S');hi('J','S')}
   if(focus()==='small')hi('S','K');
@@ -54,7 +54,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
    if(n==='M'){dx=-12;dy=20;anchor='end'}if(n==='N'){dx=12;dy=20}if(n==='E')dy=-9;if(n==='F')dy=3;if(['G','H'].includes(n))dy=-10;
   }else{
    if(['I','H','S','E','D'].includes(n)){dx=0;dy=-14;anchor='middle'}
-   if(['A','B','M'].includes(n))dy=23;if(n==='K'){dx=-12;dy=17;anchor='end'}if(n==='N'){dx=15;dy=17}if(n==='F')dy=-6;if(n==='G')dy=-6;if(['C','J'].includes(n))dy=15;
+   if(['A','B','M'].includes(n))dy=23;if(n==='K'){dx=-12;dy=17;anchor='end'}if(n==='N'){dx=22;dy=5}if(n==='F')dy=-6;if(n==='G')dy=-6;if(['C','J'].includes(n))dy=15;
   }
   label(n,p,dx,dy,anchor);
  }
