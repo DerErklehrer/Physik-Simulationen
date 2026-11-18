@@ -1,3 +1,4 @@
+import {installColorToggle,applySVGColorMode,applyMeshColorMode} from '../shared-colors/toggle.js';
 import {decomposition,legendHTML,colorSolution,drawDecomposition,decompositionMeshes} from '../shared-colors/decomposition.js';
 import {tasks} from './tasks.js';
 import {geometry} from './geometry.js';
@@ -5,6 +6,7 @@ const $=id=>document.getElementById(id),key=document.body.dataset.task,data=task
 let phi=75,g=geometry(key,phi);
 const initialSweep=key==='2016-nt-i'?225:360;
 let part=0,step=0,view='2d',sweep=initialSweep,three=null,mathQueue=Promise.resolve();
+const colorToggle=installColorToggle(()=>render());
 const current=()=>data.parts[part],focus=()=>current().steps[step][2];
 function math(){mathQueue=mathQueue.catch(()=>{}).then(async()=>{if(window.MathJax?.startup?.promise){await MathJax.startup.promise;await MathJax.typesetPromise([$ ('intro'),$('statement'),$('solution'),$('measure')])}});return mathQueue}
 function clearMath(){if(window.MathJax?.typesetClear)MathJax.typesetClear([$('statement'),$('solution'),$('measure')])}
@@ -57,7 +59,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
   if(key==='2016-nt-ii'){if(['F','C','E','D'].includes(n))dy=-10;if(n==='M2')dy=22}
   const name=n==='M1'?'M₁':n==='M2'?'M₂':n==='E'&&key==='2016-nt-i'?'Eₙ':n;label(name,p,dx,dy,anchor)
  }
- label(g.axis==='Rotationsachse'?g.axis:'Rotationsachse '+g.axis,[0,g.maxY],0,-44);svg.dataset.focus=focus();}
+ label(g.axis==='Rotationsachse'?g.axis:'Rotationsachse '+g.axis,[0,g.maxY],0,-44);applySVGColorMode(svg,colorToggle.checked);svg.dataset.focus=focus();}
 async function setView(mode){view=mode;$('plot').toggleAttribute('hidden',mode!=='2d');$('threewrap').hidden=mode!=='3d';$('cameraControls').hidden=mode!=='3d';$('sweepControl').hidden=mode!=='3d';for(const[v,id]of[['2d','view2'],['3d','view3']]){$(id).classList.toggle('active',mode===v);$(id).setAttribute('aria-pressed',String(mode===v))}if(mode==='3d'){if(!three)await init3d();else three.resize()}}
 $('view2').onclick=()=>setView('2d');$('view3').onclick=()=>setView('3d');
 $('sweep').oninput=()=>{sweep=Number($('sweep').value);$('sweepValue').textContent=sweep+'°';$('cutaway').textContent=sweep<360?'Körper schließen':'Ein Viertel herausschneiden';clearMath();measure();math();if(three)rebuild3d()};
@@ -78,8 +80,10 @@ function rebuild3d(){const{T,group,k,center}=three;while(group.children.length){
  const line=(a,b)=>{const A=norm(a),B=norm(b);edge([new T.Vector3(A.x,A.y,0),new T.Vector3(B.x,B.y,0)],decomposition(key,g)?'#7c8394':'#9c2946',true)};
  edge([new T.Vector3(0,(g.minY-center)*k-.3,0),new T.Vector3(0,(g.maxY-center)*k+.4,0)],'#596b79',true);
  if($('auxiliary').checked)for(const[a,b]of g.auxLines)line(g.points[a],g.points[b]);
+ applyMeshColorMode(group,colorToggle.checked);
 }
-window.oldRotationState=()=>({key,part,step,focus:focus(),sweep,view,geometry:g,three:three?{orthographic:three.cam.isOrthographicCamera,mode:three.mode,position:three.cam.position.toArray(),up:three.cam.up.toArray(),zoom:three.cam.zoom,meshes:three.group.children.filter(x=>x.isMesh).length,materials:three.group.children.filter(x=>x.isMesh).map(x=>({component:x.userData.component,color:'#'+x.material.color.getHexString(),opacity:x.material.opacity,transparent:x.material.transparent}))}:null});
+window.oldRotationState=()=>({key,part,step,componentColors:colorToggle.checked,focus:focus(),sweep,view,geometry:g,three:three?{orthographic:three.cam.isOrthographicCamera,mode:three.mode,position:three.cam.position.toArray(),up:three.cam.up.toArray(),zoom:three.cam.zoom,meshes:three.group.children.filter(x=>x.isMesh).length,materials:three.group.children.filter(x=>x.isMesh).map(x=>({component:x.userData.component,color:'#'+x.material.color.getHexString(),opacity:x.material.opacity,transparent:x.material.transparent}))}:null});
 reset();window.addEventListener('load',()=>math());
+
 
 

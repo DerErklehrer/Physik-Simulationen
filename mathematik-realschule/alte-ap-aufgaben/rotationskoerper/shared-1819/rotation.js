@@ -1,9 +1,11 @@
+import {installColorToggle,applySVGColorMode,applyMeshColorMode} from '../shared-colors/toggle.js';
 import {decomposition,legendHTML,colorSolution,drawDecomposition,decompositionMeshes} from '../shared-colors/decomposition.js';
 import {tasks} from './tasks.js';
 import {geometry} from './geometry.js';
 const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key],g=geometry(key),fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
 const initialSweep=key==='2018-ht'?225:360;
 let part=0,step=0,view='2d',sweep=initialSweep,three=null,mathQueue=Promise.resolve();
+const colorToggle=installColorToggle(()=>render());
 const current=()=>data.parts[part],focus=()=>current().steps[step][2];
 function math(){mathQueue=mathQueue.catch(()=>{}).then(async()=>{if(window.MathJax?.startup?.promise){await MathJax.startup.promise;await MathJax.typesetPromise([$ ('intro'),$('statement'),$('solution'),$('measure')])}});return mathQueue}
 function clearMath(){if(window.MathJax?.typesetClear)MathJax.typesetClear([$('statement'),$('solution'),$('measure')])}
@@ -46,7 +48,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
  if(key==='2019-ht'){if(focus()==='large')hi('M','S');if(focus()==='small')hi('O','S');if(focus()==='radius')hi('H','C');if(focus()==='cylinder'){hi('F','G');hi('F','N')}}
  if(key==='2018-nt'){if(focus()==='height')hi('B','C');if(focus()==='triangle'){line(g.points.A,[-1,g.fill],{stroke:'#9c2946','stroke-width':4});line(g.points.B,[-1,g.fill],{stroke:'#9c2946','stroke-width':4})}}
  for(const[n,p]of Object.entries(g.points)){let dx=p[0]<0?-13:13,dy=6,anchor=p[0]<0?'end':'start';if(['M','N','O'].includes(n)){dx=12;dy=n==='N'&&key==='2018-ht'?22:-12}if(n==='S'){dx=12;dy=key==='2018-ht'?21:-12}if(n==='D'&&key==='2018-nt'){dx=12;dy=23}if(key==='2018-nt'&&['A','G'].includes(n))dy=-9;if(key==='2019-ht'&&['H','C','G','D'].includes(n))dy=18;label(n,p,dx,dy,anchor)}
- label(g.axis==='Rotationsachse'?g.axis:'Rotationsachse '+g.axis,[0,g.maxY],0,-44);svg.dataset.focus=focus();}
+ label(g.axis==='Rotationsachse'?g.axis:'Rotationsachse '+g.axis,[0,g.maxY],0,-44);applySVGColorMode(svg,colorToggle.checked);svg.dataset.focus=focus();}
 async function setView(mode){view=mode;$('plot').toggleAttribute('hidden',mode!=='2d');$('threewrap').hidden=mode!=='3d';$('cameraControls').hidden=mode!=='3d';$('sweepControl').hidden=mode!=='3d';for(const[v,id]of[['2d','view2'],['3d','view3']]){$(id).classList.toggle('active',mode===v);$(id).setAttribute('aria-pressed',String(mode===v))}if(mode==='3d'){if(!three)await init3d();else three.resize()}}
 $('view2').onclick=()=>setView('2d');$('view3').onclick=()=>setView('3d');
 $('sweep').oninput=()=>{sweep=Number($('sweep').value);$('sweepValue').textContent=sweep+'°';$('cutaway').textContent=sweep<360?'Körper schließen':'Ein Viertel herausschneiden';clearMath();measure();math();if(three)rebuild3d()};
@@ -67,7 +69,9 @@ function rebuild3d(){const{T,group,k,center}=three;while(group.children.length){
  const line=(a,b)=>{const A=norm(a),B=norm(b);edge([new T.Vector3(A.x,A.y,0),new T.Vector3(B.x,B.y,0)],decomposition(key,g)?'#7c8394':'#9c2946',true)};
  edge([new T.Vector3(0,(g.minY-center)*k-.3,0),new T.Vector3(0,(g.maxY-center)*k+.4,0)],'#596b79',true);
  if($('auxiliary').checked&&key!=='2018-nt'){if(key==='2018-ht'){line(g.points.A,g.points.S);line(g.points.B,g.points.S)}else{line(g.points.H,g.points.S);line(g.points.C,g.points.S)}}
+ applyMeshColorMode(group,colorToggle.checked);
 }
-window.oldRotationState=()=>({key,part,step,focus:focus(),sweep,view,geometry:g,three:three?{orthographic:three.cam.isOrthographicCamera,mode:three.mode,position:three.cam.position.toArray(),up:three.cam.up.toArray(),zoom:three.cam.zoom,meshes:three.group.children.filter(x=>x.isMesh).length,materials:three.group.children.filter(x=>x.isMesh).map(x=>({component:x.userData.component,color:'#'+x.material.color.getHexString(),opacity:x.material.opacity,transparent:x.material.transparent}))}:null});
+window.oldRotationState=()=>({key,part,step,componentColors:colorToggle.checked,focus:focus(),sweep,view,geometry:g,three:three?{orthographic:three.cam.isOrthographicCamera,mode:three.mode,position:three.cam.position.toArray(),up:three.cam.up.toArray(),zoom:three.cam.zoom,meshes:three.group.children.filter(x=>x.isMesh).length,materials:three.group.children.filter(x=>x.isMesh).map(x=>({component:x.userData.component,color:'#'+x.material.color.getHexString(),opacity:x.material.opacity,transparent:x.material.transparent}))}:null});
 reset();window.addEventListener('load',()=>math());
+
 
