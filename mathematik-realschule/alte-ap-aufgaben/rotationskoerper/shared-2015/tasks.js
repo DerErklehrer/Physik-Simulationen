@@ -2,7 +2,7 @@ const S=String.raw;
 export const tasks={
  '2015-ht-ii':{
  title:'Lampe aus Plexiglasscheibe und Lampenschirm',introId:'A 3.0',
- intro:S`<p>Die nachfolgende Skizze zeigt den Axialschnitt eines Rotationskörpers mit der Rotationsachse \(ME\) und dient als Vorlage für eine Lampe, die aus einer Plexiglasscheibe und einem Lampenschirm besteht.</p><p>Es gilt: \(\lvert\overline{AB}\rvert=45\,\mathrm{cm};\;\lvert\overline{BC}\rvert=2\,\mathrm{cm};\;\lvert\overline{KL}\rvert=36\,\mathrm{cm};\;\lvert\overline{ME}\rvert=13{,}5\,\mathrm{cm};\;\lvert\overline{MF}\rvert=12\,\mathrm{cm}\).</p><p>Für den Durchmesser \(\overline{GH}\) des Halbkreisbogens \(\widehat{HG}\) gilt: \(\lvert\overline{GH}\rvert=9\,\mathrm{cm}\).</p><p>Runden Sie im Folgenden auf zwei Stellen nach dem Komma.</p>`,
+ intro:S`<p>Die nachfolgende Skizze zeigt den Axialschnitt eines Rotationskörpers mit der Rotationsachse \(ME\) und dient als Vorlage für eine Lampe, die aus einer Plexiglasscheibe und einem Lampenschirm besteht.</p><p>Es gilt:</p>\[\begin{aligned}\lvert\overline{AB}\rvert&=45\,\mathrm{cm};\\\lvert\overline{BC}\rvert&=2\,\mathrm{cm};\\\lvert\overline{KL}\rvert&=36\,\mathrm{cm};\\\lvert\overline{ME}\rvert&=13{,}5\,\mathrm{cm};\\\lvert\overline{MF}\rvert&=12\,\mathrm{cm}.\end{aligned}\]<p>Für den Durchmesser \(\overline{GH}\) des Halbkreisbogens \(\widehat{HG}\) gilt: \(\lvert\overline{GH}\rvert=9\,\mathrm{cm}\).</p><p>Runden Sie im Folgenden auf zwei Stellen nach dem Komma.</p>`,
  rounding:'Die Lernlösung folgt dem amtlichen Lösungsmuster: Mantellinien werden vor dem Einsetzen auf zwei Nachkommastellen gerundet. Das geometrische Modell verwendet ungerundete Maße.',
  parts:[
  {id:'A 3.1',points:1,statement:'Berechnen Sie das Volumen V der Plexiglasscheibe.',steps:[
