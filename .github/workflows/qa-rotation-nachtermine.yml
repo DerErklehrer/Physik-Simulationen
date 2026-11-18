@@ -25,6 +25,8 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: nohup python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/rotation-nt-server.log 2>&1 &
       - run: node abschlusspruefung/tests/browser_rotation_nt.mjs
+        env:
+          QA_TASK: '2026-II'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
