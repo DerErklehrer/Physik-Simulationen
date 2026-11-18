@@ -31,11 +31,13 @@ const numericTerms={
  '2022-ht':[['\\frac{1}{3}\\pi\\cdot4{,}5^2\\cdot9{,}9','gold'],['\\frac{1}{3}\\pi\\cdot2{,}5^2\\cdot5{,}5','slate'],['\\frac{2}{3}\\pi\\cdot2{,}5^3','blue']],
  '2022-nt':[['\\frac{1}{3}\\pi\\cdot4^2\\cdot2{,}72','gold'],['\\frac{1}{3}\\pi\\cdot2{,}5^2\\cdot1{,}7','slate'],['\\pi\\cdot2{,}5^2\\cdot3','teal'],['\\frac{2}{3}\\pi\\cdot2^3','blue']]
 };
-export function colorSolution(html,d){if(!d)return html;const wrap=(v,tone)=>`\\class{rotation-${tone}}{${v}}`;for(const[name,tone]of Object.entries(d.terms)){const sub=String.raw`_{\text{${name}}}`;for(const letter of['V','M','O','A'])html=html.split(letter+sub).join(wrap(letter+sub,tone))}for(const[token,tone]of numericTerms[d.key]||[])html=html.split(token).join(wrap(token,tone));return html}
+export function colorSolution(html,d){if(!d)return html;const wrap=(v,tone)=>`\\class{rotation-${tone}}{${v}}`;for(const[name,tone]of Object.entries(d.terms)){const sub=String.raw`_{\text{${name}}}`;for(const letter of['V','M','O','A'])html=html.split(letter+sub).join(wrap(letter+sub,tone))}for(const[token,tone]of d.numericTerms||numericTerms[d.key]||[])html=html.split(token).join(wrap(token,tone));return html}
 
 const mirror=ps=>[...ps,...ps.slice().reverse().map(([x,y])=>[-x,y])];
 export function drawDecomposition(d,polygon,line){if(!d)return false;for(const p of d.parts)polygon(mirror(p.profile),{fill:p.fill,'fill-opacity':.64,stroke:p.text,'stroke-width':1.5,'data-component':p.id});for(const p of d.voids)polygon(mirror(p.profile),{fill:p.fill,'fill-opacity':.16,stroke:p.text,'stroke-width':1.4,'stroke-dasharray':'5 4','data-component':'cavity'});if(d.ring){const g=d.parts[1],ps=d.profile;for(let i=0;i<ps.length;i++){const a=ps[i],b=ps[(i+1)%ps.length];if(Math.abs(a[1]-g.hi)<1e-8&&Math.abs(b[1]-g.hi)<1e-8&&Math.abs(a[0]-b[0])>1e-5){line(a,b,{stroke:d.ring.text,'stroke-width':5});line([-a[0],a[1]],[-b[0],b[1]],{stroke:d.ring.text,'stroke-width':5})}}}return true}
 function surfaceColor(d,a,b){
+ for(const rule of d.surfaceRules||[]){const on=p=>Math.abs((p[0]-rule.r0)*(rule.y1-rule.y0)-(p[1]-rule.y0)*(rule.r1-rule.r0))<1e-7;if(on(a)&&on(b))return{...P[rule.tone],id:rule.id}}
+
  if(d.cavityCylinder){const c=d.cavityCylinder,on=p=>Math.abs(p[0]-c.r)<1e-8&&p[1]>=c.floor-1e-8&&p[1]<=c.top+1e-8;if(on(a)&&on(b))return{...P.blue,id:'cavity'};if(Math.abs(a[1]-c.floor)<1e-8&&Math.abs(b[1]-c.floor)<1e-8&&Math.max(a[0],b[0])<=c.r+1e-8)return{...P.teal,id:'cavity-floor'}}
  const y=(a[1]+b[1])/2,r=(a[0]+b[0])/2;
  if(d.key==='2016-nt-i'){const v=d.voids[0],R=v.profile[1][0],h=v.profile[2][1],on=p=>Math.abs(p[0]-R*(1-p[1]/h))<1e-6;if(on(a)&&on(b))return{...P.blue,id:'cavity'}};
@@ -52,4 +54,5 @@ export function decompositionMeshes(T,group,norm,sweep,d){if(!d)return false;con
  // Each cut face is clipped from the actual material region; cavities remain empty.
  if(sweep<360)for(const p of d.parts){const pts=p.profile.map(norm);if(pts.length<3)continue;const faces=T.ShapeUtils.triangulateShape(pts,[]);for(const a of sweep===0?[0]:[0,angle]){const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(pts.flatMap(p=>[p.x*Math.sin(a),p.y,p.x*Math.cos(a)]),3));geo.setIndex(faces.flat());geo.computeVertexNormals();const mesh=new T.Mesh(geo,mat(p.fill));mesh.userData.component=p.id+'-cut';group.add(mesh)}}return true;
 }
+
 
