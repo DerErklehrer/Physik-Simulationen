@@ -16,3 +16,6 @@
 .decomposition-note{flex-basis:100%;margin:6px 0 0;font-size:.9rem;line-height:1.55;color:#46596b}.legend{flex-wrap:wrap}.legend span{line-height:1.5}
 
 .rotation-gold{color:#875000}.rotation-blue{color:#195b86}.rotation-teal{color:#116d60}.rotation-pink{color:#8b2857}.rotation-slate{color:#50596c}
+
+
+.color-toggle{display:flex;align-items:center;gap:9px;padding:11px 12px;margin-top:12px;border:1px solid #c6d0da;border-radius:8px;min-height:44px;font-weight:600;cursor:pointer}.color-toggle input{width:20px;height:20px;accent-color:#9c2946;flex:none}.rotation-colors-off [class*=rotation-]{color:inherit!important}.rotation-colors-off .legend span:before{color:#7c8795}.rotation-colors-off .decomposition-note{display:none}
