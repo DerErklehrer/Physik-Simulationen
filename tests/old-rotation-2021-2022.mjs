@@ -6,7 +6,7 @@ import {tasks} from '../mathematik-realschule/alte-ap-aufgaben/rotationskoerper/
 const base=process.env.QA_BASE||'http://127.0.0.1:8765',out='/tmp/old-rotation-2021-2022';await mkdir(out,{recursive:true});
 const root='/mathematik-realschule/alte-ap-aufgaben/rotationskoerper/';
 const cases=[{key:'2021-ht',slug:'2021-ht-a3.html',expected:61.19,parts:[6],points:[5]},{key:'2022-ht',slug:'2022-ht-a1.html',expected:141.21,parts:[5,2],points:[4,1]},{key:'2022-nt',slug:'2022-nt-a1.html',expected:76.60,parts:[5],points:[5]}];
-const report=[];
+const report=[];let activePage=null;const diagnostics=[];
 const browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 try{for(let pass=1;pass<=3;pass++){
  // Independent numerical checks: cylindrical slices and analytic cavity integrals.
@@ -17,8 +17,8 @@ try{for(let pass=1;pass<=3;pass++){
  assert.equal(Math.round(141.21*2.7),381);
  for(const c of cases){const g=geometry(c.key);assert(g.profile.every(p=>p.every(Number.isFinite)&&p[0]>=0));assert.equal(tasks[c.key].parts.length,c.parts.length);assert(!JSON.stringify(tasks[c.key]).includes('\\angle'));assert(!JSON.stringify(tasks[c.key]).includes('https://'));}
  for(const [mode,width,height]of[['desktop',1366,950],['mobile',390,844]]){
- const context=await browser.newContext({viewport:{width,height},hasTouch:mode==='mobile',isMobile:mode==='mobile'}),p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
- const ready=async()=>{await p.waitForFunction(()=>window.MathJax?.startup?.document?.state()>=150);await p.evaluate(()=>MathJax.startup.promise);await p.waitForTimeout(100);assert.equal(await p.locator('mjx-merror,[data-mjx-error]').count(),0);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));};
+ const context=await browser.newContext({viewport:{width,height},hasTouch:mode==='mobile',isMobile:mode==='mobile'}),p=await context.newPage(),errors=[];activePage=p;p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')diagnostics.push(m.text())});p.on('requestfailed',r=>diagnostics.push(r.url()+' '+r.failure()?.errorText));
+ const ready=async()=>{await p.waitForFunction(()=>typeof window.oldRotationState==='function'&&Boolean(window.MathJax?.startup?.promise));await p.evaluate(async()=>{await MathJax.startup.promise;await MathJax.typesetPromise()});await p.locator('#intro mjx-container').first().waitFor({state:'visible'});await p.waitForTimeout(100);assert.equal(await p.locator('mjx-merror,[data-mjx-error]').count(),0);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));};
  for(const c of cases){const response=await p.goto(base+root+c.slug,{waitUntil:'networkidle'});assert.equal(response.status(),200);await ready();assert.equal(await p.locator('#parts button').count(),c.parts.length);assert.equal(await p.locator('a[href$=".pdf"]').count(),0);assert.equal(await p.locator('#plot text').allTextContents().then(x=>x.some(v=>v.includes('Rotationsachse'))),true);
  for(let i=0;i<c.parts.length;i++){await p.locator('#parts button').nth(i).click();for(let j=0;j<c.parts[i];j++){await ready();const state=await p.evaluate(()=>oldRotationState());assert.equal(state.part,i);assert.equal(state.step,j);assert(await p.locator('#solution').innerText().then(s=>s.length>40));assert(!(await p.locator('#plot').innerHTML()).includes('NaN'));if(j<c.parts[i]-1)await p.locator('#next').click();}assert.equal(await p.locator('#next').isDisabled(),true);assert(await p.locator('#solution').textContent().then(s=>s.replace(/\s/g,'').includes(c.key==='2022-ht'&&i===1?'381':c.expected.toFixed(2).replace('.',','))));await p.screenshot({path:`${out}/pass${pass}-${mode}-${c.key}-part${i}.png`,fullPage:true});}
  await p.locator('#view3').click();await p.waitForFunction(()=>oldRotationState().three!==null,{timeout:30000});let s=await p.evaluate(()=>oldRotationState());assert(s.three.orthographic);assert(s.three.materials.every(m=>m.opacity===1&&!m.transparent));
@@ -32,4 +32,4 @@ try{for(let pass=1;pass<=3;pass++){
  }
  assert.deepEqual(errors,[]);await context.close();}
  console.log(`Durchgang ${pass}: alle Aufgaben, Teilaufgaben und neun Kategorien auf Desktop/Mobil geprüft.`);
- }}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2))}
+ }}catch(e){if(activePage){await activePage.screenshot({path:out+'/failure.png',fullPage:true}).catch(()=>{});await writeFile(out+'/failure.html',await activePage.content().catch(()=>''));}await writeFile(out+'/diagnostics.json',JSON.stringify({error:String(e),messages:diagnostics},null,2));throw e;}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2))}
