@@ -35,6 +35,7 @@ export function drawDecomposition(d,polygon,line){if(!d)return false;for(const p
 function surfaceColor(d,a,b){const y=(a[1]+b[1])/2,r=(a[0]+b[0])/2;
  if(d.key==='2016-nt-i'){const v=d.voids[0],R=v.profile[1][0],h=v.profile[2][1],on=p=>Math.abs(p[0]-R*(1-p[1]/h))<1e-6;if(on(a)&&on(b))return{...P.blue,id:'cavity'}};
  if(d.key.startsWith('2022')){const v=d.voids[0],cavityR=Math.max(...v.profile.map(p=>p[0])),top=v.profile[0][1];const on=p=>Math.abs(p[0]**2+(p[1]-top)**2-cavityR**2)<1e-6;if(on(a)&&on(b)&&a[1]<=top+1e-8&&b[1]<=top+1e-8)return{...P.blue,id:'cavity'}}
+ if(d.key==='2019-ht'&&Math.abs(a[1]-d.parts[1].lo)<1e-8&&Math.abs(b[1]-d.parts[1].lo)<1e-8)return{...P.teal,id:'cylinder'};
  if(d.ring&&Math.abs(a[1]-6)<1e-8&&Math.abs(b[1]-6)<1e-8&&r>.8-1e-8)return{...P.teal,id:'ring'};
  const p=d.parts.find(p=>y>p.lo+1e-8&&y<p.hi-1e-8)||d.parts.find(p=>y>=p.lo-1e-8&&y<=p.hi+1e-8);return{fill:p.fill,id:p.id};
 }
