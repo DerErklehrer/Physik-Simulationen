@@ -1,3 +1,4 @@
+import {decomposition,legendHTML,colorSolution,drawDecomposition,decompositionMeshes} from '../shared-colors/decomposition.js';
 import {tasks} from './tasks.js';
 import {geometry} from './geometry.js';
 const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key],g=geometry(key),fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
@@ -8,7 +9,8 @@ function math(){mathQueue=mathQueue.catch(()=>{}).then(async()=>{if(window.MathJ
 function clearMath(){if(window.MathJax?.typesetClear)MathJax.typesetClear([$('statement'),$('solution'),$('measure')])}
 $('intro').innerHTML=(data.introId?'<h3>'+data.introId+'</h3>':'')+data.intro;$('rounding').textContent=data.rounding;
 for(const link of document.querySelectorAll('nav.buttons a'))if(new URL(link.href).pathname===location.pathname)link.setAttribute('aria-current','page');
-function render(){clearMath();$('parts').replaceChildren();data.parts.forEach((p,i)=>{const b=document.createElement('button');b.textContent=p.id;b.className=i===part?'active':'';b.setAttribute('aria-pressed',String(i===part));b.onclick=()=>{part=i;step=0;render()};$('parts').append(b)});const p=current(),s=p.steps[step];$('statement').innerHTML=`<h3>${p.id} <span class="tag">${p.points} P</span></h3><div>${p.statement}</div>`;$('stepTitle').textContent=`${step+1} · ${s[0]}`;$('count').textContent=`${step+1} von ${p.steps.length}`;$('solution').innerHTML=s[1];$('prev').disabled=step===0;$('next').disabled=step===p.steps.length-1;draw2d();measure();math();if(three)rebuild3d()}
+function updateLegend(){const d=decomposition(key,g);if(d){let legend=document.getElementById('legend')||document.querySelector('.legend');if(legend)legend.innerHTML=legendHTML(d)}}
+function render(){clearMath();$('parts').replaceChildren();data.parts.forEach((p,i)=>{const b=document.createElement('button');b.textContent=p.id;b.className=i===part?'active':'';b.setAttribute('aria-pressed',String(i===part));b.onclick=()=>{part=i;step=0;render()};$('parts').append(b)});const p=current(),s=p.steps[step];$('statement').innerHTML=`<h3>${p.id} <span class="tag">${p.points} P</span></h3><div>${p.statement}</div>`;$('stepTitle').textContent=`${step+1} · ${s[0]}`;$('count').textContent=`${step+1} von ${p.steps.length}`;$('solution').innerHTML=colorSolution(s[1],decomposition(key,g));updateLegend();$('prev').disabled=step===0;$('next').disabled=step===p.steps.length-1;draw2d();measure();math();if(three)rebuild3d()}
 $('prev').onclick=()=>{if(step>0){step--;render()}};$('next').onclick=()=>{if(step<current().steps.length-1){step++;render()}};
 function reset(){part=0;step=0;sweep=initialSweep;$('sweep').value=String(sweep);$('sweepValue').textContent=sweep+'°';$('cutaway').textContent=sweep<360?'Körper schließen':'Ein Viertel herausschneiden';$('auxiliary').checked=true;setView('2d');if(three)camera('default');render()}
 $('reset').onclick=reset;$('auxiliary').onchange=()=>{draw2d();if(three)rebuild3d()};
@@ -24,7 +26,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
  const label=(text,p,dx=0,dy=0,anchor='middle')=>{const A=map(p),e=el('text',{x:A[0]+dx,y:A[1]+dy,'font-size':19,'font-family':'system-ui, sans-serif','font-weight':600,fill:'#263544','text-anchor':anchor,'paint-order':'stroke',stroke:'white','stroke-width':4});e.textContent=text;return e};
  const right=(p,dx,dy)=>{const a=map(p),rad=13;el('path',{d:`M ${a[0]+dx*rad} ${a[1]} A ${rad} ${rad} 0 0 ${dx*dy>0?1:0} ${a[0]} ${a[1]+dy*rad}`,fill:'none',stroke:'#536577','stroke-width':1.2});el('circle',{cx:a[0]+dx*rad/Math.sqrt(8),cy:a[1]+dy*rad/Math.sqrt(8),r:2.2,fill:'#536577'})};
  const angle=(p,start,end,r=29)=>{const a=map(p);el('path',{d:`M ${a[0]+r*Math.cos(start)} ${a[1]+r*Math.sin(start)} A ${r} ${r} 0 0 ${end>start?1:0} ${a[0]+r*Math.cos(end)} ${a[1]+r*Math.sin(end)}`,stroke:'#9c2946',fill:'none','stroke-width':1.8})};
- const dashed={'stroke-dasharray':'6 5',stroke:'#9c2946'};
+ const dashed={'stroke-dasharray':'6 5',stroke:decomposition(key,g)?'#7c8394':'#9c2946'};
  if(key==='2018-ht'){
   polygon(g.outline,{fill:'#a46b37'});const c=map([0,g.creamCenter]);el('circle',{cx:c[0],cy:c[1],r:g.creamRadius*scale,fill:'#4e91b6','fill-opacity':.8,stroke:'#314857','stroke-width':1.8});
   if($('auxiliary').checked){line(g.points.A,g.points.S,dashed);line(g.points.B,g.points.S,dashed)}right(g.points.M,-1,1);right(g.points.N,-1,1);angle(g.points.D,0,71.6*Math.PI/180);label('71,6°',g.points.D,42,27,'start');
@@ -36,7 +38,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
   const end=[g.R/Math.sqrt(2),g.R-g.R/Math.sqrt(2)];line(g.points.M,end,{'stroke-dasharray':'5 4'});label('r',[end[0]/2,(g.R+end[1])/2],9,5,'start');
   line([g.R+9,0],[g.R+9,50]);for(const y of[0,50])line([g.R+7,y],[g.R+11,y]);label('50 mm',[g.R+9,25],13,6,'start');
  }else{
-  polygon(g.outline);if($('auxiliary').checked){line(g.points.H,g.points.S,dashed);line(g.points.C,g.points.S,dashed)}line(g.points.G,g.points.D,{'stroke-dasharray':'5 4'});right(g.points.M,-1,-1);right(g.points.O,1,-1);right(g.points.N,-1,1);angle(g.points.S,Math.PI/2,Math.PI/2+16*Math.PI/180,36);label('16°',g.points.S,-20,58,'end');
+  if(!drawDecomposition(decomposition(key,g),polygon,line))polygon(g.outline);if($('auxiliary').checked){line(g.points.H,g.points.S,dashed);line(g.points.C,g.points.S,dashed)}line(g.points.G,g.points.D,{'stroke-dasharray':'5 4'});right(g.points.M,-1,-1);right(g.points.O,1,-1);right(g.points.N,-1,1);angle(g.points.S,Math.PI/2,Math.PI/2+16*Math.PI/180,36);label('16°',g.points.S,-20,58,'end');
  }
  line([0,g.minY-.025*(g.maxY-g.minY)],[0,g.maxY+.025*(g.maxY-g.minY)],{'stroke-dasharray':'9 4 2 4',stroke:'#263544'});
  const hi=(a,b)=>line(g.points[a],g.points[b],{stroke:'#9c2946','stroke-width':4});
@@ -54,15 +56,18 @@ async function init3d(){try{const T=await import('three'),{TrackballControls}=aw
  const resize=()=>{const w=$('threewrap').clientWidth||640,h=$('threewrap').clientHeight||540;cam.left=-5.3*w/h;cam.right=5.3*w/h;cam.top=5.3;cam.bottom=-5.3;cam.updateProjectionMatrix();renderer.setSize(w,h,false);controls.handleResize()};three={T,renderer,scene,cam,controls,group,k,center,resize,mode:'default'};new ResizeObserver(resize).observe($('threewrap'));resize();camera('default');rebuild3d();const tick=()=>{requestAnimationFrame(tick);if(view==='3d'){controls.update();renderer.render(scene,cam)}};tick();$('threeError').hidden=true;}catch(e){$('threeError').hidden=false;$('threeError').textContent='Die 3D-Ansicht benötigt WebGL und eine Internetverbindung. Axialschnitt und Lernlösungen stehen weiterhin zur Verfügung.';console.error(e)}}
 function camera(mode){if(!three)return;const{cam,controls}=three;three.mode=mode;cam.zoom=1;controls.target.set(0,0,0);cam.up.set(0,1,0);if(mode==='top'||mode==='bottom'){cam.position.set(0,mode==='top'?24:-24,.0001);cam.up.set(0,0,mode==='top'?-1:1)}else{cam.position.set(-11,13,16);if(mode==='inverted')cam.up.set(0,-1,0)}cam.lookAt(0,0,0);cam.updateProjectionMatrix();controls.update()}
 function rebuild3d(){const{T,group,k,center}=three;while(group.children.length){const o=group.children[0];group.remove(o);o.geometry?.dispose();o.material?.dispose()}const norm=([r,y])=>new T.Vector2(r*k,(y-center)*k),angle=sweep*Math.PI/180;
+ if(!decompositionMeshes(T,group,norm,sweep,decomposition(key,g))){
  for(const obj of g.objects){if(obj.glass&&!$('auxiliary').checked)continue;const profile=obj.profile.filter((p,i,arr)=>i===0||Math.hypot(p[0]-arr[i-1][0],p[1]-arr[i-1][1])>1e-8);if(Math.hypot(profile[0][0]-profile.at(-1)[0],profile[0][1]-profile.at(-1)[1])<1e-8)profile.pop();const closed=[...profile,profile[0]],mat=()=>new T.MeshStandardMaterial({color:obj.color,side:T.DoubleSide,roughness:.75,transparent:Boolean(obj.glass),opacity:obj.glass?.18:1,depthWrite:!obj.glass});
  const add=ps=>{if(sweep<=0)return;const m=new T.Mesh(new T.LatheGeometry(ps.map(norm),128,0,angle),mat());m.userData.component=obj.id;group.add(m)};
  if(obj.glass||obj.id==='cream'||obj.id==='sand')add(closed);else for(let i=0;i<closed.length-1;i++){const p=closed[i],q=closed[i+1];if(p[0]<1e-8&&q[0]<1e-8)continue;if(obj.omitInner&&i>=4)continue;add([p,q])}
  if(!obj.glass&&sweep<360){const pts=profile.map(norm),faces=T.ShapeUtils.triangulateShape(pts,[]);for(const a of sweep===0?[0]:[0,angle]){const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(pts.flatMap(p=>[p.x*Math.sin(a),p.y,p.x*Math.cos(a)]),3));geo.setIndex(faces.flat());geo.computeVertexNormals();const m=new T.Mesh(geo,mat());m.userData.component=obj.id;group.add(m)}}
  }
+ }
  const edge=(ps,color='#596b79',dash=false)=>{const m=dash?new T.LineDashedMaterial({color,dashSize:.15,gapSize:.09}):new T.LineBasicMaterial({color}),line=new T.Line(new T.BufferGeometry().setFromPoints(ps),m);if(dash)line.computeLineDistances();group.add(line)};
- const line=(a,b)=>{const A=norm(a),B=norm(b);edge([new T.Vector3(A.x,A.y,0),new T.Vector3(B.x,B.y,0)],'#9c2946',true)};
+ const line=(a,b)=>{const A=norm(a),B=norm(b);edge([new T.Vector3(A.x,A.y,0),new T.Vector3(B.x,B.y,0)],decomposition(key,g)?'#7c8394':'#9c2946',true)};
  edge([new T.Vector3(0,(g.minY-center)*k-.3,0),new T.Vector3(0,(g.maxY-center)*k+.4,0)],'#596b79',true);
  if($('auxiliary').checked&&key!=='2018-nt'){if(key==='2018-ht'){line(g.points.A,g.points.S);line(g.points.B,g.points.S)}else{line(g.points.H,g.points.S);line(g.points.C,g.points.S)}}
 }
-window.oldRotationState=()=>({key,part,step,focus:focus(),sweep,view,geometry:g,three:three?{orthographic:three.cam.isOrthographicCamera,mode:three.mode,position:three.cam.position.toArray(),up:three.cam.up.toArray(),zoom:three.cam.zoom,meshes:three.group.children.filter(x=>x.isMesh).length,materials:three.group.children.filter(x=>x.isMesh).map(x=>({component:x.userData.component,opacity:x.material.opacity,transparent:x.material.transparent}))}:null});
+window.oldRotationState=()=>({key,part,step,focus:focus(),sweep,view,geometry:g,three:three?{orthographic:three.cam.isOrthographicCamera,mode:three.mode,position:three.cam.position.toArray(),up:three.cam.up.toArray(),zoom:three.cam.zoom,meshes:three.group.children.filter(x=>x.isMesh).length,materials:three.group.children.filter(x=>x.isMesh).map(x=>({component:x.userData.component,color:'#'+x.material.color.getHexString(),opacity:x.material.opacity,transparent:x.material.transparent}))}:null});
 reset();window.addEventListener('load',()=>math());
+

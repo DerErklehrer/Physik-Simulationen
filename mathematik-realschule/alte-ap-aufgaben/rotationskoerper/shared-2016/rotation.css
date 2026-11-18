@@ -11,3 +11,6 @@
 /* Long original intermediate results remain locally scrollable on phones. */
 #statement,.original{max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden}
 
+
+
+.decomposition-note{flex-basis:100%;margin:6px 0 0;font-size:.9rem;line-height:1.55;color:#46596b}.legend{flex-wrap:wrap}.legend span{line-height:1.5}

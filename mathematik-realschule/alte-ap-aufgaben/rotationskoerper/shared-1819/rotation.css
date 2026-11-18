@@ -10,3 +10,6 @@
 #plot{cursor:default;touch-action:auto}.legend{line-height:1.5}#sweepControl{margin-top:15px}.grid{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr)}#parts button.active{opacity:1}#solution p:first-child{margin-top:0}#threeError{inset:10px;margin:0}#statement h3{margin-bottom:8px}nav.buttons a{padding:9px 11px;border:1px solid #dbe1e6;border-radius:7px;background:white;text-decoration:none}nav.buttons a[aria-current=page]{border-color:#9c2946;background:#f7eaf0} @media(max-width:850px){.grid{grid-template-columns:1fr}}
 /* Long original intermediate results remain locally scrollable on phones. */
 #statement,.original{max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden}
+
+
+.decomposition-note{flex-basis:100%;margin:6px 0 0;font-size:.9rem;line-height:1.55;color:#46596b}.legend{flex-wrap:wrap}.legend span{line-height:1.5}
