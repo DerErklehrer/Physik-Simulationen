@@ -35,7 +35,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const title=document
  if(focus()==='small')highlight('G','H');
  if(focus()==='radii'){if(key==='2021-ht'){highlight('F','K');highlight('E','H')}else if(key==='2022-ht'){highlight('M','E');highlight('N','D');highlight('M','F')}else{highlight('A','N');highlight('I','K');highlight('M','E')}}
  label('Rotationsachse '+g.axis,[0,g.maxY+.55],0,-5);svg.dataset.focus=focus();}
-async function setView(mode){view=mode;$('plot').hidden=mode!=='2d';$('threewrap').hidden=mode!=='3d';$('cameraControls').hidden=mode!=='3d';$('sweepControl').hidden=mode!=='3d';for(const[v,id]of[['2d','view2'],['3d','view3']]){$(id).classList.toggle('active',mode===v);$(id).setAttribute('aria-pressed',String(mode===v))}if(mode==='3d'){if(!three)await init3d();else three.resize()}}
+async function setView(mode){view=mode;$('plot').toggleAttribute('hidden',mode!=='2d');$('threewrap').hidden=mode!=='3d';$('cameraControls').hidden=mode!=='3d';$('sweepControl').hidden=mode!=='3d';for(const[v,id]of[['2d','view2'],['3d','view3']]){$(id).classList.toggle('active',mode===v);$(id).setAttribute('aria-pressed',String(mode===v))}if(mode==='3d'){if(!three)await init3d();else three.resize()}}
 $('view2').onclick=()=>setView('2d');$('view3').onclick=()=>setView('3d');
 $('sweep').oninput=()=>{sweep=Number($('sweep').value);$('sweepValue').textContent=sweep+'°';clearMath();measure();math();if(three)rebuild3d()};
 for(const[id,mode]of[['cameraReset','default'],['top','top'],['bottom','bottom'],['inverted','inverted']])$(id).onclick=()=>camera(mode);
