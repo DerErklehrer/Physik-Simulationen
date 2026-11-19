@@ -72,6 +72,7 @@ try{
         await math();
         const fluid=liquidSettings[c.key];
         assert.equal(await page.locator('#waterHeight').isVisible(),Boolean(fluid));
+        if(fluid)assert.equal(await page.locator('#plot [data-liquid="water"]').getAttribute('fill'),'#52a6d7');
         assert.equal(await page.locator('#cutaway').isVisible(),false);
         assert.equal(await page.locator('a[href$=".pdf"]').count(),0);
         assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
@@ -89,6 +90,13 @@ try{
           if(c.key==='2009-ht-ii'&&i===2){
             assert((await state()).liquid.sphere);
             near((await state()).liquid.height,8.02);
+            await click('view3');
+            await page.waitForFunction(()=>window.oldRotationState().three?.materials.some(m=>m.component==='ball'));
+            await click('view2');
+            await click('prev');
+            near((await state()).liquid.height,6);
+            await click('next');
+            await math();
           }
           if(c.key==='2009-ht-i'&&i===1)near((await state()).liquid.height,158.7);
           const rendered=await page.locator('#solution').evaluate(node=>{

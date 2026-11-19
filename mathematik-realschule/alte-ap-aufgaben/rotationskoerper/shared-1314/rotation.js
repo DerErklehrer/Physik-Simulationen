@@ -41,10 +41,11 @@ function updateWater(){
  $('waterHeight').value=waterHeight;
  $('waterHeightValue').textContent=fmt(waterHeight,waterSetting.units==='mm'?1:2)+' '+waterSetting.units;
 }
-function advanceWater(){
+function updateWaterForStep(previousFocus){
  if(!waterSetting)return;
  if(focus()==='half')waterHeight=158.7;
- if(focus()==='rise')waterHeight=8.02;
+ else if(focus()==='rise')waterHeight=8.02;
+ else if(previousFocus==='half'||previousFocus==='rise')waterHeight=waterSetting.value;
 }
 function choosePart(i){
  if(!waterSetting)return;
@@ -57,7 +58,7 @@ $('intro').innerHTML=(data.introId?'<h3>'+data.introId+'</h3>':'')+data.intro;$(
 for(const link of document.querySelectorAll('nav.buttons a'))if(new URL(link.href).pathname===location.pathname)link.setAttribute('aria-current','page');
 function updateLegend(){const d=decomposition(key,g);if(d){let legend=document.getElementById('legend')||document.querySelector('.legend');if(legend)legend.innerHTML=legendHTML(d)}}
 function render(){clearMath();$('parts').replaceChildren();data.parts.forEach((p,i)=>{const b=document.createElement('button');b.textContent=p.id;b.className=i===part?'active':'';b.setAttribute('aria-pressed',String(i===part));b.onclick=()=>{part=i;step=0;choosePart(i);if(key==='2013-nt-i'){$('sphere').checked=i===3;setPhi(i===1?Math.atan(4.5*Math.sin(g.alpha*Math.PI/180)/(8-4.5*Math.cos(g.alpha*Math.PI/180)))*180/Math.PI:20)}else if(setting?.presets[i]!==undefined)setPhi(setting.presets[i]);render()};$('parts').append(b)});const p=current(),s=p.steps[step];$('statement').innerHTML=`<h3>${p.id} <span class="tag">${p.points} P</span></h3><div>${p.statement}</div>`;$('stepTitle').textContent=`${step+1} · ${s[0]}`;$('count').textContent=`${step+1} von ${p.steps.length}`;$('solution').innerHTML=colorSolution(s[1],decomposition(key,g));updateWater();updateLegend();$('prev').disabled=step===0;$('next').disabled=step===p.steps.length-1;draw2d();measure();math();if(three)rebuild3d()}
-$('prev').onclick=()=>{if(step>0){step--;render()}};$('next').onclick=()=>{if(step<current().steps.length-1){step++;advanceWater();render()}};
+$('prev').onclick=()=>{if(step>0){const previous=focus();step--;updateWaterForStep(previous);render()}};$('next').onclick=()=>{if(step<current().steps.length-1){const previous=focus();step++;updateWaterForStep(previous);render()}};
 function reset(){part=0;step=0;choosePart(0);if(key==='2013-nt-i'){setPhi(20);$('sphere').checked=false;}else if(setting)setPhi(setting.value);sweep=initialSweep;setSweep(sweep,false);$('auxiliary').checked=true;setView('2d');if(three)camera('default');render()}
 $('reset').onclick=reset;$('auxiliary').onchange=()=>{draw2d();if(three)rebuild3d()};
 function measure(){const liquid=currentLiquid();if(liquid){
@@ -170,7 +171,7 @@ function rebuild3d(){
  const liquid=currentLiquid();
  if(liquid){
   for(const mesh of group.children.filter(o=>o.isMesh)){
-   mesh.material.transparent=true;mesh.material.opacity=.26;mesh.material.depthWrite=false;
+   mesh.material.transparent=true;mesh.material.opacity=.18;mesh.material.depthWrite=false;
    mesh.renderOrder=2;
   }
   const addLiquid=(id,profile,fill,transparent,circles=[])=>{
@@ -178,7 +179,7 @@ function rebuild3d(){
    decompositionMeshes(T,group,norm,sweep,{key:id,profile,parts:[{id,profile,fill,lo:-Infinity,hi:Infinity}],voids:[],breaks:[],circles});
    for(const mesh of group.children.slice(start)){
     mesh.material.transparent=transparent;mesh.material.opacity=transparent?.55:1;mesh.material.depthWrite=!transparent;
-    mesh.renderOrder=transparent?1:0;
+    mesh.renderOrder=transparent?3:0;
    }
   };
   if(liquid.height>0)addLiquid('water',liquid.profile,'#52a6d7',true);

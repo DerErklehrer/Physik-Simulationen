@@ -11,6 +11,7 @@ export function installColorToggle(onChange){
 export function applySVGColorMode(svg,enabled){
  if(enabled)return;
  for(const el of svg.querySelectorAll('polygon,circle[fill]:not([r="2.2"]),line[stroke-width="5"]')){
+  if(el.hasAttribute('data-liquid'))continue;
   const fill=el.getAttribute('fill');if(fill&&fill!=='none')el.setAttribute('fill','#aeb8c3');
   if(el.hasAttribute('stroke')&&el.getAttribute('stroke')!=='none')el.setAttribute('stroke','#536577');
  }
