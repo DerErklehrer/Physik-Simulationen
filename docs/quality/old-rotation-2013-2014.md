@@ -44,4 +44,14 @@ Die farbigen Teilprofile summieren sich zum tatsächlichen Materialprofil (radia
 
 Jeder Durchgang umfasst alle Aufgaben, Teilaufgaben und Lösungsschritte auf Desktop und Mobilgeräten sowie die neun Kategorien des Qualitätsstandards: Originaltreue, Mathematik, Notation, Grafik, 3D, Abhängigkeiten/Randwerte, Didaktik, Technik/Bedienung, Veröffentlichung/Konsistenz. Die technische Prüfung kontrolliert unter anderem 0/90/270/360°, Kameras, orthografische Draufsicht, Maus-/Touchdrehung, Farbmodus, Hilfslinien, Aufgabenreset, Navigation und MathJax. Die Winkelaufgabe wird zusätzlich bei 0,01°, 20°, 32,08°, 45° und 51,31° geprüft, einschließlich Kugelradius und -oberfläche.
 
-Endgültige Läufe und tatsächliche Ergebnisse werden nach der Prüfung ergänzt. Noch laufende oder fehlgeschlagene Vorprüfungen sind keine Freigabe.
+Der [GitHub-Actions-Lauf 44402426785](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/44402426785) hat alle drei Durchgänge für den geprüften Stand `5010db68aee04aacee340e248c1a57c0bbd3c1d9` am 18.11.2026 erfolgreich abgeschlossen. Jeder Durchgang umfasste sämtliche fünf Aufgaben, elf Teilaufgaben und 42 Lösungsschritte in Desktop- und Mobilansicht.
+
+| Durchgang | Desktop | Mobil mit Touch | Ergebnis |
+|---|---|---|---|
+| 1 · Vollprüfung | 5 Aufgaben, 42 Schritte | 5 Aufgaben, 42 Schritte | Bestanden |
+| 2 · Wiederholungsprüfung | 5 Aufgaben, 42 Schritte | 5 Aufgaben, 42 Schritte | Bestanden |
+| 3 · Abschluss- und Regressionsprüfung | 5 Aufgaben, 42 Schritte | 5 Aufgaben, 42 Schritte | Bestanden |
+
+Der ISB-Abgleich der fünf Aufgaben, Teilaufgaben und Lösungsmuster ist oben festgehalten und wurde zur Freigabe erneut nachvollzogen. Die Browserläufe prüften die Rechenwerte, das MathJax-Rendering, die SVG-Zeichnungen, die 3D-Ansichten und ihre Bedienung, die gekoppelten Winkel und Grenzwerte, alle Lösungsschritte, Aufgabenwechsel, Zurücksetzen und die Verlinkung aus der Übersicht. Der [Prüfnachweis](https://github.com/DerErklehrer/Physik-Simulationen/actions/runs/44402426785/artifacts/14474206609) enthält 30 Ergebnisdatensätze, aufgeschlüsselt nach Durchgang, Ansicht und Aufgabe, sowie 156 Screenshots. Die fünf Axialschnitte und 3D-Ansichten wurden anhand der Mobilaufnahmen des letzten Durchgangs zusätzlich gesichtet.
+
+Die Regressionsläufe zur Mathematik-Navigation und zu den Rotationskörpern 2015, 2016, 2018/2019 und 2021/2022 waren für denselben Commit erfolgreich. Bei der Freigabeprüfung waren keine Befunde offen.
