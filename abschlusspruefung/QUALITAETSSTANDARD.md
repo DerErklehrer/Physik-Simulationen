@@ -3,6 +3,7 @@
 Referenz: vollständig ausgearbeiteter Haupttermin Mathematik I 2026. Insbesondere B 3 und B 4 für umfangreiche Aufgaben, der Rotationskörper als Vorlage für Körperdarstellungen und die 2026er Umsetzung von Parameterabhängigkeiten.
 
 ## Veröffentlichung
+- Nach den vorgesehenen Prüfungen Änderungen aus dem GitHub-Entwurf in den Hauptbranch übernehmen, über GitHub Pages veröffentlichen und auf der öffentlichen Seite prüfen. Eine ausdrückliche Vorgabe, Änderungen als Entwurf zu belassen, geht für den jeweiligen Auftrag vor.
 - Auf den öffentlichen Seiten keine direkten Links zu den hochgeladenen Prüfungs-PDFs und Lösungs-PDFs anzeigen.
 - Originalaufgabentexte, Originallösungen, Zeichnungen und interaktive Inhalte dürfen im Projekt weiterhin enthalten sein; die Vorgabe betrifft ausschließlich die Dokumentverlinkungen.
 - Die Originaldokumente dienen weiterhin als Grundlage für fachlichen und grafischen Abgleich.
