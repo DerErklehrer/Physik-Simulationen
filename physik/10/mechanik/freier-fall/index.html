@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Freier Fall · Physik 10 · Der ErkLehrer</title>
 <link rel="stylesheet" href="../mechanik.css">
+<link rel="stylesheet" href="radiergummi.css">
+<script type="module" src="radiergummi.js"></script>
 </head>
 <body>
 <header>Der <b>Erk</b>Lehrer<span>.</span></header>
@@ -21,6 +23,100 @@
 <div class="formula"><math><mi>v</mi><mo>=</mo><mi>g</mi><mo>⋅</mo><mi>t</mi><mspace width='1.5em'/><mi>s</mi><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo>⋅</mo><mi>g</mi><mo>⋅</mo><msup><mrow><mi>t</mi></mrow><mn>2</mn></msup></math></div>
 <h2>Beispiel</h2>
 <p>Nach 1,0 Sekunde ist ein Körper im Modell etwa 4,9 Meter gefallen. Seine Geschwindigkeit beträgt rund <math><mn>9,8</mn><mfrac><mrow><mi mathvariant='normal'>m</mi></mrow><mrow><mi mathvariant='normal'>s</mi></mrow></mfrac></math>.</p>
+<section class="simulation" id="radiergummi-versuch" aria-labelledby="fall-heading">
+  <h2 id="fall-heading">Radiergummi-Versuch aus 10,25 m</h2>
+  <p>Beim Versuch haben wir die gesamte Fallzeit mit einer Stoppuhr gemessen. Die Zeitlupe rekonstruiert den Fall aus der Ruhe mit <math><mi>g</mi><mo>=</mo><mn>9,81</mn><mfrac><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">s</mi><mn>2</mn></msup></mfrac></math> und vernachlässigt den Luftwiderstand.</p>
+  <div id="fall-interaktiv" hidden>
+    <p><strong>Vermute zuerst:</strong> Legt der Radiergummi in jeder Viertelsekunde gleich viel Weg zurück? Spule bis kurz vor den Aufprall und blende dann die Einzelbilder ein.</p>
+    <div class="sim-control">
+      <label for="fall-time">Zeit seit dem Loslassen</label>
+      <input id="fall-time" type="range" min="0" step="1" value="0">
+      <div class="fall-controls">
+        <button class="button" type="button" id="fall-play">Zeitlupe abspielen</button>
+        <label class="fall-toggle"><input type="checkbox" id="fall-frames"> Einzelbilder alle 0,25 s anzeigen</label>
+      </div>
+    </div>
+    <div class="fall-layout">
+      <figure class="fall-figure">
+        <figcaption>Fallstrecke unter dem Startpunkt</figcaption>
+        <div class="fall-stage" aria-hidden="true">
+          <div class="fall-ruler">
+            <span style="--level:0%">0 m</span>
+            <span style="--level:19.5122%">2 m</span>
+            <span style="--level:39.0244%">4 m</span>
+            <span style="--level:58.5366%">6 m</span>
+            <span style="--level:78.0488%">8 m</span>
+          </div>
+          <div id="fall-trail"></div>
+          <span class="fall-eraser" id="fall-eraser"></span>
+          <span class="fall-ground"></span>
+        </div>
+        <div class="fall-floor-label">Aufprall nach 10,25 m Fallstrecke</div>
+      </figure>
+      <div>
+        <p class="sim-reading" id="fall-readings">
+          Zeit <i>t</i> = <output id="fall-time-value" for="fall-time" aria-live="off">0,000</output> s<br>
+          Fallstrecke <i>s</i> = <output id="fall-distance-value" for="fall-time" aria-live="off">0,00</output> m<br>
+          Geschwindigkeit <i>v</i> = <output id="fall-speed-value" for="fall-time" aria-live="off">0,00</output>
+          <math><mfrac><mi mathvariant="normal">m</mi><mi mathvariant="normal">s</mi></mfrac></math>
+        </p>
+        <div id="fall-intervals" hidden>
+          <table class="fall-table">
+            <caption>Teilstrecken im Modell</caption>
+            <thead><tr><th scope="col">Zeitspanne in s</th><th scope="col">Teilstrecke in m</th></tr></thead>
+            <tbody id="fall-interval-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="simulation" aria-labelledby="measure-heading">
+  <h2 id="measure-heading">Unsere Stoppuhrmessungen</h2>
+  <p>Jeder Wert gehört zu einem vollständigen Fall. Die fünf mit „?“ markierten Werte galten schon bei der Durchführung als fraglich.</p>
+  <div class="fall-table-scroll" tabindex="0" role="region" aria-label="Messwerttabelle">
+    <table class="fall-table">
+      <caption class="fall-sr-only">Alle 17 gemessenen Fallzeiten</caption>
+      <thead><tr><th scope="col">Messung</th><th scope="col">Fallzeit in s</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">1</th><td>1,37</td></tr>
+        <tr><th scope="row">2</th><td>1,37</td></tr>
+        <tr><th scope="row">3</th><td>1,43</td></tr>
+        <tr><th scope="row">4</th><td>1,51</td></tr>
+        <tr><th scope="row">5</th><td>1,35</td></tr>
+        <tr><th scope="row">6</th><td>1,54</td></tr>
+        <tr><th scope="row">7</th><td>1,65 ?</td></tr>
+        <tr><th scope="row">8</th><td>1,54</td></tr>
+        <tr><th scope="row">9</th><td>1,59</td></tr>
+        <tr><th scope="row">10</th><td>1,30</td></tr>
+        <tr><th scope="row">11</th><td>1,32</td></tr>
+        <tr><th scope="row">12</th><td>1,42</td></tr>
+        <tr><th scope="row">13</th><td>1,09 ?</td></tr>
+        <tr><th scope="row">14</th><td>1,72 ?</td></tr>
+        <tr><th scope="row">15</th><td>1,64</td></tr>
+        <tr><th scope="row">16</th><td>1,24 ?</td></tr>
+        <tr><th scope="row">17</th><td>1,24 ?</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Berechne die mittlere Fallzeit einmal mit allen Werten und einmal ohne die fünf markierten Werte. Welcher Mittelwert liegt näher an der Modellzeit?</p>
+  <details>
+    <summary>Auswertung anzeigen</summary>
+    <p>Im Modell ergibt sich aus
+      <math><mi>t</mi><mo>=</mo><msqrt><mfrac><mrow><mn>2</mn><mo>⋅</mo><mi>h</mi></mrow><mi>g</mi></mfrac></msqrt></math>
+      eine Fallzeit von rund <strong>1,446 s</strong>.</p>
+    <table class="fall-table" id="fall-averages">
+      <caption>Mittelwerte der Stoppuhrmessungen</caption>
+      <thead><tr><th scope="col">Einbezogene Werte</th><th scope="col">Rechnung und Mittelwert</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Alle 17 Messwerte</th><td><math><mfrac><mrow><mn>24,32</mn><mspace width=".18em"/><mi mathvariant="normal">s</mi></mrow><mn>17</mn></mfrac><mo>≈</mo><mn>1,431</mn><mspace width=".18em"/><mi mathvariant="normal">s</mi></math></td></tr>
+        <tr><th scope="row">12 Messwerte ohne „?“</th><td><math><mfrac><mrow><mn>17,38</mn><mspace width=".18em"/><mi mathvariant="normal">s</mi></mrow><mn>12</mn></mfrac><mo>≈</mo><mn>1,448</mn><mspace width=".18em"/><mi mathvariant="normal">s</mi></math></td></tr>
+      </tbody>
+    </table>
+    <p>Der Mittelwert ohne die markierten Werte liegt näher an der Modellzeit. Aus dieser Nähe allein lässt sich kein Messfehler bei einem bestimmten Einzelwert ableiten. Beim Stoppen von Hand können sich Start- und Stoppverzögerung unterschiedlich auswirken.</p>
+  </details>
+</section>
 </article>
 <footer>Der ErkLehrer · Interaktive Lernhilfen</footer>
 </main>

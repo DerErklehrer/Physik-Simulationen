@@ -1,0 +1,64 @@
+.fall-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem 1rem;
+}
+.fall-controls .button { margin: 0; font: inherit; font-weight: 700; cursor: pointer; }
+.fall-toggle { display: inline-flex; gap: .45rem; align-items: center; }
+.fall-toggle input { width: 1.15rem; height: 1.15rem; min-height: 0; flex-shrink: 0; }
+.fall-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  align-items: start;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.fall-figure { margin: 0; padding: .5rem .75rem .75rem; background: #f3f5f8; border-radius: 10px; }
+.fall-figure figcaption { margin: 0 0 1rem; font-weight: 700; }
+.fall-stage { position: relative; height: 390px; margin: 0 .2rem 0 .45rem; }
+.fall-ruler {
+  position: absolute;
+  inset: 0 0 0 3rem;
+  border-left: 1px solid #657587;
+}
+.fall-ruler span {
+  position: absolute;
+  top: var(--level);
+  right: 100%;
+  width: 3rem;
+  padding-right: .5rem;
+  text-align: right;
+  transform: translateY(-50%);
+  font-size: .875rem;
+}
+.fall-ruler span::after {
+  content: "";
+  position: absolute;
+  width: .35rem;
+  height: 1px;
+  top: 50%;
+  right: 0;
+  background: #657587;
+}
+.fall-eraser, .fall-snapshot {
+  position: absolute;
+  left: 67%;
+  width: 2.1rem;
+  height: 8px;
+  border-radius: 2px;
+  transform: translate(-50%, -100%);
+}
+.fall-eraser { background: #9c2946; box-shadow: inset 6px 0 #662638; }
+.fall-snapshot { border: 1px dashed #5f6e7c; background: #dbe1e6; }
+.fall-ground { position: absolute; inset: auto 0 0 3rem; border-bottom: 2px solid #435567; }
+.fall-floor-label { margin-top: .4rem; color: #435567; font-size: .875rem; }
+.fall-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.fall-table caption { text-align: left; padding: .4rem 0; font-weight: 700; }
+.fall-table th, .fall-table td { padding: .35rem .5rem; text-align: left; border-bottom: 1px solid #dbe1e6; }
+.fall-table thead { background: #f3f5f8; }
+.fall-table-scroll { max-width: 24rem; max-height: 16rem; overflow: auto; border: 1px solid #dbe1e6; border-radius: 8px; }
+.fall-table-scroll thead { position: sticky; top: 0; }
+.fall-table-scroll:focus-visible { outline: 3px solid #e68b3c; outline-offset: 3px; }
+.fall-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.simulation summary { color: #9c2946; cursor: pointer; font-weight: 700; }
