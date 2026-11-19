@@ -36,3 +36,73 @@ figcaption{color:#435567;margin-top:.55rem;line-height:1.5}
 .cart::after{right:2px}
 .cart-reference{background:#435567}
 .cart-scale{margin-left:.4rem;margin-right:1.3rem}
+
+.experiment-photo {
+  container-type: inline-size;
+  position: relative;
+  overflow: hidden;
+  max-width: 660px;
+  aspect-ratio: 750 / 640;
+  border: 1px solid #dbe1e6;
+  border-radius: 10px;
+}
+.experiment-photo img {
+  position: absolute;
+  top: -5.47%;
+  left: -14%;
+  width: 120%;
+  max-width: none;
+  border: 0;
+  border-radius: 0;
+}
+.experiment-label {
+  position: absolute;
+  z-index: 1;
+  padding: .25em .5em;
+  border: 1px solid #263544;
+  border-radius: .35em;
+  background: #fff;
+  color: #263544;
+  line-height: 1.15;
+  font-size: clamp(.6875rem, 2.5vw, 1rem);
+  font-weight: 700;
+  text-align: center;
+}
+.experiment-label::after {
+  content: "";
+  position: absolute;
+  background: #263544;
+  box-shadow: 0 0 0 1px #fff;
+}
+.experiment-label-force,
+.experiment-label-cart {
+  transform: translateY(-50%);
+}
+.experiment-label-force {
+  top: 31%;
+  right: 76%;
+}
+.experiment-label-cart {
+  top: 83%;
+  right: 78%;
+}
+.experiment-label-force::after,
+.experiment-label-cart::after {
+  top: calc(50% - 1px);
+  left: 100%;
+  width: var(--leader);
+  height: 2px;
+}
+.experiment-label-force { --leader: 12cqw; }
+.experiment-label-cart { --leader: 11cqw; }
+.experiment-label-masses {
+  bottom: 68%;
+  left: 89%;
+  transform: translateX(-63%);
+}
+.experiment-label-masses::after {
+  top: 100%;
+  left: 63%;
+  width: 2px;
+  height: 10.7cqw;
+}
