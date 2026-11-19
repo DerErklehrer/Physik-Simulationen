@@ -100,7 +100,7 @@
       </tbody>
     </table>
   </div>
-  <p>Berechne die mittlere Fallzeit einmal mit allen Werten und einmal ohne die fünf markierten Werte. Welcher Mittelwert liegt näher an der Modellzeit?</p>
+  <p>Berechne die mittlere Fallzeit einmal mit allen Werten und einmal ohne die fünf markierten Werte. Welcher Mittelwert liegt näher an der Modellzeit? Bestimme aus beiden Mittelwerten die Fallbeschleunigung und vergleiche sie mit dem Referenzwert.</p>
   <details>
     <summary>Auswertung anzeigen</summary>
     <p>Im Modell ergibt sich aus
@@ -115,6 +115,14 @@
       </tbody>
     </table>
     <p>Der Mittelwert ohne die markierten Werte liegt näher an der Modellzeit. Aus dieser Nähe allein lässt sich kein Messfehler bei einem bestimmten Einzelwert ableiten. Beim Stoppen von Hand können sich Start- und Stoppverzögerung unterschiedlich auswirken.</p>
+    <h3 id="fallbeschleunigung">Fallbeschleunigung aus den Messwerten</h3>
+    <p>Setze die Fallhöhe <math><mi>h</mi><mo>=</mo><mn>10,25</mn><mspace width=".18em"/><mi mathvariant="normal">m</mi></math> und jeweils die mittlere Fallzeit <math><msub><mi>t</mi><mi mathvariant="normal">m</mi></msub></math> ein. Runde erst das Ergebnis.</p>
+    <p><math display="block"><mi>h</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⋅</mo><mi>g</mi><mo>⋅</mo><msup><msub><mi>t</mi><mi mathvariant="normal">m</mi></msub><mn>2</mn></msup><mspace width=".6em"/><mo>⇔</mo><mspace width=".6em"/><mi>g</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mo>⋅</mo><mi>h</mi></mrow><msup><msub><mi>t</mi><mi mathvariant="normal">m</mi></msub><mn>2</mn></msup></mfrac></math></p>
+    <h4>Mit den markierten Werten (17 Messungen)</h4>
+    <p><math display="block"><mi>g</mi><mo>≈</mo><mfrac><mrow><mn>2</mn><mo>⋅</mo><mn>10,25</mn><mspace width=".18em"/><mi mathvariant="normal">m</mi></mrow><msup><mrow><mo>(</mo><mfrac><mrow><mn>24,32</mn><mspace width=".18em"/><mi mathvariant="normal">s</mi></mrow><mn>17</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></mfrac><mo>≈</mo><mn>10,02</mn><mspace width=".18em"/><mfrac><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">s</mi><mn>2</mn></msup></mfrac></math></p>
+    <h4>Ohne die markierten Werte (12 Messungen)</h4>
+    <p><math display="block"><mi>g</mi><mo>≈</mo><mfrac><mrow><mn>2</mn><mo>⋅</mo><mn>10,25</mn><mspace width=".18em"/><mi mathvariant="normal">m</mi></mrow><msup><mrow><mo>(</mo><mfrac><mrow><mn>17,38</mn><mspace width=".18em"/><mi mathvariant="normal">s</mi></mrow><mn>12</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></mfrac><mo>≈</mo><mn>9,77</mn><mspace width=".18em"/><mfrac><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">s</mi><mn>2</mn></msup></mfrac></math></p>
+    <p>Die Beträge der relativen Abweichungen vom Referenzwert <math><mn>9,81</mn><mspace width=".18em"/><mfrac><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">s</mi><mn>2</mn></msup></mfrac></math> betragen rund <strong>2,11&nbsp;%</strong> mit den markierten Werten und <strong>0,38&nbsp;%</strong> ohne sie.</p>
   </details>
 </section>
 </article>
