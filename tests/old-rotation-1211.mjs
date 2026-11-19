@@ -64,7 +64,7 @@ try{
         el.dispatchEvent(new Event('input',{bubbles:true}));
       },value);
       const math=async()=>{
-        await page.waitForFunction(()=>document.querySelector('#statement mjx-container, #solution mjx-container'));
+        await page.waitForFunction(()=>document.querySelector('#solution mjx-container'));
         assert.equal(await page.locator('mjx-merror,[data-mjx-error]').count(),0);
       };
       await page.goto(origin+folder);
@@ -85,11 +85,14 @@ try{
           for(let step=0;step<tasks1211[c.key].parts[i].steps.length;step++){
             await math();
             assert.equal((await state()).step,step);
-            assert((await page.locator('#solution').textContent()).trim().length>30);
+            assert(await page.locator('#solution mjx-container').first().isVisible());
             assert(!(await page.locator('#plot').innerHTML()).includes('NaN'));
             if(!await page.locator('#next').isDisabled())await click('next');
           }
-          assert(await page.locator('#solution').textContent().then(s=>s.includes(c.results[i])||s.includes(c.results[i].replace(',','{,}'))));
+          const rendered=await page.locator('#solution').evaluate(node=>{
+            return node.textContent+' '+MathJax.startup.document.getMathItemsWithin(node).map(item=>item.math).join(' ');
+          });
+          assert(rendered.includes(c.results[i])||rendered.includes(c.results[i].replace(',','{,}')),c.file+' '+i+' '+rendered);
         }
         await click('reset');
         if(c.angles.length)assert.equal((await state()).geometry.phi,settings1211[c.key].value);
