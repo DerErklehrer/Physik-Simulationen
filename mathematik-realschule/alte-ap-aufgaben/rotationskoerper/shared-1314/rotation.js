@@ -5,9 +5,13 @@ import {tasks} from './tasks.js';
 import {geometry} from './geometry.js';
 import {geometry1211,settings1211} from './geometry-1211.js';
 import {tasks1211} from './tasks-1211.js';
-const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key]||tasks1211[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
-const model=tasks1211[key]?geometry1211:geometry;
+import {geometry1009,liquidSettings,liquid1009,ballRadius} from './geometry-1009.js';
+import {tasks1009} from './tasks-1009.js';
+const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key]||tasks1211[key]||tasks1009[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
+const model=tasks1009[key]?geometry1009:tasks1211[key]?geometry1211:geometry;
 const setting=settings1211[key];
+const waterSetting=liquidSettings[key];
+let waterHeight=waterSetting?.value;
 let phi=setting?.value??20,g=model(key,phi);
 const initialSweep=360;
 let part=0,step=0,view='2d',sweep=initialSweep,three=null,mathQueue=Promise.resolve();
@@ -22,16 +26,45 @@ function setPhi(value){phi=Number(value);g=model(key,phi);$('phi').value=String(
 $('phi').oninput=()=>{setPhi($('phi').value);render()};$('sphere').onchange=()=>render();
 const colorToggle=installColorToggle(()=>render());
 const current=()=>data.parts[part],focus=()=>current().steps[step][2];
+const currentLiquid=()=>waterSetting?liquid1009(key,g,waterHeight,key==='2009-ht-ii'&&focus()==='rise'&&waterHeight>=2*ballRadius):null;
+if(waterSetting){
+ const controls=document.createElement('div');
+ controls.className='controls';
+ controls.innerHTML='<label for="waterHeight">Füllhöhe: <strong id="waterHeightValue"></strong></label><input id="waterHeight" type="range" min="0">';
+ $('legend').before(controls);
+ const slider=$('waterHeight');
+ slider.max=waterSetting.max;slider.step=waterSetting.step;
+ slider.oninput=()=>{waterHeight=slider.valueAsNumber;render()};
+}
+function updateWater(){
+ if(!waterSetting)return;
+ $('waterHeight').value=waterHeight;
+ $('waterHeightValue').textContent=fmt(waterHeight,waterSetting.units==='mm'?1:2)+' '+waterSetting.units;
+}
+function advanceWater(){
+ if(!waterSetting)return;
+ if(focus()==='half')waterHeight=158.7;
+ if(focus()==='rise')waterHeight=8.02;
+}
+function choosePart(i){
+ if(!waterSetting)return;
+ waterHeight=key==='2009-ht-ii'&&i===3?0:waterSetting.value;
+}
+
 function math(){mathQueue=mathQueue.catch(()=>{}).then(async()=>{if(window.MathJax?.startup?.promise){await MathJax.startup.promise;await MathJax.typesetPromise([$ ('intro'),$('statement'),$('solution'),$('measure')])}});return mathQueue}
 function clearMath(){if(window.MathJax?.typesetClear)MathJax.typesetClear([$('statement'),$('solution'),$('measure')])}
 $('intro').innerHTML=(data.introId?'<h3>'+data.introId+'</h3>':'')+data.intro;$('rounding').textContent=data.rounding;
 for(const link of document.querySelectorAll('nav.buttons a'))if(new URL(link.href).pathname===location.pathname)link.setAttribute('aria-current','page');
 function updateLegend(){const d=decomposition(key,g);if(d){let legend=document.getElementById('legend')||document.querySelector('.legend');if(legend)legend.innerHTML=legendHTML(d)}}
-function render(){clearMath();$('parts').replaceChildren();data.parts.forEach((p,i)=>{const b=document.createElement('button');b.textContent=p.id;b.className=i===part?'active':'';b.setAttribute('aria-pressed',String(i===part));b.onclick=()=>{part=i;step=0;if(key==='2013-nt-i'){$('sphere').checked=i===3;setPhi(i===1?Math.atan(4.5*Math.sin(g.alpha*Math.PI/180)/(8-4.5*Math.cos(g.alpha*Math.PI/180)))*180/Math.PI:20)}else if(setting?.presets[i]!==undefined)setPhi(setting.presets[i]);render()};$('parts').append(b)});const p=current(),s=p.steps[step];$('statement').innerHTML=`<h3>${p.id} <span class="tag">${p.points} P</span></h3><div>${p.statement}</div>`;$('stepTitle').textContent=`${step+1} · ${s[0]}`;$('count').textContent=`${step+1} von ${p.steps.length}`;$('solution').innerHTML=colorSolution(s[1],decomposition(key,g));updateLegend();$('prev').disabled=step===0;$('next').disabled=step===p.steps.length-1;draw2d();measure();math();if(three)rebuild3d()}
-$('prev').onclick=()=>{if(step>0){step--;render()}};$('next').onclick=()=>{if(step<current().steps.length-1){step++;render()}};
-function reset(){part=0;step=0;if(key==='2013-nt-i'){setPhi(20);$('sphere').checked=false;}else if(setting)setPhi(setting.value);sweep=initialSweep;setSweep(sweep,false);$('auxiliary').checked=true;setView('2d');if(three)camera('default');render()}
+function render(){clearMath();$('parts').replaceChildren();data.parts.forEach((p,i)=>{const b=document.createElement('button');b.textContent=p.id;b.className=i===part?'active':'';b.setAttribute('aria-pressed',String(i===part));b.onclick=()=>{part=i;step=0;choosePart(i);if(key==='2013-nt-i'){$('sphere').checked=i===3;setPhi(i===1?Math.atan(4.5*Math.sin(g.alpha*Math.PI/180)/(8-4.5*Math.cos(g.alpha*Math.PI/180)))*180/Math.PI:20)}else if(setting?.presets[i]!==undefined)setPhi(setting.presets[i]);render()};$('parts').append(b)});const p=current(),s=p.steps[step];$('statement').innerHTML=`<h3>${p.id} <span class="tag">${p.points} P</span></h3><div>${p.statement}</div>`;$('stepTitle').textContent=`${step+1} · ${s[0]}`;$('count').textContent=`${step+1} von ${p.steps.length}`;$('solution').innerHTML=colorSolution(s[1],decomposition(key,g));updateWater();updateLegend();$('prev').disabled=step===0;$('next').disabled=step===p.steps.length-1;draw2d();measure();math();if(three)rebuild3d()}
+$('prev').onclick=()=>{if(step>0){step--;render()}};$('next').onclick=()=>{if(step<current().steps.length-1){step++;advanceWater();render()}};
+function reset(){part=0;step=0;choosePart(0);if(key==='2013-nt-i'){setPhi(20);$('sphere').checked=false;}else if(setting)setPhi(setting.value);sweep=initialSweep;setSweep(sweep,false);$('auxiliary').checked=true;setView('2d');if(three)camera('default');render()}
 $('reset').onclick=reset;$('auxiliary').onchange=()=>{draw2d();if(three)rebuild3d()};
-function measure(){const tex=v=>fmt(v,5).replace(',','{,}'),unit=g.units||'cm';$('measure').innerHTML=String.raw`<p>Volumen der vollständigen Körperform: \(${tex(g.volume)}\,\mathrm{${unit}}^3\).</p><p>Rotation ${sweep}°: Volumen des Körperausschnitts \(${tex(g.volume*sweep/360)}\,\mathrm{${unit}}^3\).</p>`+(g.surface?String.raw`<p>Oberfläche ohne Zwischenrundung: \(${tex(g.surface)}\,\mathrm{${unit}}^2\).</p>`:'')+(key==='2013-nt-i'?String.raw`<p>Aktuell: \(\varphi=${tex(phi)}^\circ\); \(\lvert\overline{BD_n}\rvert=${tex(g.bd)}\,\mathrm{cm}\).</p><p>Kugelradius \(r=${tex(g.r)}\,\mathrm{cm}\); Kugeloberfläche \(O_{\text{Kugel}}=${tex(g.sphereSurface)}\,\mathrm{cm}^2\). Das Körpervolumen schließt die Kugel nicht ein.</p>`:'')}
+function measure(){const liquid=currentLiquid();if(liquid){
+ const volume=waterSetting.units==='mm'?fmt(liquid.water/1e6,3)+' l':fmt(liquid.water,2)+' cm³';
+ $('measure').textContent='Wasservolumen: '+volume+'. Füllhöhe: '+fmt(liquid.height,2)+' '+waterSetting.units+'.';
+ return;
+}const tex=v=>fmt(v,5).replace(',','{,}'),unit=g.units||'cm';$('measure').innerHTML=String.raw`<p>Volumen der vollständigen Körperform: \(${tex(g.volume)}\,\mathrm{${unit}}^3\).</p><p>Rotation ${sweep}°: Volumen des Körperausschnitts \(${tex(g.volume*sweep/360)}\,\mathrm{${unit}}^3\).</p>`+(g.surface?String.raw`<p>Oberfläche ohne Zwischenrundung: \(${tex(g.surface)}\,\mathrm{${unit}}^2\).</p>`:'')+(key==='2013-nt-i'?String.raw`<p>Aktuell: \(\varphi=${tex(phi)}^\circ\); \(\lvert\overline{BD_n}\rvert=${tex(g.bd)}\,\mathrm{cm}\).</p><p>Kugelradius \(r=${tex(g.r)}\,\mathrm{cm}\); Kugeloberfläche \(O_{\text{Kugel}}=${tex(g.sphereSurface)}\,\mathrm{cm}^2\). Das Körpervolumen schließt die Kugel nicht ein.</p>`:'')}
 const NS='http://www.w3.org/2000/svg';
 $('legend').innerHTML='<span style="--c:#e5a64d">Rotationskörper</span><span style="--c:#9c2946">Hilfslinien / aktueller Lernschritt</span>';
 $('auxLabel').textContent='Hilfslinien anzeigen';
@@ -45,6 +78,15 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
  const angle=(p,start,end,r=29)=>{const a=map(p);el('path',{d:`M ${a[0]+r*Math.cos(start)} ${a[1]+r*Math.sin(start)} A ${r} ${r} 0 0 ${end>start?1:0} ${a[0]+r*Math.cos(end)} ${a[1]+r*Math.sin(end)}`,stroke:'#9c2946',fill:'none','stroke-width':1.8})};
  const dashed={'stroke-dasharray':'6 5',stroke:'#7c8394'};
  drawDecomposition(decomposition(key,g),polygon,line);
+ const liquid=currentLiquid();
+ if(liquid&&liquid.height>0){
+  polygon([...liquid.profile,...liquid.profile.slice().reverse().map(([r,y])=>[-r,y])],
+    {fill:'#52a6d7','fill-opacity':.38,stroke:'#2478a4','stroke-width':1.5,'data-liquid':'water'});
+  if(liquid.sphere){
+   const [cx,cy]=map([0,ballRadius]);
+   el('circle',{cx,cy,r:ballRadius*scale,fill:'#657587',stroke:'#263544','stroke-width':1.5,'data-liquid':'ball'});
+  }
+ }
  if($('auxiliary').checked)for(const[a,b]of g.auxLines)line(g.points[a],g.points[b],dashed);
  const hi=(a,b)=>line(g.points[a],g.points[b],{stroke:'#9c2946','stroke-width':4});
  if(key==='2013-ht-ii'){
@@ -61,7 +103,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
  }else if(key==='2014-nt-ii'){
   right(g.points.F,-1,1);right(g.points.E,-1,1);
   if(focus()==='small'){hi('E','H');hi('F','H')}
- }else if(tasks1211[key]){
+ }else if(tasks1211[key]||tasks1009[key]){
   for(const [p,dx,dy] of g.rightAngles)right(g.points[p],dx,dy);
   for(const [v,a,b,name] of g.angles){
    const [x,y]=map(g.points[v]);
@@ -93,6 +135,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
    if(n==='E')dx=g.r<.25?17:-13;
    if(n==='H')dy=-30;
   }
+  if(g.offsets?.[n])[dx,dy,anchor]=g.offsets[n];
   const name=g.subscript?.includes(n)?n+(phi===setting?.value?'₁':'ₙ'):key==='2013-nt-i'&&n==='D'?'Dₙ':key==='2013-nt-i'&&n==='M'?'Mₙ':n;label(name,p,dx,dy,anchor);
  }
  label('Rotationsachse '+g.axis,[0,g.maxY],0,-44);applySVGColorMode(svg,colorToggle.checked);svg.dataset.focus=focus();}
@@ -124,8 +167,26 @@ function rebuild3d(){
  if($('auxiliary').checked)for(const[a,b]of g.auxLines)line(g.points[a],g.points[b]);
  if(key==='2013-nt-i'&&$('sphere').checked){const p={id:'sphere',name:'Kugel',fill:'#bf5c88',text:'#8b2857',lo:-Infinity,hi:Infinity,profile:g.sphere};decompositionMeshes(T,group,norm,sweep,{key:'sphere',profile:g.sphere,parts:[p],voids:[],breaks:[],circles:[[g.r,g.center]]})}
  applyMeshColorMode(group,colorToggle.checked);
+ const liquid=currentLiquid();
+ if(liquid){
+  for(const mesh of group.children.filter(o=>o.isMesh)){
+   mesh.material.transparent=true;mesh.material.opacity=.26;mesh.material.depthWrite=false;
+   mesh.renderOrder=2;
+  }
+  const addLiquid=(id,profile,fill,transparent,circles=[])=>{
+   const start=group.children.length;
+   decompositionMeshes(T,group,norm,sweep,{key:id,profile,parts:[{id,profile,fill,lo:-Infinity,hi:Infinity}],voids:[],breaks:[],circles});
+   for(const mesh of group.children.slice(start)){
+    mesh.material.transparent=transparent;mesh.material.opacity=transparent?.55:1;mesh.material.depthWrite=!transparent;
+    mesh.renderOrder=transparent?1:0;
+   }
+  };
+  if(liquid.height>0)addLiquid('water',liquid.profile,'#52a6d7',true);
+  if(liquid.sphere)addLiquid('ball',liquid.sphere,'#657587',false,[[ballRadius,ballRadius]]);
+ }
+
 }
-window.oldRotationState=()=>({key,part,step,componentColors:colorToggle.checked,sphereVisible:key==='2013-nt-i'&&$('sphere').checked,focus:focus(),sweep,view,geometry:g,three:three?{orthographic:three.cam.isOrthographicCamera,mode:three.mode,position:three.cam.position.toArray(),up:three.cam.up.toArray(),zoom:three.cam.zoom,scale:three.k,center:three.center,meshes:three.group.children.filter(x=>x.isMesh).length,materials:three.group.children.filter(x=>x.isMesh).map(x=>({component:x.userData.component,color:'#'+x.material.color.getHexString(),opacity:x.material.opacity,transparent:x.material.transparent}))}:null});
+window.oldRotationState=()=>({key,part,step,componentColors:colorToggle.checked,sphereVisible:key==='2013-nt-i'&&$('sphere').checked,focus:focus(),sweep,view,geometry:g,liquid:currentLiquid(),three:three?{orthographic:three.cam.isOrthographicCamera,mode:three.mode,position:three.cam.position.toArray(),up:three.cam.up.toArray(),zoom:three.cam.zoom,scale:three.k,center:three.center,meshes:three.group.children.filter(x=>x.isMesh).length,materials:three.group.children.filter(x=>x.isMesh).map(x=>({component:x.userData.component,color:'#'+x.material.color.getHexString(),opacity:x.material.opacity,transparent:x.material.transparent}))}:null});
 reset();window.addEventListener('load',()=>math());
 
 

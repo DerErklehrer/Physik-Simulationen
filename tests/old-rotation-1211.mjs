@@ -68,8 +68,8 @@ try{
         assert.equal(await page.locator('mjx-merror,[data-mjx-error]').count(),0);
       };
       await page.goto(origin+folder);
-      assert.equal(await page.locator('a.task-card').count(),19);
-      assert.equal(await page.locator('article.task-card').count(),9);
+      assert.equal(await page.locator('a.task-card').count(),23);
+      assert.equal(await page.locator('article.task-card').count(),5);
       for(const c of cases){
         await page.locator('a.task-card[href="'+c.file+'"]').click();
         await page.waitForFunction(()=>typeof window.oldRotationState==='function');
