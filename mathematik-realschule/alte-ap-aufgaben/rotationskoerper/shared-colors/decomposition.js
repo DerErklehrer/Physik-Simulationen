@@ -20,7 +20,7 @@ export function decomposition(key,g){
  parts=parts.map(p=>({...p,profile:band(profile,p.lo,p.hi)}));
  return{key,parts,voids: voids.map(v=>({...v,...P[v.tone]})),terms,note,profile,breaks,helper:coneTerms&&key!=='2016-nt-i',ring:key==='2016-nt-ii'?{name:'Kreisringfläche',...P.teal}:null};
 }
-export function legendHTML(d){if(!d)return '';const swatch=(name,c)=>`<span style="--c:${c}">${name}</span>`;return d.parts.map(p=>swatch(p.name,p.fill)).join('')+(d.ring?swatch(d.ring.name,d.ring.fill):'')+d.voids.map(p=>swatch(p.name,p.fill)).join('')+(d.helper?swatch('Kleiner ergänzter Kegel · Rechenhilfe',P.slate.fill):'')+`<p class="decomposition-note">${d.note}</p>`}
+export function legendHTML(d){if(!d)return '';const swatch=(name,c)=>`<span style="--c:${c}">${name}</span>`;return d.parts.map(p=>swatch(p.name,p.fill)).join('')+(d.ring?swatch(d.ring.name,d.ring.fill):'')+[...d.voids,...(d.surfaceLegend||[])].map(p=>swatch(p.name,p.fill)).join('')+(d.helper?swatch('Kleiner ergänzter Kegel · Rechenhilfe',P.slate.fill):'')+`<p class="decomposition-note">${d.note}</p>`}
 const numericTerms={
  '2015-ht-ii':[['\\pi\\cdot18\\cdot21{,}63','gold'],['\\pi\\cdot4{,}5\\cdot5{,}41','slate'],['2\\pi\\cdot4{,}5^2','pink']],
  '2015-nt-ii':[['\\pi\\cdot3{,}75^2','gold'],['\\pi\\cdot2^2','teal'],['\\pi\\cdot3{,}75\\cdot5{,}9','gold'],['\\pi\\cdot2\\cdot3{,}1','slate'],['2\\pi\\cdot2\\cdot2{,}4','teal'],['2\\pi\\cdot0{,}75\\cdot2','blue']],

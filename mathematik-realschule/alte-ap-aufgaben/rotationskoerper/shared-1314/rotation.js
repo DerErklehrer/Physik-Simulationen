@@ -9,8 +9,10 @@ import {geometry1009,liquidSettings,liquid1009,ballRadius} from './geometry-1009
 import {tasks1009} from './tasks-1009.js';
 import {geometry0807} from './geometry-0807.js';
 import {tasks0807} from './tasks-0807.js';
-const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key]||tasks1211[key]||tasks1009[key]||tasks0807[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
-const model=tasks0807[key]?geometry0807:tasks1009[key]?geometry1009:tasks1211[key]?geometry1211:geometry;
+import {geometry06} from './geometry-06.js';
+import {tasks06} from './tasks-06.js';
+const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key]||tasks1211[key]||tasks1009[key]||tasks0807[key]||tasks06[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
+const model=tasks06[key]?geometry06:tasks0807[key]?geometry0807:tasks1009[key]?geometry1009:tasks1211[key]?geometry1211:geometry;
 const setting=settings1211[key];
 const waterSetting=liquidSettings[key];
 const iceCup=key==='2007-ht-ii';
@@ -122,7 +124,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
  }else if(key==='2014-nt-ii'){
   right(g.points.F,-1,1);right(g.points.E,-1,1);
   if(focus()==='small'){hi('E','H');hi('F','H')}
- }else if(tasks1211[key]||tasks1009[key]||tasks0807[key]){
+ }else if(tasks1211[key]||tasks1009[key]||tasks0807[key]||tasks06[key]){
   for(const [p,dx,dy] of g.rightAngles)right(g.points[p],dx,dy);
   for(const [v,a,b,name] of g.angles){
    const [x,y]=map(g.points[v]);
