@@ -1,9 +1,22 @@
+import {bindRotationAngle} from '../../../assets/rotation-angle.js?v=20261119';
 // Raumgeometrie 2025: Originalskizze bleibt erhalten, interaktive 3D-Ergänzung.
 // Three.js wie in der Referenzprüfung 2026, orthografische Kamera und OrbitControls.
 import * as THREE from 'three';
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/controls/OrbitControls.js';
 const host=document.getElementById('view3d2025');
 let scene,camera,renderer,controls,model,active=false,topMode=false;
+let sweep=360, coneView;
+const rotationControls=document.createElement('div');
+rotationControls.innerHTML='<div class="buttons"><button id="cutaway" type="button">Ein Viertel herausschneiden</button></div><label for="sweep">Rotation: <strong id="sweepValue">360°</strong></label><input id="sweep" type="range" min="0" max="360" step="1" value="360">';
+rotationControls.hidden=true;
+host.after(rotationControls);
+const setSweep=bindRotationAngle(
+ rotationControls.querySelector('#sweep'),
+ rotationControls.querySelector('#sweepValue'),
+ rotationControls.querySelector('#cutaway'),
+ angle=>{sweep=angle;if(active&&coneView)build('A 2',...coneView);}
+);
+document.getElementById('reset')?.addEventListener('click',()=>setSweep(360));
 const V=(x,y,z)=>new THREE.Vector3(x,y,z);
 function face(points,color,opacity=.30){const v=[];for(let i=1;i<points.length-1;i++)for(const p of [points[0],points[i],points[i+1]])v.push(p.x,p.y,p.z);const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));g.computeVertexNormals();return new THREE.Mesh(g,new THREE.MeshPhongMaterial({color,transparent:true,opacity,side:THREE.DoubleSide,depthWrite:false}));}
 function edge(a,b,color=0x2c506e){return new THREE.Line(new THREE.BufferGeometry().setFromPoints([a,b]),new THREE.LineBasicMaterial({color}));}
@@ -15,9 +28,23 @@ function loop(){requestAnimationFrame(loop);if(active&&renderer){controls.update
 function syncConeLabels(){if(!model)return;model.traverse(o=>{const kind=o.userData.coneLabel;if(kind==='apex'||kind==='mantle'||kind==='prism-side')o.visible=!topMode;else if(kind==='axis-top'||kind==='prism-top')o.visible=topMode;});const hint=host.querySelector('.threehelp');if(hint)hint.textContent=topMode?(model.userData.task==='B 2'?'Draufsicht: A/E usw. bezeichnen übereinanderliegende Punkte.':'Draufsicht: Die beiden Kegelspitzen überdecken sich.'):'Mit einem Finger drehen · mit zwei Fingern zoomen';}
 function doubleCone(degrees,phase=3,suffix='ₙ'){
  const phi=Math.max(1,Math.min(89,Number(degrees)))*Math.PI/180,r=4*Math.sin(phi),h=4*Math.cos(phi),segs=96;
- const up=new THREE.Mesh(new THREE.ConeGeometry(r,h,segs,1,true),new THREE.MeshPhongMaterial({color:0x6caac9,transparent:true,opacity:.62,side:THREE.DoubleSide}));up.position.y=h/2;model.add(up);
- const down=up.clone();down.rotation.z=Math.PI;down.position.y=-h/2;model.add(down);
- model.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(Array.from({length:segs},(_,i)=>V(r*Math.cos(i*2*Math.PI/segs),0,r*Math.sin(i*2*Math.PI/segs)))),new THREE.LineBasicMaterial({color:0x9a2848})));
+ const start=Math.PI/2,end=start+sweep*Math.PI/180;
+ const material=()=>new THREE.MeshPhongMaterial({color:0x6caac9,transparent:true,opacity:.62,side:THREE.DoubleSide});
+ if(sweep>0){
+  const up=new THREE.Mesh(new THREE.CylinderGeometry(0,r,h,segs,1,true,start,end-start),material());
+  const down=new THREE.Mesh(new THREE.CylinderGeometry(r,0,h,segs,1,true,start,end-start),material());
+  up.position.y=h/2;down.position.y=-h/2;model.add(up,down);
+  const rim=Array.from({length:segs+1},(_,i)=>{
+   const angle=start+(end-start)*i/segs;
+   return V(r*Math.sin(angle),0,r*Math.cos(angle));
+  });
+  model.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(rim),new THREE.LineBasicMaterial({color:0x9a2848})));
+ }
+ if(sweep<360){
+  for(const angle of sweep===0?[start]:[start,end]){
+   model.add(face([V(0,-h,0),V(r*Math.sin(angle),0,r*Math.cos(angle)),V(0,h,0)],0x6caac9,.55));
+  }
+ }
  model.add(edge(V(0,-h,0),V(0,h,0),0x788a98));
  function helper(a,b){const line=edge(a,b,0xa32b4d);line.material.depthTest=false;line.material.transparent=true;line.renderOrder=5;model.add(line);}
  function text(pos,t,kind){const sprite=label(pos,t);sprite.scale.multiplyScalar(1.25);sprite.material.map.colorSpace=THREE.SRGBColorSpace;sprite.material.map.needsUpdate=true;sprite.renderOrder=10;sprite.material.depthWrite=false;sprite.userData.coneLabel=kind;model.add(sprite);}
@@ -47,11 +74,11 @@ function prism(t,phase=3,suffix='ₙ'){
  }
  controls.target.set(5,1.5,2);syncConeLabels();
 }
-function build(task,value,phase=3,suffix='ₙ',resetZoom=false){if(!renderer)return;dispose();model=new THREE.Group();model.userData.task=task;scene.add(model);if(task==='A 2')doubleCone(value,phase,suffix);else if(task==='B 2')prism(value,phase,suffix);if(resetZoom)camera.zoom=task==='A 2'?1.38:1.52;camera.updateProjectionMatrix();controls.update();}
+function build(task,value,phase=3,suffix='ₙ',resetZoom=false){if(!renderer)return;dispose();model=new THREE.Group();model.userData.task=task;scene.add(model);rotationControls.hidden=task!=='A 2';if(task==='A 2'){coneView=[value,phase,suffix];doubleCone(value,phase,suffix);}else if(task==='B 2'){coneView=undefined;sweep=360;setSweep(sweep,false);prism(value,phase,suffix);}if(resetZoom)camera.zoom=task==='A 2'?1.38:1.52;camera.updateProjectionMatrix();controls.update();}
 window.exam2025Three={
 show(task,value,phase=3,suffix='ₙ'){if(!['A 2','B 2'].includes(task))return;setup();active=true;build(task,value,phase,suffix,true);resize();},
 update(task,value,phase=3,suffix='ₙ'){if(active&&renderer)build(task,value,phase,suffix);},
-hide(){active=false;},
+hide(){active=false;rotationControls.hidden=true;},
 top(){if(!renderer)return;topMode=true;syncConeLabels();camera.up.set(0,0,-1);camera.position.copy(controls.target).add(V(0,20,0.001));controls.update();},
 reset(){if(!renderer)return;topMode=false;syncConeLabels();camera.zoom=model?.userData.task==='A 2'?1.38:1.52;camera.updateProjectionMatrix();camera.up.set(0,1,0);camera.position.set(12,10,13);controls.update();}
 };

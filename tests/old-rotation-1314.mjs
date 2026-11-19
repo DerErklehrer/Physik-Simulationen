@@ -9,8 +9,8 @@ const root='/mathematik-realschule/alte-ap-aufgaben/rotationskoerper/';
 const cases=[
 {key:'2013-ht-ii',slug:'2013-ht-ii-a1.html',expected:[1595.81,12.53],parts:[5,2],points:[4,1],initial:360},
 {key:'2013-nt-ii',slug:'2013-nt-ii-a3.html',expected:[3.0,504.2],parts:[3,5],points:[2,3],initial:360},
-{key:'2013-nt-i',slug:'2013-nt-i-a2.html',expected:['38,68','32,08','200','100'],parts:[4,3,4,4],points:[2,2,2,3],initial:225},
-{key:'2014-ht-ii',slug:'2014-ht-ii-a1.html',expected:[22.4],parts:[6],points:[5],initial:225},
+{key:'2013-nt-i',slug:'2013-nt-i-a2.html',expected:['38,68','32,08','200','100'],parts:[4,3,4,4],points:[2,2,2,3],initial:360},
+{key:'2014-ht-ii',slug:'2014-ht-ii-a1.html',expected:[22.4],parts:[6],points:[5],initial:360},
 {key:'2014-nt-ii',slug:'2014-nt-ii-a1.html',expected:[49.7,26.3],parts:[4,2],points:[4,1],initial:360}];
 const report=[];let activePage=null;const diagnostics=[];
 const browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
