@@ -3,7 +3,6 @@ on:
   push:
     paths:
       - 'abschlusspruefung/2026/haupttermin/**'
-      - 'mathematik-10/abschlusspruefungsaufgaben/2026/**'
       - 'abschlusspruefung/tests/ht26-browser.mjs'
       - '.github/workflows/qa-ht26-quality.yml'
   workflow_dispatch:
