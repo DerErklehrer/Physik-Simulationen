@@ -34,6 +34,10 @@ try {
           assert.equal(await visible('bc'),false);
         } else if (file==='b1') {
           assert.doesNotMatch(await label('measure'), /6 FE/);
+          assert.equal(await page.locator('#fixed').isChecked(),false);
+          await button('#parts','B 1.3').click();
+          await step(2);
+          assert.equal(await page.locator('#fixed').isChecked(),true);
           await button('#parts','B 1.4').click();
           await step(2);
           assert.match(await label('measure'), /6 FE/);
@@ -84,6 +88,12 @@ try {
           await click('prev');
           assert.equal(await page.locator('#circle').isChecked(),false);
         } else if (file==='index'||file==='b4') {
+          const figure = page.locator('#graph');
+          assert.doesNotMatch(await figure.textContent(), /C[₁₂ₙ]/);
+          await step(2);
+          assert.match(await figure.textContent(), /C₁/);
+          await step(3);
+          assert.match(await figure.textContent(), /C₂/);
           await button('#parts','B 4.2').click();
           assert.doesNotMatch(await label('presets'),/98,21/);
           await step(4);
