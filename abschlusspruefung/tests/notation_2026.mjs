@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 // Vektoren mit eigenständigem darüberliegenden Pfeil.
 const names=['a1','a2','a3','a4','b1','b2','b3','index'];
 const files=Object.fromEntries(names.map(n=>[n,readFileSync(new URL('../2026/haupttermin/'+n+'.html',import.meta.url),'utf8')]));
-const allowed={a1:['AB','BC'],a2:[],a3:[],a4:[],b1:['AD'],b2:[],b3:['A_1C_1','A_nC_n','A_2C_2','A_3C_3','A_3C_3'],index:[]};
+const allowed={a1:['AB','BC'],a2:[],a3:[],a4:[],b1:['AD'],b2:['AE','FG'],b3:['A_1C_1','A_nC_n','A_2C_2','A_3C_3','A_3C_3'],index:[]};
 let checked=0;
 function verify(name,yes){assert.ok(yes,name);checked++}
 for(const n of names){
