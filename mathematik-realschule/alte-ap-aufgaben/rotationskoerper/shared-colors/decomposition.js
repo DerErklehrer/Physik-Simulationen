@@ -34,7 +34,13 @@ const numericTerms={
 export function colorSolution(html,d){if(!d)return html;const wrap=(v,tone)=>`\\class{rotation-${tone}}{${v}}`;for(const[name,tone]of Object.entries(d.terms)){const sub=String.raw`_{\text{${name}}}`;for(const letter of['V','M','O','A'])html=html.split(letter+sub).join(wrap(letter+sub,tone))}const tokens=[...(d.numericTerms||numericTerms[d.key]||[])].sort((a,b)=>b[0].length-a[0].length);let colored='';for(let i=0;i<html.length;){const token=tokens.find(([text])=>html.startsWith(text,i));if(token){colored+=wrap(token[0],token[1]);i+=token[0].length}else colored+=html[i++]}return colored}
 
 const mirror=ps=>[...ps,...ps.slice().reverse().map(([x,y])=>[-x,y])];
-export function drawDecomposition(d,polygon,line){if(!d)return false;for(const p of d.parts)polygon(mirror(p.profile),{fill:p.fill,'fill-opacity':.64,stroke:p.text,'stroke-width':1.5,'data-component':p.id});for(const p of d.voids)polygon(mirror(p.profile),{fill:p.fill,'fill-opacity':.16,stroke:p.text,'stroke-width':1.4,'stroke-dasharray':'5 4','data-component':'cavity'});if(d.ring){const g=d.parts[1],ps=d.profile;for(let i=0;i<ps.length;i++){const a=ps[i],b=ps[(i+1)%ps.length];if(Math.abs(a[1]-g.hi)<1e-8&&Math.abs(b[1]-g.hi)<1e-8&&Math.abs(a[0]-b[0])>1e-5){line(a,b,{stroke:d.ring.text,'stroke-width':5});line([-a[0],a[1]],[-b[0],b[1]],{stroke:d.ring.text,'stroke-width':5})}}}return true}
+export function drawDecomposition(d,polygon,line){if(!d)return false;for(const p of d.parts){
+ const attrs={fill:p.fill,'fill-opacity':.64,stroke:p.text,'stroke-width':1.5,'data-component':p.id};
+ if(p.splitAcrossAxis){
+  polygon(p.profile,attrs);
+  polygon(p.profile.map(([r,y])=>[-r,y]),attrs);
+ }else polygon(mirror(p.profile),attrs);
+}for(const p of d.voids)polygon(mirror(p.profile),{fill:p.fill,'fill-opacity':.16,stroke:p.text,'stroke-width':1.4,'stroke-dasharray':'5 4','data-component':'cavity'});if(d.ring){const g=d.parts[1],ps=d.profile;for(let i=0;i<ps.length;i++){const a=ps[i],b=ps[(i+1)%ps.length];if(Math.abs(a[1]-g.hi)<1e-8&&Math.abs(b[1]-g.hi)<1e-8&&Math.abs(a[0]-b[0])>1e-5){line(a,b,{stroke:d.ring.text,'stroke-width':5});line([-a[0],a[1]],[-b[0],b[1]],{stroke:d.ring.text,'stroke-width':5})}}}return true}
 function surfaceColor(d,a,b){
  for(const rule of d.surfaceRules||[]){const on=rule.kind==='circle'?p=>Math.abs(p[0]**2+(p[1]-rule.y)**2-rule.r**2)<1e-7:p=>Math.abs((p[0]-rule.r0)*(rule.y1-rule.y0)-(p[1]-rule.y0)*(rule.r1-rule.r0))<1e-7;if(on(a)&&on(b))return{...P[rule.tone],id:rule.id}}
 

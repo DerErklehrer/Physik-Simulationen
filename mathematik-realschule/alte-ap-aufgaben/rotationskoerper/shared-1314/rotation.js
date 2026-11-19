@@ -7,10 +7,13 @@ import {geometry1211,settings1211} from './geometry-1211.js';
 import {tasks1211} from './tasks-1211.js';
 import {geometry1009,liquidSettings,liquid1009,ballRadius} from './geometry-1009.js';
 import {tasks1009} from './tasks-1009.js';
-const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key]||tasks1211[key]||tasks1009[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
-const model=tasks1009[key]?geometry1009:tasks1211[key]?geometry1211:geometry;
+import {geometry0807} from './geometry-0807.js';
+import {tasks0807} from './tasks-0807.js';
+const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key]||tasks1211[key]||tasks1009[key]||tasks0807[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
+const model=tasks0807[key]?geometry0807:tasks1009[key]?geometry1009:tasks1211[key]?geometry1211:geometry;
 const setting=settings1211[key];
 const waterSetting=liquidSettings[key];
+const iceCup=key==='2007-ht-ii';
 let waterHeight=waterSetting?.value;
 let phi=setting?.value??20,g=model(key,phi);
 const initialSweep=360;
@@ -26,7 +29,11 @@ function setPhi(value){phi=Number(value);g=model(key,phi);$('phi').value=String(
 $('phi').oninput=()=>{setPhi($('phi').value);render()};$('sphere').onchange=()=>render();
 const colorToggle=installColorToggle(()=>render());
 const current=()=>data.parts[part],focus=()=>current().steps[step][2];
-const currentLiquid=()=>waterSetting?liquid1009(key,g,waterHeight,key==='2009-ht-ii'&&focus()==='rise'&&waterHeight>=2*ballRadius):null;
+const currentLiquid=()=>waterSetting?liquid1009(key,g,waterHeight,key==='2009-ht-ii'&&focus()==='rise'&&waterHeight>=2*ballRadius):iceCup?iceState():null;
+function iceState(){
+ const melted=focus()==='melt-fit';
+ return {height:melted?g.meltHeight:0,profile:g.meltProfile,sphere:melted?null:g.sphere,melted};
+}
 if(waterSetting){
  const controls=document.createElement('div');
  controls.className='controls';
@@ -61,7 +68,14 @@ function render(){clearMath();$('parts').replaceChildren();data.parts.forEach((p
 $('prev').onclick=()=>{if(step>0){const previous=focus();step--;updateWaterForStep(previous);render()}};$('next').onclick=()=>{if(step<current().steps.length-1){const previous=focus();step++;updateWaterForStep(previous);render()}};
 function reset(){part=0;step=0;choosePart(0);if(key==='2013-nt-i'){setPhi(20);$('sphere').checked=false;}else if(setting)setPhi(setting.value);sweep=initialSweep;setSweep(sweep,false);$('auxiliary').checked=true;setView('2d');if(three)camera('default');render()}
 $('reset').onclick=reset;$('auxiliary').onchange=()=>{draw2d();if(three)rebuild3d()};
-function measure(){const liquid=currentLiquid();if(liquid){
+function measure(){
+ const liquid=currentLiquid();
+ if(iceCup){
+  $('measure').textContent='Fassungsvermögen (ungerundet gerechnet): '+fmt(g.volume,2)+' cm³.'+
+   (liquid.melted?' Geschmolzene Eiscreme: '+fmt(g.meltVolume,2)+' cm³, Füllhöhe: '+fmt(g.meltHeight,2)+' cm.':'');
+  return;
+ }
+ if(liquid){
  const volume=waterSetting.units==='mm'?fmt(liquid.water/1e6,3)+' l':fmt(liquid.water,2)+' cm³';
  $('measure').textContent='Wasservolumen: '+volume+'. Füllhöhe: '+fmt(liquid.height,2)+' '+waterSetting.units+'.';
  return;
@@ -80,15 +94,19 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
  const dashed={'stroke-dasharray':'6 5',stroke:'#7c8394'};
  drawDecomposition(decomposition(key,g),polygon,line);
  const liquid=currentLiquid();
- if(liquid&&liquid.height>0){
+ if(liquid?.height>0){
   polygon([...liquid.profile,...liquid.profile.slice().reverse().map(([r,y])=>[-r,y])],
-    {fill:'#52a6d7','fill-opacity':.38,stroke:'#2478a4','stroke-width':1.5,'data-liquid':'water'});
-  if(liquid.sphere){
-   const [cx,cy]=map([0,ballRadius]);
-   el('circle',{cx,cy,r:ballRadius*scale,fill:'#657587',stroke:'#263544','stroke-width':1.5,'data-liquid':'ball'});
-  }
+    {fill:iceCup?g.icePalette.fill:'#52a6d7','fill-opacity':.38,stroke:iceCup?g.icePalette.text:'#2478a4','stroke-width':1.5,'data-liquid':'water'});
  }
- if($('auxiliary').checked)for(const[a,b]of g.auxLines)line(g.points[a],g.points[b],dashed);
+ if(liquid?.sphere){
+  const radius=iceCup?g.radius:ballRadius,center=iceCup?g.center:ballRadius;
+  const [cx,cy]=map([0,center]);
+  const fill=iceCup?(colorToggle.checked?g.icePalette.fill:'#aeb8c3'):'#657587';
+  el('circle',{cx,cy,r:radius*scale,fill,'fill-opacity':iceCup?.50:1,stroke:'#263544','stroke-width':1.5,'data-liquid':iceCup?'ice':'ball'});
+ }
+ if($('auxiliary').checked)for(const[a,b]of g.auxLines){
+  if(!liquid?.melted||a!=='M'&&b!=='M')line(g.points[a],g.points[b],dashed);
+ }
  const hi=(a,b)=>line(g.points[a],g.points[b],{stroke:'#9c2946','stroke-width':4});
  if(key==='2013-ht-ii'){
   right(g.points.M,-1,1);right(g.points.N,-1,1);right(g.points.S,-1,-1);
@@ -104,14 +122,20 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
  }else if(key==='2014-nt-ii'){
   right(g.points.F,-1,1);right(g.points.E,-1,1);
   if(focus()==='small'){hi('E','H');hi('F','H')}
- }else if(tasks1211[key]||tasks1009[key]){
+ }else if(tasks1211[key]||tasks1009[key]||tasks0807[key]){
   for(const [p,dx,dy] of g.rightAngles)right(g.points[p],dx,dy);
   for(const [v,a,b,name] of g.angles){
    const [x,y]=map(g.points[v]);
    const direction=p=>{const [u,w]=map(g.points[p]);return Math.atan2(w-y,u-x)};
    const start=direction(a),delta=(direction(b)-start+3*Math.PI)%(2*Math.PI)-Math.PI;
-   angle(g.points[v],start,start+delta,27);
-   label(name,g.points[v],43*Math.cos(start+delta/2),4+43*Math.sin(start+delta/2));
+   if(name==='right'){
+    if(liquid?.melted)continue;
+    angle(g.points[v],start,start+delta,15);
+    el('circle',{cx:x+7.5*Math.cos(start+delta/2),cy:y+7.5*Math.sin(start+delta/2),r:2.2,fill:'#9c2946'});
+   }else{
+    angle(g.points[v],start,start+delta,27);
+    label(name,g.points[v],43*Math.cos(start+delta/2),4+43*Math.sin(start+delta/2));
+   }
   }
   for(const [a,b] of g.highlights[focus()]||[])hi(a,b);
  }else{
@@ -122,6 +146,7 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
  }
  line([0,g.minY-.025*(g.maxY-g.minY)],[0,g.maxY+.025*(g.maxY-g.minY)],{'stroke-dasharray':'9 4 2 4',stroke:'#263544'});
  for(const[n,p]of Object.entries(g.points)){
+  if(n==='M'&&liquid?.melted)continue;
   if(n==='M'&&key==='2013-nt-i'&&!$('sphere').checked)continue;
   let dx=p[0]<0?-11:11,dy=6,anchor=p[0]<0?'end':'start';
   if(key==='2013-ht-ii'){if(['A','B','S'].includes(n))dy=22;if(['E','F','M'].includes(n))dy=-13;if(n==='N')dy=-9;}
@@ -182,8 +207,12 @@ function rebuild3d(){
     mesh.renderOrder=transparent?3:0;
    }
   };
-  if(liquid.height>0)addLiquid('water',liquid.profile,'#52a6d7',true);
-  if(liquid.sphere)addLiquid('ball',liquid.sphere,'#657587',false,[[ballRadius,ballRadius]]);
+  if(liquid.height>0)addLiquid(iceCup?'melt':'water',liquid.profile,iceCup?g.icePalette.fill:'#52a6d7',true);
+  if(liquid.sphere){
+   const radius=iceCup?g.radius:ballRadius,center=iceCup?g.center:ballRadius;
+   const fill=iceCup?(colorToggle.checked?g.icePalette.fill:'#aeb8c3'):'#657587';
+   addLiquid(iceCup?'ice':'ball',liquid.sphere,fill,false,[[radius,center]]);
+  }
  }
 
 }
