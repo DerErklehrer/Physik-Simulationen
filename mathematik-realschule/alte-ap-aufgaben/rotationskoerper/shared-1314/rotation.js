@@ -3,13 +3,22 @@ import {installColorToggle,applySVGColorMode,applyMeshColorMode} from '../shared
 import {decomposition,legendHTML,colorSolution,drawDecomposition,decompositionMeshes} from '../shared-colors/decomposition.js';
 import {tasks} from './tasks.js';
 import {geometry} from './geometry.js';
-const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
-let phi=20,g=geometry(key,phi);
+import {geometry1211,settings1211} from './geometry-1211.js';
+import {tasks1211} from './tasks-1211.js';
+const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key]||tasks1211[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
+const model=tasks1211[key]?geometry1211:geometry;
+const setting=settings1211[key];
+let phi=setting?.value??20,g=model(key,phi);
 const initialSweep=360;
 let part=0,step=0,view='2d',sweep=initialSweep,three=null,mathQueue=Promise.resolve();
-const parameter=document.createElement('div');parameter.className='controls';parameter.hidden=key!=='2013-nt-i';parameter.innerHTML='<label for="phi">Winkel φ: <strong id="phiValue">20,00°</strong></label><input id="phi" type="range" min="0.01" max="51.31" step="0.01" value="20"><label><input id="sphere" type="checkbox"> Kugel aus A 2.4 anzeigen</label><p class="muted">Der Regler verändert Modell, Diagonale, Volumen und Kugel gemeinsam. Die Lernlösung behandelt die vorgegebenen Prüfungsbeispiele.</p>';
+const parameter=document.createElement('div');parameter.className='controls';parameter.hidden=key!=='2013-nt-i'&&!setting;parameter.innerHTML='<label for="phi">Winkel φ: <strong id="phiValue">20,00°</strong></label><input id="phi" type="range" min="0.01" max="51.31" step="0.01" value="20"><label><input id="sphere" type="checkbox"> Kugel aus A 2.4 anzeigen</label><p class="muted">Der Regler verändert Modell, Diagonale, Volumen und Kugel gemeinsam. Die Lernlösung behandelt die vorgegebenen Prüfungsbeispiele.</p>';
 $('legend').before(parameter);
-function setPhi(value){phi=Number(value);g=geometry(key,phi);$('phi').value=String(phi);$('phiValue').textContent=fmt(phi,2)+'°'}
+if(setting){
+ for(const prop of ['min','max','value'])$('phi')[prop]=String(setting[prop]);
+ $('sphere').parentElement.hidden=true;
+ parameter.querySelector('p').textContent='Der Winkelregler verändert den Axialschnitt, das 3D-Modell und die Erkundungswerte gemeinsam.';
+}
+function setPhi(value){phi=Number(value);g=model(key,phi);$('phi').value=String(phi);$('phiValue').textContent=fmt(phi,2)+'°'}
 $('phi').oninput=()=>{setPhi($('phi').value);render()};$('sphere').onchange=()=>render();
 const colorToggle=installColorToggle(()=>render());
 const current=()=>data.parts[part],focus=()=>current().steps[step][2];
@@ -18,9 +27,9 @@ function clearMath(){if(window.MathJax?.typesetClear)MathJax.typesetClear([$('st
 $('intro').innerHTML=(data.introId?'<h3>'+data.introId+'</h3>':'')+data.intro;$('rounding').textContent=data.rounding;
 for(const link of document.querySelectorAll('nav.buttons a'))if(new URL(link.href).pathname===location.pathname)link.setAttribute('aria-current','page');
 function updateLegend(){const d=decomposition(key,g);if(d){let legend=document.getElementById('legend')||document.querySelector('.legend');if(legend)legend.innerHTML=legendHTML(d)}}
-function render(){clearMath();$('parts').replaceChildren();data.parts.forEach((p,i)=>{const b=document.createElement('button');b.textContent=p.id;b.className=i===part?'active':'';b.setAttribute('aria-pressed',String(i===part));b.onclick=()=>{part=i;step=0;if(key==='2013-nt-i'){$('sphere').checked=i===3;setPhi(i===1?Math.atan(4.5*Math.sin(g.alpha*Math.PI/180)/(8-4.5*Math.cos(g.alpha*Math.PI/180)))*180/Math.PI:20)}render()};$('parts').append(b)});const p=current(),s=p.steps[step];$('statement').innerHTML=`<h3>${p.id} <span class="tag">${p.points} P</span></h3><div>${p.statement}</div>`;$('stepTitle').textContent=`${step+1} · ${s[0]}`;$('count').textContent=`${step+1} von ${p.steps.length}`;$('solution').innerHTML=colorSolution(s[1],decomposition(key,g));updateLegend();$('prev').disabled=step===0;$('next').disabled=step===p.steps.length-1;draw2d();measure();math();if(three)rebuild3d()}
+function render(){clearMath();$('parts').replaceChildren();data.parts.forEach((p,i)=>{const b=document.createElement('button');b.textContent=p.id;b.className=i===part?'active':'';b.setAttribute('aria-pressed',String(i===part));b.onclick=()=>{part=i;step=0;if(key==='2013-nt-i'){$('sphere').checked=i===3;setPhi(i===1?Math.atan(4.5*Math.sin(g.alpha*Math.PI/180)/(8-4.5*Math.cos(g.alpha*Math.PI/180)))*180/Math.PI:20)}else if(setting?.presets[i]!==undefined)setPhi(setting.presets[i]);render()};$('parts').append(b)});const p=current(),s=p.steps[step];$('statement').innerHTML=`<h3>${p.id} <span class="tag">${p.points} P</span></h3><div>${p.statement}</div>`;$('stepTitle').textContent=`${step+1} · ${s[0]}`;$('count').textContent=`${step+1} von ${p.steps.length}`;$('solution').innerHTML=colorSolution(s[1],decomposition(key,g));updateLegend();$('prev').disabled=step===0;$('next').disabled=step===p.steps.length-1;draw2d();measure();math();if(three)rebuild3d()}
 $('prev').onclick=()=>{if(step>0){step--;render()}};$('next').onclick=()=>{if(step<current().steps.length-1){step++;render()}};
-function reset(){part=0;step=0;if(key==='2013-nt-i'){setPhi(20);$('sphere').checked=false;}sweep=initialSweep;setSweep(sweep,false);$('auxiliary').checked=true;setView('2d');if(three)camera('default');render()}
+function reset(){part=0;step=0;if(key==='2013-nt-i'){setPhi(20);$('sphere').checked=false;}else if(setting)setPhi(setting.value);sweep=initialSweep;setSweep(sweep,false);$('auxiliary').checked=true;setView('2d');if(three)camera('default');render()}
 $('reset').onclick=reset;$('auxiliary').onchange=()=>{draw2d();if(three)rebuild3d()};
 function measure(){const tex=v=>fmt(v,5).replace(',','{,}'),unit=g.units||'cm';$('measure').innerHTML=String.raw`<p>Volumen der vollständigen Körperform: \(${tex(g.volume)}\,\mathrm{${unit}}^3\).</p><p>Rotation ${sweep}°: Volumen des Körperausschnitts \(${tex(g.volume*sweep/360)}\,\mathrm{${unit}}^3\).</p>`+(g.surface?String.raw`<p>Oberfläche ohne Zwischenrundung: \(${tex(g.surface)}\,\mathrm{${unit}}^2\).</p>`:'')+(key==='2013-nt-i'?String.raw`<p>Aktuell: \(\varphi=${tex(phi)}^\circ\); \(\lvert\overline{BD_n}\rvert=${tex(g.bd)}\,\mathrm{cm}\).</p><p>Kugelradius \(r=${tex(g.r)}\,\mathrm{cm}\); Kugeloberfläche \(O_{\text{Kugel}}=${tex(g.sphereSurface)}\,\mathrm{cm}^2\). Das Körpervolumen schließt die Kugel nicht ein.</p>`:'')}
 const NS='http://www.w3.org/2000/svg';
@@ -52,6 +61,16 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
  }else if(key==='2014-nt-ii'){
   right(g.points.F,-1,1);right(g.points.E,-1,1);
   if(focus()==='small'){hi('E','H');hi('F','H')}
+ }else if(tasks1211[key]){
+  for(const [p,dx,dy] of g.rightAngles)right(g.points[p],dx,dy);
+  for(const [v,a,b,name] of g.angles){
+   const [x,y]=map(g.points[v]);
+   const direction=p=>{const [u,w]=map(g.points[p]);return Math.atan2(w-y,u-x)};
+   const start=direction(a),delta=(direction(b)-start+3*Math.PI)%(2*Math.PI)-Math.PI;
+   angle(g.points[v],start,start+delta,27);
+   label(name,g.points[v],43*Math.cos(start+delta/2),4+43*Math.sin(start+delta/2));
+  }
+  for(const [a,b] of g.highlights[focus()]||[])hi(a,b);
  }else{
   right(g.points.E,-1,1);
   const outer=Math.atan2(g.height,5),inner=Math.atan2(g.height-g.bd,5);angle(g.points.A,inner,outer,35);label('φ',g.points.A,40,39,'start');
@@ -67,7 +86,14 @@ function draw2d(){const svg=$('plot');svg.replaceChildren();const scale=Math.min
   if(key==='2014-ht-ii'){if(['C','D','K'].includes(n))dy=-12;if(['F','A','G'].includes(n))dy=21;if(n==='H')dy=-9;if(n==='L')dy=21;}
   if(key==='2014-nt-ii'){if(['C','D','F'].includes(n))dy=-11;if(['A','B','E'].includes(n))dy=21;if(n==='G')dy=-10;if(n==='H')dy=22;}
   if(key==='2013-nt-i'){if(['A','C','E'].includes(n))dy=-13;if(n==='B')dy=22;if(n==='D'){dx=12;dy=18}if(n==='M'){dx=-12;dy=7;anchor='end'}}
-  const name=key==='2013-nt-i'&&n==='D'?'Dₙ':key==='2013-nt-i'&&n==='M'?'Mₙ':n;label(name,p,dx,dy,anchor);
+  if(tasks1211[key])dy=p[1]===0?23:-10;
+  if(key==='2012-ht-i'){
+   if(['A','D'].includes(n))dy=-25;
+   if(n==='G')dx=g.r<.25?-17:13;
+   if(n==='E')dx=g.r<.25?17:-13;
+   if(n==='H')dy=-30;
+  }
+  const name=g.subscript?.includes(n)?n+(phi===setting?.value?'₁':'ₙ'):key==='2013-nt-i'&&n==='D'?'Dₙ':key==='2013-nt-i'&&n==='M'?'Mₙ':n;label(name,p,dx,dy,anchor);
  }
  label('Rotationsachse '+g.axis,[0,g.maxY],0,-44);applySVGColorMode(svg,colorToggle.checked);svg.dataset.focus=focus();}
 async function setView(mode){view=mode;$('plot').toggleAttribute('hidden',mode!=='2d');$('threewrap').hidden=mode!=='3d';$('cameraControls').hidden=mode!=='3d';$('sweepControl').hidden=mode!=='3d';for(const[v,id]of[['2d','view2'],['3d','view3']]){$(id).classList.toggle('active',mode===v);$(id).setAttribute('aria-pressed',String(mode===v))}if(mode==='3d'){if(!three)await init3d();else three.resize()}}
