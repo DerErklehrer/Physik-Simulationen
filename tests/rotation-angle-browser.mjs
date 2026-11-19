@@ -44,7 +44,7 @@ async function verify(context, entry) {
     const canvasSelector = entry.canvas || '#canvas';
     await page.waitForFunction(selector => {
       const canvas = document.querySelector(selector);
-      return canvas?.getContext('webgl2') && canvas.width !== 300;
+      return canvas && canvas.width !== 300 && canvas.getContext('webgl2');
     }, canvasSelector);
     const readout = page.locator(entry.slider === '#theta' ? '#thetaval' : '#sweepValue');
     async function expectAngle(degrees) {
@@ -61,7 +61,10 @@ async function verify(context, entry) {
     await expectAngle(360);
     if (open) assert.notDeepEqual(await canvas.screenshot(), open, '3D-Darstellung des Viertelschnitts');
     for (const degrees of [0, 135, 270, 360]) {
-      await slider.fill(String(degrees));
+      await slider.evaluate((input, value) => {
+        input.value = String(value);
+        input.dispatchEvent(new Event('input', {bubbles: true}));
+      }, degrees);
       await expectAngle(degrees);
     }
     const state = await page.evaluate(() => window.oldRotationState?.() || window.rotationState?.() || window.ntState?.());
