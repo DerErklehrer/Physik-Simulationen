@@ -102,7 +102,7 @@ try {
         const carrier = figure.locator('#carrier-equation');
         assert.equal(await carrier.count(),0);
         await step(3);
-        const [equation, numerator, denominator] = await carrier.locator('text').all();
+        const [equation, numerator, denominator, variable] = await carrier.locator('text').all();
         const bar = await carrier.locator('line').boundingBox();
         const top = await numerator.boundingBox();
         const bottom = await denominator.boundingBox();
@@ -110,7 +110,9 @@ try {
         assert.ok(bottom.y + bottom.height / 2 > bar.y);
         assert.equal(await denominator.textContent(),'4');
         assert.equal(await equation.textContent(),'y = 6 −');
-        assert.equal(await numerator.textContent(),'x');
+        assert.equal(await numerator.textContent(),'1');
+        assert.equal(await variable.textContent(),'x');
+        assert.ok((await variable.boundingBox()).x >= bar.x + bar.width);
         await page.locator('#explain :is(mfrac, mjx-mfrac)').last().waitFor();
         await step(1);
         await page.locator('#explain :is(mfrac, mjx-mfrac)').last().waitFor();
@@ -131,6 +133,12 @@ try {
       assert.equal(problems.length,0,problems.join('\n'));
       console.log(name+': '+directory+file);
     }
+    const practiceUrl = new URL('mathematik-10/abschlusspruefungsaufgaben/2026/b4.html?teil=2', base);
+    await page.goto(practiceUrl.href, {waitUntil:'domcontentloaded'});
+    await page.locator('#trail').check();
+    const practiceLabel = page.locator('#carrier-equation text');
+    assert.deepEqual(await practiceLabel.allTextContents(), ['y = 6 −', '1', '4', 'x']);
+    assert.equal(problems.length,0,problems.join('\n'));
     await context.close();
   }
 } finally {

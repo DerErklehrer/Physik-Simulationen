@@ -29,19 +29,19 @@ const tasks=[
    ],
    [
     "Halben Winkel bei Aₙ betrachten",
-    "Im rechtwinkligen Dreieck \\(A_nSD\\) gilt:\\[\\sphericalangle DA_nS=\\frac{\\varphi}{2}.\\]Die Gegenkathete dieses Winkels ist \\(\\overline{SD}\\), die Ankathete ist \\(\\overline{A_nS}\\)."
+    "Im rechtwinkligen Dreieck \\(A_nSD\\) gilt:\\[\\sphericalangle DA_nS=\\frac{1}{2}\\varphi.\\]Die Gegenkathete dieses Winkels ist \\(\\overline{SD}\\), die Ankathete ist \\(\\overline{A_nS}\\)."
    ],
    [
     "Tangensbeziehung aufstellen",
-    "Damit folgt:\\[\\tan\\left(\\frac{\\varphi}{2}\\right)=\\frac{|\\overline{SD}|}{|\\overline{A_nS}|}.\\]Setze die feste Länge ein:\\[\\tan\\left(\\frac{\\varphi}{2}\\right)=\\frac{2{,}5\\,\\mathrm{cm}}{|\\overline{A_nS}|}.\\]"
+    "Damit folgt:\\[\\tan\\left(\\frac{1}{2}\\varphi\\right)=\\frac{|\\overline{SD}|}{|\\overline{A_nS}|}.\\]Setze die feste Länge ein:\\[\\tan\\left(\\frac{1}{2}\\varphi\\right)=\\frac{2{,}5\\,\\mathrm{cm}}{|\\overline{A_nS}|}.\\]"
    ],
    [
     "Nach der gesuchten Länge auflösen",
-    "Multipliziere mit \\(|\\overline{A_nS}|\\) und dividiere durch den positiven Tangenswert:\\[\\boxed{|\\overline{A_nS}|(\\varphi)=\\frac{2{,}5}{\\tan\\left(\\frac{\\varphi}{2}\\right)}\\,\\mathrm{cm}}.\\]Dies ist dieselbe Funktion wie mit \\(\\tan(0{,}5\\cdot\\varphi)\\) im amtlichen Lösungsmuster."
+    "Multipliziere mit \\(|\\overline{A_nS}|\\) und dividiere durch den positiven Tangenswert:\\[\\boxed{|\\overline{A_nS}|(\\varphi)=\\frac{2{,}5}{\\tan\\left(\\frac{1}{2}\\varphi\\right)}\\,\\mathrm{cm}}.\\]Dies ist dieselbe Funktion wie mit \\(\\tan(0{,}5\\cdot\\varphi)\\) im amtlichen Lösungsmuster."
    ],
    [
     "Gültigkeitsbereich und Veränderung einordnen",
-    "Es gilt \\(\\varphi\\in]0^\\circ;180^\\circ[\\), also \\(\\frac{\\varphi}{2}\\in]0^\\circ;90^\\circ[\\). Der Nenner ist positiv und nicht null. Je größer \\(\\varphi\\) wird, desto kürzer wird \\(\\overline{A_nS}\\). Die Grenzlagen \\(0^\\circ\\) und \\(180^\\circ\\) gehören nicht zur Aufgabe."
+    "Es gilt \\(\\varphi\\in]0^\\circ;180^\\circ[\\), also \\(\\frac{1}{2}\\varphi\\in]0^\\circ;90^\\circ[\\). Der Nenner ist positiv und nicht null. Je größer \\(\\varphi\\) wird, desto kürzer wird \\(\\overline{A_nS}\\). Die Grenzlagen \\(0^\\circ\\) und \\(180^\\circ\\) gehören nicht zur Aufgabe."
    ]
   ]
  }
@@ -68,7 +68,7 @@ function draw(){const st=state(),g=geometry(st.phi),scale=Math.min(70,470/(g.L+2
  if(scale>8){right(P.C,[-Math.SQRT1_2,-Math.SQRT1_2],[-Math.SQRT1_2,Math.SQRT1_2]);if(step>=0)right(P.S,step>=2?[-1,0]:[1,0],[0,-1]);}
  if(step>=1){line(P.S,P.D,'#198576',3.5);line(P.S,P.C,'#198576',3.5);if(scale>14)arc(P.C,P.D,P.S,'45^\\circ',38,'#198576')}
  if(step>=2){el('polygon',{points:['A','S','D'].map(k=>P[k].join(',')).join(' '),fill:'#2478a4','fill-opacity':.13});line(P.A,P.S,'#2478a4',3.5)}
- if(g.L*scale>55&&2.5*scale>22){arc(P.A,P.B,P.D,'\\varphi',26);if(step>=2)arc(P.A,P.D,P.S,'\\frac{\\varphi}{2}',53,'#2478a4')}
+ if(g.L*scale>55&&2.5*scale>22){arc(P.A,P.B,P.D,'\\varphi',26);if(step>=2)arc(P.A,P.D,P.S,'\\frac{1}{2}\\varphi',53,'#2478a4')}
  for(const[k,dx,dy]of[['A',-30,8],['B',-8,25],['C',12,7],['D',-8,-14],['S',8,22]]){el('circle',{cx:P[k][0],cy:P[k][1],r:3,fill:'#60758b'});mathCaption(P[k][0]+dx,P[k][1]+dy,k==='A'?'A_n':k,'#253341',17)}
  mathCaption(40,40,'\\varphi='+num(st.phi)+'^\\circ','#a32b4d',18);
  if(scale>8)mathCaption((P.S[0]+P.C[0])/2-30,P.S[1]+47,'2{,}5\\,\\mathrm{cm}','#637384',16);
