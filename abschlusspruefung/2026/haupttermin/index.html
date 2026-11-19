@@ -69,15 +69,17 @@ const formulaMarkup=(s)=>{
 };
 
 const vfrom=(from,to)=>'<mover accent="false"><mrow>'+mi(from)+(to==='Cₙ'?sub('C','n'):mi(to))+'</mrow><mo stretchy="true">→</mo></mover>';
-const frac=(a,b)=>'<mfrac><mrow>'+mn(a)+'</mrow><mrow>'+mn(b)+'</mrow></mfrac>';
+const overFour=numerator=>'<mstyle displaystyle="true"><mfrac>'+numerator+mn('4')+'</mfrac></mstyle>';
+const component=axis=>'<msub>'+mi(axis)+sub('C','n')+'</msub>';
+const carrierEquation=mi('y')+mo('=')+mn('6')+mo('−')+overFour(mi('x'));
 const coordExpr=(a,b)=>'<mrow><mo stretchy="true">(</mo><mtable columnalign="center" rowspacing="0.18em"><mtr><mtd><mtext>'+esc(a)+'</mtext></mtd></mtr><mtr><mtd><mtext>'+esc(b)+'</mtext></mtd></mtr></mtable><mo stretchy="true">)</mo></mrow>';
 const eqBlock=(s)=>'<div class="eqline">'+M(s)+'</div>';
 const ortsvektorSteps=[
 ['Ortsvektor bilden','Der Ortsvektor von Cₙ ergibt sich aus dem Ortsvektor von A und dem Verschiebungsvektor von A nach Cₙ.'+eqBlock(vfrom('O','Cₙ')+mo('=')+vfrom('O','A')+mo('+')+vfrom('A','Cₙ'))],
 ['Spaltenvektoren einsetzen','Die Komponenten werden jeweils addiert.'+eqBlock(vfrom('O','Cₙ')+mo('=')+coordExpr('−2','−1')+mo('+')+coordExpr('2 + 4 · cos φ','7 − cos φ'))],
 ['Komponentenweise vereinfachen',eqBlock(vfrom('O','Cₙ')+mo('=')+coordExpr('−2 + 2 + 4 · cos φ','−1 + 7 − cos φ')+mo('=')+coordExpr('4 · cos φ','6 − cos φ'))+'Damit lautet der Punkt: '+pointM('Cₙ','4 · cos φ','6 − cos φ')+'.'],
-['Parameter eliminieren','Für die Koordinaten des Punktes Cₙ gilt '+M(sub('x','Cₙ')+mo('=')+mn('4')+mo('·')+mi('cos φ'))+' und '+M(sub('y','Cₙ')+mo('=')+mn('6')+mo('−')+mi('cos φ'))+'.'+eqBlock(mi('cos φ')+mo('=')+'<mfrac><msub><mi>x</mi><mrow><mi>C</mi><mi>n</mi></mrow></msub><mn>4</mn></mfrac>')+'Setzt man diesen Ausdruck in die zweite Koordinatengleichung ein, erhält man:'+eqBlock(sub('y','Cₙ')+mo('=')+mn('6')+mo('−')+'<mfrac><msub><mi>x</mi><mrow><mi>C</mi><mi>n</mi></mrow></msub><mn>4</mn></mfrac>')+'Erst für die allgemeine Gleichung des Trägergraphen werden die Punktkoordinaten durch x und y ersetzt:'+eqBlock(mi('y')+mo('=')+mn('6')+mo('−')+frac('x','4'))],
-['Trägergerade und durchlaufene Punktmenge','Die Trägergerade hat die Gleichung '+M(mi('y')+mo('=')+mn('6')+mo('−')+frac('x','4'))+'. Da '+M(mi('φ')+mo('∈')+mo('[')+mn('0°')+mo(';')+mn('180°')+mo(']'))+', gilt '+M(mo('−')+mn('1')+mo('≤')+mi('cos φ')+mo('≤')+mn('1'))+' und somit '+M(mo('−')+mn('4')+mo('≤')+mi('x')+mo('≤')+mn('4'))+'. Die Punkte Cₙ durchlaufen nur den Abschnitt von (−4 | 7) bis (4 | 5).']
+['Parameter eliminieren','Für die Koordinaten des Punktes Cₙ gilt '+M(component('x')+mo('=')+mn('4')+mo('·')+mi('cos φ'))+' und '+M(component('y')+mo('=')+mn('6')+mo('−')+mi('cos φ'))+'.'+eqBlock(mi('cos φ')+mo('=')+overFour(component('x')))+'Setzt man diesen Ausdruck in die zweite Koordinatengleichung ein, erhält man:'+eqBlock(component('y')+mo('=')+mn('6')+mo('−')+overFour(component('x')))+'Erst für die allgemeine Gleichung des Trägergraphen werden die Punktkoordinaten durch x und y ersetzt:'+eqBlock(carrierEquation)],
+['Trägergerade und durchlaufene Punktmenge','Die Trägergerade hat die Gleichung'+eqBlock(carrierEquation)+'Da '+M(mi('φ')+mo('∈')+mo('[')+mn('0°')+mo(';')+mn('180°')+mo(']'))+', gilt '+M(mo('−')+mn('1')+mo('≤')+mi('cos φ')+mo('≤')+mn('1'))+' und somit '+M(mo('−')+mn('4')+mo('≤')+mi('x')+mo('≤')+mn('4'))+'. Die Punkte Cₙ durchlaufen nur den Abschnitt von (−4 | 7) bis (4 | 5).']
 ];
 
 
@@ -146,7 +148,19 @@ const cur=rightTriangle?{x:-4/7,y:43/7}:C(angle),mA=map(A),mB=map(B),mC=map(cur)
 const pointName=rightTriangle?'C₃':parallelSide?'C₄':part==='B 4.1'&&angle===50?'C₁':part==='B 4.1'&&angle===160?'C₂':'Cₙ';
 const pointIndex=pointIndices[pointName[1]];
 const showCurrentPoint=part!=='B 4.1'||(angle===160?step>=4:step>=2);
-if($('trail').checked||part==='B 4.3'&&step>=3){line({x:-4.5,y:7.125},{x:4.5,y:4.875},'#21916c',1.7,'8 5');line({x:-4,y:7},{x:4,y:5},'#21916c',4);txt({x:2.6,y:5.35},'y = 6 − ¼x','#178269',-22,-8,14)}
+if($('trail').checked||part==='B 4.3'&&step>=3){
+ line({x:-4.5,y:7.125},{x:4.5,y:4.875},'#21916c',1.7,'8 5');
+ line({x:-4,y:7},{x:4,y:5},'#21916c',4);
+ const p=map({x:2.3,y:5.72});
+ const label=node('g',{id:'carrier-equation',transform:'translate('+p.x+' '+p.y+')',fill:'#178269',role:'img','aria-label':'y gleich sechs minus x Viertel'});
+ label.append(
+  node('text',{x:0,y:4,'font-size':14},'y = 6 −'),
+  node('text',{x:55,y:-3,'font-size':13,'text-anchor':'middle','font-style':'italic'},'x'),
+  node('line',{x1:48,x2:62,y1:1,y2:1,stroke:'currentColor',color:'#178269','stroke-width':1.2}),
+  node('text',{x:55,y:14,'font-size':13,'text-anchor':'middle'},'4')
+ );
+ svg.append(label);
+}
 if(showCurrentPoint)svg.append(node('polygon',{points:[mA,mB,mC].map(p=>p.x+','+p.y).join(' '),fill:'#dbedf3','fill-opacity':'.55',stroke:'#4c6070','stroke-width':2.5}));
 if(part==='B 4.1'&&step>=5){const c1=C(50),c2=C(160);for(const [p,color,t] of [[c1,'#147b9d','C₁'],[c2,'#b66d18','C₂']]){const m=map(p);svg.append(node('polygon',{points:[mA,mB,m].map(q=>q.x+','+q.y).join(' '),fill:'none',stroke:color,'stroke-width':2.5,'stroke-dasharray':'7 4'}));txt(p,t,color,8,-9,16)}}
 if($('vectors').checked){
