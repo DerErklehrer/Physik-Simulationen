@@ -111,7 +111,12 @@ try{
         for(const angle of c.angles){
           await input('phi',angle);
           assert.equal((await state()).geometry.phi,angle);
-          near((await state()).geometry.volume,geometry1211(c.key,angle).volume);
+          const current=await state();
+          near(current.geometry.volume,geometry1211(c.key,angle).volume);
+          if(c.key==='2011-ht-i'){
+            near(current.three.center,current.geometry.h);
+            assert(current.three.scale*current.geometry.maxY<=7+1e-8);
+          }
         }
         for(const sweep of [0,90,270,360]){
           await input('sweep',sweep);
