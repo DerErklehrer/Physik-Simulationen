@@ -1,7 +1,7 @@
-const fullTurn = 360;
-const threeQuarterTurn = 270;
+globalThis.bindRotationAngle = function (slider, readout, button, redraw) {
+  const fullTurn = 360;
+  const threeQuarterTurn = 270;
 
-export function bindRotationAngle(slider, readout, button, redraw) {
   function setAngle(degrees, notify = true) {
     slider.value = String(degrees);
     const angle = slider.valueAsNumber;
@@ -17,4 +17,4 @@ export function bindRotationAngle(slider, readout, button, redraw) {
   });
   setAngle(slider.valueAsNumber, false);
   return setAngle;
-}
+};

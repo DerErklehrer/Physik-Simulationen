@@ -1,4 +1,4 @@
-import {bindRotationAngle} from '../../../assets/rotation-angle.js?v=20261119';
+import '../../../assets/rotation-angle.js?v=20261119';
 // Raumgeometrie 2025: Originalskizze bleibt erhalten, interaktive 3D-Ergänzung.
 // Three.js wie in der Referenzprüfung 2026, orthografische Kamera und OrbitControls.
 import * as THREE from 'three';

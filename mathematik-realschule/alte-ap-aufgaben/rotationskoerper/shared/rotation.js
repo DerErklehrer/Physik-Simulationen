@@ -1,4 +1,4 @@
-import {bindRotationAngle} from '../../../../assets/rotation-angle.js?v=20261119';
+import '../../../../assets/rotation-angle.js?v=20261119';
 import {installColorToggle,applySVGColorMode,applyMeshColorMode} from '../shared-colors/toggle.js';
 import {decomposition,legendHTML,colorSolution,drawDecomposition,decompositionMeshes} from '../shared-colors/decomposition.js';
 import {tasks} from './tasks.js';

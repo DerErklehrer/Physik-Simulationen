@@ -1,4 +1,4 @@
-import {bindRotationAngle} from '../../../../assets/rotation-angle.js?v=20261119';
+import '../../../../assets/rotation-angle.js?v=20261119';
 import {tasks} from './tasks.js';
 const $=id=>document.getElementById(id),year=+document.body.dataset.year,data=tasks[year],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
 let part=0,step=0,view='2d',sweep=360,selected=0,three=null,mathQueue=Promise.resolve();

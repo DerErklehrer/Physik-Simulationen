@@ -22,7 +22,7 @@ const pages = [
   {path: `${exam}/2026/haupttermin/b2.html`, canvas: '#threecanvas'},
   {path: `${mirror}/2026/b2.html`, canvas: '#threecanvas'},
   {path: `${exam}/20xx/muster1/a2.html`, view: '#threeD', canvas: '#view3d canvas', prepare: '#parts button:nth-child(2)', slider: '#theta'},
-  {path: `${mirror}/muster1/a2.html`, view: '#threeD', canvas: '#view3d canvas', prepare: '#parts button:nth-child(2)', slider: '#theta'},
+  {path: `${mirror}/muster1/a2.html?teil=1`, view: '#threeD', canvas: '#view3d canvas', slider: '#theta'},
 ];
 
 const browser = await chromium.launch({
