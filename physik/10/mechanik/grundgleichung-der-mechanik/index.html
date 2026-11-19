@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grundgleichung der Mechanik · Physik 10 · Der ErkLehrer</title>
 <link rel="stylesheet" href="../mechanik.css">
+<script type="module" src="../simulationen.js"></script>
 </head>
 <body>
 <header>Der <b>Erk</b>Lehrer<span>.</span></header>
@@ -20,6 +21,24 @@
 <div class="formula"><math><msub><mi>F</mi><mi mathvariant='normal'>res</mi></msub><mo>=</mo><mi>m</mi><mo>⋅</mo><mi>a</mi></math></div>
 <h2>Beispiel mit dem Rollwagen</h2>
 <p>Bei einer resultierenden Kraft von 1,0 N und einer Gesamtmasse von 0,20 kg beträgt die Beschleunigung <math><mn>5,0</mn><mfrac><mrow><mi mathvariant='normal'>m</mi></mrow><mrow><msup><mrow><mi mathvariant='normal'>s</mi></mrow><mn>2</mn></msup></mrow></mfrac></math>. Bei doppelter Gesamtmasse und gleicher resultierender Kraft halbiert sich die Beschleunigung.</p>
+<section class="simulation" id="rollwagen-interaktiv" aria-labelledby="cart-heading" hidden>
+  <h2 id="cart-heading">Rollwagen beladen</h2>
+  <p>Beide Wagen starten aus der Ruhe. Auf jeden wirkt eine resultierende Kraft von 1 N. Vergleiche die nach 0,4 s zurückgelegten Wege.</p>
+  <div class="sim-control">
+    <label for="cart-mass">Gesamtmasse des verstellbaren Wagens</label>
+    <input id="cart-mass" type="range" min="0.05" max="0.30" step="0.05" value="0.10">
+    <div><output id="cart-mass-value" for="cart-mass">0,10</output> kg</div>
+  </div>
+  <div class="cart-tracks">
+    <div>Verstellbarer Wagen · <i>a</i> = <output id="cart-acceleration-value" for="cart-mass">10</output> <math><mfrac><mi mathvariant='normal'>m</mi><msup><mi mathvariant='normal'>s</mi><mn>2</mn></msup></mfrac></math> · <i>s</i> = <output id="cart-distance-value" for="cart-mass">0,8</output> m</div>
+    <div class="cart-lane" aria-hidden="true"><span id="variable-cart" class="cart"></span></div>
+    <div>Vergleichswagen (0,20 kg) · <i>a</i> = 5 <math><mfrac><mi mathvariant='normal'>m</mi><msup><mi mathvariant='normal'>s</mi><mn>2</mn></msup></mfrac></math> · <i>s</i> = 0,4 m</div>
+    <div class="cart-lane" aria-hidden="true"><span id="reference-cart" class="cart cart-reference"></span></div>
+    <div class="sim-scale cart-scale" aria-hidden="true"><span>0 m</span><span>0,4 m</span><span>0,8 m</span><span>1,2 m</span><span>1,6 m</span></div>
+  </div>
+  <button class="button" type="button" id="cart-replay" hidden>Fahrt in Zeitlupe abspielen</button>
+  <p>Vergleiche 0,10 kg mit 0,20 kg. Was passiert mit der Beschleunigung und mit dem Weg nach 0,4 s?</p>
+</section>
 </article>
 <footer>Der ErkLehrer · Interaktive Lernhilfen</footer>
 </main>

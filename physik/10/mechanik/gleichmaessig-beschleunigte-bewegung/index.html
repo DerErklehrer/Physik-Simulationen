@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gleichmäßig beschleunigte Bewegung · Physik 10 · Der ErkLehrer</title>
 <link rel="stylesheet" href="../mechanik.css">
+<script type="module" src="../simulationen.js"></script>
 </head>
 <body>
 <header>Der <b>Erk</b>Lehrer<span>.</span></header>
@@ -22,6 +23,8 @@
 <div class="formula"><math><mi>v</mi><mo>=</mo><mi>a</mi><mo>⋅</mo><mi>t</mi><mspace width='1.5em'/><mi>s</mi><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo>⋅</mo><mi>a</mi><mo>⋅</mo><msup><mrow><mi>t</mi></mrow><mn>2</mn></msup></math></div>
 <h2>Beispiel</h2>
 <p>Ein Körper beschleunigt aus der Ruhe 3 Sekunden lang mit <math><mn>2</mn><mfrac><mrow><mi mathvariant='normal'>m</mi></mrow><mrow><msup><mrow><mi mathvariant='normal'>s</mi></mrow><mn>2</mn></msup></mrow></mfrac></math>. Dann beträgt seine Geschwindigkeit <math><mn>6</mn><mfrac><mrow><mi mathvariant='normal'>m</mi></mrow><mrow><mi mathvariant='normal'>s</mi></mrow></mfrac></math> und er hat 9 Meter zurückgelegt.</p>
+<div id="bewegung-interaktiv">
+<div id="static-motion-charts">
 <figure>
   <img src="zeit-weg.png" width="660" height="340" alt="Zeit-Weg-Diagramm mit einer Parabel durch die Punkte 0 Sekunden und 0 Meter, 1 Sekunde und 1 Meter, 2 Sekunden und 4 Meter sowie 3 Sekunden und 9 Meter.">
   <figcaption><strong>Zeit-Weg-Diagramm.</strong> Die Parabel wird immer steiler. In aufeinanderfolgenden Sekunden legt der Körper 1 Meter, 3 Meter und 5 Meter zurück.</figcaption>
@@ -30,6 +33,36 @@
   <img src="zeit-geschwindigkeit.png" width="660" height="340" alt="Zeit-Geschwindigkeit-Diagramm mit einer Geraden durch den Ursprung. Nach 1, 2 und 3 Sekunden beträgt die Geschwindigkeit 2, 4 beziehungsweise 6 Meter pro Sekunde.">
   <figcaption><strong>Zeit-Geschwindigkeit-Diagramm.</strong> Die Gerade hat eine konstante Steigung. In jeder Sekunde nimmt die Geschwindigkeit um denselben Betrag zu.</figcaption>
 </figure>
+</div>
+<section class="simulation" id="motion-panel" aria-labelledby="motion-heading" hidden>
+  <h2 id="motion-heading">Weg und Geschwindigkeit vergleichen</h2>
+  <div class="sim-controls">
+    <div class="sim-control">
+      <label for="motion-time">Zeit <i>t</i></label>
+      <input id="motion-time" type="range" min="0" max="3" step="0.1" value="3">
+      <div><output id="time-value" for="motion-time">3</output> s</div>
+    </div>
+    <div class="sim-control">
+      <label for="motion-acceleration">Beschleunigung <i>a</i></label>
+      <input id="motion-acceleration" type="range" min="0" max="4" step="0.5" value="2">
+      <div><output id="acceleration-value" for="motion-acceleration">2</output> <math><mfrac><mi mathvariant='normal'>m</mi><msup><mi mathvariant='normal'>s</mi><mn>2</mn></msup></mfrac></math></div>
+    </div>
+  </div>
+  <div class="sim-charts">
+    <figure>
+      <figcaption id="distance-caption">Zeit-Weg-Diagramm · <i>s</i> in m</figcaption>
+      <canvas id="distance-chart" width="352" height="232" role="img" aria-labelledby="distance-caption" aria-describedby="distance-reading"></canvas>
+      <p class="sim-reading" id="distance-reading">Weg <i>s</i> = <output id="distance-value" for="motion-time motion-acceleration">9</output> m</p>
+    </figure>
+    <figure>
+      <figcaption id="speed-caption">Zeit-Geschwindigkeit-Diagramm · <i>v</i> in <math><mfrac><mi mathvariant='normal'>m</mi><mi mathvariant='normal'>s</mi></mfrac></math></figcaption>
+      <canvas id="speed-chart" width="352" height="232" role="img" aria-labelledby="speed-caption" aria-describedby="speed-reading"></canvas>
+      <p class="sim-reading" id="speed-reading">Geschwindigkeit <i>v</i> = <output id="motion-speed-value" for="motion-time motion-acceleration">6</output> <math><mfrac><mi mathvariant='normal'>m</mi><mi mathvariant='normal'>s</mi></mfrac></math></p>
+    </figure>
+  </div>
+  <p>Halte die Beschleunigung fest und vergleiche die Werte bei 1 s und 2 s. Was ändert sich, wenn du anschließend bei gleicher Zeit die Beschleunigung verdoppelst?</p>
+</section>
+</div>
 </article>
 <footer>Der ErkLehrer · Interaktive Lernhilfen</footer>
 </main>
