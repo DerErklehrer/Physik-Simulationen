@@ -5,7 +5,7 @@ import {tasks} from './tasks.js';
 import {geometry} from './geometry.js';
 const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
 let phi=20,g=geometry(key,phi);
-const initialSweep=key==='2013-nt-i'||key==='2014-ht-ii'?225:360;
+const initialSweep=360;
 let part=0,step=0,view='2d',sweep=initialSweep,three=null,mathQueue=Promise.resolve();
 const parameter=document.createElement('div');parameter.className='controls';parameter.hidden=key!=='2013-nt-i';parameter.innerHTML='<label for="phi">Winkel φ: <strong id="phiValue">20,00°</strong></label><input id="phi" type="range" min="0.01" max="51.31" step="0.01" value="20"><label><input id="sphere" type="checkbox"> Kugel aus A 2.4 anzeigen</label><p class="muted">Der Regler verändert Modell, Diagonale, Volumen und Kugel gemeinsam. Die Lernlösung behandelt die vorgegebenen Prüfungsbeispiele.</p>';
 $('legend').before(parameter);

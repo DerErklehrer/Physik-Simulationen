@@ -5,7 +5,7 @@ import {tasks} from './tasks.js';
 import {geometry} from './geometry.js';
 const $=id=>document.getElementById(id),key=document.body.dataset.task,data=tasks[key],fmt=(v,n=2)=>v.toFixed(n).replace('.',',');
 let phi=75,g=geometry(key,phi);
-const initialSweep=key==='2016-nt-i'?225:360;
+const initialSweep=360;
 let part=0,step=0,view='2d',sweep=initialSweep,three=null,mathQueue=Promise.resolve();
 const colorToggle=installColorToggle(()=>render());
 const current=()=>data.parts[part],focus=()=>current().steps[step][2];
