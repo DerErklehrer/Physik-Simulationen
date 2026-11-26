@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../mechanik.css">
 <link rel="stylesheet" href="radiergummi.css">
 <script type="module" src="radiergummi.js"></script>
+<script type="module" src="blanko-auswertung.js"></script>
 </head>
 <body>
 <header>Der <b>Erk</b>Lehrer<span>.</span></header>
@@ -102,7 +103,7 @@
   </div>
   <p>Berechne die mittlere Fallzeit einmal mit allen Werten und einmal ohne die fünf markierten Werte. Welcher Mittelwert liegt näher an der Modellzeit? Bestimme aus beiden Mittelwerten die Fallbeschleunigung und vergleiche sie mit dem Referenzwert.</p>
   <details>
-    <summary>Auswertung anzeigen</summary>
+    <summary>Beispielauswertung</summary>
     <p>Im Modell ergibt sich aus
       <math><mi>t</mi><mo>=</mo><msqrt><mfrac><mrow><mn>2</mn><mo>⋅</mo><mi>h</mi></mrow><mi>g</mi></mfrac></msqrt></math>
       eine Fallzeit von rund <strong>1,446 s</strong>.</p>
@@ -124,6 +125,46 @@
     <p><math display="block"><mi>g</mi><mo>≈</mo><mfrac><mrow><mn>2</mn><mo>⋅</mo><mn>10,25</mn><mspace width=".18em"/><mi mathvariant="normal">m</mi></mrow><msup><mrow><mo>(</mo><mfrac><mrow><mn>17,38</mn><mspace width=".18em"/><mi mathvariant="normal">s</mi></mrow><mn>12</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></mfrac><mo>≈</mo><mn>9,77</mn><mspace width=".18em"/><mfrac><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">s</mi><mn>2</mn></msup></mfrac></math></p>
     <p>Die Beträge der relativen Abweichungen vom Referenzwert <math><mn>9,81</mn><mspace width=".18em"/><mfrac><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">s</mi><mn>2</mn></msup></mfrac></math> betragen rund <strong>2,11&nbsp;%</strong> mit den markierten Werten und <strong>0,38&nbsp;%</strong> ohne sie.</p>
   </details>
+</section>
+<section class="simulation" id="blanko-auswertung" aria-labelledby="blanko-heading">
+  <h2 id="blanko-heading">Blanko-Auswertung</h2>
+  <p id="blanko-hinweis">Trage die Fallhöhe und bis zu 20 gemessene Stoppuhrzeiten ein. Freie Felder bleiben bei der Berechnung unberücksichtigt.</p>
+  <form id="blanko-form" aria-describedby="blanko-hinweis">
+    <label class="blanko-height">Fallhöhe in m
+      <input id="blanko-height" type="text" inputmode="decimal">
+    </label>
+    <fieldset>
+      <legend>Stoppuhrzeiten in s</legend>
+      <div class="blanko-times">
+        <label>1<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 1 in Sekunden"></label>
+        <label>2<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 2 in Sekunden"></label>
+        <label>3<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 3 in Sekunden"></label>
+        <label>4<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 4 in Sekunden"></label>
+        <label>5<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 5 in Sekunden"></label>
+        <label>6<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 6 in Sekunden"></label>
+        <label>7<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 7 in Sekunden"></label>
+        <label>8<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 8 in Sekunden"></label>
+        <label>9<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 9 in Sekunden"></label>
+        <label>10<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 10 in Sekunden"></label>
+        <label>11<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 11 in Sekunden"></label>
+        <label>12<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 12 in Sekunden"></label>
+        <label>13<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 13 in Sekunden"></label>
+        <label>14<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 14 in Sekunden"></label>
+        <label>15<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 15 in Sekunden"></label>
+        <label>16<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 16 in Sekunden"></label>
+        <label>17<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 17 in Sekunden"></label>
+        <label>18<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 18 in Sekunden"></label>
+        <label>19<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 19 in Sekunden"></label>
+        <label>20<input type="text" inputmode="decimal" aria-label="Stoppuhrzeit 20 in Sekunden"></label>
+      </div>
+    </fieldset>
+    <p id="blanko-error" role="status" hidden></p>
+    <dl class="blanko-results">
+      <div><dt>Anzahl der Zeiten</dt><dd><output id="blanko-count">0</output></dd></div>
+      <div><dt>Mittlere Fallzeit</dt><dd><output id="blanko-mean">–</output> s</dd></div>
+      <div><dt>Fallbeschleunigung</dt><dd><output id="blanko-gravity">–</output> <math><mfrac><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">s</mi><mn>2</mn></msup></mfrac></math></dd></div>
+    </dl>
+  </form>
 </section>
 </article>
 <footer>Der ErkLehrer · Interaktive Lernhilfen</footer>
