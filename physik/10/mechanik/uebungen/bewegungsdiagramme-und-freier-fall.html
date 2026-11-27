@@ -23,7 +23,7 @@
 <nav class="exercise-nav" aria-label="Themen der Übungen">
   <ul>
     <li><a href="./">Geschwindigkeit und Beschleunigung <span>(Aufgaben 1–3)</span></a></li>
-    <li><a href="bewegungsdiagramme-und-freier-fall.html" aria-current="page">Bewegungsdiagramme und freier Fall <span>(Aufgaben 4–5)</span></a></li>
+    <li><a href="bewegungsdiagramme-und-freier-fall.html" aria-current="page">Bewegungsdiagramme und freier Fall <span>(Aufgaben 4–5 + Zusatz)</span></a></li>
     <li><a href="grundgleichung-der-mechanik.html">Kraft und Grundgleichung der Mechanik <span>(Aufgaben 6–8)</span></a></li>
     <li><a href="kinetische-energie.html">Kinetische Energie <span>(Aufgaben 9–11)</span></a></li>
     <li><a href="energieerhaltung.html">Potenzielle Energie und Energieerhaltung <span>(Aufgaben 12–14)</span></a></li>
@@ -100,6 +100,54 @@
 <p><math><mtext>v = 9,81 </mtext><mfrac><mrow><mi>m</mi></mrow><mrow><mtext>s²</mtext></mrow></mfrac><mtext> · 1,2116 s ≈ 11,9 </mtext><mfrac><mrow><mi>m</mi></mrow><mrow><mi>s</mi></mrow></mfrac></math></p>
 <p>Umrechnung: <math><mtext>11,886 · 3,6 ≈ 42,8 </mtext><mfrac><mrow><mi mathvariant="normal">km</mi></mrow><mrow><mi>h</mi></mrow></mfrac></math></p>
 <p>c) Tatsächlich wirkt Luftwiderstand entgegen der Bewegungsrichtung. Das Modell beschreibt den idealisierten freien Fall.</p>
+    </section>
+  </details>
+</article>
+<article class="exercise" id="zusatzaufgabe-ice" aria-labelledby="titel-ice">
+  <h3 id="titel-ice">Zusatzaufgabe · Ein ICE fährt an</h3>
+  <div class="exercise-prompt">
+    <p>Ein ICE 3 fährt aus dem Stand an. Das Zeit-Weg-Diagramm zeigt, wie weit er in den ersten 40 Sekunden kommt, wenn wir seine Anfahrbeschleunigung als konstant annehmen.</p>
+    <figure>
+      <img src="ice-zeit-weg.png" alt="Zeit-Weg-Diagramm eines anfahrenden ICE 3. Die waagerechte Achse reicht von 0 bis 40 Sekunden, die senkrechte Achse von 0 bis 400 Metern. Das Raster ist in 5 Sekunden und 25 Meter unterteilt." width="1080" height="657" loading="lazy">
+      <figcaption>Die Modellkurve verwendet
+        <math><mi>a</mi><mo>=</mo><mn>0,50</mn><mfrac><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">s</mi><mn>2</mn></msup></mfrac></math>.
+        Der Wert ist aus einer <a href="https://www.riemer-koeln.de/mathematik/publikationen/gps/gps-ice-istron/istron-ice.pdf#page=8">GPS-Messung am ICE 3 (Abb. 10c)</a> abgeleitet.
+      </figcaption>
+    </figure>
+    <ol type="a">
+      <li><p>Lies ab, welche Strecke der ICE nach 10&nbsp;s und nach 30&nbsp;s jeweils seit dem Start zurückgelegt hat.</p></li>
+      <li><p>Bestimme aus dem Diagramm, nach welcher Zeit der ICE 100&nbsp;m zurückgelegt hat.</p></li>
+      <li><p>Berechne die Durchschnittsgeschwindigkeit <math><msub><mi>v</mi><mi mathvariant="normal">d</mi></msub></math> zwischen 10&nbsp;s und 30&nbsp;s. Gib sie in Metern pro Sekunde und in Kilometern pro Stunde an.</p></li>
+      <li><p>Beschreibe den Verlauf des Graphen und erkläre, was er über die Geschwindigkeit des ICE aussagt.</p></li>
+    </ol>
+  </div>
+  <details class="exercise-help" hidden>
+    <summary>Tipps und Musterlösung</summary>
+    <ol class="exercise-hints">
+      <li><p>Gehe bei a) vom gesuchten Zeitpunkt senkrecht zum Graphen und dann waagerecht zur Streckenachse. Beginne bei b) auf der Streckenachse.</p></li>
+      <li hidden><p>Bilde für c) die Differenz der beiden abgelesenen Strecken. Teile sie durch die Dauer des Zeitintervalls.</p></li>
+      <li hidden><p>Für die Umrechnung von Metern pro Sekunde in Kilometer pro Stunde multiplizierst du den Zahlenwert mit 3,6.</p></li>
+      <li hidden><p>Vergleiche für d) die Steigung des Graphen am Anfang mit der Steigung gegen Ende. Was sagt dir die Steigung über die Geschwindigkeit?</p></li>
+    </ol>
+    <button class="exercise-action" type="button" data-next>Nächsten Tipp anzeigen</button>
+    <button class="exercise-action" type="button" data-solution aria-controls="loesung-ice" aria-expanded="false" hidden>Musterlösung anzeigen</button>
+    <section id="loesung-ice" class="exercise-solution" aria-labelledby="loesung-titel-ice" hidden>
+      <h4 id="loesung-titel-ice">Musterlösung</h4>
+      <ol type="a">
+        <li><p>Nach 10&nbsp;s hat der ICE etwa 25&nbsp;m zurückgelegt, nach 30&nbsp;s etwa 225&nbsp;m.</p></li>
+        <li><p>100&nbsp;m erreicht der ICE nach etwa 20&nbsp;s.</p></li>
+        <li>
+          <p>Zwischen 10&nbsp;s und 30&nbsp;s legt der ICE etwa 200&nbsp;m in 20&nbsp;s zurück.</p>
+          <p><math>
+            <msub><mi>v</mi><mi mathvariant="normal">d</mi></msub><mo>=</mo>
+            <mfrac><mrow><mi>Δ</mi><mi>s</mi></mrow><mrow><mi>Δ</mi><mi>t</mi></mrow></mfrac><mo>≈</mo>
+            <mfrac><mrow><mn>225</mn><mtext> m</mtext><mo>−</mo><mn>25</mn><mtext> m</mtext></mrow><mrow><mn>30</mn><mtext> s</mtext><mo>−</mo><mn>10</mn><mtext> s</mtext></mrow></mfrac>
+            <mo>=</mo><mn>10</mn><mfrac><mi mathvariant="normal">m</mi><mi mathvariant="normal">s</mi></mfrac>
+            <mo>=</mo><mn>36</mn><mfrac><mi mathvariant="normal">km</mi><mi mathvariant="normal">h</mi></mfrac>
+          </math></p>
+        </li>
+        <li><p>Der Graph beginnt im Ursprung zunächst waagerecht und wird dann immer steiler. Seine Steigung entspricht der Momentangeschwindigkeit. Der ICE fährt aus dem Stand an und wird immer schneller.</p></li>
+      </ol>
     </section>
   </details>
 </article>
