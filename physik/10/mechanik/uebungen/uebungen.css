@@ -118,3 +118,30 @@
 .exercise-solution h4 {
   margin: 0 0 .55rem;
 }
+
+.exercise-nav a:hover {
+  border-color: #9c2946;
+}
+
+.exercise-nav a[aria-current="true"] {
+  border-color: #9c2946;
+  background: #9c2946;
+  color: #fff;
+  text-decoration: none;
+}
+
+.exercise-nav a[aria-current="true"] span {
+  color: inherit;
+}
+
+.exercise-theory {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1rem;
+  margin: 0 0 .85rem;
+  font-size: .875rem;
+}
+
+.exercise-theory a {
+  color: #9c2946;
+}

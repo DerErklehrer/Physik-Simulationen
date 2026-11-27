@@ -30,3 +30,39 @@ for (const help of document.querySelectorAll('.exercise-help')) {
   updateControls();
   help.hidden = false;
 }
+
+const topicLinks = Array.from(document.querySelectorAll('.exercise-nav a'));
+const topicGroups = topicLinks.map(link => document.getElementById(link.hash.slice(1)));
+
+function showTopic() {
+  const target = document.getElementById(window.location.hash.slice(1));
+  const linkedGroup = target?.closest('.exercise-group');
+  const activeGroup = linkedGroup ?? topicGroups[0];
+
+  for (const [index, group] of topicGroups.entries()) {
+    const active = group === activeGroup;
+    group.hidden = !active;
+    if (active) {
+      topicLinks[index].setAttribute('aria-current', 'true');
+    } else {
+      topicLinks[index].removeAttribute('aria-current');
+    }
+  }
+
+  if (linkedGroup && target !== linkedGroup) {
+    target.scrollIntoView();
+  }
+}
+
+for (const link of topicLinks) {
+  link.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    if (window.location.hash !== link.hash) history.pushState(null, '', link.hash);
+    showTopic();
+  });
+}
+
+window.addEventListener('hashchange', showTopic);
+showTopic();
