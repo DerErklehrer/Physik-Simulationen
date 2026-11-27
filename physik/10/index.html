@@ -13,13 +13,20 @@
   min-height: 36px;
 }
 
-.topic-title--electricity::after,
-.topic-title--atom::after,
-.topic-title--energy::after {
+.topic-title::after {
   content: "";
   flex: 0 0 36px;
   height: 36px;
   margin-inline-start: auto;
+}
+
+.topic-title--mechanics::after {
+  background: url("mechanik-wagen.png") no-repeat center / 32px 32px;
+}
+
+.topic-title--electricity::after,
+.topic-title--atom::after,
+.topic-title--energy::after {
   /* Clip each motif so neighboring parts of the logo stay outside the icon. */
   clip-path: var(--topic-icon-clip, inset(0 6px 0 5px));
   background: url("../../assets/logos/physik-10.png") no-repeat var(--topic-icon-position) / 126px 84px;
@@ -42,7 +49,7 @@
 <h1>Physik 10 II/III</h1>
 <div class="cards">
   <a class="card" href="mechanik/">
-    <strong class="topic-title">Mechanik</strong>
+    <strong class="topic-title topic-title--mechanics">Mechanik</strong>
     <p>Geschwindigkeit, Beschleunigung, Kräfte und Bewegungsenergie. Mit Diagrammen, Beispielen und Bremsweg-Simulation.</p>
   </a>
   <a class="card" href="elektrizitaetslehre/">
