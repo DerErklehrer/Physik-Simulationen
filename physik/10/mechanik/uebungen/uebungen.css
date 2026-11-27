@@ -1,0 +1,120 @@
+.exercise-page {
+  max-width: 900px;
+}
+
+.exercise-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2rem;
+}
+
+.exercise-nav a {
+  display: block;
+  padding: .45rem .7rem;
+  border: 1px solid #dbe1e6;
+  border-radius: .5rem;
+  background: #fff;
+}
+
+.exercise-nav span {
+  color: #5f6e7c;
+  font-size: .87rem;
+}
+
+.exercise-group {
+  margin-block: 2rem;
+  scroll-margin-top: 1rem;
+}
+
+.exercise {
+  max-width: none;
+  margin: .8rem 0;
+  padding: clamp(14px, 3vw, 24px);
+  border: 1px solid #dbe1e6;
+  border-radius: 14px;
+  background: #fff;
+  overflow-wrap: break-word;
+}
+
+.exercise h3 {
+  margin: 0 0 .65rem;
+  font-size: 1.12rem;
+}
+
+.exercise-prompt p,
+.exercise-solution p {
+  margin: .45rem 0;
+  overflow-x: auto;
+}
+
+.exercise figure {
+  margin: .8rem 0;
+}
+
+.exercise figure img {
+  max-width: 600px;
+}
+
+.exercise .exam-note {
+  font-size: .875rem;
+  color: #5f6e7c;
+  margin: .7rem 0;
+  padding-left: .65rem;
+  border-left: 2px solid #c2cad2;
+}
+
+.exercise-help {
+  margin-top: .95rem;
+  padding: .7rem .85rem;
+  background: #f3f5f8;
+  border: 1px solid #dbe1e6;
+  border-radius: 8px;
+}
+
+.exercise-help summary {
+  color: #902340;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.exercise-hints {
+  padding-left: 1.55rem;
+}
+
+.exercise-hints p {
+  margin: .45rem 0;
+  overflow-x: auto;
+}
+
+.exercise-action {
+  padding: .5rem .75rem;
+  border: 1px solid #9c2946;
+  border-radius: .45rem;
+  color: #9c2946;
+  background: #fff;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.exercise-action:hover {
+  background: #fff0f4;
+}
+
+.exercise-page :is(summary, button, .exercise-hints li):focus-visible {
+  outline: 3px solid #e68b3c;
+  outline-offset: 3px;
+}
+
+.exercise-solution {
+  margin-top: 1rem;
+  padding-top: .8rem;
+  border-top: 1px solid #c2cad2;
+}
+
+.exercise-solution h4 {
+  margin: 0 0 .55rem;
+}
