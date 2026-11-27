@@ -123,14 +123,14 @@
   border-color: #9c2946;
 }
 
-.exercise-nav a[aria-current="true"] {
+.exercise-nav a[aria-current="page"] {
   border-color: #9c2946;
   background: #9c2946;
   color: #fff;
   text-decoration: none;
 }
 
-.exercise-nav a[aria-current="true"] span {
+.exercise-nav a[aria-current="page"] span {
   color: inherit;
 }
 
