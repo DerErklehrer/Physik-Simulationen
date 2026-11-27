@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radioaktiver Zerfall und Halbwertszeit · Physik 10</title>
+<style>
+:root{color:#203742;background:#f5f6f8;font-family:system-ui,'Segoe UI',sans-serif;--pink:#9b174a;--orange:#955000;--line:#d6dfe4}
+*{box-sizing:border-box}body{margin:0}header{background:#203742;color:white;padding:.9rem max(1rem,calc((100% - 1100px)/2));font-weight:700}main{max-width:1132px;margin:auto;padding:1rem 1rem 3rem}a{color:var(--pink)}a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #bd6000;outline-offset:3px}nav{margin-bottom:.7rem}h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.1;margin:.6rem 0}p{line-height:1.45;margin:.5rem 0}h2{font-size:1.2rem;margin:0}.bar,.run,.plot,details{background:white;border:1px solid var(--line);border-radius:12px;padding:1rem;margin-top:.8rem}.bar,.actions{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}.bar{justify-content:space-between}.actions{gap:.5rem}button,select{font:inherit;color:inherit;background:white;border:1px solid #8c9da5;border-radius:7px;padding:.55rem .7rem}button{cursor:pointer;font-weight:650}button.primary{background:var(--pink);color:white;border-color:var(--pink)}button:disabled{opacity:.5;cursor:default}.runs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.run{border-top:4px solid var(--pink)}.run+ .run{border-top-color:var(--orange)}.options{margin:.5rem 0;display:block}.options select{width:100%;margin-top:.3rem}.status{min-height:3.3em}.cores{display:grid;grid-template-columns:repeat(var(--columns),1fr);gap:3px;max-width:480px;padding:.5rem;background:#f5f6f8;border-radius:8px}.core{aspect-ratio:1;border-radius:50%;background:#244751;border:1px solid #244751}.core.changed{background:white;border:1px solid #667982}.legend{font-size:.86em;color:#435961;margin-top:.65rem}.solid,.hollow{display:inline-block;width:.8em;height:.8em;border-radius:50%;border:1px solid #667982}.solid{background:#244751}.hollow{background:white}.plot svg{width:100%;display:block}.plot svg text{font-family:inherit;fill:#203742;font-size:16px}.plot-legend{display:flex;gap:1rem;flex-wrap:wrap}.plot-legend span:first-child{color:var(--pink)}.plot-legend span:last-child{color:var(--orange)}summary{cursor:pointer;font-weight:650}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}[hidden]{display:none!important}
+@media(max-width:600px){.runs{gap:.5rem}.run,.bar,.plot{padding:.6rem}.cores{gap:1.5px;padding:.25rem}.options select{font-size:.87rem;padding:.35rem .1rem}.status{min-height:5em}.plot svg text{font-size:21px}}
+</style>
+</head>
+<body>
+<header>Der ErkLehrer · Physik 10 II/III</header>
+<main>
+<nav><a href="../">← Atom- und Kernphysik</a></nav>
+<h1>Radioaktiver Zerfall und Halbwertszeit</h1>
+<p>Vergleiche zwei Regeln. Sage vorher, ob du bei einem Neustart denselben Verlauf erwartest.</p>
+<div class="bar">
+<label for="size"><strong>Ausgangskerne</strong> <select id="size"><option value="32">Wenige (32)</option><option value="256">Viele (256)</option></select></label>
+<div class="actions"><button class="primary" id="step">Ein Zeitschritt weiter</button><button id="reset">Neu starten</button><button id="curve-toggle" aria-expanded="false" aria-controls="plot">Kurve einblenden</button></div>
+<output id="round">Schritt 0 von 5</output>
+</div>
+<div class="runs" id="runs">
+<section class="run"><h2>Lauf 1</h2><label class="options" for="rule1">Modellregel<select id="rule1"><option value="fixed">A · Genau die Hälfte</option><option value="chance">B · Gleiche Zerfallschance</option></select></label><p class="status" id="status1"></p><div class="cores" id="cores1" aria-hidden="true"></div></section>
+<section class="run"><h2>Lauf 2</h2><label class="options" for="rule2">Modellregel<select id="rule2"><option value="fixed">A · Genau die Hälfte</option><option value="chance" selected>B · Gleiche Zerfallschance</option></select></label><p class="status" id="status2"></p><div class="cores" id="cores2" aria-hidden="true"></div></section>
+</div>
+<p class="legend"><span class="solid" aria-hidden="true"></span> Ausgangskern unverändert &emsp; <span class="hollow" aria-hidden="true"></span> Ausgangskern umgewandelt</p>
+<div class="sr" id="announce" role="status"></div>
+<section class="plot" id="plot" hidden>
+<h2>Anteil unveränderter Ausgangskerne</h2>
+<svg id="chart" viewBox="0 0 650 284" role="img" aria-labelledby="chart-title chart-desc"></svg>
+<div class="plot-legend"><span>━ ● Lauf 1</span><span>┅ ■ Lauf 2</span></div>
+</section>
+<details><summary>Wie funktionieren die Regeln?</summary>
+<p><strong>Regel A.</strong> In jedem Zeitschritt wird genau die Hälfte der verbliebenen Ausgangskerne umgewandelt. Welche Kerne das sind, wird ausgelost.</p>
+<p><strong>Regel B.</strong> Jeder verbliebene Ausgangskern hat in jedem Zeitschritt unabhängig von den anderen dieselbe Zerfallschance, hier 50 %.</p>
+<p><strong>Modellgrenze.</strong> Die Anzeige fasst Veränderungen in Zeitschritten zusammen. Bei realen Kernen kann der Zerfall auch zwischen zwei Anzeigeschritten stattfinden. Folgezerfälle werden hier nicht dargestellt.</p>
+</details>
+</main>
+<script>
+'use strict';
+const byId = id => document.getElementById(id);
+const maxSteps = 5;
+const ruleInputs = [byId('rule1'), byId('rule2')];
+const corePanels = [byId('cores1'), byId('cores2')];
+const statusPanels = [byId('status1'), byId('status2')];
+const colors = ['#9b174a', '#955000'];
+let initialCount;
+let currentStep;
+let runs;
+let cells;
+
+function init() {
+  initialCount = Number(byId('size').value);
+  currentStep = 0;
+  runs = ruleInputs.map(input => ({
+    rule: input.value,
+    live: Array.from({length: initialCount}, (_, index) => index),
+    counts: [initialCount]
+  }));
+  cells = corePanels.map(panel => {
+    panel.style.setProperty('--columns', initialCount === 32 ? 8 : 16);
+    const fragment = document.createDocumentFragment();
+    const nodes = Array.from({length: initialCount}, () => {
+      const node = document.createElement('span');
+      node.className = 'core';
+      fragment.append(node);
+      return node;
+    });
+    panel.replaceChildren(fragment);
+    return nodes;
+  });
+  render();
+}
+
+function retainCores(run) {
+  if (run.rule === 'chance') {
+    return run.live.filter(() => Math.random() >= 0.5);
+  }
+  const shuffled = [...run.live];
+  const retained = shuffled.length / 2;
+  for (let index = 0; index < retained; index++) {
+    const pick = index + Math.floor(Math.random() * (shuffled.length - index));
+    [shuffled[index], shuffled[pick]] = [shuffled[pick], shuffled[index]];
+  }
+  return shuffled.slice(0, retained);
+}
+
+function nextStep() {
+  if (currentStep === maxSteps) return;
+  currentStep += 1;
+  runs.forEach(run => {
+    run.live = retainCores(run);
+    run.counts.push(run.live.length);
+  });
+  render();
+}
+
+function renderChart() {
+  const y = percent => 225 - 1.9 * percent;
+  const x = step => 72 + 105 * step;
+  const horizontal = [0,25,50,75,100].map(percent =>
+    '<path d="M72 '+y(percent)+'H597" stroke="'+(percent === 50 ? '#8a9aa1' : '#dbe3e8')+'"/>'+
+    '<text x="61" y="'+(y(percent)+5)+'" text-anchor="end">'+percent+'</text>').join('');
+  const tickLabels = Array.from({length:maxSteps+1}, (_,step) =>
+    '<text x="'+x(step)+'" y="250" text-anchor="middle">'+step+'</text>').join('');
+  const lines = runs.map((run,index) => {
+    const points = run.counts.map((value,step)=>[x(step),y(100*value/initialCount)]);
+    const symbols = points.map(([cx,cy]) => index === 0 ?
+      '<circle cx="'+cx+'" cy="'+cy+'" r="6" fill="'+colors[index]+'"/>' :
+      '<rect x="'+(cx-3)+'" y="'+(cy-3)+'" width="6" height="6" fill="white" stroke="'+colors[index]+'" stroke-width="2"/>').join('');
+    return '<polyline fill="none" stroke="'+colors[index]+'" stroke-width="3" '+(index ? 'stroke-dasharray="8 5"' : '')+
+      ' points="'+points.map(pair=>pair.join(',')).join(' ')+'"/>'+symbols;
+  }).join('');
+  byId('chart').innerHTML = '<title id="chart-title">Verlauf für Lauf 1 und Lauf 2</title><desc id="chart-desc">'+
+    runs.map((run,index)=>'Lauf '+(index+1)+', unveränderte Kerne je Schritt: '+run.counts.join(', ')).join('. ')+
+    '</desc>'+horizontal+'<path d="M72 35V225H597" stroke="#203742" fill="none"/>'+tickLabels+
+    '<text x="72" y="24">Anteil in %</text><text x="600" y="276" text-anchor="end">Zeitschritt</text>'+lines;
+}
+
+function render() {
+  runs.forEach((run,index) => {
+    const surviving = new Set(run.live);
+    cells[index].forEach((cell,core) => cell.classList.toggle('changed', !surviving.has(core)));
+    statusPanels[index].textContent = run.live.length+' von '+initialCount+' Ausgangskernen unverändert.';
+  });
+  byId('round').textContent = 'Schritt '+currentStep+' von '+maxSteps;
+  byId('step').disabled = currentStep === maxSteps;
+  byId('announce').textContent = 'Schritt '+currentStep+'. Lauf 1: '+runs[0].live.length+
+    ' unveränderte Kerne. Lauf 2: '+runs[1].live.length+' unveränderte Kerne.';
+  renderChart();
+}
+
+byId('step').addEventListener('click',nextStep);
+byId('reset').addEventListener('click',init);
+byId('size').addEventListener('change',init);
+ruleInputs.forEach(input=>input.addEventListener('change',init));
+byId('curve-toggle').addEventListener('click', event => {
+  const plot = byId('plot');
+  plot.hidden = !plot.hidden;
+  event.target.setAttribute('aria-expanded',String(!plot.hidden));
+  event.target.textContent = plot.hidden ? 'Kurve einblenden' : 'Kurve ausblenden';
+});
+init();
+</script>
+</body>
+</html>
