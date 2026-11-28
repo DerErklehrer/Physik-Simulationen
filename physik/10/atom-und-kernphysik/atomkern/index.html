@@ -18,8 +18,12 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #ba65
 figure{margin:0}img{width:min(100%,492px);height:auto;border:1px solid #bbc5c8}figcaption{font-size:.88rem}
 </style></head><body>
 <header><a href="../">Atom- und Kernphysik</a><h1>Entdeckung der Radioaktivität und Atomkern</h1><p>Physik 10 · Stunde 1</p></header>
-<main><nav aria-label="Aufgaben"><a href="#fotoplatte">Aufgabe 2 · Becquerels Fotoplatte</a><a href="#nuklide">Aufgabe 3 · Nuklidschreibweise</a></nav><section id="nuklide">
-<h2>Nuklidschreibweise üben</h2>
+<main><nav aria-label="Aufgaben"><a href="#fotoplatte">Aufgabe 2 · Becquerels Fotoplatte</a><a href="#nuklide">Aufgabe 3 · Nuklidschreibweise</a></nav><section id="fotoplatte"><h2>Aufgabe 2 · Becquerels Fotoplatte</h2>
+<p>Betrachte die dunklen Stellen auf der entwickelten Platte. Wo siehst du einen Abdruck? Was ist die Beobachtung und was ist die Erklärung dafür?</p>
+<figure><a href="https://commons.wikimedia.org/wiki/File:Becquerel_plate.jpg"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Becquerel_plate.jpg" alt="Historische Fotoplatte mit zwei dunklen Abdrücken und Handschrift am oberen Rand"></a><figcaption>Henri Becquerel · Wikimedia Commons · gemeinfrei</figcaption></figure>
+</section>
+<section id="nuklide">
+<h2>Aufgabe 3 · Nuklidschreibweise üben</h2>
 <p>Wähle ein Element. Lies anschließend die Massenzahl A und die Protonenzahl Z am Nuklidsymbol ab. Berechne die Neutronenzahl N.</p>
 <p class="legend">Ausschnitt aus Periode 2 des Periodensystems · oben steht die Ordnungszahl Z</p>
 <div class="grid" id="elements"></div>
@@ -29,9 +33,6 @@ figure{margin:0}img{width:min(100%,492px);height:auto;border:1px solid #bbc5c8}f
 <form id="form"><div class="fields"><label>Massenzahl A<input id="mass" inputmode="numeric" type="number" required min="0"></label><label>Protonenzahl Z<input id="protons" inputmode="numeric" type="number" required min="0"></label><label>Neutronenzahl N<input id="neutrons" inputmode="numeric" type="number" required min="0"></label></div>
 <p class="feedback" id="n-feedback" aria-live="polite"></p><div class="actions"><button class="primary" type="submit">Prüfen</button><button type="button" id="next">Nächstes Nuklid</button></div></form>
 </div>
-</section><section id="fotoplatte"><h2>Becquerels Fotoplatte</h2>
-<p>Betrachte die dunklen Stellen auf der entwickelten Platte. Wo siehst du einen Abdruck? Was ist die Beobachtung und was ist die Erklärung dafür?</p>
-<figure><a href="https://commons.wikimedia.org/wiki/File:Becquerel_plate.jpg"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Becquerel_plate.jpg" alt="Historische Fotoplatte mit zwei dunklen Abdrücken und Handschrift am oberen Rand"></a><figcaption>Henri Becquerel · Wikimedia Commons · gemeinfrei</figcaption></figure>
 </section></main><script>
 const data=[['Be','Beryllium',4,9,10],['B','Bor',5,10,11],['C','Kohlenstoff',6,12,13,14],['N','Stickstoff',7,14,15],['O','Sauerstoff',8,16,17,18]]
 const get=id=>document.getElementById(id)
